@@ -68,6 +68,86 @@ footer {
     background-color: lightgreen;
 }
 
+#gameboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff url('../images/battleship-bg-op.webp') no-repeat center left;
+    height: 100%;
+}
+
+#player-gameboard,
+#computer-gameboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+}
+
+#player-gameboard>div,
+#computer-gameboard>div {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    border: 0.5px #fff dotted;
+    width: 50px;
+    height: 50px;
+    box-sizing: content-box;
+    padding: 0;
+}
+
+#player-gameboard .indexRow,
+#player-gameboard .indexColumn,
+#computer-gameboard .indexRow,
+#computer-gameboard .indexColumn {
+    border: none;
+    font-weight: 900;
+}
+
+#player-gameboard .indexRow,
+#player-gameboard .indexColumn,
+#computer-gameboard .indexRow,
+#computer-gameboard .indexColumn {
+    align-items: center;
+
+}
+
+.playableArea {
+    background: lightblue url('../images/background/ocean.gif') repeat left top;
+    color: #fff;
+    position: relative;
+}
+
+#player-gameboard img,
+#computer-gameboard>img {
+    z-index: 100;
+}
+
+#player-gameboard img,
+#computer-gameboard>img {
+    position: absolute;
+    top: 0;
+    left: 20%;
+}
+
+#player-gameboard .explosion,
+#computer-gameboard .explosion {
+    max-width: 50px;
+    z-index: 200;
+    position: absolute;
+    top: 20%;
+    left: 0;
+}
+
+#player-gameboard .fire,
+#computer-gameboard .fire {
+    z-index: 200;
+    position: absolute;
+    top: 12%;
+    left: 20%;
+}
+
 footer {
     display: flex;
     flex-direction: column;
