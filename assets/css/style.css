@@ -6,3 +6,40 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
+nav,
+footer {
+    width: 100%;
+    height: 7.5vh;
+    background-color: lightblue;
+    padding: 1%;
+}
+
+#gameContainer {
+    display: flex;
+    flex-direction: row;
+    height: 85vh;
+}
+
+#gameSidebar,
+#gameBody,
+#player-gameboard,
+#computer-gameboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+#gameSidebar {
+    width: 20%;
+    background-color: grey;
+    padding: 1%;
+    background: #fff url('../images/metal-plates.webp') repeat top left;
+}
+
+#gameBody {
+    width: 80%;
+    height: auto;
+    background-color: lightgreen;
+}
