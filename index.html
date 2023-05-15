@@ -12,19 +12,33 @@
 
 <body>
     <nav>
-        <h1>Battleship Game!</h1>
+        <div id="logo">
+            <h1>Battleship Game!</h1>
+        </div>
+        <div id="links">
+            <ul>
+                <li><a href="#">NEW GAME</a></li>
+                <li><a href="#">GAME RULES</a></li>
+                <li><a href="#">SEND FEEDBACK</a></li>
+            </ul>
+        </div>
     </nav>
     <div id="gameContainer">
         <!-- Sidebar for tracking game pirces and score -->
         <section id="gameSidebar">
             <h2>Sidebar</h2>
+            <div id="score-stats"></div>
+            <div id="player-one-stats"></div>
+            <div id="player-two-stats"></div>
         </section>
         <!-- Main gameplay area -->
         <section id="gameBody">
+            <div id="player-message"></div>
             <div id="gameboard">
                 <div id="player-gameboard"></div>
                 <div id="computer-gameboard"></div>
             </div>
+            <div id="placement-controls"></div>
         </section>
     </div>
     <footer>
