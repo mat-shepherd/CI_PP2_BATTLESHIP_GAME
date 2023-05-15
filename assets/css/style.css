@@ -22,6 +22,7 @@ footer {
 
 #logo {
     width: 22.5%;
+    min-width: 250px;
 }
 
 #links {
