@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', gameBoard());
 let testDiv = document.getElementById('p52');
 let gridLocation = testDiv.className;
 testDiv.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
-testDiv.innerHTML += `<img src='./assets/images/effects/explosion1.gif' id='explode-${gridLocation}' class='explosion'>`;
+testDiv.innerHTML += `<img src='./assets/images/effects/explosion.gif' id='explode-${gridLocation}' class='explosion'>`;
 setTimeout(function () {
     document.querySelector('[id^="explode-"]').remove();
     testDiv.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
