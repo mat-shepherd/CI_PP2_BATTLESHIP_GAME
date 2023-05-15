@@ -35,7 +35,7 @@ footer {
     width: 20%;
     background-color: grey;
     padding: 1%;
-    background: #fff url('../images/metal-plates.webp') repeat top left;
+    background: #fff url('../images/backgrounds/metal-plates.webp') repeat top left;
 }
 
 #gameBody {
