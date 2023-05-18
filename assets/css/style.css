@@ -117,7 +117,7 @@ footer {
 }
 
 #score-inner {
-    height: 95%;
+    height: 97%;
     width: 85%;
     background-color: #848482;
     -moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
@@ -168,7 +168,7 @@ footer {
     min-height: 75px;
     border-radius: 10px;
     background-color: #000;
-    margin: 0 auto 40px auto;
+    margin: 20px auto 40px auto;
     line-height: 1.75em;
     text-align: center;
     -moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
@@ -181,7 +181,8 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    row-gap: 100px;
+    row-gap: 70px;
+    padding: 50px;
 }
 
 #player-gameboard,
