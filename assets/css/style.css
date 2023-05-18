@@ -158,6 +158,14 @@ footer {
     margin-bottom: 10px;
 }
 
+.ship-list {
+    margin-top: 10px;
+}
+
+#player-two-stats .score-ship>img {
+    filter: grayscale(100%);
+}
+
 #game-body {
     width: 85%;
     height: auto;
