@@ -107,13 +107,26 @@ footer {
 
 #score-stats {
     height: 20%;
-    align-items: flex-start;
+    align-items: center;
+    column-gap: 50px;
+}
+
+#player-score-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 #player-one-stats,
 #player-two-stats {
     height: 40%;
     align-items: flex-start;
+}
+
+.score-title,
+#p1-score,
+#p2-score {
+    display: inline;
 }
 
 #gameBody {
