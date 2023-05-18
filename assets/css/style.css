@@ -134,7 +134,7 @@ footer {
     width: 85%;
     height: auto;
     background-color: lightgreen;
-    background: lightblue url('../images/backgrounds/ocean.gif') repeat left top;
+    background: navy url('../images/backgrounds/ocean.gif') repeat left top;
     /* background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left; */
 }
 
@@ -184,6 +184,7 @@ footer {
 #computer-gameboard .indexColumn {
     border: none;
     font-weight: 900;
+    color: #fff;
 }
 
 #player-gameboard .indexRow,
