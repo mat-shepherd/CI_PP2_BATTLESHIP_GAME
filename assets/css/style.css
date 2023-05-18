@@ -79,17 +79,18 @@ footer {
     color: #fff;
 }
 
-#gameContainer {
+#game-container {
     display: flex;
     flex-direction: row;
     height: auto;
     min-height: 84vh;
 }
 
-#gameSidebar,
-#gameBody,
+#game-sidebar,
+#game-body,
 #player-gameboard,
 #computer-gameboard,
+#score-inner,
 #score-stats,
 #player-one-stats,
 #player-two-stats {
@@ -99,10 +100,18 @@ footer {
     margin: 0 auto;
 }
 
-#gameSidebar {
+#game-sidebar {
     width: 15%;
-    background-color: grey;
-    background: #fff url('../images/backgrounds/metal-plates.webp') repeat top left;
+    background: #848482 url('../images/backgrounds/metal-plates.webp') repeat top left;
+}
+
+#score-inner {
+    height: 95%;
+    width: 85%;
+    background-color: #848482;
+    -moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
+    -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
+    box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
 }
 
 #score-stats {
@@ -130,12 +139,12 @@ footer {
     display: inline;
 }
 
-#gameBody {
+#game-body {
     width: 85%;
     height: auto;
     background-color: lightgreen;
     background: navy url('../images/backgrounds/ocean.gif') repeat left top;
-    /* background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left; */
+    /* Background to use for introdiv - background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left; */
 }
 
 #player-message {
