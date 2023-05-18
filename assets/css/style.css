@@ -83,7 +83,7 @@ footer {
     display: flex;
     flex-direction: row;
     height: auto;
-    min-height: 84vh;
+    min-height: 90vh;
 }
 
 #game-sidebar,
@@ -134,8 +134,7 @@ footer {
 }
 
 .score-title,
-#p1-score,
-#p2-score {
+.score-number {
     display: inline;
 }
 
