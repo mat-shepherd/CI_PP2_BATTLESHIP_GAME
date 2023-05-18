@@ -50,7 +50,7 @@ footer {
     height: 3vh;
     background-color: #08262C;
     color: #fff;
-    padding: 1%;
+    padding: 1% 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -58,12 +58,12 @@ footer {
 }
 
 #logo {
-    width: 22.5%;
-    min-width: 250px;
+    width: 15%;
+    text-align: center;
 }
 
 #links {
-    width: 72.5%;
+    width: 85%;
     text-align: right;
 }
 
@@ -89,7 +89,10 @@ footer {
 #gameSidebar,
 #gameBody,
 #player-gameboard,
-#computer-gameboard {
+#computer-gameboard,
+#score-stats,
+#player-one-stats,
+#player-two-stats {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -99,8 +102,18 @@ footer {
 #gameSidebar {
     width: 15%;
     background-color: grey;
-    padding: 1%;
     background: #fff url('../images/backgrounds/metal-plates.webp') repeat top left;
+}
+
+#score-stats {
+    height: 20%;
+    align-items: flex-start;
+}
+
+#player-one-stats,
+#player-two-stats {
+    height: 40%;
+    align-items: flex-start;
 }
 
 #gameBody {
