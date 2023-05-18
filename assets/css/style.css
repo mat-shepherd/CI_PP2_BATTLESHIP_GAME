@@ -107,6 +107,7 @@ footer {
     justify-content: center;
     margin: 0 auto;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 #game-sidebar {
@@ -157,7 +158,6 @@ footer {
 #game-body {
     width: 85%;
     height: auto;
-    background-color: lightgreen;
     background: navy url('../images/backgrounds/ocean.gif') repeat left top;
     /* Background to use for introdiv - background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left; */
 }
@@ -178,9 +178,10 @@ footer {
 
 #gameboard {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    row-gap: 100px;
 }
 
 #player-gameboard,
@@ -259,4 +260,29 @@ footer {
     flex-direction: column;
     margin-top: auto;
     flex: 1 0 auto;
+}
+
+
+/* ==========================================================================
+   Desktop and Landscape Tablet Styles
+   ========================================================================== */
+
+@media only screen and (min-width: 1440px) {
+
+    #game-sidebar,
+    #game-body,
+    #player-gameboard,
+    #computer-gameboard,
+    #score-inner,
+    #score-stats,
+    #player-one-stats,
+    #player-two-stats,
+    .ship-list {
+        flex-wrap: nowrap;
+    }
+
+    #gameboard {
+        flex-direction: row;
+        column-gap: 150px;
+    }
 }
