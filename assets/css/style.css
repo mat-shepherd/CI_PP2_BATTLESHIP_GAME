@@ -55,7 +55,6 @@ body {
 
 nav,
 footer {
-    height: 3vh;
     background-color: #08262C;
     color: #fff;
     padding: 1% 0;
@@ -167,6 +166,7 @@ footer {
     border-radius: 10px;
     background-color: #000;
     margin: 0 auto 40px auto;
+    line-height: 1.75em;
     text-align: center;
     -moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
     -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
