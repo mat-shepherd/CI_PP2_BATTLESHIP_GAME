@@ -106,7 +106,7 @@ footer {
 }
 
 #score-stats {
-    height: auto%;
+    height: auto;
     align-items: center;
 }
 
@@ -134,7 +134,8 @@ footer {
     width: 85%;
     height: auto;
     background-color: lightgreen;
-    background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left;
+    background: lightblue url('../images/backgrounds/ocean.gif') repeat left top;
+    /* background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left; */
 }
 
 #player-message {
@@ -194,7 +195,6 @@ footer {
 }
 
 .playableArea {
-    background: lightblue url('../images/backgrounds/ocean.gif') repeat left top;
     color: #fff;
     position: relative;
 }
