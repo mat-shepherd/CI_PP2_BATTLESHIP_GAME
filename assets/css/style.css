@@ -1,4 +1,14 @@
-/** Layout **/
+/* ==========================================================================
+   Mobile Styles
+   ========================================================================== */
+
+/* Fonts
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap');
+
+
+/* Fonts
+   ========================================================================== */
 body {
     margin: 0;
     padding: 0;
@@ -6,6 +16,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: 'Roboto',
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
 nav,
@@ -18,6 +32,13 @@ footer {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+nav h1 {
+    font-family: 'Roboto Slab',
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
 #logo {
