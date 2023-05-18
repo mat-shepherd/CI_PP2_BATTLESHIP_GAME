@@ -6,9 +6,6 @@
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap');
 
-
-/* Fonts
-   ========================================================================== */
 body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
@@ -22,6 +19,7 @@ nav h1 {
 #player-message {
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
     color: #6DFF33;
+    padding: 1.5em;
 }
 
 @keyframes glow {
@@ -32,6 +30,16 @@ nav h1 {
     to {
         text-shadow: 0 0 30px #FC6400, 0px 10px 10px #801100;
     }
+}
+
+/* Reset
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
 }
 
 /* Layout
@@ -83,7 +91,7 @@ footer {
     display: flex;
     flex-direction: row;
     height: auto;
-    min-height: 90vh;
+    min-height: 95vh;
 }
 
 #game-sidebar,
@@ -102,6 +110,7 @@ footer {
 
 #game-sidebar {
     width: 15%;
+    min-width: 250px;
     background: #848482 url('../images/backgrounds/metal-plates.webp') repeat top left;
 }
 
@@ -124,18 +133,23 @@ footer {
     flex-direction: row;
     justify-content: space-around;
     column-gap: 50px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 #player-one-stats,
 #player-two-stats {
     height: 40%;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .score-title,
 .score-number {
     display: inline;
+}
+
+.score-title,
+.score-ship {
+    margin-bottom: 10px;
 }
 
 #game-body {
