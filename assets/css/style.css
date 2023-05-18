@@ -100,11 +100,13 @@ footer {
 #score-inner,
 #score-stats,
 #player-one-stats,
-#player-two-stats {
+#player-two-stats,
+.ship-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
+    align-items: center;
 }
 
 #game-sidebar {
@@ -147,7 +149,8 @@ footer {
 }
 
 .score-title,
-.score-ship {
+.score-ship,
+#game-sidebar h2 {
     margin-bottom: 10px;
 }
 
