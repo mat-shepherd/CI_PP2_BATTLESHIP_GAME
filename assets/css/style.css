@@ -106,15 +106,16 @@ footer {
 }
 
 #score-stats {
-    height: 20%;
+    height: auto%;
     align-items: center;
-    column-gap: 50px;
 }
 
 #player-score-stats {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    column-gap: 50px;
+    margin-bottom: 30px;
 }
 
 #player-one-stats,
