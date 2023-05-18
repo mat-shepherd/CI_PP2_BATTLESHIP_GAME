@@ -4,7 +4,7 @@
 
 /* Fonts
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap');
 
 
 /* Fonts
@@ -17,6 +17,11 @@ nav h1 {
     font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     animation: glow 2s ease-in-out infinite alternate;
+}
+
+#player-message {
+    font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+    color: #6DFF33;
 }
 
 @keyframes glow {
@@ -70,6 +75,7 @@ footer {
 
 #links a {
     text-decoration: none;
+    font-weight: bold;
     color: #fff;
 }
 
@@ -100,6 +106,21 @@ footer {
     width: 85%;
     height: auto;
     background-color: lightgreen;
+    background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left;
+    height: 100%;
+}
+
+#player-message {
+    width: 50%;
+    max-width: 400px;
+    min-height: 75px;
+    border-radius: 10px;
+    background-color: #000;
+    margin: 25px auto;
+    text-align: center;
+    -moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
+    -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
+    box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
 }
 
 #gameboard {
@@ -107,8 +128,6 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left;
-    height: 100%;
 }
 
 #player-gameboard,
