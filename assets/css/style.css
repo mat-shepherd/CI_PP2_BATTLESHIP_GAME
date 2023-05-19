@@ -363,11 +363,23 @@ a.placement-button:hover {
     left: 20%;
 }
 
+/* Footer
+   ========================================================================== */
 footer {
     display: flex;
     flex-direction: column;
     margin-top: auto;
     flex: 1 0 auto;
+}
+
+#footer-social,
+#footer-social i {
+    color: #fff;
+    text-align: center;
+}
+
+#footer-social i {
+    margin-top: 20px;
 }
 
 
