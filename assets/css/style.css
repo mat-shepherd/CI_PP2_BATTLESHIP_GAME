@@ -31,7 +31,7 @@ nav h1 {
 #placement-controls {
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
     color: #6DFF33;
-    padding: 1.5em;
+    padding: 1em;
 }
 
 /* Reset
@@ -234,35 +234,35 @@ footer {
     width: auto;
 }
 
-.placement-button a:focus,
-.placement-button a:hover {
+a.placement-button:focus,
+a.placement-button:hover {
     background-color: #BCBCBC;
 }
 
-.placement-button #place-control {
+#place-control {
     background-color: #881400;
 }
 
-.placement-button #place-control a:focus,
-.placement-button #place-control a:hover {
+#place-control:focus,
+#place-control:hover {
     background-color: #A81000;
 }
 
-.placement-button #rotate-control {
+#rotate-control {
     background-color: #005800;
 }
 
-.placement-button #rotate-control a:focus,
-.placement-button #rotate-control a:hover {
+#rotate-control:focus,
+#rotate-control:hover {
     background-color: #006800;
 }
 
-.placement-button #random-control {
+#random-control {
     background-color: #0000BC;
 }
 
-.placement-button #random-control a:focus,
-.placement-button #random-control a:hover {
+#random-control:focus,
+#random-control:hover {
     background-color: #0000FC;
 }
 
@@ -275,7 +275,6 @@ footer {
     justify-content: space-between;
     align-items: center;
     row-gap: 70px;
-    padding: 50px;
 }
 
 #player-gameboard,
