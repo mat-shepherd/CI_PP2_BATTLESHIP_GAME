@@ -334,6 +334,10 @@ a.placement-button:hover {
     position: relative;
 }
 
+.playableArea:hover {
+    cursor: crosshair;
+}
+
 #player-gameboard img,
 #computer-gameboard>img {
     z-index: 100;
