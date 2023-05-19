@@ -1,3 +1,37 @@
+/**
+* Define game object variables
+*/
+const playerCarrierShip = new Ship('Carrier',5,'','','vertical',0);
+const playerBattleShip = new Ship('Battleship',4,'','vertical',0);
+const playerCruiserShip = new Ship('Cruiser',3,'','vertical',0);
+const playerSubmarineShip = new Ship('Submarine',3,'','vertical',0);
+const playerDestroyerShip = new Ship('Destroyer',2,'','vertical',0);
+
+const computerCarrierShip = new Ship('Carrier',5,'','vertical',0);
+const computerBattleShip = new Ship('Battleship',4,'','vertical',0);
+const computerCruiserShip = new Ship('Cruiser',3,'','vertical',0);
+const computerSubmarineShip = new Ship('Submarine',3,'','vertical',0);
+const computerDestroyerShip = new Ship('Destroyer',2,'','vertical',0);
+
+/**
+* Defines the various ship game piece objects which represent the
+* ships the players place on the game board.
+* @class Ship
+* @method
+* @param {string}
+* @return {string}
+*/
+
+class Ship {
+  constructor(name, size, coordinates, orientation, hits) { 
+	this.name = name;
+	this.size = size;
+	this.coordinates = coordinates;
+	this.orientation = orientation;
+	this.hits = hits;	
+  }
+}
+
 function gameBoard(playerName) {
     let playerGameboard = document.getElementById('player-gameboard');
     console.log(playerGameboard);
