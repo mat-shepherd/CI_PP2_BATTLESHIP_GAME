@@ -110,7 +110,7 @@ footer {
 .ship-list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     margin: 0 auto;
     align-items: center;
     flex-wrap: wrap;
@@ -127,6 +127,7 @@ footer {
 #score-inner {
     height: 97%;
     width: 85%;
+    padding-top: 20px;
     background-color: #848482;
     -moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
     -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
@@ -186,10 +187,12 @@ footer {
 #player-message {
     width: 50%;
     max-width: 400px;
+    margin: 20px auto;
 }
 
 #placement-controls {
     width: 70%;
+    margin: 20px auto 0 auto;
 }
 
 #player-message,
@@ -197,7 +200,6 @@ footer {
     min-height: 75px;
     border-radius: 10px;
     background-color: #000;
-    margin: 20px auto 40px auto;
     line-height: 1.75em;
     text-align: center;
     -moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
@@ -211,7 +213,6 @@ footer {
 
 #placement-controls li a {
     text-decoration: none;
-    line-height: 2rem;
 }
 
 /* Placement Buttons - Adapted from https: //codepen.io/Brandon-Stoyles/pen/RajYmd */
