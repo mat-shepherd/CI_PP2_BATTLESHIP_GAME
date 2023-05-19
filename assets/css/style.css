@@ -335,7 +335,13 @@ a.placement-button:hover {
 }
 
 .playableArea:hover {
-    cursor: crosshair;
+    cursor: url(../images/effects/target.png), crosshair;
+    background-color: #fff;
+}
+
+.shipPlacement:hover {
+    cursor: url(../images/effects/move.png), all-scroll;
+    background-color: #fff;
 }
 
 #player-gameboard img,

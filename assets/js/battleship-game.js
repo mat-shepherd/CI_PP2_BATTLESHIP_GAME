@@ -14,7 +14,7 @@ function gameBoard(playerName) {
                 if (j == 0) {
                     playGrid += `<div id='iC ${gridLetters[j + i].trim()}' class="indexColumn">${gridLetters[j + i].trim()}</div>`;
                 } else {
-                    playGrid += `<div id='p${j + (i - 1) * 10}' class="playableArea">${j + (i - 1) * 10}</div>`;
+                    playGrid += `<div id='p${j + (i - 1) * 10}' class="playableArea shipPlacement">${j + (i - 1) * 10}</div>`;
                 }
             }
         }
