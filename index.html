@@ -29,6 +29,7 @@
         <!-- Sidebar for tracking game pieces and score -->
         <section id="game-sidebar">
             <div id="score-inner">
+                <!-- Player Scores -->
                 <div id="score-stats">
                     <h2>SCORES</h2>
                     <div id="player-score-stats">
@@ -42,6 +43,7 @@
                     <h3>PLAYER HIGH SCORE</h3>
                     <div id="high-score">000</div>
                 </div>
+                <!-- Player One Game Stats -->
                 <div id="player-one-stats">
                     <h2>Player One</h2>
                     <div class="score-title"><strong>HITS:</strong>
@@ -71,6 +73,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Player Two Game Stats -->
                 <div id="player-two-stats">
                     <h2>Player Two</h2>
                     <div class="score-title"><strong>HITS:</strong>
@@ -111,7 +114,14 @@
                 <div id="player-gameboard"></div>
                 <div id="computer-gameboard"></div>
             </div>
-            <div id="placement-controls"></div>
+            <div id="placement-controls">
+                <ul>
+                    <li><a href="#" id="place-control" class="placement-button">PLACE</a></li>
+                    <li><a href="#" id="rotate-control" class="placement-button">ROTATE</a></li>
+                    <li><a href="#" id="random-control" class="placement-button">RANDOM</a></li>
+                    <li><a href="#" id="reset-control" class="placement-button">RESET</a></li>
+                </ul>
+            </div>
         </section>
     </div>
     <footer>
