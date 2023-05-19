@@ -106,6 +106,76 @@ class Gameboard {
 }
 
 /**
+* Defines the Player attributes
+*
+*/
+class Player {
+    constructor(name, shipsPlaced, shipsRemaining, hits, misses, score, highScore) { 
+        this.name = name;
+        this.shipsPlaced = shipsPlaced;
+        this.shipsRemaining = shipsRemaining;
+        this.hits = hits;
+        this.misses = misses;
+        this.score = score;
+        this.highScore = highScore;		
+    }
+  
+    /**
+     * This method 
+     *
+     * @method 
+     */
+    shipsPlaced() {
+
+    }
+
+    /**
+     * This method 
+     *
+     * @method 
+     */
+    shipsRemaining() {
+
+    }
+
+    /**
+     * This method 
+     *
+     * @method 
+     */
+    updateHits() {
+
+    }
+
+    /**
+     * This method 
+     *
+     * @method 
+     */
+    updateMisses() {
+
+    }
+
+    /**
+     * This method 
+     *
+     * @method 
+     */
+    updateScore() {
+
+    }
+
+    /**
+     * This method 
+     *
+     * @method 
+     */
+    updateHighScore() {
+
+    }  
+}
+
+/**
 * Define game object variables
 */
 const playerCarrierShip = new Ship('Carrier',5,'','','vertical',0);
