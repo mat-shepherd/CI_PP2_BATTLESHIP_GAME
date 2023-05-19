@@ -96,7 +96,7 @@ class Gameboard {
                     if (j == 0) {
                         playGrid += `<div id='iC ${gridLetters[j + i].trim()}' class="index-column">${gridLetters[j + i].trim()}</div>`;
                     } else {
-                        playGrid += `<div id='p${j + (i - 1) * 10}' class="playable-area">${j + (i - 1) * 10}</div>`;
+                        playGrid += `<div id='p${j + (i - 1) * 10}' class="playable-area ship-placement">${j + (i - 1) * 10}</div>`;
                     }
                 }
             }

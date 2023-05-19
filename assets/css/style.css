@@ -399,7 +399,7 @@ background-color: #BCBCBC;
     background-color: #fff;
 }
 
-.shipPlacement:hover {
+.ship-placement:hover {
     cursor: url(../images/effects/move.png), all-scroll;
     background-color: #fff;
 }
