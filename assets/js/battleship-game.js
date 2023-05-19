@@ -2,7 +2,6 @@
 * Defines the various ship game piece objects which represent the
 * ships the players place on the game board.
 * @class Ship
-* @method
 * @param {string}
 * @return {string}
 */
@@ -15,6 +14,53 @@ class Ship {
         this.orientation = orientation;
         this.hits = hits;	
     }
+
+    /**
+     * Controls the placement of ships during the ship placement 
+     * stage of the game. 
+     * @method placeShip
+     */
+    placeShip () {
+
+    }
+
+    /**
+     * Take a ship objects coordiantes and transforms them to raote the ship 90
+     * degree clockwise. Calls checkPlacement to make sure ship isn't outside
+     * of the game board's playable area.
+     * @method rotateShip
+     */
+    rotateShip () {
+
+    }
+
+    /**
+     * Check's a ships coordinates to make sure it isn't outside
+     * of the game board's playable area.
+     * @method checkPlacement
+     * @return {boolean} - returns true if within bounds and false if not
+     */
+    checkPlacement () {
+
+    }
+
+    /**
+     * Check's if a player's guess results in a ship being hit and provide
+     * feedback to player if hit
+     * @method hitShip
+     */
+    hitShip () {
+
+    }
+
+    /**
+     * Check's if a player's guess results in a ship being missed and provide
+     * feedback to player if hit
+     * @method missShip
+     */
+    missShip () {
+
+    }    
 }
 
 /**
