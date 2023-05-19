@@ -372,29 +372,29 @@ background-color: #BCBCBC;
     padding: 0;
 }
 
-#player-gameboard .indexRow,
-#player-gameboard .indexColumn,
-#computer-gameboard .indexRow,
-#computer-gameboard .indexColumn {
+#player-gameboard .index-row,
+#player-gameboard .index-column,
+#computer-gameboard .index-row,
+#computer-gameboard .index-column {
     border: none;
     font-weight: 900;
     color: #fff;
 }
 
-#player-gameboard .indexRow,
-#player-gameboard .indexColumn,
-#computer-gameboard .indexRow,
-#computer-gameboard .indexColumn {
+#player-gameboard .index-row,
+#player-gameboard .index-column,
+#computer-gameboard .index-row,
+#computer-gameboard .index-column {
     align-items: center;
 
 }
 
-.playableArea {
+.playable-area {
     color: #fff;
     position: relative;
 }
 
-.playableArea:hover {
+.playable-area:hover {
     cursor: url(../images/effects/target.png), crosshair;
     background-color: #fff;
 }

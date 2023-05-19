@@ -89,14 +89,14 @@ class Gameboard {
         for (let i = 0; i <= 10; i++) {
             if (i == 0) {
                 for (let j = 0; j <= 10; j++) {
-                    playGrid += `<div id='iR${j}' class="indexRow">${j == 0 ? ' ' : j}</div>`;
+                    playGrid += `<div id='iR${j}' class="index-row">${j == 0 ? ' ' : j}</div>`;
                 }
             } else {
                 for (let j = 0; j <= 10; j++) {
                     if (j == 0) {
-                        playGrid += `<div id='iC ${gridLetters[j + i].trim()}' class="indexColumn">${gridLetters[j + i].trim()}</div>`;
+                        playGrid += `<div id='iC ${gridLetters[j + i].trim()}' class="index-column">${gridLetters[j + i].trim()}</div>`;
                     } else {
-                        playGrid += `<div id='p${j + (i - 1) * 10}' class="playableArea">${j + (i - 1) * 10}</div>`;
+                        playGrid += `<div id='p${j + (i - 1) * 10}' class="playable-area">${j + (i - 1) * 10}</div>`;
                     }
                 }
             }
