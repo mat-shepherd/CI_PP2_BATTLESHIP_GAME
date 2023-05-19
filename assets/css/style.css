@@ -31,7 +31,7 @@ nav h1 {
 #placement-controls {
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
     color: #6DFF33;
-    padding: 1em;
+    padding: 0.5em;
 }
 
 #gameboard #gameboard-label {
@@ -197,7 +197,7 @@ footer {
 
 #placement-controls {
     width: 55%;
-    margin: 20px auto 40px auto;
+    margin: 40px auto;
 }
 
 #player-message,
