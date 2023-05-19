@@ -10,16 +10,11 @@ body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
+/* Logo Glow Effect - Adapted from https: //codepen.io/ambercheydesigns/details/YzPgOvy */
 nav h1 {
     font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     animation: glow 2s ease-in-out infinite alternate;
-}
-
-#player-message {
-    font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
-    color: #6DFF33;
-    padding: 1.5em;
 }
 
 @keyframes glow {
@@ -32,6 +27,13 @@ nav h1 {
     }
 }
 
+#player-message,
+#placement-controls {
+    font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+    color: #6DFF33;
+    padding: 1.5em;
+}
+
 /* Reset
    ========================================================================== */
 
@@ -42,7 +44,7 @@ nav h1 {
     box-sizing: border-box;
 }
 
-/* Body Layout
+/* Outer Body
    ========================================================================== */
 body {
     margin: 0;
@@ -64,7 +66,7 @@ footer {
     align-items: center;
 }
 
-/* Navigation Layout
+/* Navigation
    ========================================================================== */
 #logo {
     width: 15%;
@@ -88,7 +90,7 @@ footer {
     color: #fff;
 }
 
-/* Game Container Layout
+/* Game Container
    ========================================================================== */
 #game-container {
     display: flex;
@@ -114,7 +116,7 @@ footer {
     flex-wrap: wrap;
 }
 
-/* Game Sidebar Layout
+/* Game Sidebar
    ========================================================================== */
 #game-sidebar {
     width: 15%;
@@ -179,11 +181,19 @@ footer {
     /* Background to use for introdiv - background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left; */
 }
 
-/* Player Message Layout
+/* Player Message & Placement Controls
    ========================================================================== */
 #player-message {
     width: 50%;
     max-width: 400px;
+}
+
+#placement-controls {
+    width: 70%;
+}
+
+#player-message,
+#placement-controls {
     min-height: 75px;
     border-radius: 10px;
     background-color: #000;
@@ -195,7 +205,68 @@ footer {
     box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
 }
 
-/* Game Board Layout
+#placement-controls li {
+    display: inline;
+}
+
+#placement-controls li a {
+    text-decoration: none;
+    line-height: 2rem;
+}
+
+/* Placement Buttons - Adapted from https: //codepen.io/Brandon-Stoyles/pen/RajYmd */
+
+.placement-button {
+    background-color: #7C7C7C;
+    border-bottom: 6px inset rgba(0, 0, 0, .5);
+    border-left: 6px inset rgba(0, 0, 0, .5);
+    border-right: 6px inset rgba(255, 255, 255, .5);
+    border-top: 6px inset rgba(255, 255, 255, .5);
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 1rem;
+    min-width: 200px;
+    padding: .5rem;
+    text-transform: uppercase;
+    width: auto;
+}
+
+.placement-button a:focus,
+.placement-button a:hover {
+    background-color: #BCBCBC;
+}
+
+.placement-button #place-control {
+    background-color: #881400;
+}
+
+.placement-button #place-control a:focus,
+.placement-button #place-control a:hover {
+    background-color: #A81000;
+}
+
+.placement-button #rotate-control {
+    background-color: #005800;
+}
+
+.placement-button #rotate-control a:focus,
+.placement-button #rotate-control a:hover {
+    background-color: #006800;
+}
+
+.placement-button #random-control {
+    background-color: #0000BC;
+}
+
+.placement-button #random-control a:focus,
+.placement-button #random-control a:hover {
+    background-color: #0000FC;
+}
+
+/* Game Board
    ========================================================================== */
 
 #gameboard {
