@@ -1,9 +1,9 @@
-function gameBoard() {
+function gameBoard(playerName) {
     let playerGameboard = document.getElementById('player-gameboard');
     console.log(playerGameboard);
     let computerGameboard = document.getElementById('computer-gameboard');
     let gridLetters = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-    let playGrid = '';
+    let playGrid = `<div id="gameboard-label">${playerName}</div>`;
     for (let i = 0; i <= 10; i++) {
         if (i == 0) {
             for (let j = 0; j <= 10; j++) {
@@ -24,7 +24,7 @@ function gameBoard() {
     computerGameboard.innerHTML = playGrid;
 }
 
-document.addEventListener('DOMContentLoaded', gameBoard());
+document.addEventListener('DOMContentLoaded', gameBoard("Player 1"));
 
 let testDiv = document.getElementById('p52');
 let gridLocation = testDiv.className;

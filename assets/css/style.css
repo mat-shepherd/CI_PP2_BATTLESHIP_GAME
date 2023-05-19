@@ -34,6 +34,11 @@ nav h1 {
     padding: 1em;
 }
 
+#gameboard #gameboard-label {
+    font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+    color: #FFF;
+}
+
 /* Reset
    ========================================================================== */
 
@@ -281,9 +286,18 @@ a.placement-button:hover {
 #player-gameboard,
 #computer-gameboard {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(12, 1fr);
     gap: 0px 0px;
+}
+
+#gameboard #gameboard-label {
+    grid-column: 1 / span 11;
+    width: 100%;
+    align-items: center;
+    text-transform: uppercase;
+    border: none;
+    padding-left: 25px;
 }
 
 #player-gameboard>div,
