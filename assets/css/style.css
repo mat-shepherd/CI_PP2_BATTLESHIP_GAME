@@ -42,7 +42,7 @@ nav h1 {
     box-sizing: border-box;
 }
 
-/* Layout
+/* Body Layout
    ========================================================================== */
 body {
     margin: 0;
@@ -64,6 +64,8 @@ footer {
     align-items: center;
 }
 
+/* Navigation Layout
+   ========================================================================== */
 #logo {
     width: 15%;
     text-align: center;
@@ -86,6 +88,8 @@ footer {
     color: #fff;
 }
 
+/* Game Container Layout
+   ========================================================================== */
 #game-container {
     display: flex;
     flex-direction: row;
@@ -110,6 +114,8 @@ footer {
     flex-wrap: wrap;
 }
 
+/* Game Sidebar Layout
+   ========================================================================== */
 #game-sidebar {
     width: 15%;
     min-width: 250px;
@@ -173,6 +179,8 @@ footer {
     /* Background to use for introdiv - background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left; */
 }
 
+/* Player Message Layout
+   ========================================================================== */
 #player-message {
     width: 50%;
     max-width: 400px;
@@ -186,6 +194,9 @@ footer {
     -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
     box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
 }
+
+/* Game Board Layout
+   ========================================================================== */
 
 #gameboard {
     display: flex;
