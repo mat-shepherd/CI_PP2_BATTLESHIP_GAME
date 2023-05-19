@@ -190,8 +190,8 @@ footer {
 /* Player Message & Placement Controls
    ========================================================================== */
 #player-message {
-    width: 50%;
-    max-width: 400px;
+    width: 55%;
+    max-width: 900px;
     margin: 20px auto;
 }
 
