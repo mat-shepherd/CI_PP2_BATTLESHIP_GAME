@@ -4,32 +4,20 @@
 
 /* Fonts
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Press+Start+2P&family=Roboto+Slab:wght@700&family=Roboto:wght@400;700&display=swap');
 
 body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
-/* Logo Glow Effect - Adapted from https: //codepen.io/ambercheydesigns/details/YzPgOvy */
 nav h1,
-.intro-modal-contents h2 {
-    font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
+#intro-modal-contents h2 {
+    font-family: 'Black Ops One', 'Lucida Sans Typewriter', Helvetica, sans-serif;
 }
 
 #intro-modal-contents h2 {
     font-size: 2rem;
     text-transform: uppercase;
-    animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 10px 10px 100px #FC6400;
-    }
-
-    to {
-        text-shadow: 0 0 30px #FC6400, 0px 10px 10px #801100;
-    }
 }
 
 #player-message,
@@ -297,9 +285,8 @@ footer {
 }
 
 a.placement-button:focus,
-a.placement-button:hover,
-{
-background-color: #BCBCBC;
+a.placement-button:hover {
+    background-color: #BCBCBC;
 }
 
 #place-control,

@@ -7,12 +7,12 @@
 */
 
 class Ship {
-    constructor(name, size, coordinates, orientation, hits) { 
+    constructor(name, size, coordinates, orientation, hits) {
         this.name = name;
         this.size = size;
         this.coordinates = coordinates;
         this.orientation = orientation;
-        this.hits = hits;	
+        this.hits = hits;
     }
 
     /**
@@ -20,17 +20,17 @@ class Ship {
      * stage of the game. 
      * @method placeShip
      */
-    placeShip () {
+    placeShip() {
 
     }
 
     /**
-     * Take a ship objects coordiantes and transforms them to raote the ship 90
-     * degree clockwise. Calls checkPlacement to make sure ship isn't outside
+     * Take a ship objects coordinates and transforms them to rotate the ship 90
+     * degrees clockwise. Calls checkPlacement to make sure ship isn't outside
      * of the game board's playable area.
      * @method rotateShip
      */
-    rotateShip () {
+    rotateShip() {
 
     }
 
@@ -40,7 +40,7 @@ class Ship {
      * @method checkPlacement
      * @return {boolean} - returns true if within bounds and false if not
      */
-    checkPlacement () {
+    checkPlacement() {
 
     }
 
@@ -49,7 +49,7 @@ class Ship {
      * feedback to player if hit
      * @method hitShip
      */
-    hitShip () {
+    hitShip() {
 
     }
 
@@ -58,29 +58,29 @@ class Ship {
      * feedback to player if hit
      * @method missShip
      */
-    missShip () {
+    missShip() {
 
-    }    
+    }
 }
 
 /**
 * Defines the game board object which is the grid area the player
 * plays within. 
 * @class Gameboard
-* @param {string} owner - the player that owns the gamebaord
+* @param {string} owner - the player that owns the gameboard
 * @param {string} label - the name label that should be displayed above the game board
 */
 class Gameboard {
-    constructor(owner, label) { 
+    constructor(owner, label) {
         this.owner = owner;
         this.label = label;
     }
-  
-  /**
-  * Procedurally generates the grid that represents the player's or 
-  * computer's game board, based on the object's owner parameter.
-  * @method createGameBoard
-  */
+
+    /**
+    * Procedurally generates the grid that represents the player's or 
+    * computer's game board, based on the object's owner parameter.
+    * @method createGameBoard
+    */
     createGameBoard() {
         let playerGameboard = document.getElementById('player-gameboard');
         let computerGameboard = document.getElementById('computer-gameboard');
@@ -102,7 +102,7 @@ class Gameboard {
             }
         }
         this.owner === 'computer' ? computerGameboard.innerHTML = playGrid : playerGameboard.innerHTML = playGrid;
-  }
+    }
 }
 
 /**
@@ -110,16 +110,16 @@ class Gameboard {
 *
 */
 class Player {
-    constructor(name, shipsPlaced, shipsRemaining, hits, misses, score, highScore) { 
+    constructor(name, shipsPlaced, shipsRemaining, hits, misses, score, highScore) {
         this.name = name;
         this.shipsPlaced = shipsPlaced;
         this.shipsRemaining = shipsRemaining;
         this.hits = hits;
         this.misses = misses;
         this.score = score;
-        this.highScore = highScore;		
+        this.highScore = highScore;
     }
-  
+
     /**
      * This method 
      *
@@ -172,28 +172,37 @@ class Player {
      */
     updateHighScore() {
 
-    }  
+    }
+
+    /**
+     * This method 
+     *
+     * @method 
+     */
+    playerWin() {
+
+    }
 }
 
 /**
 * Define game object variables
 */
-const playerCarrierShip = new Ship('Carrier',5,'','','vertical',0);
-const playerBattleShip = new Ship('Battleship',4,'','vertical',0);
-const playerCruiserShip = new Ship('Cruiser',3,'','vertical',0);
-const playerSubmarineShip = new Ship('Submarine',3,'','vertical',0);
-const playerDestroyerShip = new Ship('Destroyer',2,'','vertical',0);
+const playerCarrierShip = new Ship('Carrier', 5, '', '', 'vertical', 0);
+const playerBattleShip = new Ship('Battleship', 4, '', 'vertical', 0);
+const playerCruiserShip = new Ship('Cruiser', 3, '', 'vertical', 0);
+const playerSubmarineShip = new Ship('Submarine', 3, '', 'vertical', 0);
+const playerDestroyerShip = new Ship('Destroyer', 2, '', 'vertical', 0);
 
-const computerCarrierShip = new Ship('Carrier',5,'','vertical',0);
-const computerBattleShip = new Ship('Battleship',4,'','vertical',0);
-const computerCruiserShip = new Ship('Cruiser',3,'','vertical',0);
-const computerSubmarineShip = new Ship('Submarine',3,'','vertical',0);
-const computerDestroyerShip = new Ship('Destroyer',2,'','vertical',0);
+const computerCarrierShip = new Ship('Carrier', 5, '', 'vertical', 0);
+const computerBattleShip = new Ship('Battleship', 4, '', 'vertical', 0);
+const computerCruiserShip = new Ship('Cruiser', 3, '', 'vertical', 0);
+const computerSubmarineShip = new Ship('Submarine', 3, '', 'vertical', 0);
+const computerDestroyerShip = new Ship('Destroyer', 2, '', 'vertical', 0);
 
-const playerGameboard = new Gameboard('player','PLAYER ONE');
-const computerGameboard = new Gameboard('computer','PLAYER TWO');
+const playerGameboard = new Gameboard('player', 'PLAYER ONE');
+const computerGameboard = new Gameboard('computer', 'PLAYER TWO');
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     playerGameboard.createGameBoard();
     computerGameboard.createGameBoard();
     let testDiv = document.getElementById('p52');
