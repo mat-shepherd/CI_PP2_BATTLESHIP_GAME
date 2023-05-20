@@ -202,17 +202,6 @@ class Player {
 }
 
 /**
-* Define game object variables
-*/
-const playerTypes = { player: 'PLAYER ONE', computer: 'PLAYER TWO' };
-const gameBoards = {};
-const shipTypes = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
-const playerShips = {};
-const computerShips = {};
-
-
-
-/**
  * Checks that a name has been entered on the intro screen
  * before passing flow on to runGame(). If no name entered
  * this displays an error message in the form.
@@ -232,6 +221,15 @@ function checkName(playerName) {
  * entered on the start-game-form.
  */
 function runGame() {
+    /**
+    * Define game object variables
+    */
+    const playerTypes = { player: 'PLAYER ONE', computer: 'PLAYER TWO' };
+    const gameBoards = {};
+    const shipTypes = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
+    const playerShips = {};
+    const computerShips = {};
+
     /*  
     Loop over playerTypes, create a gameboard object for each, 
     store this in a gameboards object, and then pass these to 
