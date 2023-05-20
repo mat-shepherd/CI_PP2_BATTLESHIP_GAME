@@ -7,11 +7,11 @@
 */
 
 class Ship {
-    constructor(name, size, coordinates, orientation, hits) {
-        this.name = name;
+    constructor(shipName, size, coordinates, direction, hits) {
+        this.shipname = shipName;
         this.size = size;
         this.coordinates = coordinates;
-        this.orientation = orientation;
+        this.direction = direction;
         this.hits = hits;
     }
 
@@ -203,7 +203,7 @@ class Player {
 
 /**
 * Define game object variables
-*/
+
 const playerCarrierShip = new Ship('Carrier', 5, '', '', 'vertical', 0);
 const playerBattleShip = new Ship('Battleship', 4, '', 'vertical', 0);
 const playerCruiserShip = new Ship('Cruiser', 3, '', 'vertical', 0);
@@ -215,10 +215,12 @@ const computerBattleShip = new Ship('Battleship', 4, '', 'vertical', 0);
 const computerCruiserShip = new Ship('Cruiser', 3, '', 'vertical', 0);
 const computerSubmarineShip = new Ship('Submarine', 3, '', 'vertical', 0);
 const computerDestroyerShip = new Ship('Destroyer', 2, '', 'vertical', 0);
-
+*/
 const playerTypes = { player: 'PLAYER ONE', computer: 'PLAYER TWO' };
+const gameBoards = {};
 const shipTypes = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
-const gameboards = {};
+const playerShips = {};
+
 
 
 /**
@@ -243,16 +245,30 @@ function checkName(playerName) {
 function runGame() {
     /*  
     Loop over playerTypes, create a gameboard object for each, 
-    store this in an gameboards object, and then pass these to 
+    store this in a gameboards object, and then pass these to 
     createGameBoard() method to generate gameboard and add to
     screen.
     */
     for (let keys in playerTypes) {
-        const owner = keys;
-        const label = playerTypes[keys];
-        gameboards[keys] = new Gameboard(owner, label);
-        gameboards[keys].createGameBoard();
+        let owner = keys;
+        let label = playerTypes[keys];
+        gameBoards[keys] = new Gameboard(owner, label);
+        gameBoards[keys].createGameBoard();
     }
+
+    /*
+    Loop over shipTypes, create a ship object for each, 
+    store this in a playerShips object.
+    */
+    for (let shipName in shipTypes) {
+        let size = shipTypes[shipName];
+        let coordinates = '';
+        let direction = 'vertical';
+        let hits = 0;
+        playerShips[shipName] = new Ship(shipName, size, coordinates, direction, hits);
+        console.log(playerShips[shipName]);
+    }
+
     // hide intro screen modal
     document.getElementById('intro-modal').style.display = "none";
 }
