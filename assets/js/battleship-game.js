@@ -253,10 +253,8 @@ function runGame() {
             let hits = 0;
             if (owner === 'player') {
                 playerShips[shipName] = new Ship(shipName, size, coordinates, direction, hits);
-                console.log(playerShips[shipName]);
             } else {
                 computerShips[shipName] = new Ship(shipName, size, coordinates, direction, hits);
-                console.log(computerShips[shipName]);
             }
         }
     }
