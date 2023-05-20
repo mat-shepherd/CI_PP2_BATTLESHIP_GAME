@@ -219,6 +219,11 @@ const computerDestroyerShip = new Ship('Destroyer', 2, '', 'vertical', 0);
 const playerGameboard = new Gameboard('player', 'PLAYER ONE');
 const computerGameboard = new Gameboard('computer', 'PLAYER TWO');
 
+const playerTypes = { player: 'PLAYER ONE', computer: 'PLAYER TWO' };
+const shipTypes = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
+const gameboards = {};
+
+
 /**
  * Checks that a name has been entered on the intro screen
  * before passing flow on to runGame(). If no name entered
@@ -234,7 +239,18 @@ function checkName(playerName) {
     }
 }
 
+/**
+ * The main game loop called by checkName when a name has been
+ * entered on the start-game-form.
+ */
 function runGame() {
+    for (let keys in playerTypes) {
+        const owner = keys;
+        const label = playerTypes[keys];
+        gameboards[keys] = new Gameboard(owner, label);
+        gameboards[keys].createGameBoard();
+    }
+
     document.getElementById('intro-modal').style.display = "none";
 }
 
@@ -273,8 +289,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     // create game board grids for both players and add them to the existing divs
-    playerGameboard.createGameBoard();
-    computerGameboard.createGameBoard();
+    // playerGameboard.createGameBoard();
+    // computerGameboard.createGameBoard();
 
     // test placing a ship and explosion effect
     let testDiv = document.getElementById('p52');
