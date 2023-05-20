@@ -216,9 +216,6 @@ const computerCruiserShip = new Ship('Cruiser', 3, '', 'vertical', 0);
 const computerSubmarineShip = new Ship('Submarine', 3, '', 'vertical', 0);
 const computerDestroyerShip = new Ship('Destroyer', 2, '', 'vertical', 0);
 
-const playerGameboard = new Gameboard('player', 'PLAYER ONE');
-const computerGameboard = new Gameboard('computer', 'PLAYER TWO');
-
 const playerTypes = { player: 'PLAYER ONE', computer: 'PLAYER TWO' };
 const shipTypes = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
 const gameboards = {};
