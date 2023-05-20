@@ -238,6 +238,9 @@ function runGame() {
     document.getElementById('intro-modal').style.display = "none";
 }
 
+/* Wait for the DOM to finish loading, add button event listeners
+ and start-game-form submit listener whcih passes to checkName()
+ to see if game can start */
 document.addEventListener('DOMContentLoaded', function () {
     let gameButtons = document.getElementsByClassName('game-button');
     let playerName = '';
@@ -247,7 +250,6 @@ document.addEventListener('DOMContentLoaded', function () {
         //Prevent page refresh
         event.preventDefault();
         playerName = document.getElementById('player-name').value;
-        console.log(playerName);
         checkName(playerName);
     });
 
