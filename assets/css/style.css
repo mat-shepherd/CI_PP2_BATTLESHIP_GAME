@@ -26,7 +26,7 @@ nav h1,
 #placement-controls,
 #start-game-form label,
 #player-name,
-.form-button {
+#start-game-button {
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
 }
 
@@ -186,7 +186,7 @@ footer {
     height: 50px;
 }
 
-#intro-modal-contents .form-button {
+#intro-modal-contents #start-game-button {
     margin-top: 50px;
 }
 
@@ -296,7 +296,7 @@ footer {
 /* Placement Buttons - Adapted from https: //codepen.io/Brandon-Stoyles/pen/RajYmd */
 
 .placement-button,
-.form-button {
+#start-game-button {
     background-color: #7C7C7C;
     border-bottom: 6px inset rgba(0, 0, 0, .5);
     border-left: 6px inset rgba(0, 0, 0, .5);
@@ -314,7 +314,7 @@ footer {
     width: auto;
 }
 
-.form-button {
+#start-game-button {
     padding: 1rem;
 }
 
@@ -328,19 +328,19 @@ a.placement-button:hover {
 }
 
 #place-control:focus,
-#place-control:hover,
-.form-button:focus {
+#place-control:hover {
     background-color: #A81000;
 }
 
 #rotate-control,
-.form-button {
+#start-game-button {
     background-color: #005800;
 }
 
 #rotate-control:focus,
 #rotate-control:hover,
-.form-button:hover {
+#start-game-button:hover,
+#start-game-button:focus {
     background-color: #006800;
 }
 

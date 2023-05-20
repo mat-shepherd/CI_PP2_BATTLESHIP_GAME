@@ -21,7 +21,7 @@ class Ship {
      * @method placeShip
      */
     placeShip() {
-
+        console.log("Place Ship!");
     }
 
     /**
@@ -31,7 +31,24 @@ class Ship {
      * @method rotateShip
      */
     rotateShip() {
+        console.log("Rotate Ship!");
+    }
 
+    /**
+      * Generate random coordinates to place ships randomly.
+      * @method randomShip
+      */
+    randomShip() {
+        console.log("Random Ship!");
+    }
+
+    /**
+      * Reset ship placement to clear ships from the game board
+      * and allow the player to start placing ships again.
+      * @method resetShip
+      */
+    resetShip() {
+        console.log("Reset Ship!");
     }
 
     /**
@@ -203,6 +220,30 @@ const playerGameboard = new Gameboard('player', 'PLAYER ONE');
 const computerGameboard = new Gameboard('computer', 'PLAYER TWO');
 
 document.addEventListener('DOMContentLoaded', function () {
+    let gameButtons = document.getElementsByClassName("game-button");
+
+    for (let button of gameButtons) {
+        button.addEventListener("click", function () {
+            switch (this.id) {
+                case 'start-game-button':
+                    // start game
+                    break;
+                case 'place-control':
+                    playerCarrierShip.placeShip(); // need to check which ship we are placing
+                    break;
+                case 'rotate-control':
+                    playerCarrierShip.rotateShip(); // need to check which ship we are placing
+                    break;
+                case 'random-control':
+                    playerCarrierShip.randomShip(); // need to check which ship we are placing
+                    break;
+                case 'reset-control':
+                    playerCarrierShip.resetShip(); // need to check which ship we are placing
+                    break;
+            }
+        });
+    }
+
     playerGameboard.createGameBoard();
     computerGameboard.createGameBoard();
     let testDiv = document.getElementById('p52');
