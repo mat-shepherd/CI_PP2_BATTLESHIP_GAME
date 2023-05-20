@@ -24,6 +24,7 @@ nav h1,
 
 #player-message,
 #placement-controls,
+#placement-controls button,
 #start-game-form label,
 #player-name,
 #start-game-button {
@@ -289,13 +290,9 @@ footer {
     display: inline;
 }
 
-#placement-controls li a {
-    text-decoration: none;
-}
-
 /* Placement Buttons - Adapted from https: //codepen.io/Brandon-Stoyles/pen/RajYmd */
 
-.placement-button,
+.game-button,
 #start-game-button {
     background-color: #7C7C7C;
     border-bottom: 6px inset rgba(0, 0, 0, .5);
@@ -318,8 +315,12 @@ footer {
     padding: 1rem;
 }
 
-a.placement-button:focus,
-a.placement-button:hover {
+#placement-controls button {
+    padding: 0.7rem;
+}
+
+.game-button:focus,
+.game-button:hover {
     background-color: #BCBCBC;
 }
 
