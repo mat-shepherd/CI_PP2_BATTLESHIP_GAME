@@ -210,7 +210,7 @@ class Player {
 function checkName(playerName) {
     let errorMsg = document.getElementById('error-message');
     if (playerName) {
-        runGame();
+        runGame(playerName);
     } else {
         errorMsg.innerHTML = '<p>YOU MUST ENTER YOUR NAME TO START</p>';
     }
@@ -220,7 +220,7 @@ function checkName(playerName) {
  * The main game loop called by checkName when a name has been
  * entered on the start-game-form.
  */
-function runGame() {
+function runGame(playerName) {
     /**
     * Define game object variables
     */
@@ -230,6 +230,8 @@ function runGame() {
     const playerShips = {};
     const computerShips = {};
 
+    /* Set playername in sidebar and gameboard*/
+
     /*  
     Loop over playerTypes, create a gameboard object for each, 
     store this in a gameboards object, and then pass these to 
@@ -238,7 +240,8 @@ function runGame() {
     */
     for (let keys in playerTypes) {
         let owner = keys;
-        let label = playerTypes[keys];
+        // if playerName known use that for player one label
+        let label = owner === 'player' && playerName ? playerName : playerTypes[keys];
         gameBoards[keys] = new Gameboard(owner, label);
         gameBoards[keys].createGameBoard();
 
