@@ -203,23 +203,12 @@ class Player {
 
 /**
 * Define game object variables
-
-const playerCarrierShip = new Ship('Carrier', 5, '', '', 'vertical', 0);
-const playerBattleShip = new Ship('Battleship', 4, '', 'vertical', 0);
-const playerCruiserShip = new Ship('Cruiser', 3, '', 'vertical', 0);
-const playerSubmarineShip = new Ship('Submarine', 3, '', 'vertical', 0);
-const playerDestroyerShip = new Ship('Destroyer', 2, '', 'vertical', 0);
-
-const computerCarrierShip = new Ship('Carrier', 5, '', 'vertical', 0);
-const computerBattleShip = new Ship('Battleship', 4, '', 'vertical', 0);
-const computerCruiserShip = new Ship('Cruiser', 3, '', 'vertical', 0);
-const computerSubmarineShip = new Ship('Submarine', 3, '', 'vertical', 0);
-const computerDestroyerShip = new Ship('Destroyer', 2, '', 'vertical', 0);
 */
 const playerTypes = { player: 'PLAYER ONE', computer: 'PLAYER TWO' };
 const gameBoards = {};
 const shipTypes = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
 const playerShips = {};
+const computerShips = {};
 
 
 
@@ -254,19 +243,24 @@ function runGame() {
         let label = playerTypes[keys];
         gameBoards[keys] = new Gameboard(owner, label);
         gameBoards[keys].createGameBoard();
-    }
 
-    /*
-    Loop over shipTypes, create a ship object for each, 
-    store this in a playerShips object.
-    */
-    for (let shipName in shipTypes) {
-        let size = shipTypes[shipName];
-        let coordinates = '';
-        let direction = 'vertical';
-        let hits = 0;
-        playerShips[shipName] = new Ship(shipName, size, coordinates, direction, hits);
-        console.log(playerShips[shipName]);
+        /*
+        For each playerType loop over shipTypes, create a 
+        ship object for each, store this in a computer Ships object.
+        */
+        for (let shipName in shipTypes) {
+            let size = shipTypes[shipName];
+            let coordinates = '';
+            let direction = 'vertical';
+            let hits = 0;
+            if (owner === 'player') {
+                playerShips[shipName] = new Ship(shipName, size, coordinates, direction, hits);
+                console.log(playerShips[shipName]);
+            } else {
+                computerShips[shipName] = new Ship(shipName, size, coordinates, direction, hits);
+                console.log(computerShips[shipName]);
+            }
+        }
     }
 
     // hide intro screen modal
