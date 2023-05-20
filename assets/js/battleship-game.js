@@ -127,8 +127,8 @@ class Gameboard {
 *
 */
 class Player {
-    constructor(name, shipsPlaced, shipsRemaining, hits, misses, score, highScore) {
-        this.name = name;
+    constructor(playerName, shipsPlaced, shipsRemaining, hits, misses, score, highScore) {
+        this.name = playerName;
         this.shipsPlaced = shipsPlaced;
         this.shipsRemaining = shipsRemaining;
         this.hits = hits;
@@ -153,6 +153,13 @@ class Player {
      */
     shipsRemaining() {
 
+    }
+
+    /**
+     * Update the sidebar with player's name
+     * @method 
+     */
+    updateName() {
     }
 
     /**
@@ -218,19 +225,19 @@ function checkName(playerName) {
 
 /**
  * The main game loop called by checkName when a name has been
- * entered on the start-game-form.
+ * entered on the start-game-form. Calls functions to create
+ * players and gameboards and control flow of game.
  */
 function runGame(playerName) {
     /**
     * Define game object variables
     */
     const playerTypes = { player: 'PLAYER ONE', computer: 'PLAYER TWO' };
-    const gameBoards = {};
+    const players = {};
     const shipTypes = { Carrier: 5, Battleship: 4, Cruiser: 3, Submarine: 3, Destroyer: 2 };
     const playerShips = {};
     const computerShips = {};
-
-    /* Set playername in sidebar and gameboard*/
+    const gameBoards = {};
 
     /*  
     Loop over playerTypes, create a gameboard object for each, 
@@ -246,8 +253,26 @@ function runGame(playerName) {
         gameBoards[keys].createGameBoard();
 
         /*
+        For each playerType, create a Player object
+        for each, store this in a players object.
+        */
+        let shipsPlaced = 0;
+        let shipsRemaining = 5;
+        let hits = 0;
+        let misses = 0;
+        let score = 0;
+        let highScore = 0;
+        if (owner === 'player') {
+            players[keys] = new Player(playerName, shipsPlaced, shipsRemaining, hits, misses, score, highScore);
+        } else {
+            playerName = playerTypes[keys];
+            players[keys] = new Player(playerName, shipsPlaced, shipsRemaining, hits, misses, score, highScore);
+        }
+
+        /*
         For each playerType loop over shipTypes, create a 
-        ship object for each, store this in a computer Ships object.
+        ship object for each, store these in a playerShips and 
+        computerShips object.
         */
         for (let shipName in shipTypes) {
             let size = shipTypes[shipName];
@@ -260,6 +285,8 @@ function runGame(playerName) {
                 computerShips[shipName] = new Ship(shipName, size, coordinates, direction, hits);
             }
         }
+
+
     }
 
     // hide intro screen modal
@@ -281,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
         checkName(playerName);
     });
 
-    // add event listeners to buttons
+    // add event listeners to buttons -might need to move this inside game loop
     for (let button of gameButtons) {
         button.addEventListener("click", function () {
             switch (this.id) {
