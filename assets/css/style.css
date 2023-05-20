@@ -27,8 +27,14 @@ nav h1,
 #placement-controls button,
 #start-game-form label,
 #player-name,
-#start-game-button {
+#start-game-button,
+#error-message {
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+}
+
+#error-message {
+    color: #881400;
+    font-weight: bold;
 }
 
 #player-message,
@@ -181,6 +187,10 @@ footer {
 #start-game-form label {
     text-align: center;
     margin-bottom: 50px;
+}
+
+#error-message {
+    margin-top: 10px;
 }
 
 #intro-modal-contents form input[type=text] {

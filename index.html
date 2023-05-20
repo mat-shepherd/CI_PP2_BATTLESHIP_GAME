@@ -110,9 +110,10 @@
             <div id="intro-modal">
                 <div id="intro-modal-contents">
                     <h2>BATTLESHIP GAME!</h2>
-                    <form action="" id="start-game-form">
+                    <form id="start-game-form">
                         <label for="player-name">PLEASE ENTER YOUR NAME <br>(MAX 10 CHARACTERS)</label>
-                        <input type="text" id="player-name" name="player-name" maxlength="10" required>
+                        <input type="text" id="player-name" name="player-name" maxlength="10">
+                        <div id="error-message"></div>
                         <button type="submit" id="start-game-button" class="game-button">START GAME</button>
                     </form>
                 </div>

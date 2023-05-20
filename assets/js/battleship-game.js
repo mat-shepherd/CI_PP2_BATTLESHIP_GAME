@@ -219,15 +219,36 @@ const computerDestroyerShip = new Ship('Destroyer', 2, '', 'vertical', 0);
 const playerGameboard = new Gameboard('player', 'PLAYER ONE');
 const computerGameboard = new Gameboard('computer', 'PLAYER TWO');
 
-document.addEventListener('DOMContentLoaded', function () {
-    let gameButtons = document.getElementsByClassName("game-button");
+function checkName(playerName) {
+    let errorMsg = document.getElementById('error-message');
+    if (playerName) {
+        runGame();
+    } else {
+        errorMsg.innerHTML = '<p>YOU MUST ENTER YOUR NAME TO START</p>';
+    }
+}
 
+function runGame() {
+    document.getElementById('intro-modal').style.display = "none";
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    let gameButtons = document.getElementsByClassName('game-button');
+    let playerName = '';
+
+    let startForm = document.getElementById('start-game-form');
+    startForm.addEventListener('submit', function (event) {
+        //Prevent page refresh
+        event.preventDefault();
+        playerName = document.getElementById('player-name').value;
+        console.log(playerName);
+        checkName(playerName);
+    });
+
+    // add event listeners to buttons
     for (let button of gameButtons) {
         button.addEventListener("click", function () {
             switch (this.id) {
-                case 'start-game-button':
-                    // start game
-                    break;
                 case 'place-control':
                     playerCarrierShip.placeShip(); // need to check which ship we are placing
                     break;
@@ -243,9 +264,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-
+    // create game board grids for both players and add them to the existing divs
     playerGameboard.createGameBoard();
     computerGameboard.createGameBoard();
+
+    // test placing a ship and explosion effect
     let testDiv = document.getElementById('p52');
     let gridLocation = testDiv.className;
     testDiv.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
