@@ -115,7 +115,8 @@ class Gameboard {
                     if (j == 0) {
                         playGrid += `<div id='iC ${gridLetters[j + i].trim()}' class="index-column">${gridLetters[j + i].trim()}</div>`;
                     } else {
-                        playGrid += `<div id='p${j + (i - 1) * 10}' class="playable-area ship-placement">${j + (i - 1) * 10}</div>`;
+                        let cellId = `${gridLetters[i]}-${j + (i - 1) * 10}`;
+                        playGrid += `<div id='${cellId}' class="playable-area ship-placement">${cellId}</div>`;
                     }
                 }
             }
@@ -311,7 +312,7 @@ function runGame(playerName) {
         playerShips[shipName].placeShip(shipName, turnName);
     }
 
-    // hide intro screen modal
+    // hide intro screen modal to show game boards
     document.getElementById('intro-modal').style.display = "none";
 
 
