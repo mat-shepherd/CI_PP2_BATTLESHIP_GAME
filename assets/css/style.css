@@ -141,7 +141,8 @@ footer {
    ========================================================================== */
 
 #intro-modal {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: absolute;
     z-index: 500;
     left: 0;
@@ -150,6 +151,7 @@ footer {
     height: 100%;
     background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left;
     border-radius: 10px;
+    justify-content: center;
 }
 
 #intro-modal-contents {
@@ -162,7 +164,7 @@ footer {
     /* Fallback color */
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.3);
-    margin: 15% auto;
+    margin: 0 auto;
     padding: 20px;
     border: 1px solid #888;
     width: 50%;
