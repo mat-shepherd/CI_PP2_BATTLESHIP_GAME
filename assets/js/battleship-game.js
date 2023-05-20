@@ -159,7 +159,9 @@ class Player {
      * Update the sidebar with player's name
      * @method 
      */
-    updateName() {
+    updateName(playerName) {
+        document.getElementById('p1-score-title').innerText = playerName;
+        document.getElementById('p1-stats-heading').innerText = playerName;
     }
 
     /**
@@ -264,6 +266,8 @@ function runGame(playerName) {
         let highScore = 0;
         if (owner === 'player') {
             players[keys] = new Player(playerName, shipsPlaced, shipsRemaining, hits, misses, score, highScore);
+            // Replace player one's name in sidebar with name provided
+            players[keys].updateName(playerName.toUpperCase());
         } else {
             playerName = playerTypes[keys];
             players[keys] = new Player(playerName, shipsPlaced, shipsRemaining, hits, misses, score, highScore);
