@@ -244,13 +244,19 @@ function checkName(playerName) {
  * entered on the start-game-form.
  */
 function runGame() {
+    /*  
+    Loop over playerTypes, create a gameboard object for each, 
+    store this in an gameboards object, and then pass these to 
+    createGameBoard() method to generate gameboard and add to
+    screen.
+    */
     for (let keys in playerTypes) {
         const owner = keys;
         const label = playerTypes[keys];
         gameboards[keys] = new Gameboard(owner, label);
         gameboards[keys].createGameBoard();
     }
-
+    // hide intro screen modal
     document.getElementById('intro-modal').style.display = "none";
 }
 
