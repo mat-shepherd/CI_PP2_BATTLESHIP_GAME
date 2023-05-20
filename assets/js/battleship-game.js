@@ -20,8 +20,10 @@ class Ship {
      * stage of the game. 
      * @method placeShip
      */
-    placeShip() {
-        console.log("Place Ship!");
+    placeShip(shipName, turnName) {
+        playerMessage(turnName + " your turn to place your " + shipName);
+
+        // add a while loop here to wait until all ships placed?
     }
 
     /**
@@ -140,7 +142,7 @@ class Player {
     /**
      * This method 
      *
-     * @method 
+     * @method shipsPlaced
      */
     shipsPlaced() {
 
@@ -149,7 +151,7 @@ class Player {
     /**
      * This method 
      *
-     * @method 
+     * @method shipsRemaining
      */
     shipsRemaining() {
 
@@ -157,7 +159,8 @@ class Player {
 
     /**
      * Update the sidebar with player's name
-     * @method 
+     * @method updateName
+     * @param {string} playername - name entered by player 
      */
     updateName(playerName) {
         document.getElementById('p1-score-title').innerText = playerName;
@@ -167,7 +170,7 @@ class Player {
     /**
      * This method 
      *
-     * @method 
+     * @method updateHits
      */
     updateHits() {
 
@@ -226,6 +229,15 @@ function checkName(playerName) {
 }
 
 /**
+ * Update the player-message area with text to provide the player
+ * with directions during gameplay.
+ * @param {string} message - text to be displayed in player-message area
+ */
+function playerMessage(message) {
+    document.getElementById('player-message').innerText = message.toUpperCase();
+}
+
+/**
  * The main game loop called by checkName when a name has been
  * entered on the start-game-form. Calls functions to create
  * players and gameboards and control flow of game.
@@ -266,7 +278,7 @@ function runGame(playerName) {
         let highScore = 0;
         if (owner === 'player') {
             players[keys] = new Player(playerName, shipsPlaced, shipsRemaining, hits, misses, score, highScore);
-            // Replace player one's name in sidebar with name provided
+            // Replace player one's name in sidebar with name provided 
             players[keys].updateName(playerName.toUpperCase());
         } else {
             playerName = playerTypes[keys];
@@ -293,8 +305,16 @@ function runGame(playerName) {
 
     }
 
+    // For each ship in playerShips instruct the player to place the ship
+    for (let shipName in playerShips) {
+        let turnName = players.player.name;
+        playerShips[shipName].placeShip(shipName, turnName);
+    }
+
     // hide intro screen modal
     document.getElementById('intro-modal').style.display = "none";
+
+
 }
 
 /* Wait for the DOM to finish loading, add button event listeners
