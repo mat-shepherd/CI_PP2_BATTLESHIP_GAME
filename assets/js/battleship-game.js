@@ -219,6 +219,12 @@ const computerDestroyerShip = new Ship('Destroyer', 2, '', 'vertical', 0);
 const playerGameboard = new Gameboard('player', 'PLAYER ONE');
 const computerGameboard = new Gameboard('computer', 'PLAYER TWO');
 
+/**
+ * Checks that a name has been entered on the intro screen
+ * before passing flow on to runGame(). If no name entered
+ * this displays an error message in the form.
+ * @param {string} playername - name entered by player 
+ */
 function checkName(playerName) {
     let errorMsg = document.getElementById('error-message');
     if (playerName) {
