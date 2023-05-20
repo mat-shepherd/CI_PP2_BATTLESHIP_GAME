@@ -13,18 +13,37 @@ body {
 nav h1,
 #intro-modal-contents h2 {
     font-family: 'Black Ops One', 'Lucida Sans Typewriter', Helvetica, sans-serif;
+    letter-spacing: 0.1rem;
 }
 
 #intro-modal-contents h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     text-transform: uppercase;
+    margin-top: 10px;
 }
 
 #player-message,
-#placement-controls {
+#placement-controls,
+#start-game-form label,
+#player-name,
+.form-button {
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+}
+
+#player-message,
+#placement-controls,
+#player-name {
     color: #6DFF33;
-    padding: 0.5em;
+    padding: 0.5rem;
+}
+
+#start-game-form label {
+    line-height: 1.8rem;
+}
+
+#player-name {
+    font-size: 2rem;
+    text-transform: uppercase;
 }
 
 #gameboard #gameboard-label {
@@ -129,7 +148,6 @@ footer {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left;
     border-radius: 10px;
 }
@@ -155,6 +173,11 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#start-game-form label {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 #intro-modal-contents form input[type=text] {
@@ -230,7 +253,7 @@ footer {
     background: navy url('../images/backgrounds/ocean.gif') repeat left top;
 }
 
-/* Player Message & Placement Controls
+/* Player Message, Modal Player Name & Placement Controls
    ========================================================================== */
 #player-message {
     width: 55%;
@@ -244,7 +267,8 @@ footer {
 }
 
 #player-message,
-#placement-controls {
+#placement-controls,
+#player-name {
     min-height: 75px;
     border-radius: 10px;
     background-color: #000;
@@ -253,6 +277,10 @@ footer {
     -moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
     -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
     box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
+}
+
+#player-name {
+    max-width: 52%;
 }
 
 #placement-controls li {
@@ -284,29 +312,33 @@ footer {
     width: auto;
 }
 
+.form-button {
+    padding: 1rem;
+}
+
 a.placement-button:focus,
 a.placement-button:hover {
     background-color: #BCBCBC;
 }
 
-#place-control,
-.form-button {
+#place-control {
     background-color: #881400;
 }
 
 #place-control:focus,
 #place-control:hover,
-.form-button:focus,
-.form-button:hover {
+.form-button:focus {
     background-color: #A81000;
 }
 
-#rotate-control {
+#rotate-control,
+.form-button {
     background-color: #005800;
 }
 
 #rotate-control:focus,
-#rotate-control:hover {
+#rotate-control:hover,
+.form-button:hover {
     background-color: #006800;
 }
 
