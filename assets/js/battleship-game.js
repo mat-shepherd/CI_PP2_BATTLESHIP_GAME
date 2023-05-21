@@ -24,9 +24,7 @@ class Ship {
      */
     placeShip(cellId, shipObject) {
         let cell = document.getElementById(cellId);
-        let coordString = cellId.replace('-', '');
-        let shipCoords = [coordString];
-        shipObject.coordinates = shipCoords;
+        shipObject.coordinates = cellId;
         console.log(shipObject.coordinates);
 
         switch (shipObject.shipName) {
@@ -152,7 +150,7 @@ class Gameboard {
                         playGrid += `<div id='iC ${gridLetters[j + i].trim()}' class="index-column">${gridLetters[j + i].trim()}</div>`;
                     } else {
                         // create alphanumeric grid references to use in cell IDs
-                        let cellId = `${gridLetters[i]}-${j + (i - 1) * 10}`;
+                        let cellId = `${gridLetters[i]}${j + (i - 1) * 10}`;
                         // change initial class on cells based on Player owner to control hover icons
                         let cellClass = this.owner === 'computer' ? 'computer-play-area no-placement' : 'player-play-area ship-placement';
                         playGrid += `<div id='${cellId}' class="${cellClass}">${cellId}</div>`;
