@@ -23,16 +23,26 @@ class Ship {
      * @method placeShip
      */
     placeShip(cellId, shipObject) {
+        // Get game board cell object and add coordinates to Ship object.
         let cell = document.getElementById(cellId);
-        shipObject.coordinates = cellId;
+        shipObject.coordinates.push(cellId);
         console.log(shipObject.coordinates);
 
-        if (shipObject.coordinates.length > 0) {
-            console.log(shipObject.coordinates.length);
+        /* 
+        If Ship object has already been placed remove it from the game board
+        and remove previous coordiantes from Ship object.
+        */
+        if (shipObject.coordinates.length > 1) {
             let existCoord = document.getElementById(shipObject.coordinates[0]);
             existCoord.innerHTML = '';
+            shipObject.coordinates.shift();
         }
 
+
+        /*
+        Check which Ship type has been passed to method and add relevant ship
+        to the gameboard.
+        */
         switch (shipObject.shipName) {
             case 'Carrier':
                 cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
@@ -338,7 +348,7 @@ function initGame(playerName) {
         */
         for (let shipName in shipTypes) {
             let size = shipTypes[shipName];
-            let coordinates = '';
+            let coordinates = [];
             let direction = 'vertical';
             let hits = 0;
             if (owner === 'player') {
