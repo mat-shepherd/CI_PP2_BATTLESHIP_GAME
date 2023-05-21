@@ -28,7 +28,24 @@ class Ship {
         let shipCoords = [coordString];
         shipObject.coordinates = shipCoords;
         console.log(shipObject.coordinates);
-        cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+
+        switch (shipObject.shipName) {
+            case 'Carrier':
+                cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                break;
+            case 'Battleship':
+                cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                break;
+            case 'Cruiser':
+                cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                break;
+            case 'Submarine':
+                cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                break;
+            case 'Destroyer':
+                cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                break;
+        }
     }
 
     /**
