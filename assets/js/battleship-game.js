@@ -16,19 +16,23 @@ class Ship {
     }
 
     /**
-     * Controls the placement of ships during the ship placement 
-     * stage of the game. 
+     * Records the coordinates of player ships during the ship placement 
+     * stage of the game. Passes to checkPlacement to check coordinates
+     * are valid for ship size and orientation. If not show an error message
+     * and pass back to runGame loop. 
      * @method placeShip
      */
     placeShip(shipName, turnName) {
-        /*
-        This locks in placement and passes back to loop for next ship to be
-        placed. Need to check ship has valid coordinates before passing back.
-        If not show an error message and pass back to run Game loop.
-        */
         playerMessage(turnName + " your turn to place your " + shipName);
 
-        // add a while loop here to wait until all ships placed?
+    }
+
+    /**
+     * Locks in ship placement when player clicks place button and passes
+     * back to runGame loop for next ship to be placed.
+     * @method confirmPlaceShip
+     */
+    confirmPlaceShip(shipName) {
     }
 
     /**
@@ -340,6 +344,12 @@ function initGame(playerName) {
         });
     }
 
+    /*
+    Add event listeners to each cell in the player game board to record
+    ship coordinates on click.
+    */
+
+    // show intial welcome and instructions in player message
     playerMessage("Welcome Commander! Hover over your grid below and click to place your first ship.\
     Click the Rotate button to change the direction of your ship and then click the place button to \
     confirm your ship's placement. Click the Random button if you want your ships placed randomly for \
@@ -352,6 +362,7 @@ function initGame(playerName) {
 }
 
 function runGame(playerName) {
+    // add a while loop here to wait until all ships placed?
     // For each ship in playerShips instruct the player to place the ship
     for (let shipName in playerShips) {
         let turnName = players.player.name;
