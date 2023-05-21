@@ -60,6 +60,14 @@ class Ship {
                 cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
                 break;
         }
+
+        /*
+        Add pulse effect to game-buttons - likely need to move this
+        */
+        let gameButtons = document.getElementsByClassName('game-button');
+        for (let button of gameButtons) {
+            button.classList.add("pulse");
+        }
     }
 
     /**
