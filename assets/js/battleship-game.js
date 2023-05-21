@@ -22,8 +22,12 @@ class Ship {
      * and pass back to runGame loop. 
      * @method placeShip
      */
-    placeShip(cellId, shipName) {
+    placeShip(cellId, shipObject) {
         let cell = document.getElementById(cellId);
+        let coordString = cellId.replace('-', '');
+        let shipCoords = [coordString];
+        shipObject.coordinates = shipCoords;
+        console.log(shipObject.coordinates);
         cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
     }
 
@@ -350,13 +354,13 @@ function initGame(playerName) {
 
     /*
     Add event listeners to each cell in the player game board to record
-    ship coordinates on click.
+    ship coordinates on click. Event listeners will be updated by
+    confirmPlaceShip method.
     */
     let playerCells = document.getElementsByClassName('player-play-area');
     for (let cell of playerCells) {
         cell.addEventListener("click", function (event) {
-            console.log('Player Clicked Cell ' + cell.id);
-            playerShips.Carrier.placeShip(event.target.id, playerShips.Carrier.shipName);
+            playerShips.Carrier.placeShip(event.target.id, playerShips.Carrier);
         });
     }
 
