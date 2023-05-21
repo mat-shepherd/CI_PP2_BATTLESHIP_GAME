@@ -27,6 +27,12 @@ class Ship {
         shipObject.coordinates = cellId;
         console.log(shipObject.coordinates);
 
+        if (shipObject.coordinates.length > 0) {
+            console.log(shipObject.coordinates.length);
+            let existCoord = document.getElementById(shipObject.coordinates[0]);
+            existCoord.innerHTML = '';
+        }
+
         switch (shipObject.shipName) {
             case 'Carrier':
                 cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
@@ -400,9 +406,10 @@ function runGame(playerName) {
     }
 }
 
-/* Wait for the DOM to finish loading, add button event listeners
- and start-game-form submit listener which passes to checkName()
- to see if game can start */
+/* Wait for the DOM to finish loading, set focus on player-name input
+ add button event listeners, and start-game-form submit listener 
+ which passes to checkName() to see if game can start */
+document.getElementById('player-name').focus();
 document.addEventListener('DOMContentLoaded', function () {
     let playerName = '';
 
