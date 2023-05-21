@@ -21,6 +21,11 @@ class Ship {
      * @method placeShip
      */
     placeShip(shipName, turnName) {
+        /*
+        This locks in placement and passes back to loop for next ship to be
+        placed. Need to check ship has valid coordinates before passing back.
+        If not show an error message and pass back to run Game loop.
+        */
         playerMessage(turnName + " your turn to place your " + shipName);
 
         // add a while loop here to wait until all ships placed?
@@ -221,14 +226,14 @@ class Player {
 
 /**
  * Checks that a name has been entered on the intro screen
- * before passing flow on to runGame(). If no name entered
+ * before passing flow on to initGame(). If no name entered
  * this displays an error message in the form.
  * @param {string} playername - name entered by player 
  */
 function checkName(playerName) {
     let errorMsg = document.getElementById('error-message');
     if (playerName) {
-        runGame(playerName);
+        initGame(playerName);
     } else {
         errorMsg.innerHTML = '<p>YOU MUST ENTER YOUR NAME TO START</p>';
     }
@@ -244,11 +249,13 @@ function playerMessage(message) {
 }
 
 /**
- * The main game loop called by checkName when a name has been
+ * The game initialisation loop called by checkName when a name has been
  * entered on the start-game-form. Calls functions to create
- * players and gameboards and control flow of game.
+ * players and gameboards, add placement button and gameboard grid
+ * event listeners then passes to runGame().
+ * @param {string} playerName - players name entered in start-game-form.
  */
-function runGame(playerName) {
+function initGame(playerName) {
     /**
     * Define game object variables
     */
@@ -307,15 +314,36 @@ function runGame(playerName) {
                 computerShips[shipName] = new Ship(shipName, size, coordinates, direction, hits);
             }
         }
-
-
     }
 
-    // For each ship in playerShips instruct the player to place the ship
-    for (let shipName in playerShips) {
-        let turnName = players.player.name;
-        playerShips[shipName].placeShip(shipName, turnName);
+    /* 
+    Add event listeners to placement buttons. Ascsociated with first Ship object initially.
+    Each method will update the listener to the next Ship object.
+    */
+    let gameButtons = document.getElementsByClassName('game-button');
+    for (let button of gameButtons) {
+        button.addEventListener("click", function () {
+            switch (this.id) {
+                case 'place-control':
+                    playerShips.Carrier.placeShip("Carrier", players.player.name);
+                    break;
+                case 'rotate-control':
+                    playerCarrierShip.rotateShip();
+                    break;
+                case 'random-control':
+                    playerCarrierShip.randomShip();
+                    break;
+                case 'reset-control':
+                    playerCarrierShip.resetShip();
+                    break;
+            }
+        });
     }
+
+    playerMessage("Welcome Commander! Hover over your grid below and click to place your first ship.\
+    Click the Rotate button to change the direction of your ship and then click the place button to \
+    confirm your ship's placement. Click the Random button if you want your ships placed randomly for \
+    you.");
 
     // hide intro screen modal to show game boards
     document.getElementById('intro-modal').style.display = "none";
@@ -323,11 +351,18 @@ function runGame(playerName) {
 
 }
 
+function runGame(playerName) {
+    // For each ship in playerShips instruct the player to place the ship
+    for (let shipName in playerShips) {
+        let turnName = players.player.name;
+        playerShips[shipName].placeShip(shipName, turnName);
+    }
+}
+
 /* Wait for the DOM to finish loading, add button event listeners
- and start-game-form submit listener whcih passes to checkName()
+ and start-game-form submit listener which passes to checkName()
  to see if game can start */
 document.addEventListener('DOMContentLoaded', function () {
-    let gameButtons = document.getElementsByClassName('game-button');
     let playerName = '';
 
     let startForm = document.getElementById('start-game-form');
@@ -338,28 +373,7 @@ document.addEventListener('DOMContentLoaded', function () {
         checkName(playerName);
     });
 
-    // add event listeners to buttons -might need to move this inside game loop
-    for (let button of gameButtons) {
-        button.addEventListener("click", function () {
-            switch (this.id) {
-                case 'place-control':
-                    playerCarrierShip.placeShip(); // need to check which ship we are placing
-                    break;
-                case 'rotate-control':
-                    playerCarrierShip.rotateShip(); // need to check which ship we are placing
-                    break;
-                case 'random-control':
-                    playerCarrierShip.randomShip(); // need to check which ship we are placing
-                    break;
-                case 'reset-control':
-                    playerCarrierShip.resetShip(); // need to check which ship we are placing
-                    break;
-            }
-        });
-    }
-    // create game board grids for both players and add them to the existing divs
-    // playerGameboard.createGameBoard();
-    // computerGameboard.createGameBoard();
+    // add event listeners to player gameboard to detect clicks during ship placement
 
     // test placing a ship and explosion effect
     let testDiv = document.getElementById('p52');
