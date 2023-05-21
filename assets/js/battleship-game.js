@@ -106,17 +106,22 @@ class Gameboard {
         let gridLetters = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
         let playGrid = `<div id="gameboard-label">${this.label}</div>`;
         for (let i = 0; i <= 10; i++) {
+            // first iteration creates first cell in index row
             if (i == 0) {
                 for (let j = 0; j <= 10; j++) {
                     playGrid += `<div id='iR${j}' class="index-row">${j == 0 ? ' ' : j}</div>`;
                 }
             } else {
                 for (let j = 0; j <= 10; j++) {
+                    // first iteration creates first cell in index column
                     if (j == 0) {
                         playGrid += `<div id='iC ${gridLetters[j + i].trim()}' class="index-column">${gridLetters[j + i].trim()}</div>`;
                     } else {
+                        // create alphanumeric grid references to use in cell IDs
                         let cellId = `${gridLetters[i]}-${j + (i - 1) * 10}`;
-                        playGrid += `<div id='${cellId}' class="playable-area ship-placement">${cellId}</div>`;
+                        // change initial class on cells based on Player owner to control hover icons
+                        let cellClass = this.owner === 'computer' ? 'no-placement' : 'ship-placement';
+                        playGrid += `<div id='${cellId}' class="playable-area ${cellClass}">${cellId}</div>`;
                     }
                 }
             }

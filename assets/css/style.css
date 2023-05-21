@@ -435,7 +435,8 @@ footer {
     position: relative;
 }
 
-.playable-area:hover {
+/* classes to control gameboard hover icons - classes added/removed by js */
+.shot:hover {
     cursor: url(../images/effects/target.png), crosshair;
     background-color: #fff;
 }
@@ -443,6 +444,10 @@ footer {
 .ship-placement:hover {
     cursor: url(../images/effects/move.png), all-scroll;
     background-color: #fff;
+}
+
+.no-placement:hover {
+    cursor: url(../images/effects/not-allowed.png), not-allowed;
 }
 
 #player-gameboard img,
