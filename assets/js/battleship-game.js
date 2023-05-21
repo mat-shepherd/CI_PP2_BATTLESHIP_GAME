@@ -8,7 +8,7 @@
 
 class Ship {
     constructor(shipName, size, coordinates, direction, hits) {
-        this.shipname = shipName;
+        this.shipName = shipName;
         this.size = size;
         this.coordinates = coordinates;
         this.direction = direction;
@@ -22,9 +22,9 @@ class Ship {
      * and pass back to runGame loop. 
      * @method placeShip
      */
-    placeShip(shipName, turnName) {
-        playerMessage(turnName + " your turn to place your " + shipName);
-
+    placeShip(cellId, shipName) {
+        let cell = document.getElementById(cellId);
+        cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
     }
 
     /**
@@ -32,7 +32,11 @@ class Ship {
      * back to runGame loop for next ship to be placed.
      * @method confirmPlaceShip
      */
-    confirmPlaceShip(shipName) {
+    confirmPlaceShip(shipName, turnName) {
+        // once confirmed change event listener on cells to next ship
+        // update plyaer message
+        // i.e. playerShips.Carrier.placeShip(cell.id);
+        playerMessage(turnName + " your turn to place your " + shipName);
     }
 
     /**
@@ -129,8 +133,8 @@ class Gameboard {
                         // create alphanumeric grid references to use in cell IDs
                         let cellId = `${gridLetters[i]}-${j + (i - 1) * 10}`;
                         // change initial class on cells based on Player owner to control hover icons
-                        let cellClass = this.owner === 'computer' ? 'no-placement' : 'ship-placement';
-                        playGrid += `<div id='${cellId}' class="playable-area ${cellClass}">${cellId}</div>`;
+                        let cellClass = this.owner === 'computer' ? 'computer-play-area no-placement' : 'player-play-area ship-placement';
+                        playGrid += `<div id='${cellId}' class="${cellClass}">${cellId}</div>`;
                     }
                 }
             }
@@ -329,16 +333,16 @@ function initGame(playerName) {
         button.addEventListener("click", function () {
             switch (this.id) {
                 case 'place-control':
-                    playerShips.Carrier.placeShip("Carrier", players.player.name);
+                    playerShips.Carrier.confirmPlaceShip("Carrier", players.player.name);
                     break;
                 case 'rotate-control':
-                    playerCarrierShip.rotateShip();
+                    playerShips.Carrier.rotateShip();
                     break;
                 case 'random-control':
-                    playerCarrierShip.randomShip();
+                    playerShips.Carrier.randomShip();
                     break;
                 case 'reset-control':
-                    playerCarrierShip.resetShip();
+                    playerShips.Carrier.resetShip();
                     break;
             }
         });
@@ -348,6 +352,13 @@ function initGame(playerName) {
     Add event listeners to each cell in the player game board to record
     ship coordinates on click.
     */
+    let playerCells = document.getElementsByClassName('player-play-area');
+    for (let cell of playerCells) {
+        cell.addEventListener("click", function (event) {
+            console.log('Player Clicked Cell ' + cell.id);
+            playerShips.Carrier.placeShip(event.target.id, playerShips.Carrier.shipName);
+        });
+    }
 
     // show intial welcome and instructions in player message
     playerMessage("Welcome Commander! Hover over your grid below and click to place your first ship.\

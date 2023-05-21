@@ -430,7 +430,8 @@ footer {
 
 }
 
-.playable-area {
+.computer-play-area,
+.player-play-area {
     color: #fff;
     position: relative;
 }
