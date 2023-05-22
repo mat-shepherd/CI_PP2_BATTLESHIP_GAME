@@ -52,15 +52,23 @@ class Ship {
             this.coordinates.push(newCellId);
         }
 
-        // check the coordinates are valid
-        this.checkPlacement(this, player, playerShips);
+        // Check the coordinates are valid
+        let coordsDuplicated = this.checkPlacement(this, player, playerShips);
+        console.log('Coord duplicated? ' + coordsDuplicated);
+
+        // Get the element at the placed ship coordinates 
+        let existCoord = document.getElementById(this.coordinates[0]);
+
+        // if coordinates aren't valid provide player feedback
+        if (coordsDuplicated === 'True') {
+            playerMessage(`${player.name} ships can't overlap or extend past the edge of the grid. Please place your ${this.shipName} again!`);
+        }
 
         /* 
-        If Ship object has already been placed remove it from the game board
-        and remove previous coordinates from Ship object.
+        If Ship object has already been placed or placement isn't valid remove it
+        from the game board and remove previous coordinates from Ship object.
         */
-        if (this.coordinates.length > this.size) {
-            let existCoord = document.getElementById(this.coordinates[0]);
+        if (this.coordinates.length > this.size || coordsDuplicated === 'True') {
             existCoord.innerHTML = '';
             this.coordinates.splice(0, this.size);
         }
@@ -186,13 +194,26 @@ class Ship {
         aren't the ship being checked. Check the current ship's
         coordinates against all other coordinates.
         */
+        let coordsFound = '';
+
         for (let ships in playerShips) {
             if (ships !== checkShip.shipName) {
                 for (let coords of playerShips[ships].coordinates) {
-                    console.log(coords);
+                    console.log('Coords ' + coords);
+
+                    let coordsResult = checkShip.coordinates.indexOf(coords);
+                    console.log('Coords found ' + coordsResult);
+
+                    if (checkShip.coordinates.includes(coords)) {
+                        coordsFound = 'True';
+                    } else {
+                        coordsFound = 'False';
+                    }
                 }
             }
         }
+
+        return coordsFound;
     }
 
     /**
