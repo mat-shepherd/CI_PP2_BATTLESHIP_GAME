@@ -19,10 +19,13 @@ class Ship {
      * Records the coordinates of player ships during the ship placement 
      * stage of the game. Passes to checkPlacement to check coordinates
      * are valid for ship size and orientation. If not show an error message
-     * and pass back to runGame loop. 
+     * and pass back to runGame loop. Otherwise place ship image and return.
      * @method placeShip
+     * @param {string} cellId - id of clicked cell
+     * @param {object} shipOject - the ship Object being placed
+     * @param {object} player - the player object from  players{}
      */
-    placeShip(cellId, shipObject) {
+    placeShip(cellId, shipObject, player) {
         // Get game board cell object and add first coordinate of Ship object.
         let cell = document.getElementById(cellId);
 
@@ -102,6 +105,12 @@ class Ship {
         for (let button of gameButtons) {
             button.classList.add("pulse");
         }
+
+        // Tell plyaer to place or rotate ship.
+        playerMessage(`${player.name} click <span class="red-text">'ROTATE'</span>
+        to change the direction of your ship or 'PLACE' when you are ready 
+        to place your next ship.`);
+
     }
 
     /**
@@ -199,19 +208,19 @@ class Gameboard {
             // first iteration creates first cell in index row
             if (i == 0) {
                 for (let j = 0; j <= 10; j++) {
-                    playGrid += `<div id='iR${j}' class="index-row">${j == 0 ? ' ' : j}</div>`;
+                    playGrid += `<div id="iR${j}" class="index-row">${j == 0 ? ' ' : j}</div>`;
                 }
             } else {
                 for (let j = 0; j <= 10; j++) {
                     // first iteration creates first cell in index column
                     if (j == 0) {
-                        playGrid += `<div id='iC ${gridLetters[j + i].trim()}' class="index-column">${gridLetters[j + i].trim()}</div>`;
+                        playGrid += `<div id="iC ${gridLetters[j + i].trim()}" class="index-column">${gridLetters[j + i].trim()}</div>`;
                     } else {
                         // create alphanumeric grid references to use in cell IDs
                         let cellId = `${gridLetters[i]}${j + (i - 1) * 10}`;
                         // change initial class on cells based on Player owner to control hover icons
                         let cellClass = this.owner === 'computer' ? 'computer-play-area no-placement' : 'player-play-area ship-placement';
-                        playGrid += `<div id='${cellId}' class="${cellClass}">${cellId}</div>`;
+                        playGrid += `<div id="${cellId}" class="${cellClass}">${cellId}</div>`;
                     }
                 }
             }
@@ -330,7 +339,7 @@ function checkName(playerName) {
  * @param {string} message - text to be displayed in player-message area
  */
 function playerMessage(message) {
-    document.getElementById('player-message').innerText = message.toUpperCase();
+    document.getElementById('player-message').innerHTML = message;
 }
 
 /**
@@ -433,15 +442,16 @@ function initGame(playerName) {
     let playerCells = document.getElementsByClassName('player-play-area');
     for (let cell of playerCells) {
         cell.addEventListener("click", function (event) {
-            playerShips.Carrier.placeShip(event.target.id, playerShips.Carrier);
+            playerShips.Carrier.placeShip(event.target.id, playerShips.Carrier, players.player);
+            console.log(typeof event.target.id + typeof playerShips.Carrier + typeof players.player);
         });
     }
 
     // show intial welcome and instructions in player message
-    playerMessage("Welcome Commander! Hover over your grid below and click to place your first ship.\
-    Click the Rotate button to change the direction of your ship and then click the place button to \
-    confirm your ship's placement. Click the Random button if you want your ships placed randomly for \
-    you.");
+    playerMessage(`Welcome Commander! Hover over your grid below and click to place your first ship.
+    Click the 'ROTATE' button to change the direction of your ship and
+    then click the <span class='red-text'>'PLACE'</span> button to confirm your ship's placement. 
+    Click the 'RANDOM' button if you want your ships placed randomly for you.`);
 
     // hide intro screen modal to show game boards
     document.getElementById('intro-modal').style.display = "none";

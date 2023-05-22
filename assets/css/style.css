@@ -41,7 +41,12 @@ nav h1,
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
 }
 
-#error-message {
+#player-message {
+    text-transform: uppercase;
+}
+
+#error-message,
+.red-text {
     color: #881400;
     font-weight: bold;
 }
