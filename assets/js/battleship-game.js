@@ -37,9 +37,10 @@ class Ship {
         let rowLetter = cellId[0];
         let columnNumber = parseInt(cellId.slice(1));
 
-        // push first coordinate to array
+        // Push first coordinate to array
         this.coordinates.push(cellId);
 
+        // Add ships other coordiantes to array based on ship size
         for (let cellCount = 0; cellCount < this.size - 1; cellCount++) {
 
             rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
@@ -54,28 +55,6 @@ class Ship {
 
         // Check the coordinates are valid
         let coordsDuplicated = this.checkPlacement(this, player, playerShips);
-
-        // Get the element at the placed ship coordinates 
-        let existCoord = document.getElementById(this.coordinates[0]);
-
-        /* 
-        If Ship object has already been placed or placement isn't valid remove it
-        from the game board and remove previous coordinates from Ship object.
-        */
-        if (this.coordinates.length > this.size || coordsDuplicated === 'True') {
-            existCoord.innerHTML = '';
-            this.coordinates.splice(0, this.size);
-        }
-
-        /* 
-        Remove existing coordinates from the start of the array if it 
-        exceeds the ship size
-        */
-        if (this.coordinates.length > this.size) {
-            for (let cellCount = 0; cellCount < this.size; cellCount++) {
-                this.coordinates.shift();
-            }
-        }
 
         /*
         Check which Ship type has been passed to method and add relevant ship
@@ -97,6 +76,19 @@ class Ship {
             case 'Destroyer':
                 cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship destroyer'>";
                 break;
+        }
+
+        // Get the element at the placed ship coordinates 
+        let existCoord = document.getElementById(this.coordinates[0]);
+
+        /* 
+        If Ship object has already been placed or placement isn't valid remove it
+        from the game board and remove coordiantes from the ship coordinates array
+        */
+        if (this.coordinates.length > this.size || coordsDuplicated === 'True') {
+            let imageElement = existCoord.querySelector('img');
+            existCoord.removeChild(imageElement);
+            this.coordinates.splice(0, this.size);
         }
 
         /*
