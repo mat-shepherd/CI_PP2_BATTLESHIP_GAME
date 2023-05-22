@@ -72,17 +72,13 @@ class Ship {
             }
         }
 
-        console.log(shipObject.coordinates);
-        console.log(shipObject.shipName);
-
-
         /*
         Check which Ship type has been passed to method and add relevant ship
         to the gameboard.
         */
         switch (shipObject.shipName) {
             case 'Carrier':
-                cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship'>";
+                cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship carrier'>";
                 break;
             case 'Battleship':
                 cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
@@ -443,7 +439,6 @@ function initGame(playerName) {
     for (let cell of playerCells) {
         cell.addEventListener("click", function (event) {
             playerShips.Carrier.placeShip(event.target.id, playerShips.Carrier, players.player);
-            console.log(typeof event.target.id + typeof playerShips.Carrier + typeof players.player);
         });
     }
 

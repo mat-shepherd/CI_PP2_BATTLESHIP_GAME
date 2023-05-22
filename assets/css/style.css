@@ -482,15 +482,22 @@ footer {
 }
 
 #player-gameboard img,
-#computer-gameboard>img {
+#computer-gameboard img {
     z-index: 100;
 }
 
 #player-gameboard img,
-#computer-gameboard>img {
+#computer-gameboard img {
     position: absolute;
     top: 0;
     left: 20%;
+}
+
+/* adjust placement of carrier ship image */
+#player-gameboard img.carrier,
+#computer-gameboard img.carrier {
+    top: 25%;
+    left: 5%;
 }
 
 #player-gameboard .explosion,
