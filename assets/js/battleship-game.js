@@ -53,11 +53,11 @@ class Ship {
         }
 
         // check the coordinates are valid
-        this.checkPlacement(player, playerShips);
+        this.checkPlacement(this, player, playerShips);
 
         /* 
         If Ship object has already been placed remove it from the game board
-        and remove previous coordiantes from Ship object.
+        and remove previous coordinates from Ship object.
         */
         if (this.coordinates.length > this.size) {
             let existCoord = document.getElementById(this.coordinates[0]);
@@ -144,7 +144,7 @@ class Ship {
     }
 
     /**
-     * Take a ship objects coordinates and transforms them to rotate the ship 90
+     * Take a ship object's coordinates and transforms them to rotate the ship 90
      * degrees clockwise. Calls checkPlacement to make sure ship isn't outside
      * of the game board's playable area.
      * @method rotateShip
@@ -172,14 +172,27 @@ class Ship {
 
     /**
      * Check's a ships coordinates to make sure it isn't outside
-     * of the game board's playable area.
+     * of the game board's playable area and they are not overlapping
+     * another ship.
      * @method checkPlacement
+     * @param {object} checkShip - contains ship object being checked
      * @param {object} player - contains player data
      * @param {object} playerShip - contains player ship data
      * @return {boolean} - returns true if within bounds and false if not
      */
-    checkPlacement(player, playerShip) {
-
+    checkPlacement(checkShip, player, playerShips) {
+        /*
+        Loop through playerShips and get ship coordinates that
+        aren't the ship being checked. Check the current ship's
+        coordinates against all other coordinates.
+        */
+        for (let ships in playerShips) {
+            if (ships !== checkShip.shipName) {
+                for (let coords of playerShips[ships].coordinates) {
+                    console.log(coords);
+                }
+            }
+        }
     }
 
     /**
