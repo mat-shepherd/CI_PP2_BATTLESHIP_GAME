@@ -23,20 +23,54 @@ class Ship {
      * @method placeShip
      */
     placeShip(cellId, shipObject) {
-        // Get game board cell object and add coordinates to Ship object.
+        // Get game board cell object and add first coordinate of Ship object.
         let cell = document.getElementById(cellId);
+
+        /* 
+        Increase the row letter and column number based on the size of the ship.
+        Code adapted from answer provided by ChatGPT by https://openai.com/
+        */
+
+        let rowLetter = cellId[0];
+        let columnNumber = parseInt(cellId.slice(1));
+
+        // push first coordinate to array
         shipObject.coordinates.push(cellId);
-        console.log(shipObject.coordinates);
+
+        for (let cellCount = 0; cellCount < shipObject.size - 1; cellCount++) {
+
+            rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
+            columnNumber += 10;
+
+            // Generate the new cell ID
+            let newCellId = rowLetter + columnNumber;
+
+            // Add the new cell ID to the Ship object's coordinates array
+            shipObject.coordinates.push(newCellId);
+        }
 
         /* 
         If Ship object has already been placed remove it from the game board
         and remove previous coordiantes from Ship object.
         */
-        if (shipObject.coordinates.length > 1) {
+        if (shipObject.coordinates.length > shipObject.size) {
             let existCoord = document.getElementById(shipObject.coordinates[0]);
             existCoord.innerHTML = '';
-            shipObject.coordinates.shift();
+            shipObject.coordinates.splice(0, shipObject.size);
         }
+
+        /* 
+        Remove existing coordinates from the start of the array if it 
+        exceeds the ship size
+        */
+        if (shipObject.coordinates.length > shipObject.size) {
+            for (let cellCount = 0; cellCount < shipObject.size; cellCount++) {
+                shipObject.coordinates.shift();
+            }
+        }
+
+        console.log(shipObject.coordinates);
+        console.log(shipObject.shipName);
 
 
         /*
@@ -45,19 +79,19 @@ class Ship {
         */
         switch (shipObject.shipName) {
             case 'Carrier':
-                cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship'>";
                 break;
             case 'Battleship':
                 cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
                 break;
             case 'Cruiser':
-                cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                cell.innerHTML += "<img src='./assets/images/ships/cruiser.png' class='ship'>";
                 break;
             case 'Submarine':
-                cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                cell.innerHTML += "<img src='./assets/images/ships/submarine.png' class='ship'>";
                 break;
             case 'Destroyer':
-                cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship'>";
                 break;
         }
 
@@ -415,7 +449,8 @@ function initGame(playerName) {
 
 }
 
-function runGame(playerName) {
+// need to look at paramters to pass from initgame to rungame
+function runGame(playerName, players) {
     // add a while loop here to wait until all ships placed?
     // For each ship in playerShips instruct the player to place the ship
     for (let shipName in playerShips) {
