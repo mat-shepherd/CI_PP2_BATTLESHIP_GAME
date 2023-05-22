@@ -110,18 +110,37 @@ class Ship {
     }
 
     /**
-     * Locks in ship placement when player clicks place button and passes
-     * back to runGame loop for next ship to be placed.
+     * Locks in ship placement when player clicks place button, update
+     * cell and palcmenet button event listeners 
      * @method confirmPlaceShip
+     * @param {object} currentPlayer - the current player
+     * @param {object} playerShips - the playerShips object
      */
-    confirmPlaceShip(players, currentShip) {
-        // once confirmed change event listener on cells to next ship
-        // update player message
-        // i.e. playerShips.Carrier.placeShip(cell.id);
-        playerMessage(players.player.name + " your turn to place your " + currentShip.shipName);
+    confirmPlaceShip(currentPlayer, playerShips) {
+        /* 
+        Code to get next ship in playerShips adapted from 
+        answer by ChatGPT by https://openai.com
+        */
 
-        updateCellListener();
-        updatePlacementListener();
+        // Get the keys of the playerShips object
+        let shipNames = Object.keys(playerShips);
+
+        // Find the index of the current ship
+        let currentIndex = shipNames.indexOf(this.shipName);
+
+        // Get the next ship name from the array
+        let nextShipName = shipNames[currentIndex + 1];
+
+        // Get the next ship object using the ship name
+        let nextShip = playerShips[nextShipName];
+
+        // Use the next ship object as needed
+        console.log("Next ship:", nextShip);
+
+        playerMessage(currentPlayer.name + " your turn to place your " + nextShip.shipName);
+
+        updateCellListener(nextShip, currentPlayer);
+        updatePlacementListener(nextShip, currentPlayer, playerShips);
     }
 
     /**
@@ -333,16 +352,26 @@ function checkName(playerName) {
 }
 
 /**
- * Update cell click event listeners to call methods of current ship
- * object. 
+ * Update cell click event listeners by removing existing and then
+ * adding new click event listeners to call methods of the current
+ * ship object. 
  * @param {object} currentShip - the ship currently being place
+ * @param {object} currentPlayer - the player placing ships
  */
 function updateCellListener(currentShip, currentPlayer) {
     let playerCells = document.getElementsByClassName('player-play-area');
     for (let cell of playerCells) {
-        cell.addEventListener("click", function (event) {
+        clickHandler = function (event) {
             currentShip.placeShip(event.target.id, currentPlayer);
-        });
+        };
+        /* 
+        Check if the click event listener exists before removing
+        Code adapted from answer provided by ChatGPT by https://openai.com/
+        */
+        if (cell.onclick === clickHandler) {
+            cell.removeEventListener("click", clickHandler);
+        }
+        cell.addEventListener("click", clickHandler);
     }
 }
 
@@ -350,23 +379,24 @@ function updateCellListener(currentShip, currentPlayer) {
  * Update placement buttons with click event listeners to call methods of 
  * current ship object. 
  * @param {object} currentShip - the ship currently being placed
+ * @param {object} currentPlayer - the player placing ships 
  */
-function updatePlacementListener(currentShip, currentPlayer) {
+function updatePlacementListener(currentShip, currentPlayer, playerShips) {
     let gameButtons = document.getElementsByClassName('game-button');
     for (let button of gameButtons) {
         button.addEventListener("click", function () {
             switch (this.id) {
                 case 'place-control':
-                    currentShip.confirmPlaceShip(players, playerShips);
+                    currentShip.confirmPlaceShip(currentPlayer, playerShips);
                     break;
                 case 'rotate-control':
-                    currentShip.rotateShip(players, currentPlayer);
+                    currentShip.rotateShip(currentPlayer, playerShips);
                     break;
                 case 'random-control':
-                    currentShip.randomShip(players, playerShips);
+                    currentShip.randomShip();
                     break;
                 case 'reset-control':
-                    currentShip.resetShip(players, playerShips);
+                    currentShip.resetShip();
                     break;
             }
         });
@@ -465,7 +495,7 @@ function initGame(playerName) {
     Add event listeners to placement buttons. Ascsociated with first Ship object initially.
     Each method will update the listener to the next Ship object.
     */
-    updatePlacementListener(currentShip, currentPlayer);
+    updatePlacementListener(currentShip, currentPlayer, playerShips);
 
     // show intial welcome and instructions in player message
     playerMessage(`Welcome Commander! Hover over your grid below and click to place your first ship.
