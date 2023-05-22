@@ -92,25 +92,41 @@ class Ship {
         }
 
         /*
+        Tell player to place or rotate ship. If coordinates aren't valid 
+        tell the player to place the ship again.
+        */
+        if (coordsDuplicated === 'True') {
+            // add a red background to cell and then remove after 2 seconds
+            existCoord.classList.add('red-background');
+            setTimeout(function () {
+                existCoord.classList.remove('red-background');
+            }, 4000);
+
+            playerMessage(`<span class='red-text'>${player.name} ships can't overlap or extend past 
+            the edge of the grid. Please place your ${this.shipName} again!</span>`);
+
+            /*
+            Animation to make playerMessage text flash. Code from ChatGPT
+            by https://openai.com
+            */
+            let playMsg = document.getElementById('player-message');
+            playMsg.firstChild.classList.add('flash');
+
+            setTimeout(() => {
+                playMsg.firstChild.classList.remove('flash');
+            }, 2000);
+        } else {
+            playerMessage(`${player.name} click <span class="red-text">'ROTATE'</span>
+            to change the direction of your ship or 'PLACE' when you are ready 
+            to place your next ship.`);
+        }
+
+        /*
         Add pulse effect to game-buttons - likely need to move this
         */
         let gameButtons = document.getElementsByClassName('game-button');
         for (let button of gameButtons) {
             button.classList.add("pulse");
-        }
-
-        /*
-        Tell player to place or rotate ship. If coordinates aren't valid 
-        tell the player to place the ship again
-        */
-        if (coordsDuplicated === 'True') {
-            console.log('Coord duplicated? ' + coordsDuplicated);
-            playerMessage(`<span class='red-text'>${player.name} ships can't overlap or extend past 
-            the edge of the grid. Please place your ${this.shipName} again!</span>`);
-        } else {
-            playerMessage(`${player.name} click <span class="red-text">'ROTATE'</span>
-            to change the direction of your ship or 'PLACE' when you are ready 
-            to place your next ship.`);
         }
     }
 

@@ -51,6 +51,28 @@ nav h1,
     font-weight: bold;
 }
 
+/* 
+Animation to make text flash. Code from ChatGPT
+by https://openai.com
+*/
+@keyframes flash-animation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.flash {
+    animation: flash-animation 2s infinite;
+}
+
 #player-message,
 #placement-controls,
 #player-name {
@@ -464,6 +486,11 @@ footer {
 .player-play-area {
     color: #fff;
     position: relative;
+}
+
+.red-background,
+.red-background.ship-placement:hover {
+    background-color: #881400;
 }
 
 /* classes to control gameboard hover icons - classes added/removed by js */
