@@ -25,7 +25,7 @@ class Ship {
      * @param {object} shipOject - the ship Object being placed
      * @param {object} player - the player object from  players{}
      */
-    placeShip(cellId, shipObject, player) {
+    placeShip(cellId, player) {
         // Get game board cell object and add first coordinate of Ship object.
         let cell = document.getElementById(cellId);
 
@@ -38,9 +38,9 @@ class Ship {
         let columnNumber = parseInt(cellId.slice(1));
 
         // push first coordinate to array
-        shipObject.coordinates.push(cellId);
+        this.coordinates.push(cellId);
 
-        for (let cellCount = 0; cellCount < shipObject.size - 1; cellCount++) {
+        for (let cellCount = 0; cellCount < this.size - 1; cellCount++) {
 
             rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
             columnNumber += 10;
@@ -49,26 +49,26 @@ class Ship {
             let newCellId = rowLetter + columnNumber;
 
             // Add the new cell ID to the Ship object's coordinates array
-            shipObject.coordinates.push(newCellId);
+            this.coordinates.push(newCellId);
         }
 
         /* 
         If Ship object has already been placed remove it from the game board
         and remove previous coordiantes from Ship object.
         */
-        if (shipObject.coordinates.length > shipObject.size) {
-            let existCoord = document.getElementById(shipObject.coordinates[0]);
+        if (this.coordinates.length > this.size) {
+            let existCoord = document.getElementById(this.coordinates[0]);
             existCoord.innerHTML = '';
-            shipObject.coordinates.splice(0, shipObject.size);
+            this.coordinates.splice(0, this.size);
         }
 
         /* 
         Remove existing coordinates from the start of the array if it 
         exceeds the ship size
         */
-        if (shipObject.coordinates.length > shipObject.size) {
-            for (let cellCount = 0; cellCount < shipObject.size; cellCount++) {
-                shipObject.coordinates.shift();
+        if (this.coordinates.length > this.size) {
+            for (let cellCount = 0; cellCount < this.size; cellCount++) {
+                this.coordinates.shift();
             }
         }
 
@@ -76,7 +76,7 @@ class Ship {
         Check which Ship type has been passed to method and add relevant ship
         to the gameboard.
         */
-        switch (shipObject.shipName) {
+        switch (this.shipName) {
             case 'Carrier':
                 cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship carrier'>";
                 break;
@@ -102,7 +102,7 @@ class Ship {
             button.classList.add("pulse");
         }
 
-        // Tell plyaer to place or rotate ship.
+        // Tell player to place or rotate ship.
         playerMessage(`${player.name} click <span class="red-text">'ROTATE'</span>
         to change the direction of your ship or 'PLACE' when you are ready 
         to place your next ship.`);
@@ -114,11 +114,14 @@ class Ship {
      * back to runGame loop for next ship to be placed.
      * @method confirmPlaceShip
      */
-    confirmPlaceShip(shipName, turnName) {
+    confirmPlaceShip(players, currentShip) {
         // once confirmed change event listener on cells to next ship
-        // update plyaer message
+        // update player message
         // i.e. playerShips.Carrier.placeShip(cell.id);
-        playerMessage(turnName + " your turn to place your " + shipName);
+        playerMessage(players.player.name + " your turn to place your " + currentShip.shipName);
+
+        updateCellListener();
+        updatePlacementListener();
     }
 
     /**
@@ -330,6 +333,47 @@ function checkName(playerName) {
 }
 
 /**
+ * Update cell click event listeners to call methods of current ship
+ * object. 
+ * @param {object} currentShip - the ship currently being place
+ */
+function updateCellListener(currentShip, currentPlayer) {
+    let playerCells = document.getElementsByClassName('player-play-area');
+    for (let cell of playerCells) {
+        cell.addEventListener("click", function (event) {
+            currentShip.placeShip(event.target.id, currentPlayer);
+        });
+    }
+}
+
+/**
+ * Update placement buttons with click event listeners to call methods of 
+ * current ship object. 
+ * @param {object} currentShip - the ship currently being placed
+ */
+function updatePlacementListener(currentShip, currentPlayer) {
+    let gameButtons = document.getElementsByClassName('game-button');
+    for (let button of gameButtons) {
+        button.addEventListener("click", function () {
+            switch (this.id) {
+                case 'place-control':
+                    currentShip.confirmPlaceShip(players, playerShips);
+                    break;
+                case 'rotate-control':
+                    currentShip.rotateShip(players, currentPlayer);
+                    break;
+                case 'random-control':
+                    currentShip.randomShip(players, playerShips);
+                    break;
+                case 'reset-control':
+                    currentShip.resetShip(players, playerShips);
+                    break;
+            }
+        });
+    }
+}
+
+/**
  * Update the player-message area with text to provide the player
  * with directions during gameplay.
  * @param {string} message - text to be displayed in player-message area
@@ -406,41 +450,22 @@ function initGame(playerName) {
         }
     }
 
-    /* 
-    Add event listeners to placement buttons. Ascsociated with first Ship object initially.
-    Each method will update the listener to the next Ship object.
-    */
-    let gameButtons = document.getElementsByClassName('game-button');
-    for (let button of gameButtons) {
-        button.addEventListener("click", function () {
-            switch (this.id) {
-                case 'place-control':
-                    playerShips.Carrier.confirmPlaceShip("Carrier", players.player.name);
-                    break;
-                case 'rotate-control':
-                    playerShips.Carrier.rotateShip();
-                    break;
-                case 'random-control':
-                    playerShips.Carrier.randomShip();
-                    break;
-                case 'reset-control':
-                    playerShips.Carrier.resetShip();
-                    break;
-            }
-        });
-    }
+    // Set currentShip to players first ship, the Carrier 
+    let currentShip = playerShips.Carrier;
+    let currentPlayer = players.player;
 
     /*
     Add event listeners to each cell in the player game board to record
     ship coordinates on click. Event listeners will be updated by
     confirmPlaceShip method.
     */
-    let playerCells = document.getElementsByClassName('player-play-area');
-    for (let cell of playerCells) {
-        cell.addEventListener("click", function (event) {
-            playerShips.Carrier.placeShip(event.target.id, playerShips.Carrier, players.player);
-        });
-    }
+    updateCellListener(currentShip, currentPlayer);
+
+    /* 
+    Add event listeners to placement buttons. Ascsociated with first Ship object initially.
+    Each method will update the listener to the next Ship object.
+    */
+    updatePlacementListener(currentShip, currentPlayer);
 
     // show intial welcome and instructions in player message
     playerMessage(`Welcome Commander! Hover over your grid below and click to place your first ship.
@@ -454,7 +479,7 @@ function initGame(playerName) {
 
 }
 
-// need to look at paramters to pass from initgame to rungame
+// RUNGAME - need to look at paramters to pass from initgame to rungame
 function runGame(playerName, players) {
     // add a while loop here to wait until all ships placed?
     // For each ship in playerShips instruct the player to place the ship
