@@ -25,7 +25,7 @@ class Ship {
      * @param {object} shipOject - the ship Object being placed
      * @param {object} player - the player object from  players{}
      */
-    placeShip(cellId, player) {
+    placeShip(cellId, player, playerShips) {
         // Get game board cell object and add first coordinate of Ship object.
         let cell = document.getElementById(cellId);
 
@@ -51,6 +51,9 @@ class Ship {
             // Add the new cell ID to the Ship object's coordinates array
             this.coordinates.push(newCellId);
         }
+
+        // check the coordinates are valid
+        this.checkPlacement(player, playerShips);
 
         /* 
         If Ship object has already been placed remove it from the game board
@@ -136,7 +139,7 @@ class Ship {
 
         playerMessage(currentPlayer.name + " your turn to place your " + nextShip.shipName);
 
-        updateCellListener(nextShip, currentPlayer);
+        updateCellListener(nextShip, currentPlayer, playerShips);
         updatePlacementListener(nextShip, currentPlayer, playerShips);
     }
 
@@ -171,9 +174,11 @@ class Ship {
      * Check's a ships coordinates to make sure it isn't outside
      * of the game board's playable area.
      * @method checkPlacement
+     * @param {object} player - contains player data
+     * @param {object} playerShip - contains player ship data
      * @return {boolean} - returns true if within bounds and false if not
      */
-    checkPlacement() {
+    checkPlacement(player, playerShip) {
 
     }
 
@@ -355,7 +360,7 @@ function checkName(playerName) {
  * @param {object} currentShip - the ship currently being place
  * @param {object} currentPlayer - the player placing ships
  */
-function updateCellListener(currentShip, currentPlayer) {
+function updateCellListener(currentShip, currentPlayer, playerShips) {
     let playerCells = document.getElementsByClassName('player-play-area');
     for (let cell of playerCells) {
         /* 
@@ -366,7 +371,7 @@ function updateCellListener(currentShip, currentPlayer) {
         cell.replaceWith(clonedCell);
 
         clonedCell.addEventListener("click", function (event) {
-            currentShip.placeShip(event.target.id, currentPlayer);
+            currentShip.placeShip(event.target.id, currentPlayer, playerShips);
         });
     }
 }
@@ -378,7 +383,6 @@ function updateCellListener(currentShip, currentPlayer) {
  * @param {object} currentPlayer - the player placing ships 
  */
 function updatePlacementListener(currentShip, currentPlayer, playerShips) {
-    console.log(currentShip);
     let gameButtons = document.getElementsByClassName('game-button');
     for (let button of gameButtons) {
         /* 
@@ -493,7 +497,7 @@ function initGame(playerName) {
     ship coordinates on click. Event listeners will be updated by
     confirmPlaceShip method.
     */
-    updateCellListener(currentShip, currentPlayer);
+    updateCellListener(currentShip, currentPlayer, playerShips);
 
     /* 
     Add event listeners to placement buttons. Ascsociated with first Ship object initially.
@@ -519,7 +523,7 @@ function runGame(playerName, players) {
     // For each ship in playerShips instruct the player to place the ship
     for (let shipName in playerShips) {
         let turnName = players.player.name;
-        playerShips[shipName].placeShip(shipName, turnName);
+        playerShips[shipName].placeShip(shipName, turnName, playerShips);
     }
 }
 
