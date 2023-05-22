@@ -54,15 +54,9 @@ class Ship {
 
         // Check the coordinates are valid
         let coordsDuplicated = this.checkPlacement(this, player, playerShips);
-        console.log('Coord duplicated? ' + coordsDuplicated);
 
         // Get the element at the placed ship coordinates 
         let existCoord = document.getElementById(this.coordinates[0]);
-
-        // if coordinates aren't valid provide player feedback
-        if (coordsDuplicated === 'True') {
-            playerMessage(`${player.name} ships can't overlap or extend past the edge of the grid. Please place your ${this.shipName} again!`);
-        }
 
         /* 
         If Ship object has already been placed or placement isn't valid remove it
@@ -113,11 +107,19 @@ class Ship {
             button.classList.add("pulse");
         }
 
-        // Tell player to place or rotate ship.
-        playerMessage(`${player.name} click <span class="red-text">'ROTATE'</span>
-        to change the direction of your ship or 'PLACE' when you are ready 
-        to place your next ship.`);
-
+        /*
+        Tell player to place or rotate ship. If coordinates aren't valid 
+        tell the player to place the ship again
+        */
+        if (coordsDuplicated === 'True') {
+            console.log('Coord duplicated? ' + coordsDuplicated);
+            playerMessage(`<span class='red-text'>${player.name} ships can't overlap or extend past 
+            the edge of the grid. Please place your ${this.shipName} again!</span>`);
+        } else {
+            playerMessage(`${player.name} click <span class="red-text">'ROTATE'</span>
+            to change the direction of your ship or 'PLACE' when you are ready 
+            to place your next ship.`);
+        }
     }
 
     /**
@@ -201,13 +203,13 @@ class Ship {
                 for (let coords of playerShips[ships].coordinates) {
                     console.log('Coords ' + coords);
 
-                    let coordsResult = checkShip.coordinates.indexOf(coords);
-                    console.log('Coords found ' + coordsResult);
-
                     if (checkShip.coordinates.includes(coords)) {
                         coordsFound = 'True';
+                        console.log('Coords found = ' + coordsFound);
+                        break; // stop checking if any coordinate found
                     } else {
                         coordsFound = 'False';
+                        console.log('Coords found = ' + coordsFound);
                     }
                 }
             }
