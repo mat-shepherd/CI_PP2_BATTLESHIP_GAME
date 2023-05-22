@@ -378,9 +378,17 @@ function updateCellListener(currentShip, currentPlayer) {
  * @param {object} currentPlayer - the player placing ships 
  */
 function updatePlacementListener(currentShip, currentPlayer, playerShips) {
+    console.log(currentShip);
     let gameButtons = document.getElementsByClassName('game-button');
     for (let button of gameButtons) {
-        button.addEventListener("click", function () {
+        /* 
+        Clone the button to remove any previous event listeners.
+        Code adapted from answer by ChatGPT by https://openai.com
+        */
+        const clonedButton = button.cloneNode(true);
+        button.replaceWith(clonedButton);
+
+        clonedButton.addEventListener("click", function () {
             switch (this.id) {
                 case 'place-control':
                     currentShip.confirmPlaceShip(currentPlayer, playerShips);
