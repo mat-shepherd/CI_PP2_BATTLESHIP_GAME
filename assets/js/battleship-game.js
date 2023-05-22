@@ -90,7 +90,7 @@ class Ship {
                 cell.innerHTML += "<img src='./assets/images/ships/submarine.png' class='ship'>";
                 break;
             case 'Destroyer':
-                cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship'>";
+                cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship destroyer'>";
                 break;
         }
 
@@ -133,9 +133,6 @@ class Ship {
 
         // Get the next ship object using the ship name
         let nextShip = playerShips[nextShipName];
-
-        // Use the next ship object as needed
-        console.log("Next ship:", nextShip);
 
         playerMessage(currentPlayer.name + " your turn to place your " + nextShip.shipName);
 
@@ -361,17 +358,16 @@ function checkName(playerName) {
 function updateCellListener(currentShip, currentPlayer) {
     let playerCells = document.getElementsByClassName('player-play-area');
     for (let cell of playerCells) {
-        clickHandler = function (event) {
-            currentShip.placeShip(event.target.id, currentPlayer);
-        };
         /* 
-        Check if the click event listener exists before removing
-        Code adapted from answer provided by ChatGPT by https://openai.com/
+        Clone the cell to remove any previous event listeners.
+        Code adapted from answer by ChatGPT by https://openai.com
         */
-        if (cell.onclick === clickHandler) {
-            cell.removeEventListener("click", clickHandler);
-        }
-        cell.addEventListener("click", clickHandler);
+        const clonedCell = cell.cloneNode(true);
+        cell.replaceWith(clonedCell);
+
+        clonedCell.addEventListener("click", function (event) {
+            currentShip.placeShip(event.target.id, currentPlayer);
+        });
     }
 }
 
@@ -480,7 +476,7 @@ function initGame(playerName) {
         }
     }
 
-    // Set currentShip to players first ship, the Carrier 
+    // Set currentShip and prevShip to players first ship, the Carrier 
     let currentShip = playerShips.Carrier;
     let currentPlayer = players.player;
 

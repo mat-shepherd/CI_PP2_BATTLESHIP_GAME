@@ -75,20 +75,20 @@ nav h1,
 /* Button Pulse Effect - Adapted from https: //www.florin-pop.com/blog/2019/03/css-pulse-effect/ */
 
 .pulse {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
-    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+    transform: scale(2);
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
     0% {
         transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
     }
 
     70% {
         transform: scale(1);
-        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
     }
 
     100% {
@@ -498,6 +498,12 @@ footer {
 #computer-gameboard img.carrier {
     top: 25%;
     left: 5%;
+}
+
+/* adjust placement of destroyer ship image */
+#player-gameboard img.destroyer,
+#computer-gameboard img.destroyer {
+    left: 30%;
 }
 
 #player-gameboard .explosion,
