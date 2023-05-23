@@ -40,7 +40,7 @@ class Ship {
         // Push first coordinate to array
         this.coordinates.push(cellId);
 
-        // Add ships other coordiantes to array based on ship size
+        // Add ships other coordinates to array based on ship size
         for (let cellCount = 0; cellCount < this.size - 1; cellCount++) {
 
             rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
@@ -82,14 +82,41 @@ class Ship {
         let existCoord = document.getElementById(this.coordinates[0]);
 
         /* 
-        If Ship object has already been placed or placement isn't valid remove it
-        from the game board and remove coordiantes from the ship coordinates array
+        If Ship object has already been placed call removeShip
         */
         if (this.coordinates.length > this.size || coordsDuplicated === 'True') {
-            let imageElement = existCoord.querySelector('img');
-            existCoord.removeChild(imageElement);
-            this.coordinates.splice(0, this.size);
+            this.removeShip(player, coordsDuplicated);
         }
+
+        /*
+        Add pulse effect to game-buttons - likely need to move this
+        */
+        let gameButtons = document.getElementsByClassName('game-button');
+        for (let button of gameButtons) {
+            button.classList.add("pulse");
+        }
+    }
+
+    /**
+   * Removes the ship image that has been placed and its coordinates. 
+   * Optionally sends a message to playerMessage and highlights a cel
+   *  with an error warning if placement not valid.
+   * @method placeShip
+   * @param {string} cellId - id of clicked cell
+   * @param {object} shipOject - the ship Object being placed
+   * @param {object} player - the player object from  players{}
+   */
+    removeShip(player, coordsDuplicated) {
+        // Get the element at the placed ship coordinates 
+        let existCoord = document.getElementById(this.coordinates[0]);
+
+        /*
+        If Ship object has already been placed or placement isn't valid remove it
+        from the game board and remove coordinates from the ship coordinates array
+        */
+        let imageElement = existCoord.querySelector('img');
+        existCoord.removeChild(imageElement);
+        this.coordinates.splice(0, this.size);
 
         /*
         Tell player to place or rotate ship. If coordinates aren't valid 
@@ -108,14 +135,6 @@ class Ship {
             playerMessage(`${player.name} click <span class="red-text">'ROTATE'</span>
             to change the direction of your ship or 'PLACE' when you are ready 
             to place your next ship.`);
-        }
-
-        /*
-        Add pulse effect to game-buttons - likely need to move this
-        */
-        let gameButtons = document.getElementsByClassName('game-button');
-        for (let button of gameButtons) {
-            button.classList.add("pulse");
         }
     }
 
