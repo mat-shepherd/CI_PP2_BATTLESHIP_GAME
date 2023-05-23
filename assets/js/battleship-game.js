@@ -103,18 +103,7 @@ class Ship {
             }, 4000);
 
             playerMessage(`<span class='red-text'>${player.name} ships can't overlap or extend past 
-            the edge of the grid. Please place your ${this.shipName} again!</span>`);
-
-            /*
-            Animation to make playerMessage text flash. Code from ChatGPT
-            by https://openai.com
-            */
-            let playMsg = document.getElementById('player-message');
-            playMsg.firstChild.classList.add('flash');
-
-            setTimeout(() => {
-                playMsg.firstChild.classList.remove('flash');
-            }, 2000);
+            the edge of the grid. Please place your ${this.shipName} again!</span>`, 'error');
         } else {
             playerMessage(`${player.name} click <span class="red-text">'ROTATE'</span>
             to change the direction of your ship or 'PLACE' when you are ready 
@@ -465,8 +454,21 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips) {
  * with directions during gameplay.
  * @param {string} message - text to be displayed in player-message area
  */
-function playerMessage(message) {
-    document.getElementById('player-message').innerHTML = message;
+function playerMessage(message, effect) {
+    let playMsg = document.getElementById('player-message');
+    playMsg.innerHTML = message;
+
+    if (effect === 'error') {
+        /*
+        Animation to make playerMessage text flash. Code from ChatGPT
+        by https://openai.com
+        */
+        playMsg.firstChild.classList.add('flash');
+
+        setTimeout(() => {
+            playMsg.firstChild.classList.remove('flash');
+        }, 2000);
+    }
 }
 
 /**
