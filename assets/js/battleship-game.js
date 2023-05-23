@@ -78,9 +78,6 @@ class Ship {
                 break;
         }
 
-        // Get the element at the placed ship coordinates 
-        let existCoord = document.getElementById(this.coordinates[0]);
-
         /* 
         If Ship object has already been placed call removeShip
         */
@@ -146,6 +143,17 @@ class Ship {
      * @param {object} playerShips - the playerShips object
      */
     confirmPlaceShip(currentPlayer, playerShips) {
+        // Once ship is placed remove click event listeners from occupied cells
+        let placedShipCells = this.coordinates;
+        for (let i in placedShipCells) {
+            /* 
+            Clone the cell to remove any previous event listeners.
+            Code adapted from answer by ChatGPT by https://openai.com
+            */
+            let cell = document.getElementById(placedShipCells[i]);
+            console.log(cell);
+            cell.removeEventListener("click", cellClick);
+        }
 
         /* Increase z-index of ship to bring to to top */
         let shipCoord = document.getElementById(this.coordinates[0]);
@@ -536,9 +544,12 @@ function updateCellListener(currentShip, currentPlayer, playerShips) {
         const clonedCell = cell.cloneNode(true);
         cell.replaceWith(clonedCell);
 
-        clonedCell.addEventListener("click", function (event) {
+        function cellClick(event) {
+            // Handle the cell click event
             currentShip.placeShip(event.target.id, currentPlayer, playerShips);
-        });
+        }
+
+        clonedCell.addEventListener("click", cellClick);
     }
 }
 
