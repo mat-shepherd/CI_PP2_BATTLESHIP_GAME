@@ -151,8 +151,7 @@ class Ship {
             Code adapted from answer by ChatGPT by https://openai.com
             */
             let cell = document.getElementById(placedShipCells[i]);
-            console.log(cell);
-            cell.removeEventListener("click", cellClick);
+            cell.replaceWith(cell.cloneNode(true));
         }
 
         /* Increase z-index of ship to bring to to top */
@@ -696,10 +695,10 @@ function initGame(playerName) {
     updatePlacementListener(currentShip, currentPlayer, playerShips);
 
     // show intial welcome and instructions in player message
-    playerMessage(`Welcome Commander! Hover over your grid below and click to place your first ship.
-    Click the 'ROTATE' button to change the direction of your ship and
-    then click the <span class='red-text'>'PLACE'</span> button to confirm your ship's placement. 
-    Click the 'RANDOM' button if you want your ships placed randomly for you.`);
+    playerMessage(`Welcome ${players.player.name}! Click your grid below to place your first ship.
+    Click the 'ROTATE' button to change ship direction and click the 
+    <span class='red-text'>'PLACE'</span> button to confirm ship placement. 
+    Click 'RANDOM' to place ships randomly.`);
 
     // hide intro screen modal to show game boards
     document.getElementById('intro-modal').style.display = "none";
