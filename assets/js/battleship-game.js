@@ -138,6 +138,11 @@ class Ship {
      * @param {object} playerShips - the playerShips object
      */
     confirmPlaceShip(currentPlayer, playerShips) {
+
+        /* Increase z-index of ship to bring to to top */
+        let shipCoord = document.getElementById(this.coordinates[0]);
+        shipCoord.classList.add('placed');
+
         /* 
         Code to get next ship in playerShips adapted from 
         answer by ChatGPT by https://openai.com
