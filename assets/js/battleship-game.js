@@ -509,14 +509,7 @@ class Player {
  * Displays and hides rules modal
  */
 function rulesModal() {
-    // Get the modal
-    var modal = document.getElementById("rules-modal");
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
 }
 
 /**
@@ -532,9 +525,11 @@ function audioToggle() {
         if (elem.paused) {
             elem.muted = false;
             elem.play();
+            document.getElementById('audio-link').innerHTML = `<i class="fa-solid fa-volume-low"></i>`;
         } else {
             elem.muted = true;
             elem.pause();
+            document.getElementById('audio-link').innerHTML = `<i class="fa-solid fa-volume-mute"></i>`;
         }
     }
 }
