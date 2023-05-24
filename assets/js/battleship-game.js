@@ -692,16 +692,35 @@ function addButtonPulse() {
  * Check's if a player's guess results in a ship being hit and provide
  * feedback to player if hit
  * @method checkShipHit
- * @param {} oppPlayer - opposing player to check against
+ * @param {} player - player who took shot, we will check opposite player for hit
  * @param {} shotCoord - coordinates of shop from takeShot()
  */
-function checkShipHit(oppPlayer, shotCoord) {
+function checkShipHit(player, shotCoord) {
+    /* Loop through all of the opposing player's ship coordinates
+     * and check if shot coordinates found . If found, pass oppPlayer 
+     * and shotCoord to hitShip method. If not, pass oppPlayer 
+     * and shotCoord to missShip method. Then pass to checkWinLose().
+    */
+    if 
+}
+
+/**
+ * Check if all of players ships have been sunk. Return
+ * win true or false
+ * @method checkShipHit
+ * @param {} oppPlayer - opposing player to check against
+ * @param {} shotCoord - coordinates of shop from takeShot()
+ * @return {boolean} win - win true of false
+ */
+function checkWinLose(player, shotCoord) {
     /* Loop through all of the opposing player's ship coordinates
      * and check if shot coordinates found . If found, pass oppPlayer 
      * and shotCoord to hitShip method. If not, pass oppPlayer 
      * and shotCoord to missShip method. Then retun to runGame().
     */
 }
+
+
 
 /**
  * Add pulse effect to placement buttons to prompt player.
@@ -857,17 +876,20 @@ function initGame(playerName) {
 /**
  * The runGame function is called by confirmPlaceShip when final ship
  * has been placed. This handles changing game board event listeners to
- * start taking shots
- * entered in start-game-form.
+ * start taking shots.
+ * @param {object} players - holds player objects
+ * @param {object} playerShips - holds player ship objects
+ * @param {object} computerShips - holds computer ship objects
  */
 function runGame(players, playerShips, computerShips) {
     // Runs once ships placed
-    // Remove click events listeners from player game board
+    // Remove click events listeners from player game board - function?
     // Change/remove placement buttons
-    // Add shot event listeners to computer game board - call checkShipHit()
+    // Add shot event listeners to computer game board - clicks call checkShipHit()
     // Add no-placement class to player game board divs and remove form computer game board
+    // Update playerMessage
     // Player takes first shot by clicking on computer game board which calls checkShipHit()
-    // Loops over player ships to see if all ship object sunk attrbiutes are true
+    // Loops over player ships to see if all ship object sunk attributes are true - call playerWinLose() 
     // Returns and calls takeShot method from computer player object which callShipHit
     // Loops over ships 
     for (let shipName in playerShips) {
