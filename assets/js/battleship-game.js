@@ -341,7 +341,7 @@ class Ship {
          * to start turn based game play
          */
         if (countShipsPlaced === 5) {
-            checkTurn();
+            checkTurn(currentPlayer);
         } else {
             /* 
             * Code to get next ship in playerShips adapted from 
@@ -932,8 +932,7 @@ function checkTurn(players, playerShips, computerShips) {
     // Loops over player ships to see if all ship object sunk attributes are true - call playerWinLose() 
     // Returns and calls takeShot method from computer player object which callShipHit
     // Loops over ships 
-
-    if (players.player.turn === true) {
+    if (players.turn === true) {
         console.log('Player One Turn!');
     } else {
         console.log('Player Two Turn!');
