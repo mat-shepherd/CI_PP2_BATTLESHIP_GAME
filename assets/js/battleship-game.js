@@ -25,7 +25,8 @@ class Ship {
      * Records the coordinates of player ships during the ship placement 
      * stage of the game. Passes to checkPlacement to check coordinates
      * are valid for ship size and orientation. If not show an error message
-     * and pass back to runGame loop. Otherwise place ship image and return.
+     * and pass back to runGame loop. Otherwise, if the player is not computer 
+     * place ship image. Then return.
      * @method placeShip
      * @param {string} cellId - id of clicked cell
      * @param {object} shipOject - the ship Object being placed
@@ -65,22 +66,24 @@ class Ship {
          * Check which Ship type has been passed to method and add relevant ship
          * to the gameboard.
          */
-        switch (this.shipName) {
-            case 'Carrier':
-                cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship carrier'>";
-                break;
-            case 'Battleship':
-                cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
-                break;
-            case 'Cruiser':
-                cell.innerHTML += "<img src='./assets/images/ships/cruiser.png' class='ship'>";
-                break;
-            case 'Submarine':
-                cell.innerHTML += "<img src='./assets/images/ships/submarine.png' class='ship'>";
-                break;
-            case 'Destroyer':
-                cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship destroyer'>";
-                break;
+        if (player.name !== 'PLAYER TWO') {
+            switch (this.shipName) {
+                case 'Carrier':
+                    cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship carrier'>";
+                    break;
+                case 'Battleship':
+                    cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                    break;
+                case 'Cruiser':
+                    cell.innerHTML += "<img src='./assets/images/ships/cruiser.png' class='ship'>";
+                    break;
+                case 'Submarine':
+                    cell.innerHTML += "<img src='./assets/images/ships/submarine.png' class='ship'>";
+                    break;
+                case 'Destroyer':
+                    cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship destroyer'>";
+                    break;
+            }
         }
 
         /* 
