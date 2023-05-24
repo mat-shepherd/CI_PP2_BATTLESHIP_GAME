@@ -31,8 +31,7 @@ class Ship {
         /* 
          * Increase the row letter and column number based on the size of the ship.
          * Code adapted from answer provided by ChatGPT by https://openai.com/
-        */
-
+         */
         let rowLetter = cellId[0];
         let columnNumber = parseInt(cellId.slice(1));
 
@@ -265,10 +264,10 @@ class Ship {
      */
     checkPlacement(checkShip, player, playerShips) {
         /*
-        Loop through playerShips and get ship coordinates that
-        aren't the ship being checked. Check the current ship's
-        coordinates against all other coordinates.
-        */
+         * Loop through playerShips and get ship coordinates that
+         * aren't the ship being checked. Check the current ship's
+         * coordinates against all other coordinates.
+         */
         let coordsFound = '';
 
         for (let ships in playerShips) {
@@ -407,7 +406,7 @@ class Gameboard {
 /**
  * Defines the Player attributes
  * @class Player
-*/
+ */
 class Player {
     constructor(playerName, shipsPlaced, shipsRemaining, hits, misses, score, highScore) {
         this.name = playerName;
@@ -537,6 +536,40 @@ function updateCellListener(currentShip, currentPlayer, playerShips) {
     }
 }
 
+/**
+ * Update placement buttons with click event listeners to call methods of 
+ * current ship object. 
+ * @param {object} currentShip - the ship currently being placed
+ * @param {object} currentPlayer - the player placing ships 
+ */
+function updatePlacementListener(currentShip, currentPlayer, playerShips) {
+    let gameButtons = document.getElementsByClassName('game-button');
+    for (let button of gameButtons) {
+        /* 
+         * Clone the button to remove any previous event listeners.
+         * Code adapted from answer by ChatGPT by https://openai.com
+         */
+        const clonedButton = button.cloneNode(true);
+        button.replaceWith(clonedButton);
+
+        clonedButton.addEventListener("click", function () {
+            switch (this.id) {
+                case 'place-control':
+                    currentShip.confirmPlaceShip(currentPlayer, playerShips);
+                    break;
+                case 'rotate-control':
+                    currentShip.rotateShip(currentPlayer, playerShips);
+                    break;
+                case 'random-control':
+                    currentShip.randomShip();
+                    break;
+                case 'reset-control':
+                    currentShip.resetShip();
+                    break;
+            }
+        });
+    }
+}
 
 /**
  * Generate random coordinates to place ships randomly.
@@ -563,41 +596,6 @@ function resetShip(shipObject) {
 }
 
 /**
- * Update placement buttons with click event listeners to call methods of 
- * current ship object. 
- * @param {object} currentShip - the ship currently being placed
- * @param {object} currentPlayer - the player placing ships 
- */
-function updatePlacementListener(currentShip, currentPlayer, playerShips) {
-    let gameButtons = document.getElementsByClassName('game-button');
-    for (let button of gameButtons) {
-        /* 
-        Clone the button to remove any previous event listeners.
-        Code adapted from answer by ChatGPT by https://openai.com
-        */
-        const clonedButton = button.cloneNode(true);
-        button.replaceWith(clonedButton);
-
-        clonedButton.addEventListener("click", function () {
-            switch (this.id) {
-                case 'place-control':
-                    currentShip.confirmPlaceShip(currentPlayer, playerShips);
-                    break;
-                case 'rotate-control':
-                    currentShip.rotateShip(currentPlayer, playerShips);
-                    break;
-                case 'random-control':
-                    currentShip.randomShip();
-                    break;
-                case 'reset-control':
-                    currentShip.resetShip();
-                    break;
-            }
-        });
-    }
-}
-
-/**
  * Update the player-message area with text to provide the player
  * with directions during gameplay.
  * @param {string} message - text to be displayed in player-message area
@@ -608,8 +606,8 @@ function playerMessage(message, effect) {
 
     if (effect === 'error') {
         /*
-        Animation to make playerMessage text flash. Code from ChatGPT
-        by https://openai.com
+         * Animation to make playerMessage text flash. Code from ChatGPT
+         * by https://openai.com
         */
         playMsg.firstChild.classList.add('flash');
 
@@ -640,10 +638,10 @@ function initGame(playerName) {
     const gameBoards = {};
 
     /*  
-    Loop over playerTypes, create a gameboard object for each, 
-    store this in a gameboards object, and then pass these to 
-    createGameBoard() method to generate gameboard and add to
-    screen.
+     * Loop over playerTypes, create a gameboard object for each, 
+     * store this in a gameboards object, and then pass these to 
+     * createGameBoard() method to generate gameboard and add to
+     * screen.
     */
     for (let keys in playerTypes) {
         let owner = keys;
@@ -653,9 +651,9 @@ function initGame(playerName) {
         gameBoards[keys].createGameBoard();
 
         /*
-        For each playerType, create a Player object
-        for each, store this in a players object.
-        */
+         * For each playerType, create a Player object for
+         * each, store this in a players object.
+         */
         let shipsPlaced = 0;
         let shipsRemaining = 5;
         let hits = 0;
@@ -672,10 +670,10 @@ function initGame(playerName) {
         }
 
         /*
-        For each playerType loop over shipTypes, create a 
-        ship object for each, store these in a playerShips and 
-        computerShips object.
-        */
+         * For each playerType loop over shipTypes, create a 
+         * ship object for each, store these in a playerShips and 
+         * computerShips object.
+         */
         for (let shipName in shipTypes) {
             let size = shipTypes[shipName];
             let coordinates = [];
@@ -694,16 +692,16 @@ function initGame(playerName) {
     let currentPlayer = players.player;
 
     /*
-    Add event listeners to each cell in the player game board to record
-    ship coordinates on click. Event listeners will be updated by
-    confirmPlaceShip method.
-    */
+     * Add event listeners to each cell in the player game board to record
+     * ship coordinates on click. Event listeners will be updated by
+     * confirmPlaceShip method.
+     */
     updateCellListener(currentShip, currentPlayer, playerShips);
 
     /* 
-    Add event listeners to placement buttons. Ascsociated with first Ship object initially.
-    Each method will update the listener to the next Ship object.
-    */
+     * Add event listeners to placement buttons. Ascsociated with first Ship object initially.
+     * Each method will update the listener to the next Ship object.
+     */
     updatePlacementListener(currentShip, currentPlayer, playerShips);
 
     // show intial welcome and instructions in player message
@@ -716,7 +714,7 @@ function initGame(playerName) {
     document.getElementById('intro-modal').style.display = "none";
 }
 
-// RUNGAME - need to look at paramters to pass from initgame to rungame
+// RUNGAME - need to look at parameters to pass from initgame to rungame
 
 function runGame(playerName, players) {
     // add a while loop here to wait until all ships placed?
@@ -729,9 +727,11 @@ function runGame(playerName, players) {
 
 // DOCUMENT LOAD EVENT LISTENER
 
-/* Wait for the DOM to finish loading, set focus on player-name input
- add button event listeners, and start-game-form submit listener 
- which passes to checkName() to see if game can start */
+/* 
+ * Wait for the DOM to finish loading, set focus on player-name input
+ * add button event listeners, and start-game-form submit listener 
+ * which passes to checkName() to see if game can start 
+ */
 document.getElementById('player-name').focus();
 document.addEventListener('DOMContentLoaded', function () {
     let playerName = '';
