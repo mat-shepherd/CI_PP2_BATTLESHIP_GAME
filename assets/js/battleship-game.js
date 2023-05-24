@@ -323,37 +323,48 @@ class Ship {
         let shipCoord = document.getElementById(this.coordinates[0]);
         shipCoord.classList.add('placed');
 
-        console.log(this.shipName + ' placed attribute is ' + this.placed);
         /* Set ship object placed to true */
         this.placed = true;
-        console.log(this.shipName + ' placed attribute is ' + this.placed);
-
-        /* 
-         * Code to get next ship in playerShips adapted from 
-         * answer by ChatGPT by https://openai.com
-         */
-
-        // Get the keys of the playerShips object
-        let shipNames = Object.keys(playerShips);
-
-        // Find the index of the current ship
-        let currentIndex = shipNames.indexOf(this.shipName);
-
-        // Get the next ship name from the array
-        let nextShipName = shipNames[currentIndex + 1];
-
-        // Get the next ship object using the ship name
-        let nextShip = playerShips[nextShipName];
-
-        playerMessage(currentPlayer.name + " your turn to place your " + nextShip.shipName);
-
-        updateCellListener(nextShip, currentPlayer, playerShips);
-        updatePlacementListener(nextShip, currentPlayer, playerShips);
 
         /* Confirm is last ship placed if it is
-         * change/remove placement buttons
-         * pass to checkTurn()
+        * change/remove placement buttons
+        * pass to checkTurn()
+        */
+        let countShipsPlaced = 0;
+        for (let ships in playerShips) {
+            if (playerShips[ships].placed === true) {
+                countShipsPlaced++;
+            }
+        }
+
+        /* If all ships placed pass to checkTurn() 
+         * to start turn based game play
          */
+        if (countShipsPlaced === 5) {
+            checkTurn();
+        } else {
+            /* 
+            * Code to get next ship in playerShips adapted from 
+            * answer by ChatGPT by https://openai.com
+            */
+
+            // Get the keys of the playerShips object
+            let shipNames = Object.keys(playerShips);
+
+            // Find the index of the current ship
+            let currentIndex = shipNames.indexOf(this.shipName);
+
+            // Get the next ship name from the array
+            let nextShipName = shipNames[currentIndex + 1];
+
+            // Get the next ship object using the ship name
+            let nextShip = playerShips[nextShipName];
+
+            playerMessage(currentPlayer.name + " your turn to place your " + nextShip.shipName);
+
+            updateCellListener(nextShip, currentPlayer, playerShips);
+            updatePlacementListener(nextShip, currentPlayer, playerShips);
+        }
     }
 
     /**
