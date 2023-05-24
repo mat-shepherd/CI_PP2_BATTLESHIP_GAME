@@ -345,8 +345,8 @@ class Ship {
 
     /**
      * Provides feedback to player that ship was hit and 
-     * add to hits a ship hits attrbiute.
-     * If ship hits coord size is equali to ship size then
+     * updates ship hits attribute.
+     * If ship hits coord size is equal to ship size then
      * sink ship
      * @method hitShip
      */
@@ -378,6 +378,7 @@ class Ship {
 
     /**
      * If ship has been hit maximum amount of times sink ship
+     * Update ship objects sunk attribute to true
      * @method sinkShip
      */
     sinkShip() {
@@ -701,22 +702,21 @@ function checkShipHit(player, shotCoord) {
      * and shotCoord to hitShip method. If not, pass oppPlayer 
      * and shotCoord to missShip method. Then pass to checkWinLose().
     */
-    if 
+    // let oppPlayer = player.
+
 }
 
 /**
- * Check if all of players ships have been sunk. Return
- * win true or false
+ * Check if all of players ships have been sunk by loop the ship
+ * objects shipsRemaining values. Return win true or false
  * @method checkShipHit
  * @param {} oppPlayer - opposing player to check against
- * @param {} shotCoord - coordinates of shop from takeShot()
+ * @param {} shotCoord - coordinates of shot from takeShot()
  * @return {boolean} win - win true of false
  */
 function checkWinLose(player, shotCoord) {
-    /* Loop through all of the opposing player's ship coordinates
-     * and check if shot coordinates found . If found, pass oppPlayer 
-     * and shotCoord to hitShip method. If not, pass oppPlayer 
-     * and shotCoord to missShip method. Then retun to runGame().
+    /* Loop through all of the opposing player's ship objects
+     * if all equal true then return player name and win true.
     */
 }
 
@@ -796,10 +796,11 @@ function initGame(playerName) {
     const gameBoards = {};
 
     /*  
-     * Loop over playerTypes, create a gameboard object for each, 
-     * store this in a gameboards object, and then pass these to 
-     * createGameBoard() method to generate gameboard and add to
-     * screen.
+     * Loop over playerTypes, create a gameboard and player
+     * object for each. Store gameboard objects in gameBoards{} 
+     * and player objects in players{}. Then create ship objects
+     * for each player and store in playerShips{} and 
+     * computerShips{}.
     */
     for (let keys in playerTypes) {
         let owner = keys;
@@ -885,10 +886,10 @@ function runGame(players, playerShips, computerShips) {
     // Runs once ships placed
     // Remove click events listeners from player game board - function?
     // Change/remove placement buttons
-    // Add shot event listeners to computer game board - clicks call checkShipHit()
+    // Add shot event listeners to computer game board - clicks call checkShipHit(playerName)
     // Add no-placement class to player game board divs and remove form computer game board
     // Update playerMessage
-    // Player takes first shot by clicking on computer game board which calls checkShipHit()
+    // Player takes first shot by clicking on computer game board which calls checkShipHit(playerName)
     // Loops over player ships to see if all ship object sunk attributes are true - call playerWinLose() 
     // Returns and calls takeShot method from computer player object which callShipHit
     // Loops over ships 
