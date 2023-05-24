@@ -617,6 +617,17 @@ function playerWinLose() {
 }
 
 /**
+ * Clear all ships from game board. Reset coordinates.
+ * Clear all click listeners. Reset score excluding 
+ * high score.
+ * Call initGame().
+ */
+function newGame() {
+
+}
+
+
+/**
  * Update the player-message area with text to provide the player
  * with directions during gameplay.
  * @param {string} message - text to be displayed in player-message area
