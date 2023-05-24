@@ -103,10 +103,9 @@ class Ship {
      * Removes the ship image that has been placed and its coordinates. 
      * Optionally sends a message to playerMessage and highlights a cel
      *  with an error warning if placement not valid.
-     * @method placeShip
-     * @param {string} cellId - id of clicked cell
-     * @param {object} shipOject - the ship Object being placed
+     * @method removeShip
      * @param {object} player - the player object from  players{}
+     * @param {boolean} coordsDuplicated - true if ship coords found
      */
     removeShip(player, coordsDuplicated) {
         // Get the element at the placed ship coordinates 
@@ -299,7 +298,9 @@ class Ship {
 
     /**
      * Locks in ship placement when player clicks place button, update
-     * cell and palcmenet button event listeners 
+     * cell and placement button event listeners. 
+     * Checks if all players ships have been placed and then passes to
+     * checkTurn().
      * @method confirmPlaceShip
      * @param {object} currentPlayer - the current player
      * @param {object} playerShips - the playerShips object
@@ -341,19 +342,25 @@ class Ship {
 
         updateCellListener(nextShip, currentPlayer, playerShips);
         updatePlacementListener(nextShip, currentPlayer, playerShips);
+
+        /* Confirm is last ship placed if it is
+         * change/remove placement buttons
+         * pass to checkTurn()
+         */
     }
 
     /**
      * Provides feedback to player that ship was hit and 
      * updates ship hits attribute.
      * If ship hits coord size is equal to ship size then
-     * sink ship
+     * call sink ship
      * @method hitShip
      */
     hitShip() {
         // if computer player will need to add ship image to cell
         // then add hit effect
-        // if 
+        // remove click listener from cell
+        // add no-placement class to cell
 
         /* test placing a ship and explosion effect
         let testDiv = document.getElementById('p52');
@@ -373,6 +380,9 @@ class Ship {
      * @method missShip
      */
     missShip() {
+        // missShip effect
+        // remove clicklistener from cell
+        // add no-placement clas to cell
 
     }
 
@@ -443,15 +453,17 @@ class Gameboard {
  * @param {number} misses - number of misses for scoreboard
  * @param {number} score - player score for scoreboard
  * @param {number} highScore - player high score for scoreboard
+ * @param {boolean} turn - stores true if it is player's turn
  */
 class Player {
-    constructor(playerName, shipsRemaining, hits, misses, score, highScore) {
+    constructor(playerName, shipsRemaining, hits, misses, score, highScore, turn) {
         this.name = playerName;
         this.shipsRemaining = shipsRemaining;
         this.hits = hits;
         this.misses = misses;
         this.score = score;
         this.highScore = highScore;
+        this.turn = turn;
     }
 
     /**
@@ -581,14 +593,14 @@ function audioToggle() {
 
 /**
  * Checks that a name has been entered on the intro screen
- * before passing flow on to initGame(). If no name entered
+ * before passing flow on to initPlacement(). If no name entered
  * this displays an error message in the form.
  * @param {string} playername - name entered by player 
  */
 function checkName(playerName) {
     let errorMsg = document.getElementById('error-message');
     if (playerName) {
-        initGame(playerName);
+        initPlacement(playerName);
     } else {
         errorMsg.innerHTML = '<p>YOU MUST ENTER YOUR NAME TO START</p>';
     }
@@ -623,8 +635,9 @@ function updateCellListener(currentShip, currentPlayer, playerShips) {
 /**
  * Update placement buttons with click event listeners to call methods of 
  * current ship object. 
- * @param {object} currentShip - the ship currently being placed
- * @param {object} currentPlayer - the player placing ships 
+ * @param {object} currentShip - the ship object from Playerships currently being placed
+ * @param {object} currentPlayer - the player object from players that is placing ships
+ * @param {object} playerShips - object containing the player's ship objects
  */
 function updatePlacementListener(currentShip, currentPlayer, playerShips) {
     let gameButtons = document.getElementsByClassName('game-button');
@@ -703,13 +716,13 @@ function checkShipHit(player, shotCoord) {
      * and shotCoord to missShip method. Then pass to checkWinLose().
     */
     // let oppPlayer = player.
-
+    let playerWin = checkWInLose(player, shotCoord);
 }
 
 /**
  * Check if all of players ships have been sunk by loop the ship
  * objects shipsRemaining values. Return win true or false
- * @method checkShipHit
+ * @method checkWinLose
  * @param {} oppPlayer - opposing player to check against
  * @param {} shotCoord - coordinates of shot from takeShot()
  * @return {boolean} win - win true of false
@@ -718,6 +731,9 @@ function checkWinLose(player, shotCoord) {
     /* Loop through all of the opposing player's ship objects
      * if all equal true then return player name and win true.
     */
+    let win = false;
+
+    return win;
 }
 
 
@@ -745,7 +761,7 @@ function playerWinLose() {
  * Clear all ships from game board. Reset coordinates.
  * Clear all click listeners. Reset score excluding 
  * high score.
- * Call initGame().
+ * Call initPlacement().
  */
 function newGame() {
     // REPLACE THIS! TEMPORARY WAY OF STARING NEW GAME
@@ -775,16 +791,16 @@ function playerMessage(message, effect) {
     }
 }
 
-// GAME INITIALISATION AND MAIN LOOP FUNCTIONS
+// GAME PLACEMENT AND INITIALISATION FUNCTIONS
 
 /**
- * The game initialisation function called by checkName when a name has been
+ * The game placement function called by checkName when a name has been
  * entered on the start-game-form. Calls functions to create
  * players and gameboards, add placement button and gameboard grid
  * event listeners then passes to runGame().
  * @param {string} playerName - players name entered in start-game-form.
  */
-function initGame(playerName) {
+function initPlacement(playerName) {
     /**
     * Define game object variables
     */
@@ -819,12 +835,16 @@ function initGame(playerName) {
         let score = 0;
         let highScore = 0;
         if (owner === 'player') {
-            players[keys] = new Player(playerName, shipsRemaining, hits, misses, score, highScore);
+            // set inital turn attribute to True so player gets first turn
+            let turn = true;
+            players[keys] = new Player(playerName, shipsRemaining, hits, misses, score, highScore, turn);
             // Replace player one's name in sidebar with name provided 
             players[keys].updateName(playerName.toUpperCase());
         } else {
+            // set inital turn attribute to Flase so player gets second turn
+            let turn = false;
             playerName = playerTypes[keys];
-            players[keys] = new Player(playerName, shipsRemaining, hits, misses, score, highScore);
+            players[keys] = new Player(playerName, shipsRemaining, hits, misses, score, highScore, turn);
         }
 
         /*
@@ -872,20 +892,20 @@ function initGame(playerName) {
     document.getElementById('intro-modal').style.display = "none";
 }
 
-// RUNGAME - need to look at parameters to pass from initgame to rungame
+// RUNGAME - need to look at parameters to pass from initPlacement to rungame
 
 /**
- * The runGame function is called by confirmPlaceShip when final ship
+ * The checkTurn function is called by confirmPlaceShip when final ship
  * has been placed. This handles changing game board event listeners to
  * start taking shots.
  * @param {object} players - holds player objects
  * @param {object} playerShips - holds player ship objects
  * @param {object} computerShips - holds computer ship objects
  */
-function runGame(players, playerShips, computerShips) {
+function checkTurn(players, playerShips, computerShips) {
     // Runs once ships placed
+    // if player turn = true player turn else computer turn
     // Remove click events listeners from player game board - function?
-    // Change/remove placement buttons
     // Add shot event listeners to computer game board - clicks call checkShipHit(playerName)
     // Add no-placement class to player game board divs and remove form computer game board
     // Update playerMessage
@@ -893,9 +913,11 @@ function runGame(players, playerShips, computerShips) {
     // Loops over player ships to see if all ship object sunk attributes are true - call playerWinLose() 
     // Returns and calls takeShot method from computer player object which callShipHit
     // Loops over ships 
-    for (let shipName in playerShips) {
-        let turnName = players.player.name;
-        playerShips[shipName].placeShip(shipName, turnName, playerShips);
+
+    if (players.player.turn === true) {
+        console.log('Player One Turn!');
+    } else {
+        console.log('Player Two Turn!');
     }
 }
 
