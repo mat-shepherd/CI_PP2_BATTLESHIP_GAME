@@ -211,12 +211,17 @@ footer {
  * https://www.w3schools.com/howto/howto_css_modals.asp
    ========================================================================== */
 
-#rules-modal-contents {
+#rules-modal {
     display: none;
 }
 
-#intro-modal {
+#intro-modal,
+#intro-modal-contents {
     display: flex;
+}
+
+#intro-modal,
+#rules-modal {
     flex-direction: column;
     position: absolute;
     z-index: 500;
@@ -227,10 +232,6 @@ footer {
     background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left;
     border-radius: 10px;
     justify-content: center;
-}
-
-#intro-modal-contents {
-    display: flex;
 }
 
 #intro-modal-contents,
