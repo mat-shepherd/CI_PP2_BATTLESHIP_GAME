@@ -517,6 +517,16 @@ function rulesModal() {
  * https://stackoverflow.com/a/37218500/21643967
  */
 function audioToggle() {
+    // Check state of audio button icon and toggle
+    let audioLink = document.getElementById('audio-link');
+    let audioLinkIcon = document.getElementById('audio-link').firstChild;
+
+    if (audioLinkIcon.classList.contains('fa-volume-mute')) {
+        audioLink.innerHTML = `<i class="fa-solid fa-volume-low"></i>`;
+    } else {
+        audioLink.innerHTML = `<i class="fa-solid fa-volume-mute"></i>`;
+    }
+
     // Get all video and audio elements on the page
     document.querySelectorAll("video, audio").forEach(elem => toggleMute(elem));
 
@@ -525,11 +535,9 @@ function audioToggle() {
         if (elem.paused) {
             elem.muted = false;
             elem.play();
-            document.getElementById('audio-link').innerHTML = `<i class="fa-solid fa-volume-low"></i>`;
         } else {
             elem.muted = true;
             elem.pause();
-            document.getElementById('audio-link').innerHTML = `<i class="fa-solid fa-volume-mute"></i>`;
         }
     }
 }
@@ -814,9 +822,9 @@ function runGame(playerName, players) {
 document.getElementById('player-name').focus();
 document.addEventListener('DOMContentLoaded', function () {
 
-    document.getElementById('new-game-link').addEventListener('click', newGame());
-    document.getElementById('rules-link').addEventListener('click', rulesModal());
-    document.getElementById('audio-link').addEventListener('click', audioToggle());
+    document.getElementById('new-game-link').addEventListener('click', newGame);
+    document.getElementById('rules-link').addEventListener('click', rulesModal);
+    document.getElementById('audio-link').addEventListener('click', audioToggle);
 
     let playerName = '';
 
