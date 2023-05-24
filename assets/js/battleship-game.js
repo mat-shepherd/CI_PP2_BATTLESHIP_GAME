@@ -509,7 +509,14 @@ class Player {
  * Displays and hides rules modal
  */
 function rulesModal() {
+    // Get the modal
+    var modal = document.getElementById("rules-modal");
 
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 }
 
 /**
@@ -814,7 +821,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('new-game-link').addEventListener('click', newGame());
     document.getElementById('rules-link').addEventListener('click', rulesModal());
-    document.getElementById('audio-link'.addEventListener('click', audioToggle());
+    document.getElementById('audio-link').addEventListener('click', audioToggle());
 
     let playerName = '';
 
