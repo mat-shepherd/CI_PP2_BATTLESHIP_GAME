@@ -4,14 +4,21 @@
  * Defines the various ship game piece objects which represent the
  * ships the players place on the game board.
  * @class Ship
+ * @param {string} shipName - name of ship type
+ * @param {string} size - number of cells a ship occupies
+ * @param {object} coordinates - cell coordiantes of ships location
+ * @param {string} direction - direction of ships rotation
+ * @param {object} hits - coordiantes where ship is hit
+ * @param {boolean} sunk - true if ship is sunk false if not
 */
 class Ship {
-    constructor(shipName, size, coordinates, direction, hits) {
+    constructor(shipName, size, coordinates, direction, hits, sunk) {
         this.shipName = shipName;
         this.size = size;
         this.coordinates = coordinates;
         this.direction = direction;
         this.hits = hits;
+        this.sunk = sunk;
     }
 
     /**
@@ -339,6 +346,17 @@ class Ship {
     /**
      * Check's if a player's guess results in a ship being hit and provide
      * feedback to player if hit
+     * @method checkShipHit
+     */
+    checkShipHit() {
+
+    }
+
+    /**
+     * Provides feedback to player that ship was hit and 
+     * add to hits a ship hits attrbiute.
+     * If ship hits coord size is equali to ship size then
+     * sink ship
      * @method hitShip
      */
     hitShip() {
@@ -351,6 +369,14 @@ class Ship {
      * @method missShip
      */
     missShip() {
+
+    }
+
+    /**
+     * If ship has been hit maximum amount of times sink ship
+     * @method sinkShip
+     */
+    sinkShip() {
 
     }
 }
@@ -406,9 +432,15 @@ class Gameboard {
 /**
  * Defines the Player attributes
  * @class Player
+ * @param {string} playerName - name of player
+ * @param {number} shipsRemaining - number of ships remaining for scoreboard
+ * @param {number} hits - number of hits for scoreboard
+ * @param {number} misses - number of misses for scoreboard
+ * @param {number} score - player score for scoreboard
+ * @param {number} highScore - player high score for scoreboard
  */
 class Player {
-    constructor(playerName, shipsPlaced, shipsRemaining, hits, misses, score, highScore) {
+    constructor(playerName, shipsRemaining, hits, misses, score, highScore) {
         this.name = playerName;
         this.shipsPlaced = shipsPlaced;
         this.shipsRemaining = shipsRemaining;
@@ -421,18 +453,9 @@ class Player {
     /**
      * This method 
      *
-     * @method shipsPlaced
-     */
-    shipsPlaced() {
-
-    }
-
-    /**
-     * This method 
-     *
      * @method shipsRemaining
      */
-    shipsRemaining() {
+    updateShipsRemaining() {
 
     }
 
@@ -479,15 +502,6 @@ class Player {
      * @method 
      */
     updateHighScore() {
-
-    }
-
-    /**
-     * This method 
-     *
-     * @method 
-     */
-    playerWin() {
 
     }
 }
@@ -593,6 +607,14 @@ function randomShip(shipObject) {
 function resetShip(shipObject) {
     // for each 
     console.log("Reset Ship!");
+}
+
+/**
+ * If all ships sunk notify player of win or loss.
+ * Give the player option to start new game.
+ */
+function playerWinLose() {
+
 }
 
 /**
@@ -717,8 +739,9 @@ function initGame(playerName) {
 // RUNGAME - need to look at parameters to pass from initgame to rungame
 
 function runGame(playerName, players) {
-    // add a while loop here to wait until all ships placed?
-    // For each ship in playerShips instruct the player to place the ship
+    // Runs once ships placed
+    // Passes back and forth between each player taking shots
+    // Loops over ships 
     for (let shipName in playerShips) {
         let turnName = players.player.name;
         playerShips[shipName].placeShip(shipName, turnName, playerShips);
