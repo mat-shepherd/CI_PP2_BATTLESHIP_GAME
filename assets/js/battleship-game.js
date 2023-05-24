@@ -506,6 +506,33 @@ class Player {
 // HELPER FUNCTIONS
 
 /**
+ * Displays and hides rules modal
+ */
+function rulesModal() {
+
+}
+
+/**
+ * Turns audio on and off. Code adapted from
+ * https://stackoverflow.com/a/37218500/21643967
+ */
+function audioToggle() {
+    // Get all video and audio elements on the page
+    document.querySelectorAll("video, audio").forEach(elem => toggleMute(elem));
+
+    // Check if element paused and toggle
+    function toggleMute(elem) {
+        if (elem.paused) {
+            elem.muted = false;
+            elem.play();
+        } else {
+            elem.muted = true;
+            elem.pause();
+        }
+    }
+}
+
+/**
  * Checks that a name has been entered on the intro screen
  * before passing flow on to initGame(). If no name entered
  * this displays an error message in the form.
@@ -779,11 +806,16 @@ function runGame(playerName, players) {
 
 /* 
  * Wait for the DOM to finish loading, set focus on player-name input
- * add button event listeners, and start-game-form submit listener 
- * which passes to checkName() to see if game can start 
+ * add link and button event listeners, and start-game-form submit 
+ * listener which passes to checkName() to see if game can start 
  */
 document.getElementById('player-name').focus();
 document.addEventListener('DOMContentLoaded', function () {
+
+    document.getElementById('new-game-link').addEventListener('click', newGame());
+    document.getElementById('rules-link').addEventListener('click', rulesModal());
+    document.getElementById('audio-link'.addEventListener('click', audioToggle());
+
     let playerName = '';
 
     let startForm = document.getElementById('start-game-form');
