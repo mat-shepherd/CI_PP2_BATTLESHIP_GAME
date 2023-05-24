@@ -442,7 +442,6 @@ class Gameboard {
 class Player {
     constructor(playerName, shipsRemaining, hits, misses, score, highScore) {
         this.name = playerName;
-        this.shipsPlaced = shipsPlaced;
         this.shipsRemaining = shipsRemaining;
         this.hits = hits;
         this.misses = misses;
