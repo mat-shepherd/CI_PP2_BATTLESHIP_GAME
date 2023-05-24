@@ -10,13 +10,19 @@ body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
+#rules-modal-contents {
+    display: none;
+}
+
 nav h1,
-#intro-modal-contents h2 {
+#intro-modal-contents h2,
+#rules-modal-contents h2 {
     font-family: 'Black Ops One', 'Lucida Sans Typewriter', Helvetica, sans-serif;
     letter-spacing: 0.1rem;
 }
 
-#intro-modal-contents h2 {
+#intro-modal-contents h2,
+#rules-modal-contents h2 {
     font-size: 3rem;
     text-transform: uppercase;
     margin-top: 10px;
@@ -224,6 +230,10 @@ footer {
 
 #intro-modal-contents {
     display: flex;
+}
+
+#intro-modal-contents,
+#rules-modal-contents {
     flex-direction: column;
     justify-content: center;
     align-items: center;
