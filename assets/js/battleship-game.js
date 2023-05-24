@@ -734,7 +734,10 @@ function checkShipHit(player, shotCoord) {
      * and shotCoord to missShip method. Then pass to checkWinLose().
     */
     // let oppPlayer = player.
-    let playerWin = checkWInLose(player, shotCoord);
+
+    // set player turn attribute to false so game play passes back to computer
+    player.turn = false;
+    let playerWin = checkWinLose(player, shotCoord);
 }
 
 /**
@@ -923,19 +926,23 @@ function initPlacement(playerName) {
  */
 function checkTurn(players, playerShips, computerShips) {
     // Runs once ships placed
-    // if player turn = true player turn else computer turn
     // Remove click events listeners from player game board - function?
     // Add shot event listeners to computer game board - clicks call checkShipHit(playerName)
     // Add no-placement class to player game board divs and remove form computer game board
     // Update playerMessage
     // Player takes first shot by clicking on computer game board which calls checkShipHit(playerName)
-    // Loops over player ships to see if all ship object sunk attributes are true - call playerWinLose() 
+    // Loops over player ships to see if all ship object sunk attributes are true - call playerWinLose()
     // Returns and calls takeShot method from computer player object which callShipHit
-    // Loops over ships 
+    // Loops over ships
+    // if player turn = true player turn else computer turn
     if (players.turn === true) {
         console.log('Player One Turn!');
+        // add checkShipHit event listeners to computer game board
+        playerMessage(players.name + " CLICK ANYWHERE ON PLAYER TWO'S GRID TO TAKE A SHOT ON THEM!");
     } else {
         console.log('Player Two Turn!');
+        playerMessage("PLAYER TWO IS TAKING THEIR SHOT ON YOU!");
+        // call takeShot
     }
 }
 
