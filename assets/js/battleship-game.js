@@ -1,3 +1,5 @@
+// CLASSES
+
 /** 
  * Defines the various ship game piece objects which represent the
  * ships the players place on the game board.
@@ -27,8 +29,8 @@ class Ship {
         let cell = document.getElementById(cellId);
 
         /* 
-        Increase the row letter and column number based on the size of the ship.
-        Code adapted from answer provided by ChatGPT by https://openai.com/
+         * Increase the row letter and column number based on the size of the ship.
+         * Code adapted from answer provided by ChatGPT by https://openai.com/
         */
 
         let rowLetter = cellId[0];
@@ -54,9 +56,9 @@ class Ship {
         let coordsDuplicated = this.checkPlacement(this, player, playerShips);
 
         /*
-        Check which Ship type has been passed to method and add relevant ship
-        to the gameboard.
-        */
+         * Check which Ship type has been passed to method and add relevant ship
+         * to the gameboard.
+         */
         switch (this.shipName) {
             case 'Carrier':
                 cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship carrier'>";
@@ -76,15 +78,15 @@ class Ship {
         }
 
         /* 
-        If Ship object has already been placed call removeShip
-        */
+         * If Ship object has already been placed call removeShip
+         */
         if (this.coordinates.length > this.size || coordsDuplicated === 'True') {
             this.removeShip(player, coordsDuplicated);
         }
 
         /*
-        Add pulse effect to game-buttons - likely need to move this
-        */
+         * Add pulse effect to game-buttons - likely need to move this
+         */
         let gameButtons = document.getElementsByClassName('game-button');
         for (let button of gameButtons) {
             button.classList.add("pulse");
@@ -105,17 +107,17 @@ class Ship {
         let existCoord = document.getElementById(this.coordinates[0]);
 
         /*
-        If Ship object has already been placed or placement isn't valid remove it
-        from the game board and remove coordinates from the ship coordinates array
-        */
+         * If Ship object has already been placed or placement isn't valid remove it
+         * from the game board and remove coordinates from the ship coordinates array
+         */
         let imageElement = existCoord.querySelector('img');
         existCoord.removeChild(imageElement);
         this.coordinates.splice(0, this.size);
 
         /*
-        Tell player to place or rotate ship. If coordinates aren't valid 
-        tell the player to place the ship again.
-        */
+         * Tell player to place or rotate ship. If coordinates aren't valid 
+         * tell the player to place the ship again.
+         */
         if (coordsDuplicated === 'True') {
             // add a red background to cell and then remove after 2 seconds
             existCoord.classList.add('red-background');
@@ -313,9 +315,9 @@ class Ship {
         shipCoord.classList.add('placed');
 
         /* 
-        Code to get next ship in playerShips adapted from 
-        answer by ChatGPT by https://openai.com
-        */
+         * Code to get next ship in playerShips adapted from 
+         * answer by ChatGPT by https://openai.com
+         */
 
         // Get the keys of the playerShips object
         let shipNames = Object.keys(playerShips);
@@ -333,23 +335,6 @@ class Ship {
 
         updateCellListener(nextShip, currentPlayer, playerShips);
         updatePlacementListener(nextShip, currentPlayer, playerShips);
-    }
-
-    /**
-     * Generate random coordinates to place ships randomly.
-     * @method randomShip
-     */
-    randomShip() {
-        console.log("Random Ship!");
-    }
-
-    /**
-     * Reset ship placement to clear ships from the game board
-     * and allow the player to start placing ships again.
-     * @method resetShip
-     */
-    resetShip() {
-        console.log("Reset Ship!");
     }
 
     /**
@@ -508,6 +493,9 @@ class Player {
     }
 }
 
+
+// HELPER FUNCTIONS
+
 /**
  * Checks that a name has been entered on the intro screen
  * before passing flow on to initGame(). If no name entered
@@ -547,6 +535,31 @@ function updateCellListener(currentShip, currentPlayer, playerShips) {
 
         clonedCell.addEventListener("click", cellClick);
     }
+}
+
+
+/**
+ * Generate random coordinates to place ships randomly.
+ * @param {object} shipObject - the playerShip or computerShip object
+ */
+function randomShip(shipObject) {
+    // pass to resetShip in case ship already placed
+    // for each ship in shipObject generate a random alphanumeric coord
+    // pass coordinate to checkShipPlacement
+    // if coords found generate again
+    // if not found add to ship.coordinates
+    // pass ship object to placeship
+    // pass to runGame
+    console.log("Random Ship!");
+}
+
+/**
+ * Reset ship placement to clear ships from the game board
+ * and allow the player to start placing ships again.
+ */
+function resetShip(shipObject) {
+    // for each 
+    console.log("Reset Ship!");
 }
 
 /**
@@ -605,6 +618,8 @@ function playerMessage(message, effect) {
         }, 2000);
     }
 }
+
+// GAME INITIALISATION AND MAIN LOOP FUNCTIONS
 
 /**
  * The game initialisation loop called by checkName when a name has been
@@ -699,11 +714,10 @@ function initGame(playerName) {
 
     // hide intro screen modal to show game boards
     document.getElementById('intro-modal').style.display = "none";
-
-
 }
 
 // RUNGAME - need to look at paramters to pass from initgame to rungame
+
 function runGame(playerName, players) {
     // add a while loop here to wait until all ships placed?
     // For each ship in playerShips instruct the player to place the ship
@@ -712,6 +726,8 @@ function runGame(playerName, players) {
         playerShips[shipName].placeShip(shipName, turnName, playerShips);
     }
 }
+
+// DOCUMENT LOAD EVENT LISTENER
 
 /* Wait for the DOM to finish loading, set focus on player-name input
  add button event listeners, and start-game-form submit listener 
@@ -728,9 +744,7 @@ document.addEventListener('DOMContentLoaded', function () {
         checkName(playerName);
     });
 
-    // add event listeners to player gameboard to detect clicks during ship placement
-
-    // test placing a ship and explosion effect
+    /* test placing a ship and explosion effect
     let testDiv = document.getElementById('p52');
     let gridLocation = testDiv.className;
     testDiv.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
@@ -739,5 +753,5 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('[id^="explode-"]').remove();
         testDiv.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
     }, 3700);
-
+    */
 });
