@@ -696,7 +696,8 @@ function playerWinLose() {
  * Call initGame().
  */
 function newGame() {
-
+    // REPLACE THIS! TEMPORARY WAY OF STARING NEW GAME
+    location.reload();
 }
 
 
