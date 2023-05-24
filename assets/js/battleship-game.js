@@ -344,15 +344,6 @@ class Ship {
     }
 
     /**
-     * Check's if a player's guess results in a ship being hit and provide
-     * feedback to player if hit
-     * @method checkShipHit
-     */
-    checkShipHit() {
-
-    }
-
-    /**
      * Provides feedback to player that ship was hit and 
      * add to hits a ship hits attrbiute.
      * If ship hits coord size is equali to ship size then
@@ -360,7 +351,20 @@ class Ship {
      * @method hitShip
      */
     hitShip() {
+        // if computer player will need to add ship image to cell
+        // then add hit effect
+        // if 
 
+        /* test placing a ship and explosion effect
+        let testDiv = document.getElementById('p52');
+        let gridLocation = testDiv.className;
+        testDiv.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+        testDiv.innerHTML += `<img src='./assets/images/effects/explosion.gif' id='explode-${gridLocation}' class='explosion'>`;
+        setTimeout(function () {
+            document.querySelector('[id^="explode-"]').remove();
+            testDiv.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
+        }, 3700);
+        */
     }
 
     /**
@@ -501,6 +505,16 @@ class Player {
      * @method 
      */
     updateHighScore() {
+
+    }
+
+    /**
+     * For computer player only. Generates random coordinate on the board
+     * to take a shot.
+     * @method 
+     */
+
+    takeShot() {
 
     }
 }
@@ -675,6 +689,21 @@ function addButtonPulse() {
 }
 
 /**
+ * Check's if a player's guess results in a ship being hit and provide
+ * feedback to player if hit
+ * @method checkShipHit
+ * @param {} oppPlayer - opposing player to check against
+ * @param {} shotCoord - coordinates of shop from takeShot()
+ */
+function checkShipHit(oppPlayer, shotCoord) {
+    /* Loop through all of the opposing player's ship coordinates
+     * and check if shot coordinates found . If found, pass oppPlayer 
+     * and shotCoord to hitShip method. If not, pass oppPlayer 
+     * and shotCoord to missShip method. Then retun to runGame().
+    */
+}
+
+/**
  * Add pulse effect to placement buttons to prompt player.
  */
 function removeButtonPulse() {
@@ -689,7 +718,8 @@ function removeButtonPulse() {
  * Give the player option to start new game.
  */
 function playerWinLose() {
-
+    // show intro-modal again but replace contents with win/lose message
+    // show new game button
 }
 
 /**
@@ -729,7 +759,7 @@ function playerMessage(message, effect) {
 // GAME INITIALISATION AND MAIN LOOP FUNCTIONS
 
 /**
- * The game initialisation loop called by checkName when a name has been
+ * The game initialisation function called by checkName when a name has been
  * entered on the start-game-form. Calls functions to create
  * players and gameboards, add placement button and gameboard grid
  * event listeners then passes to runGame().
@@ -763,19 +793,18 @@ function initGame(playerName) {
          * For each playerType, create a Player object for
          * each, store this in a players object.
          */
-        let shipsPlaced = 0;
         let shipsRemaining = 5;
         let hits = 0;
         let misses = 0;
         let score = 0;
         let highScore = 0;
         if (owner === 'player') {
-            players[keys] = new Player(playerName, shipsPlaced, shipsRemaining, hits, misses, score, highScore);
+            players[keys] = new Player(playerName, shipsRemaining, hits, misses, score, highScore);
             // Replace player one's name in sidebar with name provided 
             players[keys].updateName(playerName.toUpperCase());
         } else {
             playerName = playerTypes[keys];
-            players[keys] = new Player(playerName, shipsPlaced, shipsRemaining, hits, misses, score, highScore);
+            players[keys] = new Player(playerName, shipsRemaining, hits, misses, score, highScore);
         }
 
         /*
@@ -825,9 +854,21 @@ function initGame(playerName) {
 
 // RUNGAME - need to look at parameters to pass from initgame to rungame
 
-function runGame(playerName, players) {
+/**
+ * The runGame function is called by confirmPlaceShip when final ship
+ * has been placed. This handles changing game board event listeners to
+ * start taking shots
+ * entered in start-game-form.
+ */
+function runGame(players, playerShips, computerShips) {
     // Runs once ships placed
-    // Passes back and forth between each player taking shots
+    // Remove click events listeners from player game board
+    // Change/remove placement buttons
+    // Add shot event listeners to computer game board - call checkShipHit()
+    // Add no-placement class to player game board divs and remove form computer game board
+    // Player takes first shot by clicking on computer game board which calls checkShipHit()
+    // Loops over player ships to see if all ship object sunk attrbiutes are true
+    // Returns and calls takeShot method from computer player object which callShipHit
     // Loops over ships 
     for (let shipName in playerShips) {
         let turnName = players.player.name;
@@ -873,14 +914,4 @@ document.addEventListener('DOMContentLoaded', function () {
         checkName(playerName);
     });
 
-    /* test placing a ship and explosion effect
-    let testDiv = document.getElementById('p52');
-    let gridLocation = testDiv.className;
-    testDiv.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
-    testDiv.innerHTML += `<img src='./assets/images/effects/explosion.gif' id='explode-${gridLocation}' class='explosion'>`;
-    setTimeout(function () {
-        document.querySelector('[id^="explode-"]').remove();
-        testDiv.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
-    }, 3700);
-    */
 });
