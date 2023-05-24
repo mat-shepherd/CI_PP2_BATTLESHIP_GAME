@@ -93,10 +93,7 @@ class Ship {
         /*
          * Add pulse effect to game-buttons - likely need to move this
          */
-        let gameButtons = document.getElementsByClassName('game-button');
-        for (let button of gameButtons) {
-            button.classList.add("pulse");
-        }
+        addButtonPulse();
     }
 
     /**
@@ -606,6 +603,26 @@ function randomShip(shipObject) {
 function resetShip(shipObject) {
     // for each 
     console.log("Reset Ship!");
+}
+
+/**
+ * Add pulse effect to placement buttons to prompt player.
+ */
+function addButtonPulse() {
+    let gameButtons = document.getElementsByClassName('game-button');
+    for (let button of gameButtons) {
+        button.classList.add("pulse");
+    }
+}
+
+/**
+ * Add pulse effect to placement buttons to prompt player.
+ */
+function removeButtonPulse() {
+    let gameButtons = document.getElementsByClassName('game-button');
+    for (let button of gameButtons) {
+        button.classList.remove("pulse");
+    }
 }
 
 /**
