@@ -1,11 +1,8 @@
-/**
-* Defines the various ship game piece objects which represent the
-* ships the players place on the game board.
-* @class Ship
-* @param {string}
-* @return {string}
+/** 
+ * Defines the various ship game piece objects which represent the
+ * ships the players place on the game board.
+ * @class Ship
 */
-
 class Ship {
     constructor(shipName, size, coordinates, direction, hits) {
         this.shipName = shipName;
@@ -95,14 +92,14 @@ class Ship {
     }
 
     /**
-   * Removes the ship image that has been placed and its coordinates. 
-   * Optionally sends a message to playerMessage and highlights a cel
-   *  with an error warning if placement not valid.
-   * @method placeShip
-   * @param {string} cellId - id of clicked cell
-   * @param {object} shipOject - the ship Object being placed
-   * @param {object} player - the player object from  players{}
-   */
+     * Removes the ship image that has been placed and its coordinates. 
+     * Optionally sends a message to playerMessage and highlights a cel
+     *  with an error warning if placement not valid.
+     * @method placeShip
+     * @param {string} cellId - id of clicked cell
+     * @param {object} shipOject - the ship Object being placed
+     * @param {object} player - the player object from  players{}
+     */
     removeShip(player, coordsDuplicated) {
         // Get the element at the placed ship coordinates 
         let existCoord = document.getElementById(this.coordinates[0]);
@@ -133,52 +130,6 @@ class Ship {
             to change the direction of your ship or 'PLACE' when you are ready 
             to place your next ship.`);
         }
-    }
-
-    /**
-     * Locks in ship placement when player clicks place button, update
-     * cell and palcmenet button event listeners 
-     * @method confirmPlaceShip
-     * @param {object} currentPlayer - the current player
-     * @param {object} playerShips - the playerShips object
-     */
-    confirmPlaceShip(currentPlayer, playerShips) {
-        // Once ship is placed remove click event listeners from occupied cells
-        let placedShipCells = this.coordinates;
-        for (let i in placedShipCells) {
-            /* 
-            Clone the cell to remove any previous event listeners.
-            Code adapted from answer by ChatGPT by https://openai.com
-            */
-            let cell = document.getElementById(placedShipCells[i]);
-            cell.replaceWith(cell.cloneNode(true));
-        }
-
-        /* Increase z-index of ship to bring to to top */
-        let shipCoord = document.getElementById(this.coordinates[0]);
-        shipCoord.classList.add('placed');
-
-        /* 
-        Code to get next ship in playerShips adapted from 
-        answer by ChatGPT by https://openai.com
-        */
-
-        // Get the keys of the playerShips object
-        let shipNames = Object.keys(playerShips);
-
-        // Find the index of the current ship
-        let currentIndex = shipNames.indexOf(this.shipName);
-
-        // Get the next ship name from the array
-        let nextShipName = shipNames[currentIndex + 1];
-
-        // Get the next ship object using the ship name
-        let nextShip = playerShips[nextShipName];
-
-        playerMessage(currentPlayer.name + " your turn to place your " + nextShip.shipName);
-
-        updateCellListener(nextShip, currentPlayer, playerShips);
-        updatePlacementListener(nextShip, currentPlayer, playerShips);
     }
 
     /**
@@ -301,23 +252,6 @@ class Ship {
     }
 
     /**
-      * Generate random coordinates to place ships randomly.
-      * @method randomShip
-      */
-    randomShip() {
-        console.log("Random Ship!");
-    }
-
-    /**
-      * Reset ship placement to clear ships from the game board
-      * and allow the player to start placing ships again.
-      * @method resetShip
-      */
-    resetShip() {
-        console.log("Reset Ship!");
-    }
-
-    /**
      * Check's a ships coordinates to make sure it isn't outside
      * of the game board's playable area and they are not overlapping
      * another ship.
@@ -356,6 +290,69 @@ class Ship {
     }
 
     /**
+     * Locks in ship placement when player clicks place button, update
+     * cell and palcmenet button event listeners 
+     * @method confirmPlaceShip
+     * @param {object} currentPlayer - the current player
+     * @param {object} playerShips - the playerShips object
+     */
+    confirmPlaceShip(currentPlayer, playerShips) {
+        // Once ship is placed remove click event listeners from occupied cells
+        let placedShipCells = this.coordinates;
+        for (let i in placedShipCells) {
+            /* 
+            Clone the cell to remove any previous event listeners.
+            Code adapted from answer by ChatGPT by https://openai.com
+            */
+            let cell = document.getElementById(placedShipCells[i]);
+            cell.replaceWith(cell.cloneNode(true));
+        }
+
+        /* Increase z-index of ship to bring to to top */
+        let shipCoord = document.getElementById(this.coordinates[0]);
+        shipCoord.classList.add('placed');
+
+        /* 
+        Code to get next ship in playerShips adapted from 
+        answer by ChatGPT by https://openai.com
+        */
+
+        // Get the keys of the playerShips object
+        let shipNames = Object.keys(playerShips);
+
+        // Find the index of the current ship
+        let currentIndex = shipNames.indexOf(this.shipName);
+
+        // Get the next ship name from the array
+        let nextShipName = shipNames[currentIndex + 1];
+
+        // Get the next ship object using the ship name
+        let nextShip = playerShips[nextShipName];
+
+        playerMessage(currentPlayer.name + " your turn to place your " + nextShip.shipName);
+
+        updateCellListener(nextShip, currentPlayer, playerShips);
+        updatePlacementListener(nextShip, currentPlayer, playerShips);
+    }
+
+    /**
+     * Generate random coordinates to place ships randomly.
+     * @method randomShip
+     */
+    randomShip() {
+        console.log("Random Ship!");
+    }
+
+    /**
+     * Reset ship placement to clear ships from the game board
+     * and allow the player to start placing ships again.
+     * @method resetShip
+     */
+    resetShip() {
+        console.log("Reset Ship!");
+    }
+
+    /**
      * Check's if a player's guess results in a ship being hit and provide
      * feedback to player if hit
      * @method hitShip
@@ -375,11 +372,11 @@ class Ship {
 }
 
 /**
-* Defines the game board object which is the grid area the player
-* plays within. 
-* @class Gameboard
-* @param {string} owner - the player that owns the gameboard
-* @param {string} label - the name label that should be displayed above the game board
+ * Defines the game board object which is the grid area the player
+ * plays within. 
+ * @class Gameboard
+ * @param {string} owner - the player that owns the gameboard
+ * @param {string} label - the name label that should be displayed above the game board
 */
 class Gameboard {
     constructor(owner, label) {
@@ -388,10 +385,10 @@ class Gameboard {
     }
 
     /**
-    * Procedurally generates the grid that represents the player's or 
-    * computer's game board, based on the object's owner parameter.
-    * @method createGameBoard
-    */
+     * Procedurally generates the grid that represents the player's or 
+     * computer's game board, based on the object's owner parameter.
+     * @method createGameBoard
+     */
     createGameBoard() {
         let playerGameboard = document.getElementById('player-gameboard');
         let computerGameboard = document.getElementById('computer-gameboard');
@@ -423,8 +420,8 @@ class Gameboard {
 }
 
 /**
-* Defines the Player attributes
-*
+ * Defines the Player attributes
+ * @class Player
 */
 class Player {
     constructor(playerName, shipsPlaced, shipsRemaining, hits, misses, score, highScore) {
