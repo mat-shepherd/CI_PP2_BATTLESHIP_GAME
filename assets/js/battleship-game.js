@@ -8,15 +8,17 @@
  * @param {string} size - number of cells a ship occupies
  * @param {object} coordinates - cell coordiantes of ships location
  * @param {string} direction - direction of ships rotation
+ * @param {boolean} placed - true if ship placement confirmed
  * @param {object} hits - coordiantes where ship is hit
  * @param {boolean} sunk - true if ship is sunk false if not
 */
 class Ship {
-    constructor(shipName, size, coordinates, direction, hits, sunk) {
+    constructor(shipName, size, coordinates, direction, placed, hits, sunk) {
         this.shipName = shipName;
         this.size = size;
         this.coordinates = coordinates;
         this.direction = direction;
+        this.placed = placed;
         this.hits = hits;
         this.sunk = sunk;
     }
@@ -320,6 +322,11 @@ class Ship {
         /* Increase z-index of ship to bring to to top */
         let shipCoord = document.getElementById(this.coordinates[0]);
         shipCoord.classList.add('placed');
+
+        console.log(this.shipName + ' placed attribute is ' + this.placed);
+        /* Set ship object placed to true */
+        this.placed = true;
+        console.log(this.shipName + ' placed attribute is ' + this.placed);
 
         /* 
          * Code to get next ship in playerShips adapted from 
@@ -856,11 +863,12 @@ function initPlacement(playerName) {
             let size = shipTypes[shipName];
             let coordinates = [];
             let direction = 'vertical';
+            let placed = false;
             let hits = 0;
             if (owner === 'player') {
-                playerShips[shipName] = new Ship(shipName, size, coordinates, direction, hits);
+                playerShips[shipName] = new Ship(shipName, size, coordinates, direction, placed, hits);
             } else {
-                computerShips[shipName] = new Ship(shipName, size, coordinates, direction, hits);
+                computerShips[shipName] = new Ship(shipName, size, coordinates, direction, placed, hits);
             }
         }
     }
