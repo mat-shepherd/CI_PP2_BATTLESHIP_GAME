@@ -506,10 +506,29 @@ class Player {
 // HELPER FUNCTIONS
 
 /**
- * Displays and hides rules modal
+ * Displays the rules modal. Adapted from
+ * code by W3C Schools at 
+ * https://www.w3schools.com/howto/howto_css_modals.asp
  */
-function rulesModal() {
+function openRulesModal() {
+    // Get the modal
+    var modal = document.getElementById("rules-modal");
 
+    // Display the modal
+    modal.style.display = "block";
+}
+
+/**
+ * Hides the rules modal. Adapted from
+ * code by W3C Schools at 
+ * https://www.w3schools.com/howto/howto_css_modals.asp
+ */
+function closeRulesModal() {
+    // Get the modal
+    var modal = document.getElementById("rules-modal");
+
+    // Display the modal
+    modal.style.display = "none";
 }
 
 /**
@@ -822,9 +841,23 @@ function runGame(playerName, players) {
 document.getElementById('player-name').focus();
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Add click event listeners to nav links
     document.getElementById('new-game-link').addEventListener('click', newGame);
-    document.getElementById('rules-link').addEventListener('click', rulesModal);
+    document.getElementById('rules-link').addEventListener('click', openRulesModal);
     document.getElementById('audio-link').addEventListener('click', audioToggle);
+
+    // Add click event listener to modal close button
+    document.getElementsByClassName("close")[0].addEventListener('click', closeRulesModal);
+
+    /* If modal visible, close it when the user clicks
+     * anywhere outside of the modal
+     */
+    let rulesModal = document.getElementById('rules-modal');
+    window.onclick = function (event) {
+        if (event.target == rulesModal) {
+            closeRulesModal();
+        }
+    };
 
     let playerName = '';
 
