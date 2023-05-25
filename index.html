@@ -18,10 +18,10 @@
         </div>
         <div id="links">
             <ul>
-                <li><a href="#" id="new-game-link">NEW GAME</a></li>
-                <li><a href="#" id="rules-link">HOW TO PLAY</a></li>
-                <li><a href="#" id="feedback-link">SEND FEEDBACK</a></li>
-                <li><a href="#" id="audio-link"><i class="fa-solid fa-volume-low"></i></a></li>
+                <li><a href="#" id="new-game-link" aria-label="Start new game">NEW GAME</a></li>
+                <li><a href="#" id="rules-link" aria-label="How to play">HOW TO PLAY</a></li>
+                <li><a href="#" id="feedback-link" aria-label="Send feedback">SEND FEEDBACK</a></li>
+                <li><a href="#" id="audio-link" aria-label="Toggle audio on or off"><i class="fa-solid fa-volume-low"></i></a></li>
             </ul>
         </div>
     </nav>
@@ -120,9 +120,9 @@
                     <h2>BATTLESHIP GAME!</h2>
                     <form id="start-game-form">
                         <label for="player-name">PLEASE ENTER YOUR NAME <br>(MAX 10 CHARACTERS)</label>
-                        <input type="text" id="player-name" name="player-name" maxlength="10">
+                        <input type="text" id="player-name" name="player-name" maxlength="10" aria-label="Please enter your name">
                         <div id="error-message"></div>
-                        <button type="submit" id="start-game-button">START GAME</button>
+                        <button type="submit" id="start-game-button" aria-label="Start game">START GAME</button>
                     </form>
                 </div>
             </div>
@@ -138,11 +138,12 @@
                 <div id="computer-gameboard"></div>
             </div>
             <div id="placement-controls">
+
                 <ul>
-                    <li><button id="place-control" class="game-button">PLACE</button></li>
-                    <li><button id="rotate-control" class="game-button">ROTATE</button></li>
-                    <li><button id="random-control" class="game-button">RANDOM</button></li>
-                    <li><button id="reset-control" class="game-button">CLEAR</button></li>
+                    <li><button id="place-control" class="game-button" aria-label="Confirm Ship Placement">PLACE</button></li>
+                    <li><button id="rotate-control" class="game-button" aria-label="Rotate Ship">ROTATE</button></li>
+                    <li><button id="random-control" class="game-button" aria-label="Generate random ship locations">RANDOM</button></li>
+                    <li><button id="reset-control" class="game-button" aria-label="Clear all ships from game board">CLEAR</button></li>
                 </ul>
             </div>
         </section>
