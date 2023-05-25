@@ -82,6 +82,12 @@ by https://openai.com
     padding: 0.5rem;
 }
 
+#placement-controls h3 {
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: normal;
+}
+
 #start-game-form label {
     line-height: 1.8rem;
 }
@@ -398,6 +404,10 @@ footer {
 #placement-controls {
     width: 55%;
     margin: 40px auto;
+}
+
+#placement-controls h3 {
+    margin-top: 10px;
 }
 
 #player-message,
