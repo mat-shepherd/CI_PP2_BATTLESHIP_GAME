@@ -692,7 +692,7 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips, comput
                     /* randomShip will accept playerShips and computerShips
                     * passing computerShips undefined as we 
                     * only want to randomly generate player ships a this point
-                    * /
+                    */
                     randomShip(playerShips, undefined);
                     break;
                 case 'reset-control':
