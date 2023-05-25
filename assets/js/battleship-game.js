@@ -316,8 +316,6 @@ class Ship {
         let shipCoord = document.getElementById(this.coordinates[0]);
         // check ship has been placed if not show error
         if (shipCoord !== null) {
-            console.log('shipCoord not null');
-
             /* Increase z-index of ship to bring to to top */
             shipCoord.classList.add('placed');
             /* Set ship object placed to true */
@@ -708,7 +706,7 @@ function randomShip(shipObject) {
     // pass coordinate to checkShipPlacement
     // if coords found generate again
     // if not found add to ship.coordinates
-    // pass ship object to placeship
+    // pass ship object to placeShip
     // pass to runGame
     console.log("Random Ship!");
 }
