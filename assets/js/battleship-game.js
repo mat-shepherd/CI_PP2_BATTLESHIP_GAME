@@ -65,7 +65,7 @@ class Ship {
 
         /*
          * Check which Ship type has been passed to method and add relevant ship
-         * to the gameboard.
+         * to the game board.
          */
         if (player.name !== 'PLAYER TWO') {
             switch (this.shipName) {
@@ -112,7 +112,7 @@ class Ship {
         // Get the element at the placed ship coordinates or at conflicting coordinates         
         let existCoord = document.getElementById(this.coordinates[0]);
  
-        console.log(existCoord);
+        console.log(conflictingCoord);
         /*
          * If Ship object has already been placed or placement isn't valid remove it
          * from the game board and remove coordinates from the ship coordinates array
@@ -120,6 +120,8 @@ class Ship {
         let imageElement = existCoord.querySelector('img');
         existCoord.removeChild(imageElement);
         this.coordinates.splice(0, this.size);
+        console.log(this.coordinates);
+        console.log(existCoord);                 
 
         /*
          * Tell player to place or rotate ship. If coordinates aren't valid 
@@ -130,6 +132,7 @@ class Ship {
             existCoord.classList.add('red-background');
             setTimeout(function () {
                 existCoord.classList.remove('red-background');
+                console.log('Tried to remove background');
             }, 4000);
 
             playerMessage(`<span class='red-text'>${player.name} ships can't overlap or extend past 
@@ -348,12 +351,20 @@ class Ship {
      * @param {object} currentPlayer - the current player
      * @param {object} playerShips - the playerShips object
      * @param {string} passedCoords - optional coords passed instead of
-     * retrieved from div element  
+     * retrieved from div element  - !!MIGHT NOT NEED!!
      */
     confirmPlaceShip(currentPlayer, playerShips, passedCoords) {
         let shipCoord = passedCoords ? passedCoords : document.getElementById(this.coordinates[0]);
-        // check ship has been placed if not show error
-        if (shipCoord !== null) {
+
+        // Call checkPlacement to validate the coordinates
+        let conflictingCoord = this.checkPlacement(this, currentPlayer, playerShips);
+        if (conflictingCoord) {
+            // Remove ship image and coordinates if placement not valid.
+            this.removeShip(currentPlayer, conflictingCoord);
+        }
+
+        // Check ship has been placed and is in valid position if not show error
+        if (shipCoord !== null && !conflictingCoord) {
             /* Increase z-index of ship to bring to to top */
             shipCoord.classList.add('placed');
             /* Set ship object placed to true */
