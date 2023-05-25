@@ -689,29 +689,41 @@ function checkName(playerName) {
     }
 }
 
+let eventHandlers = {};
+
 /**
  * Update cell click event listeners by removing existing and then
  * adding new click event listeners to call methods of the current
  * ship object. 
  * @param {object} currentShip - the ship currently being place
  * @param {object} currentPlayer - the player placing ships
+ * @param {object} playerShips - the player's ship objects'
  */
 function updateCellListener(currentShip, currentPlayer, playerShips) {
     let playerCells = document.getElementsByClassName('player-play-area');
-    for (let cell of playerCells) {
-        /* 
-        Clone the cell to remove any previous event listeners.
-        Code adapted from answer by ChatGPT by https://openai.com
-        */
-        const clonedCell = cell.cloneNode(true);
-        cell.replaceWith(clonedCell);
+    /* 
+    * Method to store event handlers for later reference
+    * adapted from answer by ChatGPT by https://openai.com
+    */
 
+    // Remove existing click event listeners from the cells
+    for (let cell of playerCells) {
+        const clickHandler = eventHandlers[cell.id];
+        if (clickHandler) {
+            cell.removeEventListener('click', clickHandler);
+            delete eventHandlers[cell.id];
+        }
+    }
+
+    // Add new click event listeners to the cells
+    for (let cell of playerCells) {
         function cellClick(event) {
-            // Handle the cell click event
-            currentShip.placeShip(event.target.id, currentPlayer, playerShips);
+        // Handle the cell click event
+        currentShip.placeShip(event.target.id, currentPlayer, playerShips);
         }
 
-        clonedCell.addEventListener("click", cellClick);
+        eventHandlers[cell.id] = cellClick;
+        cell.addEventListener("click", cellClick);
     }
 }
 
@@ -1092,7 +1104,7 @@ function initPlacement(playerName) {
      */
     updatePlacementListener(currentShip, currentPlayer, playerShips);
 
-    // show intial welcome and instructions in player message
+    // show initial welcome and instructions in player message
     playerMessage(`Welcome ${players.player.name}! Click your grid below to place your first ship.
     Click the 'ROTATE' button to change ship direction and click the 
     <span class='red-text'>'PLACE'</span> button to confirm ship placement. 
