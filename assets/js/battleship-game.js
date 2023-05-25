@@ -31,8 +31,8 @@ class Ship {
      * place ship image. Then return.
      * @method placeShip
      * @param {string} cellId - id of clicked cell
-     * @param {object} shipOject - the ship Object being placed
      * @param {object} player - the player object from  players{}
+     * @param {object} playerShips - the playerShips object
      */
     placeShip(cellId, player, playerShips) {
         // Get game board cell object and add first coordinate of Ship object.
@@ -60,8 +60,10 @@ class Ship {
             this.coordinates.push(newCellId);
         }
 
-        // Check the coordinates are valid
-        let coordsDuplicated = this.checkPlacement(this, player, playerShips);
+        // Remove ship image and coordinates if ship already placed
+        if (this.coordinates.length > this.size) {
+            this.removeShip(player);
+        }  
 
         /*
          * Check which Ship type has been passed to method and add relevant ship
@@ -88,12 +90,16 @@ class Ship {
         }
 
         /* 
-         * If Ship object has already been placed call removeShip
+         * If Ship object has already been placed call removeShip.
+         * Otherwise call checkPlacement to validate the coordinates.
+         * If conflictingCoord found removeShip.
          */
-        if (this.coordinates.length > this.size || coordsDuplicated === 'True') {
-            this.removeShip(player, coordsDuplicated);
-        }
-
+        let conflictingCoord = this.checkPlacement(this, player, playerShips);
+        if (this.coordinates.length > this.size || conflictingCoord) {
+            // Remove ship image and coordinates if placement not valid.
+            this.removeShip(player, conflictingCoord);
+        }        
+        
         /*
          * Add pulse effect to game-buttons - likely need to move this
          */
@@ -112,16 +118,21 @@ class Ship {
         // Get the element at the placed ship coordinates or at conflicting coordinates         
         let existCoord = document.getElementById(this.coordinates[0]);
  
-        console.log(conflictingCoord);
+        console.log('Conflict ' + conflictingCoord);
         /*
          * If Ship object has already been placed or placement isn't valid remove it
          * from the game board and remove coordinates from the ship coordinates array
          */
-        let imageElement = existCoord.querySelector('img');
-        existCoord.removeChild(imageElement);
+        console.log('Placed ship coords ' + this.coordinates);         
+        console.log('Placed ship element ' + existCoord);
         this.coordinates.splice(0, this.size);
-        console.log(this.coordinates);
-        console.log(existCoord);                 
+        console.log('Placed ship coords removed...' + this.coordinates);
+
+        //If an image is found in
+        let imageElement = existCoord.querySelector('img');
+        if (imageElement !== null) {
+            existCoord.removeChild(imageElement);
+        }           
 
         /*
          * Tell player to place or rotate ship. If coordinates aren't valid 
