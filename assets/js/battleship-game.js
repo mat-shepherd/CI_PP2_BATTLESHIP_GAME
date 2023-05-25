@@ -6,10 +6,10 @@
  * @class Ship
  * @param {string} shipName - name of ship type
  * @param {string} size - number of cells a ship occupies
- * @param {object} coordinates - cell coordiantes of ships location
+ * @param {object} coordinates - cell coordinates of ships location
  * @param {string} direction - direction of ships rotation
  * @param {boolean} placed - true if ship placement confirmed
- * @param {object} hits - coordiantes where ship is hit
+ * @param {object} hits - coordinates where ship is hit
  * @param {boolean} sunk - true if ship is sunk false if not
 */
 class Ship {
@@ -676,10 +676,10 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips) {
                     currentShip.rotateShip(currentPlayer, playerShips);
                     break;
                 case 'random-control':
-                    currentShip.randomShip();
+                    randomShip();
                     break;
                 case 'reset-control':
-                    currentShip.resetShip();
+                    clearShips();
                     break;
             }
         });
@@ -691,7 +691,7 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips) {
  * @param {object} shipObject - the playerShip or computerShip object
  */
 function randomShip(shipObject) {
-    // pass to resetShip in case ship already placed
+    // pass to clearShips in case ship already placed
     // for each ship in shipObject generate a random alphanumeric coord
     // pass coordinate to checkShipPlacement
     // if coords found generate again
@@ -702,12 +702,29 @@ function randomShip(shipObject) {
 }
 
 /**
- * Reset ship placement to clear ships from the game board
+ * Clear all ship placements from the game board
+ * reset ship coordinates for all player ships
  * and allow the player to start placing ships again.
  */
-function resetShip(shipObject) {
+function clearShips(shipObject) {
     // for each 
     console.log("Reset Ship!");
+    let playerShipCells = document.getElementsByClassName(player-play-area);
+    for (let i in playerShipCells) {
+        /* 
+         * Clone the cell to remove any previous event listeners.
+         * Code adapted from answer by ChatGPT by https://openai.com
+         */
+
+        let cell = document.getElementById(playerShipCells[i]);
+        
+        /*
+         * omit the true parameter - will not clone child elements
+         * or event listeners
+         */
+        cell.replaceWith(cell.cloneNode());
+    }
+
 }
 
 /**
