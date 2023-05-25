@@ -149,7 +149,6 @@ class Ship {
      * @method rotateShip
      */
     rotateShip() {
-        console.log("Rotate Ship!");
         let shipCoord = document.getElementById(this.coordinates[0]);
 
         // Check ship has been placed if not show error
@@ -177,7 +176,6 @@ class Ship {
             shipImg.style.transform = `rotate(${newRotation}deg)`;
 
             //Adjust image position in cell based on newRotation
-            console.log(newRotation);
             switch (this.shipName) {
                 case 'Carrier':
                     switch (newRotation) {
@@ -322,10 +320,8 @@ class Ship {
 
             /* Increase z-index of ship to bring to to top */
             shipCoord.classList.add('placed');
-            console.log(shipCoord.classList);
             /* Set ship object placed to true */
             this.placed = true;
-            console.log(this.placed);
 
             // Once ship is placed remove click event listeners from occupied cells
             let placedShipCells = this.coordinates;
@@ -695,7 +691,7 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips) {
                     randomShip();
                     break;
                 case 'reset-control':
-                    clearShips();
+                    clearShips(playerShips);
                     break;
             }
         });
@@ -722,25 +718,25 @@ function randomShip(shipObject) {
  * reset ship coordinates for all player ships
  * and allow the player to start placing ships again.
  */
-function clearShips(shipObject) {
-    // for each 
-    console.log("Reset Ship!");
-    let playerShipCells = document.getElementsByClassName(player-play-area);
-    for (let i in playerShipCells) {
+function clearShips(shipObjects) {
+    let playerShipCells = document.getElementsByClassName('player-play-area');
+    for (let originalCell of playerShipCells) {
         /* 
          * Clone the cell to remove any previous event listeners.
          * Code adapted from answer by ChatGPT by https://openai.com
          */
-
-        let cell = document.getElementById(playerShipCells[i]);
-        
+        let clonedCell = originalCell.cloneNode();
         /*
          * omit the true parameter - will not clone child elements
          * or event listeners
          */
-        cell.replaceWith(cell.cloneNode());
+        originalCell.replaceWith(clonedCell);
     }
 
+    // Loop over player ship coordinates and clear
+    for (let shipKey in shipObjects) {
+        shipObjects[shipKey].coordinates = [];
+    }  
 }
 
 /**
