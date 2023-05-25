@@ -687,7 +687,7 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips, comput
                     currentShip.rotateShip(currentPlayer, playerShips);
                     break;
                 case 'random-control':
-                    randomShip(playerShips, computerShips);
+                    randomShip(playerShips);
                     break;
                 case 'reset-control':
                     /*
@@ -714,12 +714,23 @@ function randomShip(playerShips, computerShips) {
     // if not found add to ship.coordinates
     // pass ship object to placeShip
     // pass to runGame
-    console.log("Random Ship!");
+
     /*
-    * clears playerShips and/or computerShips
+    * clears playerShips or computerShips
     * depending on which are passed as parameters
     */
-    clearShips(playerShips, computerShips);
+    switch (true) {
+        case playerShips:
+            console.log("Player Random Ship!");
+            clearShips(playerShips);
+            break;
+        case computerShips:
+            console.log("Computer Random Ship!");            
+            clearShips(computerShips);
+            break;
+        default:
+            throw `No ship objects passed to randomShip()`;
+    }
 }
 
 /**
