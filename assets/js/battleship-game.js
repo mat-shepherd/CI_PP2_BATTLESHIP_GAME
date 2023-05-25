@@ -298,14 +298,6 @@ class Ship {
                 this.coordinates[i] = rotatedLetter + rotatedNumber.toString();
             }
             
-            // Call checkPlacement to validate the updated coordinates
-            let conflictingCoord = this.checkPlacement(this, currentPlayer, playerShips);
-            if (conflictingCoord) {
-                // Remove ship image and coordinates if placement not valid.
-                this.removeShip(currentPlayer, conflictingCoord);
-            }
-
-            console.log(this.coordinates);
         } else {
             playerMessage(`NO SHIPS TO ROTATE! YOU NEED TO CLICK ON YOUR GRID TO ADD A SHIP FIRST AND THEN CLICK ROTATE.`,'error');
             throw `No Ships Placed to Rotate!`;
