@@ -90,15 +90,14 @@ class Ship {
         }
 
         /* 
-         * If Ship object has already been placed call removeShip.
-         * Otherwise call checkPlacement to validate the coordinates.
+         * Call checkPlacement to validate the coordinates.
          * If conflictingCoord found removeShip.
-         */
         let conflictingCoord = this.checkPlacement(this, player, playerShips);
         if (this.coordinates.length > this.size || conflictingCoord) {
             // Remove ship image and coordinates if placement not valid.
             this.removeShip(player, conflictingCoord);
-        }        
+        } 
+        */       
         
         /*
          * Add pulse effect to game-buttons - likely need to move this
@@ -367,74 +366,77 @@ class Ship {
     confirmPlaceShip(currentPlayer, playerShips, passedCoords) {
         let shipCoord = passedCoords ? passedCoords : document.getElementById(this.coordinates[0]);
 
-        // Call checkPlacement to validate the coordinates
+        /* Call checkPlacement to validate the coordinates
+         * if conflicting ship found remove ship. If not proceed
+         * with confirming ship placement.
+         */
         let conflictingCoord = this.checkPlacement(this, currentPlayer, playerShips);
         if (conflictingCoord) {
             // Remove ship image and coordinates if placement not valid.
             this.removeShip(currentPlayer, conflictingCoord);
-        }
-
-        // Check ship has been placed and is in valid position if not show error
-        if (shipCoord !== null && !conflictingCoord) {
-            /* Increase z-index of ship to bring to to top */
-            shipCoord.classList.add('placed');
-            /* Set ship object placed to true */
-            this.placed = true;
-
-            // Once ship is placed remove click event listeners from occupied cells
-            let placedShipCells = this.coordinates;
-            console.log(this.coordinates);
-            for (let i in placedShipCells) {
-                /* 
-                Clone the cell to remove any previous event listeners.
-                Code adapted from answer by ChatGPT by https://openai.com
-                */
-                let cell = document.getElementById(placedShipCells[i]);
-                cell.replaceWith(cell.cloneNode(true));
-            }            
-
-            /* Confirm is last ship placed if it is
-            * change/remove placement buttons
-            * pass to checkTurn()
-            */
-            let countShipsPlaced = 0;
-            for (let ships in playerShips) {
-                if (playerShips[ships].placed === true) {
-                    countShipsPlaced++;
-                }
-            }
-
-            /* If all ships placed pass to checkTurn() 
-            * to start turn based game play
-            */
-            if (countShipsPlaced === 5) {
-                checkTurn(currentPlayer);
-            } else {
-                /* 
-                * Code to get next ship in playerShips adapted from 
-                * answer by ChatGPT by https://openai.com
-                */
-
-                // Get the keys of the playerShips object
-                let shipNames = Object.keys(playerShips);
-
-                // Find the index of the current ship
-                let currentIndex = shipNames.indexOf(this.shipName);
-
-                // Get the next ship name from the array
-                let nextShipName = shipNames[currentIndex + 1];
-
-                // Get the next ship object using the ship name
-                let nextShip = playerShips[nextShipName];
-
-                playerMessage(currentPlayer.name + " your turn to place your " + nextShip.shipName);
-
-                updateCellListener(nextShip, currentPlayer, playerShips);
-                updatePlacementListener(nextShip, currentPlayer, playerShips);
-            }
         } else {
-            playerMessage(`NO SHIPS TO PLACE! YOU NEED TO CLICK ON YOUR GRID TO ADD A SHIP FIRST AND THEN CLICK PLACE.`,'error');
-            throw `No Ships Placed to Confirm!`;
+            // Check ship has been placed and is in valid position if not show error
+            if (shipCoord !== null && !conflictingCoord) {
+                /* Increase z-index of ship to bring to to top */
+                shipCoord.classList.add('placed');
+                /* Set ship object placed to true */
+                this.placed = true;
+
+                // Once ship is placed remove click event listeners from occupied cells
+                let placedShipCells = this.coordinates;
+                console.log(this.coordinates);
+                for (let i in placedShipCells) {
+                    /* 
+                    Clone the cell to remove any previous event listeners.
+                    Code adapted from answer by ChatGPT by https://openai.com
+                    */
+                    let cell = document.getElementById(placedShipCells[i]);
+                    cell.replaceWith(cell.cloneNode(true));
+                }            
+
+                /* Confirm is last ship placed if it is
+                * change/remove placement buttons
+                * pass to checkTurn()
+                */
+                let countShipsPlaced = 0;
+                for (let ships in playerShips) {
+                    if (playerShips[ships].placed === true) {
+                        countShipsPlaced++;
+                    }
+                }
+
+                /* If all ships placed pass to checkTurn() 
+                * to start turn based game play
+                */
+                if (countShipsPlaced === 5) {
+                    checkTurn(currentPlayer);
+                } else {
+                    /* 
+                    * Code to get next ship in playerShips adapted from 
+                    * answer by ChatGPT by https://openai.com
+                    */
+
+                    // Get the keys of the playerShips object
+                    let shipNames = Object.keys(playerShips);
+
+                    // Find the index of the current ship
+                    let currentIndex = shipNames.indexOf(this.shipName);
+
+                    // Get the next ship name from the array
+                    let nextShipName = shipNames[currentIndex + 1];
+
+                    // Get the next ship object using the ship name
+                    let nextShip = playerShips[nextShipName];
+
+                    playerMessage(currentPlayer.name + " your turn to place your " + nextShip.shipName);
+
+                    updateCellListener(nextShip, currentPlayer, playerShips);
+                    updatePlacementListener(nextShip, currentPlayer, playerShips);
+                }
+            } else {
+                playerMessage(`NO SHIPS TO PLACE! YOU NEED TO CLICK ON YOUR GRID TO ADD A SHIP FIRST AND THEN CLICK PLACE.`,'error');
+                throw `No Ships Placed to Confirm!`;
+            }
         }
     }
 
