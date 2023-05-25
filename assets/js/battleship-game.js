@@ -311,9 +311,11 @@ class Ship {
      * @method confirmPlaceShip
      * @param {object} currentPlayer - the current player
      * @param {object} playerShips - the playerShips object
+     * @param {string} passedCoords - optional coords passed instead of
+     * retrieved from div element  
      */
-    confirmPlaceShip(currentPlayer, playerShips) {
-        let shipCoord = document.getElementById(this.coordinates[0]);
+    confirmPlaceShip(currentPlayer, playerShips, passedCoords) {
+        let shipCoord = passedCoords ? passedCoords : document.getElementById(this.coordinates[0]);
         // check ship has been placed if not show error
         if (shipCoord !== null) {
             /* Increase z-index of ship to bring to to top */
@@ -687,7 +689,11 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips, comput
                     currentShip.rotateShip(currentPlayer, playerShips);
                     break;
                 case 'random-control':
-                    randomShip(playerShips);
+                    /* randomShip will accept playerShips and computerShips
+                    * passing computerShips undefined as we 
+                    * only want to randomly generate player ships a this point
+                    * /
+                    randomShip(playerShips, undefined);
                     break;
                 case 'reset-control':
                     /*
@@ -724,6 +730,12 @@ function randomShip(playerShips, computerShips) {
         case playerShips && !computerShips:
             console.log("Player Random Ship!");
             clearShips(playerShips);
+            // generate ship coords
+            // checkPlacement also has to handle computerShips
+            // need to alter confirmPlaceShip to handle computerShip placement
+            // to place ships without displaying them
+            // and to pass turn to player once computer ships placed
+            // confirmPlaceShip(currentPlayer, playerShips, passedCoords);
             break;
         case computerShips && !playerShips:
             console.log("Computer Random Ship!");            
