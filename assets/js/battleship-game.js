@@ -719,17 +719,19 @@ function randomShip(playerShips, computerShips) {
     * clears playerShips or computerShips
     * depending on which are passed as parameters
     */
+    console.log(playerShips);
     switch (true) {
-        case playerShips:
+        case playerShips && !computerShips:
             console.log("Player Random Ship!");
             clearShips(playerShips);
             break;
-        case computerShips:
+        case computerShips && !playerShips:
             console.log("Computer Random Ship!");            
             clearShips(computerShips);
             break;
         default:
-            throw `No ship objects passed to randomShip()`;
+            throw `No ship objects or both player and 
+            computer ship objects passed to randomShip()`;
     }
 }
 
