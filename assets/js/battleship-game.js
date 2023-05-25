@@ -689,7 +689,7 @@ function checkName(playerName) {
     }
 }
 
-let eventHandlers = {};
+const eventHandlers = {};
 
 /**
  * Update cell click event listeners by removing existing and then
