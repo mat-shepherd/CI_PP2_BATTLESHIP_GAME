@@ -308,62 +308,71 @@ class Ship {
      * @param {object} playerShips - the playerShips object
      */
     confirmPlaceShip(currentPlayer, playerShips) {
-        // Once ship is placed remove click event listeners from occupied cells
-        let placedShipCells = this.coordinates;
-        for (let i in placedShipCells) {
-            /* 
-            Clone the cell to remove any previous event listeners.
-            Code adapted from answer by ChatGPT by https://openai.com
-            */
-            let cell = document.getElementById(placedShipCells[i]);
-            cell.replaceWith(cell.cloneNode(true));
-        }
-
-        /* Increase z-index of ship to bring to to top */
         let shipCoord = document.getElementById(this.coordinates[0]);
-        shipCoord.classList.add('placed');
+        // check ship has been placed if not show error
+        if (shipCoord !== null) {
+            console.log('shipCoord not null');
 
-        /* Set ship object placed to true */
-        this.placed = true;
+            /* Increase z-index of ship to bring to to top */
+            shipCoord.classList.add('placed');
+            console.log(shipCoord.classList);
+            /* Set ship object placed to true */
+            this.placed = true;
+            console.log(this.placed);
 
-        /* Confirm is last ship placed if it is
-        * change/remove placement buttons
-        * pass to checkTurn()
-        */
-        let countShipsPlaced = 0;
-        for (let ships in playerShips) {
-            if (playerShips[ships].placed === true) {
-                countShipsPlaced++;
-            }
-        }
+            // Once ship is placed remove click event listeners from occupied cells
+            let placedShipCells = this.coordinates;
+            for (let i in placedShipCells) {
+                /* 
+                Clone the cell to remove any previous event listeners.
+                Code adapted from answer by ChatGPT by https://openai.com
+                */
+                let cell = document.getElementById(placedShipCells[i]);
+                cell.replaceWith(cell.cloneNode(true));
+            }            
 
-        /* If all ships placed pass to checkTurn() 
-         * to start turn based game play
-         */
-        if (countShipsPlaced === 5) {
-            checkTurn(currentPlayer);
-        } else {
-            /* 
-            * Code to get next ship in playerShips adapted from 
-            * answer by ChatGPT by https://openai.com
+            /* Confirm is last ship placed if it is
+            * change/remove placement buttons
+            * pass to checkTurn()
             */
+            let countShipsPlaced = 0;
+            for (let ships in playerShips) {
+                if (playerShips[ships].placed === true) {
+                    countShipsPlaced++;
+                }
+            }
 
-            // Get the keys of the playerShips object
-            let shipNames = Object.keys(playerShips);
+            /* If all ships placed pass to checkTurn() 
+            * to start turn based game play
+            */
+            if (countShipsPlaced === 5) {
+                checkTurn(currentPlayer);
+            } else {
+                /* 
+                * Code to get next ship in playerShips adapted from 
+                * answer by ChatGPT by https://openai.com
+                */
 
-            // Find the index of the current ship
-            let currentIndex = shipNames.indexOf(this.shipName);
+                // Get the keys of the playerShips object
+                let shipNames = Object.keys(playerShips);
 
-            // Get the next ship name from the array
-            let nextShipName = shipNames[currentIndex + 1];
+                // Find the index of the current ship
+                let currentIndex = shipNames.indexOf(this.shipName);
 
-            // Get the next ship object using the ship name
-            let nextShip = playerShips[nextShipName];
+                // Get the next ship name from the array
+                let nextShipName = shipNames[currentIndex + 1];
 
-            playerMessage(currentPlayer.name + " your turn to place your " + nextShip.shipName);
+                // Get the next ship object using the ship name
+                let nextShip = playerShips[nextShipName];
 
-            updateCellListener(nextShip, currentPlayer, playerShips);
-            updatePlacementListener(nextShip, currentPlayer, playerShips);
+                playerMessage(currentPlayer.name + " your turn to place your " + nextShip.shipName);
+
+                updateCellListener(nextShip, currentPlayer, playerShips);
+                updatePlacementListener(nextShip, currentPlayer, playerShips);
+            }
+        } else {
+            playerMessage(`<span>NO SHIPS TO PLACE! YOU NEED TO CLICK ON YOUR GRID TO ADD SHIP FIRST AND THEN CLICK PLACE.</span>`,'error');
+            throw `No Ships Placed to Confirm!`;
         }
     }
 
@@ -821,7 +830,10 @@ function playerMessage(message, effect) {
          * Animation to make playerMessage text flash. Code from ChatGPT
          * by https://openai.com
         */
-        playMsg.firstChild.classList.add('flash');
+        playMsg.firstChild.classList.add('flash', 'red-text');
+        // make sure player message is visible when there's an error
+        playMsg.scrollIntoView()
+        playMsg.focus();
 
         setTimeout(() => {
             playMsg.firstChild.classList.remove('flash');
