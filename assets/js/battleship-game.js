@@ -144,7 +144,9 @@ class Ship {
      * Take a ship object's coordinates and transforms them to rotate the ship 90
      * degrees clockwise. Calls checkPlacement to make sure ship isn't outside
      * of the game board's playable area.
-     * Code adapted from answer from ChatGPT by https://openai.com
+     * This was really tough problem to solve so I absolutely had to turn to ChatGPT
+     * for help here. After much trial and error the following code was 
+     * pieced together and adapted from code provided by chatGPT by https://openai.com
      * @method rotateShip
      * @param {object} currentPlayer
      * @param {object} playerShips
@@ -259,53 +261,38 @@ class Ship {
                             shipImg.style.top = '25%';
                     }
                     break;
-            }            
+            }  
+
+            let pivot = this.coordinates[0]; // Pivot point for rotation
 
             // Now rotate the ship's coordinates
             for (let i = 0; i < this.coordinates.length; i++) {
-                let coordinate = this.coordinates[i];
-                let letter = coordinate[0];
-                let number = parseInt(coordinate[1]);
-    
-                // Calculate the rotated coordinates
-                switch (newRotation) {
-                    case 0:
-                        // No rotation, coordinates remain the same
-                        break;
-                    case 90:
-                        // Rotate 90 degrees clockwise
-                        letter = String.fromCharCode(letter.charCodeAt(0) - 1);
-                        number--;
-                        break;
-                    case 180:
-                        // Rotate 180 degrees clockwise
-                        letter = String.fromCharCode(letter.charCodeAt(0));
-                        number -= 2;
-                        break;
-                    case 270:
-                        // Rotate 270 degrees clockwise
-                        letter = String.fromCharCode(letter.charCodeAt(0) + 1);
-                        number--;
-                        break;
-                }
-    
+                const coordinate = this.coordinates[i];
+                const letter = coordinate[0];
+                const number = parseInt(coordinate.slice(1));
+
+                // Calculate the relative position to the pivot point
+                const relativeLetter = letter.charCodeAt(0) - pivot.charCodeAt(0);
+                const relativeNumber = number - parseInt(pivot.slice(1));
+
+                // Calculate the rotated coordinates (90 degrees counter-clockwise)
+                const rotatedLetter = String.fromCharCode(pivot.charCodeAt(0) + relativeNumber);
+                const rotatedNumber = parseInt(pivot.slice(1)) - relativeLetter;
+
                 // Update the ship's coordinates
-                this.coordinates[i] = letter + number;
+                this.coordinates[i] = rotatedLetter + rotatedNumber.toString();
             }
-    
-            // Call checkPlacement to validate the updated coordinates
-            let coordsFound = this.checkPlacement(this, currentPlayer, playerShips);
-            if (coordsFound) {
-                // Handle the case when the new coordinates are not valid
-                this.removeShip(currentPlayer, coordsFound);
-                // playerMessage('Invalid ship placement after rotation', 'error');
-                // Restore the original rotation and coordinates
-                shipImg.style.transform = `rotate(${currentRotation}deg)`;
-                this.coordinates = currentPlayer.ships[this.shipName].coordinates.slice();
-            }     
             
+            // Call checkPlacement to validate the updated coordinates
+            let conflictingCoord = this.checkPlacement(this, currentPlayer, playerShips);
+            if (conflictingCoord || this.isOutOfBounds()) {
+                // Handle the case when the new coordinates are not valid
+                this.removeShip(currentPlayer, conflictingCoord);
+                shipImg.style.transform = originalRotation; // Restore the original rotation
+                this.coordinates = currentPlayer.ships[this.shipName].coordinates.slice();
+            }
+
             console.log(this.coordinates);
-          
         } else {
             playerMessage(`NO SHIPS TO ROTATE! YOU NEED TO CLICK ON YOUR GRID TO ADD A SHIP FIRST AND THEN CLICK ROTATE.`,'error');
             throw `No Ships Placed to Rotate!`;
@@ -328,27 +315,48 @@ class Ship {
          * aren't the ship being checked. Check the current ship's
          * coordinates against all other coordinates.
          */
-        let coordsFound = '';
-
-        for (let ships in playerShips) {
-            if (ships !== checkShip.shipName) {
-                for (let coords of playerShips[ships].coordinates) {
-                    console.log('Coords ' + coords);
-
-                    if (checkShip.coordinates.includes(coords)) {
-                        coordsFound = 'True';
-                        console.log('Coords found = ' + coordsFound);
-                        break; // stop checking if any coordinate found
-                    } else {
-                        coordsFound = 'False';
-                        console.log('Coords found = ' + coordsFound);
+        for (let shipName in playerShips) {
+            if (shipName !== checkShip.shipName) {
+                let otherShip = playerShips[shipName];
+                for (let coord of otherShip.coordinates) {
+                    if (checkShip.coordinates.includes(coord)) {
+                        return coord; // Return the conflicting coordinate
                     }
                 }
             }
         }
-
-        return coordsFound;
+    
+        // Check if ship coordinates are outside the grid's bounds
+        for (let coord of checkShip.coordinates) {
+            let letter = coord[0];
+            let number = parseInt(coord.slice(1));
+    
+            if (letter < 'A' || letter > 'J' || number < 1 || number > 10) {
+                return coord; // Return the out-of-bounds coordinate
+            }
+        }
+    
+        return null; // Return null if no conflicts or out-of-bounds found
     }
+
+    /**
+     * Checks if coordinates of ship is outside of the bounds of the
+     * player grid.
+     * @method isOutOfBounds
+     * @returns {boolean} true if out of bounds or false id in bounds 
+     */
+    isOutOfBounds() {
+        for (let coord of this.coordinates) {
+            let letter = coord[0];
+            let number = parseInt(coord.slice(1));
+
+            if (letter < 'A' || letter > 'J' || number < 1 || number > 10) {
+                return true;
+            }
+        }
+
+        return false;
+    }     
 
     /**
      * Locks in ship placement when player clicks place button, update
