@@ -147,8 +147,10 @@ class Ship {
      * of the game board's playable area.
      * Code adapted from answer from ChatGPT by https://openai.com
      * @method rotateShip
+     * @param {object} currentPlayer
+     * @param {object} playerShips
      */
-    rotateShip() {
+    rotateShip(currentPlayer, playerShips) {
         let shipCoord = document.getElementById(this.coordinates[0]);
 
         // Check ship has been placed if not show error
@@ -258,7 +260,53 @@ class Ship {
                             shipImg.style.top = '25%';
                     }
                     break;
+            }            
+
+            // Now rotate the ship's coordinates
+            for (let i = 0; i < this.coordinates.length; i++) {
+                let coordinate = this.coordinates[i];
+                let letter = coordinate[0];
+                let number = parseInt(coordinate[1]);
+    
+                // Calculate the rotated coordinates
+                switch (newRotation) {
+                    case 0:
+                        // No rotation, coordinates remain the same
+                        break;
+                    case 90:
+                        // Rotate 90 degrees clockwise
+                        letter = String.fromCharCode(letter.charCodeAt(0) - 1);
+                        number--;
+                        break;
+                    case 180:
+                        // Rotate 180 degrees clockwise
+                        letter = String.fromCharCode(letter.charCodeAt(0));
+                        number -= 2;
+                        break;
+                    case 270:
+                        // Rotate 270 degrees clockwise
+                        letter = String.fromCharCode(letter.charCodeAt(0) + 1);
+                        number--;
+                        break;
+                }
+    
+                // Update the ship's coordinates
+                this.coordinates[i] = letter + number;
             }
+    
+            // Call checkPlacement to validate the updated coordinates
+            let coordsFound = this.checkPlacement(this, currentPlayer, playerShips);
+            if (coordsFound) {
+                // Handle the case when the new coordinates are not valid
+                this.removeShip(currentPlayer, coordsFound);
+                // playerMessage('Invalid ship placement after rotation', 'error');
+                // Restore the original rotation and coordinates
+                shipImg.style.transform = `rotate(${currentRotation}deg)`;
+                this.coordinates = currentPlayer.ships[this.shipName].coordinates.slice();
+            }     
+            
+            console.log(this.coordinates);
+          
         } else {
             playerMessage(`NO SHIPS TO ROTATE! YOU NEED TO CLICK ON YOUR GRID TO ADD A SHIP FIRST AND THEN CLICK ROTATE.`,'error');
             throw `No Ships Placed to Rotate!`;
