@@ -52,7 +52,6 @@ class Ship {
         for (let cellCount = 0; cellCount < this.size - 1; cellCount++) {
 
             rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
-            columnNumber += 10;
 
             // Generate the new cell ID
             let newCellId = rowLetter + columnNumber;
@@ -373,6 +372,7 @@ class Ship {
 
             // Once ship is placed remove click event listeners from occupied cells
             let placedShipCells = this.coordinates;
+            console.log(this.coordinates);
             for (let i in placedShipCells) {
                 /* 
                 Clone the cell to remove any previous event listeners.
@@ -510,7 +510,7 @@ class Gameboard {
                         playGrid += `<div id="iC ${gridLetters[j + i].trim()}" class="index-column">${gridLetters[j + i].trim()}</div>`;
                     } else {
                         // create alphanumeric grid references to use in cell IDs
-                        let cellId = `${gridLetters[i]}${j + (i - 1) * 10}`;
+                        let cellId = `${gridLetters[i]}${j}`;
                         // change initial class on cells based on Player owner to control hover icons
                         let cellClass = this.owner === 'computer' ? 'computer-play-area no-placement' : 'player-play-area ship-placement';
                         playGrid += `<div id="${cellId}" class="${cellClass}">${cellId}</div>`;
