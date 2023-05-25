@@ -666,8 +666,9 @@ function updateCellListener(currentShip, currentPlayer, playerShips) {
  * @param {object} currentShip - the ship object from Playerships currently being placed
  * @param {object} currentPlayer - the player object from players that is placing ships
  * @param {object} playerShips - object containing the player's ship objects
+ * @param {object} computerShips - object containing the computer's ship objects
  */
-function updatePlacementListener(currentShip, currentPlayer, playerShips) {
+function updatePlacementListener(currentShip, currentPlayer, playerShips, computerShips) {
     let gameButtons = document.getElementsByClassName('game-button');
     for (let button of gameButtons) {
         /* 
@@ -686,10 +687,14 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips) {
                     currentShip.rotateShip(currentPlayer, playerShips);
                     break;
                 case 'random-control':
-                    randomShip();
+                    randomShip(playerShips, computerShips);
                     break;
                 case 'reset-control':
-                    clearShips(playerShips);
+                    /*
+                    * clears playerShips and/or computerShips
+                    * depending on which are passed as parameters
+                    */
+                    clearShips(playerShips); 
                     break;
             }
         });
@@ -698,9 +703,10 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips) {
 
 /**
  * Generate random coordinates to place ships randomly.
- * @param {object} shipObject - the playerShip or computerShip object
+ * @param {object} playerShips - object containing the player's ship objects
+ * @param {object} computerShips - object containing the computer's ship objects
  */
-function randomShip(shipObject) {
+function randomShip(playerShips, computerShips) {
     // pass to clearShips in case ship already placed
     // for each ship in shipObject generate a random alphanumeric coord
     // pass coordinate to checkShipPlacement
@@ -709,32 +715,106 @@ function randomShip(shipObject) {
     // pass ship object to placeShip
     // pass to runGame
     console.log("Random Ship!");
+    /*
+    * clears playerShips and/or computerShips
+    * depending on which are passed as parameters
+    */
+    clearShips(playerShips, computerShips);
 }
 
 /**
  * Clear all ship placements from the game board
  * reset ship coordinates for all player ships
  * and allow the player to start placing ships again.
+ * @param {object} playerShips - object containing the player's ship objects
+ * @param {object} computerShips - object containing the computer's ship objects
  */
-function clearShips(shipObjects) {
-    let playerShipCells = document.getElementsByClassName('player-play-area');
-    for (let originalCell of playerShipCells) {
-        /* 
-         * Clone the cell to remove any previous event listeners.
-         * Code adapted from answer by ChatGPT by https://openai.com
-         */
-        let clonedCell = originalCell.cloneNode();
-        /*
-         * omit the true parameter - will not clone child elements
-         * or event listeners
-         */
-        originalCell.replaceWith(clonedCell);
-    }
+function clearShips(playerShips, computerShips) {
+    /* Check which parameters are passed to the function
+     * to determine which player areas and ship objects should
+     * be cleared.
+     */ 
+    if (playerShips && !computerShips) {
+        let shipCells = document.getElementsByClassName('player-play-area');
 
-    // Loop over player ship coordinates and clear
-    for (let shipKey in shipObjects) {
-        shipObjects[shipKey].coordinates = [];
-    }  
+        for (let originalCell of shipCells) {
+            /* 
+            * Clone the cell to remove any previous event listeners.
+            * Code adapted from answer by ChatGPT by https://openai.com
+            */
+            let clonedCell = originalCell.cloneNode();
+            /*
+            * omit the true parameter - will not clone child elements
+            * or event listeners
+            */
+            originalCell.replaceWith(clonedCell);
+        }
+
+        // Loop over player ship coordinates and clear
+        for (let shipKey in playerShips) {
+            playerShips[shipKey].coordinates = [];
+        }
+    } else if (computerShips && !playerShips) {
+        let shipCells = document.getElementsByClassName('computer-play-area');
+
+        for (let originalCell of shipCells) {
+            /* 
+            * Clone the cell to remove any previous event listeners.
+            */
+            let clonedCell = originalCell.cloneNode();
+            /*
+            * omit the true parameter - will not clone child elements
+            * or event listeners
+            */
+            originalCell.replaceWith(clonedCell);
+        }
+
+        // Loop over computer ship coordinates and clear
+        for (let shipKey in computerShips) {
+            computerShips[shipKey].coordinates = [];
+        }        
+
+    } else if (playerShips && computerShips) {
+        let playShipCells = document.getElementsByClassName('player-play-area');
+        let compShipCells = document.getElementsByClassName('computer-play-area');
+
+        for (let originalCell of playShipCells) {
+            /* 
+            * Clone the cell to remove any previous event listeners.
+            */
+            let clonedCell = originalCell.cloneNode();
+            /*
+            * omit the true parameter - will not clone child elements
+            * or event listeners
+            */
+            originalCell.replaceWith(clonedCell);
+        }
+
+        for (let originalCell of compShipCells) {
+            /* 
+            * Clone the cell to remove any previous event listeners.
+            */
+            let clonedCell = originalCell.cloneNode();
+            /*
+            * omit the true parameter - will not clone child elements
+            * or event listeners
+            */
+            originalCell.replaceWith(clonedCell);
+        }        
+
+        // Loop over player ship coordinates and clear
+        for (let shipKey in playerShips) {
+            playerShips[shipKey].coordinates = [];
+        }   
+        
+        // Loop over computer ship coordinates and clear        
+        for (let shipKey in computerShips) {
+            playerShips[shipKey].coordinates = [];
+        }   
+
+    } else {
+        throw `No ship objects passed to clearShips()`;
+    }
 }
 
 /**
@@ -929,7 +1009,7 @@ function initPlacement(playerName) {
     updateCellListener(currentShip, currentPlayer, playerShips);
 
     /* 
-     * Add event listeners to placement buttons. Ascsociated with first Ship object initially.
+     * Add event listeners to placement buttons. Associated with first Ship object initially.
      * Each method will update the listener to the next Ship object.
      */
     updatePlacementListener(currentShip, currentPlayer, playerShips);
