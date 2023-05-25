@@ -809,7 +809,7 @@ function clearShips(playerShips, computerShips) {
         
         // Loop over computer ship coordinates and clear        
         for (let shipKey in computerShips) {
-            playerShips[shipKey].coordinates = [];
+            computerShips[shipKey].coordinates = [];
         }   
 
     } else {
