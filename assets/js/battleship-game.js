@@ -157,6 +157,7 @@ class Ship {
         // Check ship has been placed if not show error
         if (shipCoord !== null) {        
             let shipImg = shipCoord.querySelector('img');
+            let originalRotation = shipImg.style.transform;
 
             // Get the dimensions of the ship image
             let shipWidth = shipImg.clientWidth;
