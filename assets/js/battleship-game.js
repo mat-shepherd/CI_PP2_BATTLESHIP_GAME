@@ -106,12 +106,13 @@ class Ship {
      *  with an error warning if placement not valid.
      * @method removeShip
      * @param {object} player - the player object from  players{}
-     * @param {boolean} coordsDuplicated - true if ship coords found
+     * @param {string} conflictingCoord - coordinate of conflicting ship
      */
-    removeShip(player, coordsDuplicated) {
-        // Get the element at the placed ship coordinates 
+    removeShip(player, conflictingCoord) {
+        // Get the element at the placed ship coordinates or at conflicting coordinates         
         let existCoord = document.getElementById(this.coordinates[0]);
-
+ 
+        console.log(existCoord);
         /*
          * If Ship object has already been placed or placement isn't valid remove it
          * from the game board and remove coordinates from the ship coordinates array
@@ -124,7 +125,7 @@ class Ship {
          * Tell player to place or rotate ship. If coordinates aren't valid 
          * tell the player to place the ship again.
          */
-        if (coordsDuplicated === 'True') {
+        if (conflictingCoord) {
             // add a red background to cell and then remove after 2 seconds
             existCoord.classList.add('red-background');
             setTimeout(function () {
@@ -286,11 +287,9 @@ class Ship {
             
             // Call checkPlacement to validate the updated coordinates
             let conflictingCoord = this.checkPlacement(this, currentPlayer, playerShips);
-            if (conflictingCoord || this.isOutOfBounds()) {
-                // Handle the case when the new coordinates are not valid
+            if (conflictingCoord) {
+                // Remove ship image and coordinates if placement not valid.
                 this.removeShip(currentPlayer, conflictingCoord);
-                shipImg.style.transform = originalRotation; // Restore the original rotation
-                this.coordinates = currentPlayer.ships[this.shipName].coordinates.slice();
             }
 
             console.log(this.coordinates);
@@ -308,7 +307,7 @@ class Ship {
      * @param {object} checkShip - contains ship object being checked
      * @param {object} player - contains player data
      * @param {object} playerShip - contains player ship data
-     * @return {boolean} - returns true if within bounds and false if not
+     * @return {string} coord - returns coordinate if conflicting or null if valid
      */
     checkPlacement(checkShip, player, playerShips) {
         /*
@@ -338,26 +337,7 @@ class Ship {
         }
     
         return null; // Return null if no conflicts or out-of-bounds found
-    }
-
-    /**
-     * Checks if coordinates of ship is outside of the bounds of the
-     * player grid.
-     * @method isOutOfBounds
-     * @returns {boolean} true if out of bounds or false id in bounds 
-     */
-    isOutOfBounds() {
-        for (let coord of this.coordinates) {
-            let letter = coord[0];
-            let number = parseInt(coord.slice(1));
-
-            if (letter < 'A' || letter > 'J' || number < 1 || number > 10) {
-                return true;
-            }
-        }
-
-        return false;
-    }     
+    }   
 
     /**
      * Locks in ship placement when player clicks place button, update
