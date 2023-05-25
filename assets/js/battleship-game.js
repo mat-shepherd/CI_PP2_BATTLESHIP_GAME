@@ -151,112 +151,119 @@ class Ship {
     rotateShip() {
         console.log("Rotate Ship!");
         let shipCoord = document.getElementById(this.coordinates[0]);
-        let shipImg = shipCoord.querySelector('img');
 
-        // Get the dimensions of the ship image
-        let shipWidth = shipImg.clientWidth;
-        let shipHeight = shipImg.clientHeight;
+        // Check ship has been placed if not show error
+        if (shipCoord !== null) {        
+            let shipImg = shipCoord.querySelector('img');
 
-        // Calculate the transform origin as the top center of the image
-        let transformOriginX = shipWidth / 2;
-        let transformOriginY = 0;
+            // Get the dimensions of the ship image
+            let shipWidth = shipImg.clientWidth;
+            let shipHeight = shipImg.clientHeight;
 
-        // Apply the transform origin to the ship image
-        shipImg.style.transformOrigin = `${transformOriginX}px ${transformOriginY}px`;
+            // Calculate the transform origin as the top center of the image
+            let transformOriginX = shipWidth / 2;
+            let transformOriginY = 0;
 
-        // Get the current rotation angle
-        let currentRotation = parseInt(shipImg.style.transform.replace('rotate(', '').replace('deg)', ''), 10) || 0;
+            // Apply the transform origin to the ship image
+            shipImg.style.transformOrigin = `${transformOriginX}px ${transformOriginY}px`;
 
-        // Calculate the new rotation angle by adding 90 degrees
-        let newRotation = (currentRotation + 90) % 360;
+            // Get the current rotation angle
+            let currentRotation = parseInt(shipImg.style.transform.replace('rotate(', '').replace('deg)', ''), 10) || 0;
 
-        // Apply the new rotation to the ship image
-        shipImg.style.transform = `rotate(${newRotation}deg)`;
+            // Calculate the new rotation angle by adding 90 degrees
+            let newRotation = (currentRotation + 90) % 360;
 
-        //Adjust image position in cell based on newRotation
-        console.log(newRotation);
-        switch (this.shipName) {
-            case 'Carrier':
-                switch (newRotation) {
-                    case 0:
-                        shipImg.style.top = '45%';
-                        break;
-                    default:
-                        shipImg.style.top = '45%';
-                }
-                break;
-            case 'Battleship':
-                switch (newRotation) {
-                    case 90:
-                        shipImg.style.top = '45%';
-                        shipImg.style.left = '65%';
-                        break;
-                    case 180:
-                        shipImg.style.top = '100%';
-                        shipImg.style.left = '20%';
-                        break;
-                    case 270:
-                        shipImg.style.top = '45%';
-                        shipImg.style.left = '-35%';
-                        break;
-                    default:
-                        shipImg.style.top = '0%';
-                        shipImg.style.left = '25%';
-                }
-                break;
-            case 'Cruiser':
-                switch (newRotation) {
-                    case 90:
-                        shipImg.style.top = '45%';
-                        shipImg.style.left = '70%';
-                        break;
-                    case 180:
-                        shipImg.style.top = '100%';
-                        shipImg.style.left = '25%';
-                        break;
-                    case 270:
-                        shipImg.style.top = '45%';
-                        shipImg.style.left = '-20%';
-                        break;
-                    default:
-                        shipImg.style.top = '0%';
-                        shipImg.style.left = '20%';
-                }
-                break;
-            case 'Submarine':
-                switch (newRotation) {
-                    case 90:
-                        shipImg.style.top = '45%';
-                        shipImg.style.left = '40%';
-                        break;
-                    case 180:
-                        shipImg.style.top = '45%';
-                        shipImg.style.left = '20%';
-                        break;
-                    case 270:
-                        shipImg.style.top = '45%';
-                        break;
-                    default:
-                        shipImg.style.top = '25%';
-                }
-                break;
-            case 'Destroyer':
-                switch (newRotation) {
-                    case 90:
-                        shipImg.style.top = '45%';
-                        shipImg.style.left = '40%';
-                        break;
-                    case 180:
-                        shipImg.style.top = '45%';
-                        shipImg.style.left = '20%';
-                        break;
-                    case 270:
-                        shipImg.style.top = '45%';
-                        break;
-                    default:
-                        shipImg.style.top = '25%';
-                }
-                break;
+            // Apply the new rotation to the ship image
+            shipImg.style.transform = `rotate(${newRotation}deg)`;
+
+            //Adjust image position in cell based on newRotation
+            console.log(newRotation);
+            switch (this.shipName) {
+                case 'Carrier':
+                    switch (newRotation) {
+                        case 0:
+                            shipImg.style.top = '45%';
+                            break;
+                        default:
+                            shipImg.style.top = '45%';
+                    }
+                    break;
+                case 'Battleship':
+                    switch (newRotation) {
+                        case 90:
+                            shipImg.style.top = '45%';
+                            shipImg.style.left = '65%';
+                            break;
+                        case 180:
+                            shipImg.style.top = '100%';
+                            shipImg.style.left = '20%';
+                            break;
+                        case 270:
+                            shipImg.style.top = '45%';
+                            shipImg.style.left = '-35%';
+                            break;
+                        default:
+                            shipImg.style.top = '0%';
+                            shipImg.style.left = '25%';
+                    }
+                    break;
+                case 'Cruiser':
+                    switch (newRotation) {
+                        case 90:
+                            shipImg.style.top = '45%';
+                            shipImg.style.left = '70%';
+                            break;
+                        case 180:
+                            shipImg.style.top = '100%';
+                            shipImg.style.left = '25%';
+                            break;
+                        case 270:
+                            shipImg.style.top = '45%';
+                            shipImg.style.left = '-20%';
+                            break;
+                        default:
+                            shipImg.style.top = '0%';
+                            shipImg.style.left = '20%';
+                    }
+                    break;
+                case 'Submarine':
+                    switch (newRotation) {
+                        case 90:
+                            shipImg.style.top = '45%';
+                            shipImg.style.left = '40%';
+                            break;
+                        case 180:
+                            shipImg.style.top = '45%';
+                            shipImg.style.left = '20%';
+                            break;
+                        case 270:
+                            shipImg.style.top = '45%';
+                            break;
+                        default:
+                            shipImg.style.top = '25%';
+                    }
+                    break;
+                case 'Destroyer':
+                    switch (newRotation) {
+                        case 90:
+                            shipImg.style.top = '45%';
+                            shipImg.style.left = '40%';
+                            break;
+                        case 180:
+                            shipImg.style.top = '45%';
+                            shipImg.style.left = '20%';
+                            break;
+                        case 270:
+                            shipImg.style.top = '45%';
+                            break;
+                        default:
+                            shipImg.style.top = '25%';
+                    }
+                    break;
+            }
+        } else {
+            playerMessage(`NO SHIPS TO ROTATE! YOU NEED TO CLICK ON YOUR GRID TO ADD A SHIP FIRST AND THEN CLICK ROTATE.`,'error');
+            throw `No Ships Placed to Rotate!`;
         }
     }
 
@@ -371,7 +378,7 @@ class Ship {
                 updatePlacementListener(nextShip, currentPlayer, playerShips);
             }
         } else {
-            playerMessage(`<span>NO SHIPS TO PLACE! YOU NEED TO CLICK ON YOUR GRID TO ADD SHIP FIRST AND THEN CLICK PLACE.</span>`,'error');
+            playerMessage(`NO SHIPS TO PLACE! YOU NEED TO CLICK ON YOUR GRID TO ADD A SHIP FIRST AND THEN CLICK PLACE.`,'error');
             throw `No Ships Placed to Confirm!`;
         }
     }
@@ -823,7 +830,7 @@ function newGame() {
  */
 function playerMessage(message, effect) {
     let playMsg = document.getElementById('player-message');
-    playMsg.innerHTML = message;
+    playMsg.innerHTML = `<span>${message}</span>`;
 
     if (effect === 'error') {
         /*
