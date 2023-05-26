@@ -369,7 +369,9 @@ class Ship {
         } else {
             // Check ship has been placed and is in valid position if not show error
             if (shipCoord !== null && !conflictingCoord) {
-                /* Increase z-index of ship to bring to to top */
+                /* 
+                 * Increase z-index of ship to bring to to top 
+                 */
                 for (let coord of this.coordinates) {
                     let allCoord = document.getElementById(coord);
                     allCoord.classList.add('placed');
@@ -726,7 +728,16 @@ function updateCellListener(currentShip, currentPlayer, playerShips) {
         }
 
         eventHandlers[cell.id] = cellClick;
-        cell.addEventListener("click", cellClick);
+        /* Check cell doesn't already contain placed ship 
+         * then add click listener, remove ship-placement
+         * class and add no-placement class.
+         */
+        if (!cell.classList.contains('placed')) {
+            cell.addEventListener("click", cellClick);
+        } else {
+            cell.classList.remove('ship-placement');
+            cell.classList.add('no-placement');            
+        }
     }
 }
 
