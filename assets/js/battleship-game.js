@@ -202,6 +202,13 @@ class Ship {
             // Calculate the new rotation angle by adding 90 degrees
             let newRotation = (currentRotation + 90) % 360;
 
+            // Change ship direction attribute based on rotation
+            if (newRotation === 90 || newRotation === 270 ) {
+                this.direction = 'horizontal';
+            } else {
+                this.direction = 'vertical';             
+            }
+
             // Apply the new rotation to the ship image
             shipImg.style.transform = `rotate(${newRotation}deg)`;
 
