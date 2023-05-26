@@ -584,7 +584,8 @@ footer {
 }
 
 /* class to increase z-index and bring ship image to top when placed */
-.placed {
+#player-gameboard .placed img,
+#computer-gameboard .placed img {
     z-index: 100;
 }
 
