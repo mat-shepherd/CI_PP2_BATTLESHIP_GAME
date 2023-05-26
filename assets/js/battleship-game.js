@@ -124,17 +124,7 @@ class Ship {
                     cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship destroyer'>";                    
                     break;
             }
-        }
-
-        /* 
-         * Call checkPlacement to validate the coordinates.
-         * If conflictingCoord found removeShip.
-        let conflictingCoord = this.checkPlacement(this, player, playerShips);
-        if (this.coordinates.length > this.size || conflictingCoord) {
-            // Remove ship image and coordinates if placement not valid.
-            this.removeShip(player, conflictingCoord);
-        } 
-        */       
+        }   
         
         /*
          * Add pulse effect to game-buttons - likely need to move this
@@ -912,12 +902,7 @@ function randomShip(player, playerShips, computerShips) {
 
                     randomCoordInvalid = shipObject.checkPlacement(shipObject, playerShips, computerShips);
                     console.log(shipObject.shipName + ' Invalid Coord...' + randomCoordInvalid); 
-
-                    /*
-                    console.log(shipObject.shipName + ' ' + shipObject.coordinates);
-
-                    shipObject.confirmPlaceShip(player, playerShips, computerShips);
-                    */                    
+                
                 }
                 while (randomCoordInvalid);
 
