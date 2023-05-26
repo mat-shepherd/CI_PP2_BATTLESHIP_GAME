@@ -58,7 +58,6 @@ class Ship {
 
         // Push first coordinate to array
         this.coordinates.push(cellId);
-        console.log(this.coordinates);
 
         // Add ships other coordinates to array based on ship size
         for (let cellCount = 0; cellCount < this.size - 1; cellCount++) {
@@ -71,6 +70,7 @@ class Ship {
             // Add the new cell ID to the Ship object's coordinates array
             this.coordinates.push(newCellId);
         }
+        console.log('Pushed coords ' + this.coordinates);
 
         // Remove ship image and coordinates if ship already placed
         if (this.coordinates.length > this.size) {
@@ -134,10 +134,10 @@ class Ship {
          * If Ship object has already been placed or placement isn't valid remove it
          * from the game board and remove coordinates from the ship coordinates array
          */
-        console.log('Placed ship coords ' + this.coordinates);         
-        console.log('Placed ship element ' + existCoord);
+        console.log('All ship coords ' + this.coordinates);         
+        console.log('Placed ship first coord ' + existCoord.id);
         this.coordinates.splice(0, this.size);
-        console.log('Placed ship coords removed...' + this.coordinates);
+        console.log('new placed ship coords...' + this.coordinates);
 
         //If an image is found in
         let imageElement = existCoord.querySelector('img');
@@ -261,31 +261,35 @@ class Ship {
                             shipImg.style.left = '40%';
                             break;
                         case 180:
-                            shipImg.style.top = '45%';
+                            shipImg.style.top = '100%';
                             shipImg.style.left = '20%';
                             break;
                         case 270:
                             shipImg.style.top = '45%';
+                            shipImg.style.left = '-35%';                            
                             break;
                         default:
                             shipImg.style.top = '25%';
+                            shipImg.style.left = '20%';                            
                     }
                     break;
                 case 'Destroyer':
                     switch (newRotation) {
                         case 90:
                             shipImg.style.top = '45%';
-                            shipImg.style.left = '40%';
+                            shipImg.style.left = '75%';
                             break;
                         case 180:
-                            shipImg.style.top = '45%';
-                            shipImg.style.left = '20%';
+                            shipImg.style.top = '100%';
+                            shipImg.style.left = '30%';
                             break;
                         case 270:
                             shipImg.style.top = '45%';
+                            shipImg.style.left = '-20%';                             
                             break;
                         default:
-                            shipImg.style.top = '25%';
+                            shipImg.style.top = '0';
+                            shipImg.style.left = '30%';                               
                     }
                     break;
             }  
@@ -380,6 +384,7 @@ class Ship {
             this.removeShip(currentPlayer, conflictingCoord);
         } else {
             // Check ship has been placed and is in valid position if not show error
+            console.log ('ConfirmPlaceShip Coord of '+ this.shipName +' ' + shipCoord);
             if (shipCoord !== null && !conflictingCoord) {
                 /* 
                  * Increase z-index of ship to bring to to top 
@@ -823,7 +828,7 @@ function randomShip(playerShips, computerShips) {
     switch (true) {
         case playerShips && !computerShips:
             console.log("Player Random Ship!");
-            clearShips(playerShips);
+            clearShips(playerShips); // also need to now pass player as first parameter
             // generate ship coords
             // checkPlacement also has to handle computerShips
             // need to alter confirmPlaceShip to handle computerShip placement
@@ -833,7 +838,7 @@ function randomShip(playerShips, computerShips) {
             break;
         case computerShips && !playerShips:
             console.log("Computer Random Ship!");            
-            clearShips(computerShips);
+            clearShips(computerShips); // also need to now pass player as first parameter
             break;
         default:
             throw `No ship objects or both player and 
@@ -854,97 +859,157 @@ function clearShips(player, playerShips, computerShips) {
      * to determine which player areas and ship objects should
      * be cleared.
      */ 
-    if (playerShips && !computerShips) {
-        let shipCells = document.getElementsByClassName('player-play-area');
-
-        for (let originalCell of shipCells) {
+    switch (true) {
+        case (playerShips && !computerShips):
+            let playerShipCells = document.getElementsByClassName('player-play-area');
+            let gameButtons = document.getElementsByClassName('game-button');            
+    
+            for (let originalCell of playerShipCells) {
+                /* 
+                * Clone the cell to remove any previous event listeners.
+                * Code adapted from answer by ChatGPT by https://openai.com
+                */
+                let clonedCell = originalCell.cloneNode();
+                /*
+                * omit the true parameter - will not clone child elements
+                * or event listeners
+                */
+                originalCell.replaceWith(clonedCell);
+    
+                /*
+                 * Remove placed and no-placement classes
+                 * if present and re-add ship-placement
+                 */
+    
+                if (clonedCell.classList.contains('placed')) {
+                    clonedCell.classList.remove('placed');
+                }
+    
+                if (clonedCell.classList.contains('no-placement')) {
+                    clonedCell.classList.add('ship-placement');
+                    clonedCell.classList.remove('no-placement');
+                }
+            }
+    
             /* 
-            * Clone the cell to remove any previous event listeners.
-            * Code adapted from answer by ChatGPT by https://openai.com
-            */
-            let clonedCell = originalCell.cloneNode();
+             * Loop over player ship and clear coordinates
+             * and placed attributes
+             */
+            for (let shipKey in playerShips) {
+                playerShips[shipKey].coordinates = [];
+                playerShips[shipKey].direction = 'vertical';
+                playerShips[shipKey].placed = false;
+            }
+    
+            // Reset currentShip and prevShip back to players first ship, the Carrier 
+            let currentShip = playerShips.Carrier;
+            let currentPlayer = player;
+    
             /*
-            * omit the true parameter - will not clone child elements
-            * or event listeners
+            * Re-add event listeners to each cell in the player game board to record
+            * ship coordinates on click. And reset placement control event listeners.
             */
-            originalCell.replaceWith(clonedCell);
-        }
-
-        // Loop over player ship coordinates and clear
-        for (let shipKey in playerShips) {
-            playerShips[shipKey].coordinates = [];
-        }
-
-        // Reset currentShip and prevShip back to players first ship, the Carrier 
-        let currentShip = playerShips.Carrier;
-        let currentPlayer = player;
-
-        /*
-        * Re-add event listeners to each cell in the player game board to record
-        * ship coordinates on click. 
-        */
-        updateCellListener(currentShip, currentPlayer, playerShips);
-    } else if (computerShips && !playerShips) {
-        let shipCells = document.getElementsByClassName('computer-play-area');
-
-        for (let originalCell of shipCells) {
+            updateCellListener(currentShip, currentPlayer, playerShips);
+            updatePlacementListener(currentShip, currentPlayer, playerShips);
+            break;
+    
+        case (computerShips && !playerShips):
+            let compShipCells = document.getElementsByClassName('computer-play-area');
+    
+            for (let originalCell of compShipCells) {
+                /* 
+                * Clone the cell to remove any previous event listeners.
+                */
+                let clonedCell = originalCell.cloneNode();
+                /*
+                * omit the true parameter - will not clone child elements
+                * or event listeners
+                */
+                originalCell.replaceWith(clonedCell);
+    
+                /*
+                 * Remove hit and miss classes
+                 * if present and re-add shot class
+                 */
+                if (clonedCell.classList.contains('hit')) {
+                    clonedCell.classList.remove('hit');
+                }
+    
+                if (clonedCell.classList.contains('miss')) {
+                    clonedCell.classList.add('shot');
+                    clonedCell.classList.remove('miss');
+                }
+            }
+    
             /* 
-            * Clone the cell to remove any previous event listeners.
+            * Loop over computer ships and clear coordinates
+            * and placed attributes
             */
-            let clonedCell = originalCell.cloneNode();
+            for (let shipKey in computerShips) {
+                computerShips[shipKey].coordinates = [];
+                computerShips[shipKey].direction = 'vertical';
+                computerShips[shipKey].placed = false;
+            }
+            break;
+    
+        case (playerShips && computerShips):
+            let playerShipCellsCombined = document.getElementsByClassName('player-play-area');
+            let computerShipCellsCombined = document.getElementsByClassName('computer-play-area');
+    
+            for (let originalCell of playerShipCellsCombined) {
+                /* 
+                * Clone the cell to remove any previous event listeners.
+                */
+                let clonedCell = originalCell.cloneNode();
+                /*
+                * omit the true parameter - will not clone child elements
+                * or event listeners
+                */
+                originalCell.replaceWith(clonedCell);
+            }
+    
+            for (let originalCell of computerShipCellsCombined) {
+                /* 
+                * Clone the cell to remove any previous event listeners.
+                */
+                let clonedCell = originalCell.cloneNode();
+                /*
+                * omit the true parameter - will not clone child elements
+                * or event listeners
+                */
+                originalCell.replaceWith(clonedCell);
+            }
+    
+            // Loop over player ship coordinates and clear
+            for (let shipKey in playerShips) {
+                playerShips[shipKey].coordinates = [];
+                playerShips[shipKey].direction = 'vertical';
+                playerShips[shipKey].placed = false;                
+            }
+    
+            // Loop over computer ship coordinates and clear        
+            for (let shipKey in computerShips) {
+                computerShips[shipKey].coordinates = [];
+                computerShips[shipKey].direction = 'vertical';
+                computerShips[shipKey].placed = false;                
+            }
+
+            // Reset currentShip and prevShip back to players first ship, the Carrier 
+            currentShip = playerShips.Carrier;
+            currentPlayer = player;
+    
             /*
-            * omit the true parameter - will not clone child elements
-            * or event listeners
+            * Re-add event listeners to each cell in the player game board to record
+            * ship coordinates on click. And reset placement control event listeners.
             */
-            originalCell.replaceWith(clonedCell);
-        }
-
-        // Loop over computer ship coordinates and clear
-        for (let shipKey in computerShips) {
-            computerShips[shipKey].coordinates = [];
-        }        
-
-    } else if (playerShips && computerShips) {
-        let playShipCells = document.getElementsByClassName('player-play-area');
-        let compShipCells = document.getElementsByClassName('computer-play-area');
-
-        for (let originalCell of playShipCells) {
-            /* 
-            * Clone the cell to remove any previous event listeners.
-            */
-            let clonedCell = originalCell.cloneNode();
-            /*
-            * omit the true parameter - will not clone child elements
-            * or event listeners
-            */
-            originalCell.replaceWith(clonedCell);
-        }
-
-        for (let originalCell of compShipCells) {
-            /* 
-            * Clone the cell to remove any previous event listeners.
-            */
-            let clonedCell = originalCell.cloneNode();
-            /*
-            * omit the true parameter - will not clone child elements
-            * or event listeners
-            */
-            originalCell.replaceWith(clonedCell);
-        }        
-
-        // Loop over player ship coordinates and clear
-        for (let shipKey in playerShips) {
-            playerShips[shipKey].coordinates = [];
-        }   
-        
-        // Loop over computer ship coordinates and clear        
-        for (let shipKey in computerShips) {
-            computerShips[shipKey].coordinates = [];
-        }   
-
-    } else {
-        throw `No ship objects passed to clearShips()`;
+            updateCellListener(currentShip, currentPlayer, playerShips);
+            updatePlacementListener(currentShip, currentPlayer, playerShips);
+            break;
+    
+        default:
+            throw `No ship objects passed to clearShips()`;
     }
+    
 }
 
 /**
