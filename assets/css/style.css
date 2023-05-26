@@ -574,7 +574,9 @@ footer {
     background-color: #fff;
 }
 
-.no-placement:hover {
+.no-placement:hover,
+.hit:hover,
+.miss:hover {
     cursor: url(../images/effects/not-allowed.png), not-allowed;
 }
 
