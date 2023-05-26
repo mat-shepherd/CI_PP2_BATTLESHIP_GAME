@@ -759,7 +759,7 @@ function updateCellListener(currentShip, currentPlayer, playerShips) {
 /**
  * Update placement buttons with click event listeners to call methods of 
  * current ship object. 
- * @param {object} currentShip - the ship object from Playerships currently being placed
+ * @param {object} currentShip - the ship object from playerShips currently being placed
  * @param {object} currentPlayer - the player object from players that is placing ships
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
@@ -794,7 +794,7 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips, comput
                     * clears playerShips and/or computerShips
                     * depending on which are passed as parameters
                     */
-                    clearShips(playerShips); 
+                    clearShips(currentPlayer, playerShips); 
                     break;
             }
         });
@@ -845,10 +845,11 @@ function randomShip(playerShips, computerShips) {
  * Clear all ship placements from the game board
  * reset ship coordinates for all player ships
  * and allow the player to start placing ships again.
+ * @param {object} player - the current player object
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
  */
-function clearShips(playerShips, computerShips) {
+function clearShips(player, playerShips, computerShips) {
     /* Check which parameters are passed to the function
      * to determine which player areas and ship objects should
      * be cleared.
@@ -873,6 +874,16 @@ function clearShips(playerShips, computerShips) {
         for (let shipKey in playerShips) {
             playerShips[shipKey].coordinates = [];
         }
+
+        // Reset currentShip and prevShip back to players first ship, the Carrier 
+        let currentShip = playerShips.Carrier;
+        let currentPlayer = player;
+
+        /*
+        * Re-add event listeners to each cell in the player game board to record
+        * ship coordinates on click. 
+        */
+        updateCellListener(currentShip, currentPlayer, playerShips);
     } else if (computerShips && !playerShips) {
         let shipCells = document.getElementsByClassName('computer-play-area');
 
