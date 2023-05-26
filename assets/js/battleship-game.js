@@ -425,11 +425,18 @@ class Ship {
                 let placedShipCells = this.coordinates;
                 console.log(this.coordinates);
                 for (let i in placedShipCells) {
+                    let cell = document.getElementById(placedShipCells[i]);
+
+                    // If the cell still contains error remove it
+                    if (cell.classList.contains('red-background')) {
+                        cell.classList.remove('red-background');
+                    }
+
                     /* 
                      * Clone the cell to remove any previous event listeners.
                      * Code adapted from answer by ChatGPT by https://openai.com
                     */
-                    let cell = document.getElementById(placedShipCells[i]);
+
                     cell.replaceWith(cell.cloneNode(true));
                 }            
 
