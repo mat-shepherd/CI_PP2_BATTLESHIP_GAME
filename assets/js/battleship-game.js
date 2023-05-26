@@ -205,8 +205,9 @@ class Ship {
      * for help here. After much trial and error the following code was 
      * pieced together and adapted from code provided by chatGPT by https://openai.com
      * @method rotateShip
-     * @param {object} currentPlayer
-     * @param {object} playerShips
+     * @param {object} currentPlayer - current player object
+     * @param {object} playerShips - object containing player ship objects
+     * @param {string} randomShipCoord - coordinate generated for random ship
      */
     rotateShip(currentPlayer, playerShips) {
         let shipCoord = document.getElementById(this.coordinates[0]);
@@ -333,7 +334,7 @@ class Ship {
             }  
 
             let pivot = this.coordinates[0]; // Pivot point for rotation
-
+            
             // Now rotate the ship's coordinates
             for (let i = 0; i < this.coordinates.length; i++) {
                 const coordinate = this.coordinates[i];
@@ -916,6 +917,12 @@ function randomShip(player, playerShips, computerShips) {
                 while (randomCoordInvalid);
 
                 playerShips[shipKey].placeShip('', player, playerShips, randomShipCoord);
+
+                // Randomly call rotateShip
+                let rotationNumber = Math.floor(Math.random() * 5);
+                if (rotationNumber === 1) {
+                    playerShips[shipKey].rotateShip(player, playerShips);
+                }                
 
                 // checkPlacement also has to handle computerShips
                 // need to alter confirmPlaceShip to handle computerShip placement
