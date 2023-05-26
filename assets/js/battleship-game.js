@@ -1350,6 +1350,16 @@ function checkTurn(players, playerShips, computerShips) {
     // if player turn = true player turn else computer turn
     if (players.turn === true) {
         console.log('Player One Turn!');
+
+        // Remove placement class from player area cells 
+        let playerCells = document.getElementsByClassName('player-play-area');
+        for (let cell of playerCells) {
+            if (cell.classList.contains('ship-placement')) {
+                cell.classList.remove('ship-placement');
+                cell.classList.add('no-placement');
+            }    
+        } 
+        
         // add checkShipHit event listeners to computer game board
         playerMessage(players.name + " CLICK ANYWHERE ON PLAYER TWO'S GRID TO TAKE A SHOT ON THEM!");
     } else {
