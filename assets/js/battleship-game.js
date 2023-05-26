@@ -1,3 +1,18 @@
+// GLOBAL VARIABLE
+
+/* 
+* Tried to avoid global variables but this one was hard
+* to avoid. Added namespace to avoid conflicts.
+* In future iteration try adding updateCellListeners as 
+* a method of Gameboard class and add eventHandlers as attribute. 
+*/
+
+const BattleshipGameEvents = {
+    eventHandlers: {
+      // For lick event handlers to avoid global variable
+    }
+}
+
 // CLASSES
 
 /** 
@@ -725,8 +740,6 @@ function checkName(playerName) {
     }
 }
 
-const eventHandlers = {};
-
 /**
  * Update cell click event listeners by removing existing and then
  * adding new click event listeners to call methods of the current
@@ -744,10 +757,10 @@ function updateCellListener(currentShip, currentPlayer, playerShips) {
 
     // Remove existing click event listeners from the cells
     for (let cell of playerCells) {
-        const clickHandler = eventHandlers[cell.id];
+        const clickHandler = BattleshipGameEvents.eventHandlers[cell.id];
         if (clickHandler) {
             cell.removeEventListener('click', clickHandler);
-            delete eventHandlers[cell.id];
+            delete BattleshipGameEvents.eventHandlers[cell.id];
         }
     }
 
@@ -758,7 +771,7 @@ function updateCellListener(currentShip, currentPlayer, playerShips) {
         currentShip.placeShip(event.target, currentPlayer, playerShips);
         }
 
-        eventHandlers[cell.id] = cellClick;
+        BattleshipGameEvents.eventHandlers[cell.id] = cellClick;
         /* Check cell doesn't already contain placed ship 
          * then add click listener, remove ship-placement
          * class and add no-placement class.
