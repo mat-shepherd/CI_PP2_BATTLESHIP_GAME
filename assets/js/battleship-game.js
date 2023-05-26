@@ -48,8 +48,9 @@ class Ship {
      * @param {object} targetCell - clicked target event object
      * @param {object} player - the player object from  players{}
      * @param {object} playerShips - the playerShips object
+     * @param {object} randomShipCoord - optional coord passed by randomShip
      */
-    placeShip(targetCell, player, playerShips) {
+    placeShip(targetCell, player, playerShips, randomShipCoord) {
         /* 
          * Get game board clicked cell object and add first 
          * coordinate of Ship object. If the image is clicked
@@ -59,6 +60,8 @@ class Ship {
         let cellId = '';
         if (targetCell.tagName === 'IMG') {
             cellId = targetCell.parentElement.id;
+        } else if (randomShipCoord) {
+            cellId = randomShipCoord;
         } else {
             cellId = targetCell.id;
         }
@@ -69,28 +72,31 @@ class Ship {
             cell.classList.remove('red-background');
         }
 
-        /* 
-         * Increase the row letter and column number based on the size of the ship.
-         * Code adapted from answer provided by ChatGPT by https://openai.com/
-         */
-        let rowLetter = cellId[0];
-        let columnNumber = parseInt(cellId.slice(1));
+        // Don't add and generate coords if passed from randomShip
+        if (!randomShipCoord) {
+            /* 
+            * Increase the row letter and column number based on the size of the ship.
+            * Code adapted from answer provided by ChatGPT by https://openai.com/
+            */
+            let rowLetter = cellId[0];
+            let columnNumber = parseInt(cellId.slice(1));
 
-        // Push first coordinate to array
-        this.coordinates.push(cellId);
+            // Push first coordinate to array
+            this.coordinates.push(cellId);
 
-        // Add ships other coordinates to array based on ship size
-        for (let cellCount = 0; cellCount < this.size - 1; cellCount++) {
+            // Add ships other coordinates to array based on ship size
+            for (let cellCount = 0; cellCount < this.size - 1; cellCount++) {
 
-             rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
+                rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
 
-            // Generate the new cell ID
-            let newCellId = rowLetter + columnNumber;
+                // Generate the new cell ID
+                let newCellId = rowLetter + columnNumber;
 
-            // Add the new cell ID to the Ship object's coordinates array
-            this.coordinates.push(newCellId);
+                // Add the new cell ID to the Ship object's coordinates array
+                this.coordinates.push(newCellId);
+                console.log('Pushed coords ' + this.coordinates);
+            }
         }
-        console.log('Pushed coords ' + this.coordinates);
 
         // Remove ship image and coordinates if ship already placed
         if (this.coordinates.length > this.size) {
@@ -101,22 +107,28 @@ class Ship {
          * Check which Ship type has been passed to method and add relevant ship
          * to the game board.
          */
+        console.log('Place ship sees ' + this.shipName +' at ' + this.coordinates);
         if (player.name !== 'PLAYER TWO') {
             switch (this.shipName) {
                 case 'Carrier':
                     cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship carrier'>";
+                    console.log('Placing...' +  this.shipName + ' in ' + cell.tagName);
                     break;
                 case 'Battleship':
-                    cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                    cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";                  
+                    console.log('Placing...' +  this.shipName + ' in ' + cell.tagName);                    
                     break;
                 case 'Cruiser':
                     cell.innerHTML += "<img src='./assets/images/ships/cruiser.png' class='ship'>";
+                    console.log('Placing...' +  this.shipName + ' in ' + cell.tagName);                    
                     break;
                 case 'Submarine':
                     cell.innerHTML += "<img src='./assets/images/ships/submarine.png' class='ship'>";
+                    console.log('Placing...' +  this.shipName + ' in ' + cell.tagName);                    
                     break;
                 case 'Destroyer':
                     cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship destroyer'>";
+                    console.log('Placing...' +  this.shipName + ' in ' + cell.tagName);                    
                     break;
             }
         }
@@ -353,7 +365,7 @@ class Ship {
      * @method checkPlacement
      * @param {object} checkShip - contains ship object being checked
      * @param {object} playerShips - contains player ship objects
-     * @param {object} playerShips - contains computer ship objects
+     * @param {object} computerShips - contains computer ship objects
      * @return {string} coord - returns coordinate if conflicting or null if valid
      */
     checkPlacement(checkShip, playerShips, computerShips) {
@@ -572,7 +584,7 @@ class Gameboard {
                         playGrid += `<div id="iC ${gridLetters[j + i].trim()}" class="index-column">${gridLetters[j + i].trim()}</div>`;
                     } else {
                         // create alphanumeric grid references to use in cell IDs
-                        let cellId = `${gridLetters[i]}${j}`;
+                        let cellId = this.owner === 'computer' ? `P-${gridLetters[i]}${j}` : `${gridLetters[i]}${j}`;
                         // change initial class on cells based on Player owner to control hover icons
                         let cellClass = this.owner === 'computer' ? 'computer-play-area no-placement' : 'player-play-area ship-placement';
                         playGrid += `<div id="${cellId}" class="${cellClass}">${cellId}</div>`;
@@ -671,7 +683,6 @@ class Player {
 
     }
 }
-
 
 // HELPER FUNCTIONS
 
@@ -822,7 +833,7 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips, comput
                     * passing computerShips undefined as we 
                     * only want to randomly generate player ships a this point
                     */
-                    randomShip(currentPlayer, playerShips, undefined);
+                    randomShip(currentPlayer, playerShips);
                     break;
                 case 'reset-control':
                     /*
@@ -855,20 +866,57 @@ function randomShip(player, playerShips, computerShips) {
     * clears playerShips or computerShips
     * depending on which are passed as parameters
     */
-    console.log(playerShips);
     switch (true) {
         case playerShips && !computerShips:
             for (let shipKey in playerShips) {
                 console.log("Player Random Ship! " + playerShips[shipKey].shipName);
-                clearShips(player, playerShips); // also need to now pass player as first parameter
-                // Generate ship row
-                let boardRows = ['','A','B','C','D','E','F','G','H','I','J']
-                let randomShipRow = Math.floor(Math.random() * 10) + 1; 
-                let randomShipLetter = boardRows[randomShipRow];            
-                // Generate ship column
-                let randomShipCol = Math.floor(Math.random() * 10) + 1;
-                let randomShipCoord = randomShipLetter + randomShipCol;
-                console.log(randomShipCoord);
+                clearShips(player, playerShips);
+
+                let randomCoordInvalid = '';
+                let randomShipCoord = '';
+
+                do {
+                    playerShips[shipKey].coordinates = [];
+                    // Generate ship row
+                    let boardRows = ['','A','B','C','D','E','F','G','H','I','J']
+                    let randomShipRow = Math.floor(Math.random() * 10) + 1; 
+                    let randomShipLetter = boardRows[randomShipRow];        
+
+                    // Generate ship column
+                    let randomShipCol = Math.floor(Math.random() * 10) + 1;
+                    randomShipCoord = randomShipLetter + randomShipCol;
+
+                    /* 
+                    * Increase the row letter and column number based on the size of the ship.
+                    * Code adapted from answer provided by ChatGPT by https://openai.com/
+                    */
+                    let rowLetter = randomShipCoord[0];
+                    let columnNumber = parseInt(randomShipCoord.slice(1));
+
+                    // Push first coordinate to array
+                    playerShips[shipKey].coordinates.push(randomShipCoord);
+
+                    // Add ships other coordinates to array based on ship size
+                    for (let cellCount = 0; cellCount < playerShips[shipKey].size - 1; cellCount++) {
+
+                        rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
+
+                        // Generate the new cell ID
+                        let newCellId = rowLetter + columnNumber;
+
+                        // Add the new cell ID to the Ship object's coordinates array
+                        playerShips[shipKey].coordinates.push(newCellId);
+                    }
+
+                    randomCoordInvalid = playerShips[shipKey].checkPlacement(playerShips[shipKey], playerShips, computerShips);
+
+                    console.log(playerShips[shipKey].shipName + ' Invalid Coord...' + randomCoordInvalid);
+                    console.log(playerShips[shipKey].shipName + ' ' + playerShips[shipKey].coordinates);
+                }
+                while (randomCoordInvalid);
+
+                playerShips[shipKey].placeShip('', player, playerShips, randomShipCoord);
+
                 // checkPlacement also has to handle computerShips
                 // need to alter confirmPlaceShip to handle computerShip placement
                 // to place ships without displaying them
@@ -881,7 +929,7 @@ function randomShip(player, playerShips, computerShips) {
             break;
         case computerShips && !playerShips:
             console.log("Computer Random Ship!");            
-            clearShips(computerShips); // also need to now pass player as first parameter
+            clearShips(player, computerShips);
             break;
         default:
             throw `No ship objects or both player and 
@@ -917,6 +965,7 @@ function clearShips(player, playerShips, computerShips) {
                 * or event listeners
                 */
                 originalCell.replaceWith(clonedCell);
+                clonedCell.innerHTML = ' ';
     
                 /*
                  * Remove placed and no-placement classes
@@ -968,6 +1017,7 @@ function clearShips(player, playerShips, computerShips) {
                 * or event listeners
                 */
                 originalCell.replaceWith(clonedCell);
+                clonedCell.innerHTML = ' ';                
     
                 /*
                  * Remove hit and miss classes
@@ -1008,6 +1058,7 @@ function clearShips(player, playerShips, computerShips) {
                 * or event listeners
                 */
                 originalCell.replaceWith(clonedCell);
+                clonedCell.innerHTML = ' ';                
             }
     
             for (let originalCell of computerShipCellsCombined) {
@@ -1020,6 +1071,7 @@ function clearShips(player, playerShips, computerShips) {
                 * or event listeners
                 */
                 originalCell.replaceWith(clonedCell);
+                clonedCell.innerHTML = ' ';
             }
     
             // Loop over player ship coordinates and clear
