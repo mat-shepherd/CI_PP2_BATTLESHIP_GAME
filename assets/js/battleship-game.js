@@ -30,12 +30,23 @@ class Ship {
      * and pass back to runGame loop. Otherwise, if the player is not computer 
      * place ship image. Then return.
      * @method placeShip
-     * @param {string} cellId - id of clicked cell
+     * @param {object} targetCell - clicked target event object
      * @param {object} player - the player object from  players{}
      * @param {object} playerShips - the playerShips object
      */
-    placeShip(cellId, player, playerShips) {
-        // Get game board cell object and add first coordinate of Ship object.
+    placeShip(targetCell, player, playerShips) {
+        /* 
+         * Get game board clicked cell object and add first 
+         * coordinate of Ship object. If the image is clicked
+         * instead of the div get the ID of the image's parent
+         * DIV.
+         */
+        let cellId = '';
+        if (targetCell.tagName === 'IMG') {
+            cellId = targetCell.parentElement.id;
+        } else {
+            cellId = targetCell.id;
+        }
         let cell = document.getElementById(cellId);
 
         /* 
@@ -47,11 +58,12 @@ class Ship {
 
         // Push first coordinate to array
         this.coordinates.push(cellId);
+        console.log(this.coordinates);
 
         // Add ships other coordinates to array based on ship size
         for (let cellCount = 0; cellCount < this.size - 1; cellCount++) {
 
-            rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
+             rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
 
             // Generate the new cell ID
             let newCellId = rowLetter + columnNumber;
@@ -724,7 +736,7 @@ function updateCellListener(currentShip, currentPlayer, playerShips) {
     for (let cell of playerCells) {
         function cellClick(event) {
         // Handle the cell click event
-        currentShip.placeShip(event.target.id, currentPlayer, playerShips);
+        currentShip.placeShip(event.target, currentPlayer, playerShips);
         }
 
         eventHandlers[cell.id] = cellClick;
