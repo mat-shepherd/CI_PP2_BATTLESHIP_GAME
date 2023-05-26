@@ -1024,6 +1024,8 @@ function newGame() {
 function playerMessage(message, effect) {
     let playMsg = document.getElementById('player-message');
     playMsg.innerHTML = `<span>${message}</span>`;
+    playMsg.scrollIntoView()
+    playMsg.focus();    
 
     if (effect === 'error') {
         /*
@@ -1032,8 +1034,6 @@ function playerMessage(message, effect) {
         */
         playMsg.firstChild.classList.add('flash', 'red-text');
         // make sure player message is visible when there's an error
-        playMsg.scrollIntoView()
-        playMsg.focus();
 
         setTimeout(() => {
             playMsg.firstChild.classList.remove('flash');
