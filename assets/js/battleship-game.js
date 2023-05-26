@@ -9,7 +9,7 @@
 
 const BattleshipGameEvents = {
     eventHandlers: {
-      // For lick event handlers to avoid global variable
+      // For click event handlers to avoid global variable
     }
 }
 
@@ -352,11 +352,11 @@ class Ship {
      * another ship.
      * @method checkPlacement
      * @param {object} checkShip - contains ship object being checked
-     * @param {object} player - contains player data
-     * @param {object} playerShip - contains player ship data
+     * @param {object} playerShips - contains player ship objects
+     * @param {object} playerShips - contains computer ship objects
      * @return {string} coord - returns coordinate if conflicting or null if valid
      */
-    checkPlacement(checkShip, player, playerShips) {
+    checkPlacement(checkShip, playerShips, computerShips) {
         /*
          * Loop through playerShips and get ship coordinates that
          * aren't the ship being checked. Check the current ship's
@@ -393,18 +393,17 @@ class Ship {
      * checkTurn().
      * @method confirmPlaceShip
      * @param {object} currentPlayer - the current player
-     * @param {object} playerShips - the playerShips object
-     * @param {string} passedCoords - optional coords passed instead of
-     * retrieved from div element  - !!MIGHT NOT NEED!!
+     * @param {object} playerShips - contains player ship objects
+     * @param {string} computerShips - contains computer ship objects
      */
-    confirmPlaceShip(currentPlayer, playerShips, passedCoords) {
-        let shipCoord = passedCoords ? passedCoords : document.getElementById(this.coordinates[0]);
+    confirmPlaceShip(currentPlayer, playerShips, computerShips) {
+        let shipCoord = document.getElementById(this.coordinates[0]);
 
         /* Call checkPlacement to validate the coordinates
          * if conflicting ship found remove ship. If not proceed
          * with confirming ship placement.
          */
-        let conflictingCoord = this.checkPlacement(this, currentPlayer, playerShips);
+        let conflictingCoord = this.checkPlacement(this, playerShips, computerShips);
         if (conflictingCoord) {
             // Remove ship image and coordinates if placement not valid.
             this.removeShip(currentPlayer, conflictingCoord);
@@ -806,7 +805,7 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips, comput
         clonedButton.addEventListener("click", function () {
             switch (this.id) {
                 case 'place-control':
-                    currentShip.confirmPlaceShip(currentPlayer, playerShips);
+                    currentShip.confirmPlaceShip(currentPlayer, playerShips, computerShips);
                     break;
                 case 'rotate-control':
                     currentShip.rotateShip(currentPlayer, playerShips);
@@ -816,7 +815,7 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips, comput
                     * passing computerShips undefined as we 
                     * only want to randomly generate player ships a this point
                     */
-                    randomShip(playerShips, undefined);
+                    randomShip(currentPlayer, playerShips, undefined);
                     break;
                 case 'reset-control':
                     /*
@@ -832,10 +831,11 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips, comput
 
 /**
  * Generate random coordinates to place ships randomly.
+ * @param {object} player - the player object
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
  */
-function randomShip(playerShips, computerShips) {
+function randomShip(player, playerShips, computerShips) {
     // pass to clearShips in case ship already placed
     // for each ship in shipObject generate a random alphanumeric coord
     // pass coordinate to checkShipPlacement
@@ -851,14 +851,26 @@ function randomShip(playerShips, computerShips) {
     console.log(playerShips);
     switch (true) {
         case playerShips && !computerShips:
-            console.log("Player Random Ship!");
-            clearShips(playerShips); // also need to now pass player as first parameter
-            // generate ship coords
-            // checkPlacement also has to handle computerShips
-            // need to alter confirmPlaceShip to handle computerShip placement
-            // to place ships without displaying them
-            // and to pass turn to player once computer ships placed
-            // confirmPlaceShip(currentPlayer, playerShips, passedCoords);
+            for (let shipKey in playerShips) {
+                console.log("Player Random Ship! " + playerShips[shipKey].shipName);
+                clearShips(player, playerShips); // also need to now pass player as first parameter
+                // Generate ship row
+                let boardRows = ['','A','B','C','D','E','F','G','H','I','J']
+                let randomShipRow = Math.floor(Math.random() * 10) + 1; 
+                let randomShipLetter = boardRows[randomShipRow];            
+                // Generate ship column
+                let randomShipCol = Math.floor(Math.random() * 10) + 1;
+                let randomShipCoord = randomShipLetter + randomShipCol;
+                console.log(randomShipCoord);
+                // checkPlacement also has to handle computerShips
+                // need to alter confirmPlaceShip to handle computerShip placement
+                // to place ships without displaying them
+                // and to pass turn to player once computer ships placed
+                // confirmPlaceShip(currentPlayer, playerShips, passedCoords);
+                // playerShips[shipKey].coordinates = [];
+                // playerShips[shipKey].direction = 'vertical';
+                // playerShips[shipKey].placed = false;
+            }
             break;
         case computerShips && !playerShips:
             console.log("Computer Random Ship!");            
@@ -885,8 +897,7 @@ function clearShips(player, playerShips, computerShips) {
      */ 
     switch (true) {
         case (playerShips && !computerShips):
-            let playerShipCells = document.getElementsByClassName('player-play-area');
-            let gameButtons = document.getElementsByClassName('game-button');            
+            let playerShipCells = document.getElementsByClassName('player-play-area');         
     
             for (let originalCell of playerShipCells) {
                 /* 
