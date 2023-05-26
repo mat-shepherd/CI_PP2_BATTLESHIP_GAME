@@ -49,6 +49,11 @@ class Ship {
         }
         let cell = document.getElementById(cellId);
 
+        // If the cell still contains error remove it
+        if (cell.classList.contains('red-background')) {
+            cell.classList.remove('red-background');
+        }
+
         /* 
          * Increase the row letter and column number based on the size of the ship.
          * Code adapted from answer provided by ChatGPT by https://openai.com/
@@ -152,9 +157,8 @@ class Ship {
         if (conflictingCoord) {
             // add a red background to cell and then remove after 2 seconds
             existCoord.classList.add('red-background');
-            setTimeout(function () {
+            setTimeout(function () {               
                 existCoord.classList.remove('red-background');
-                console.log('Tried to remove background');
             }, 4000);
 
             playerMessage(`<span class='red-text'>${player.name} ships can't overlap or extend past 
