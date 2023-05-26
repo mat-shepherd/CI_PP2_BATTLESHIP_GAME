@@ -868,9 +868,9 @@ function randomShip(player, playerShips, computerShips) {
     */
     switch (true) {
         case playerShips && !computerShips:
+            clearShips(player, playerShips);
             for (let shipKey in playerShips) {
                 console.log("Player Random Ship! " + playerShips[shipKey].shipName);
-                clearShips(player, playerShips);
 
                 let randomCoordInvalid = '';
                 let randomShipCoord = '';
