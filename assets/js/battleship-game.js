@@ -370,7 +370,10 @@ class Ship {
             // Check ship has been placed and is in valid position if not show error
             if (shipCoord !== null && !conflictingCoord) {
                 /* Increase z-index of ship to bring to to top */
-                shipCoord.classList.add('placed');
+                for (let coord of this.coordinates) {
+                    let allCoord = document.getElementById(coord);
+                    allCoord.classList.add('placed');
+                }
                 /* Set ship object placed to true */
                 this.placed = true;
 
