@@ -396,17 +396,18 @@ class Ship {
                 console.log(this.coordinates);
                 for (let i in placedShipCells) {
                     /* 
-                    Clone the cell to remove any previous event listeners.
-                    Code adapted from answer by ChatGPT by https://openai.com
+                     * Clone the cell to remove any previous event listeners.
+                     * Code adapted from answer by ChatGPT by https://openai.com
                     */
                     let cell = document.getElementById(placedShipCells[i]);
                     cell.replaceWith(cell.cloneNode(true));
                 }            
 
-                /* Confirm is last ship placed if it is
-                * change/remove placement buttons
-                * pass to checkTurn()
-                */
+                /* 
+                 * Confirm is last ship placed if it is
+                 * change/remove placement buttons
+                 * pass to checkTurn()
+                 */
                 let countShipsPlaced = 0;
                 for (let ships in playerShips) {
                     if (playerShips[ships].placed === true) {
@@ -414,16 +415,18 @@ class Ship {
                     }
                 }
 
-                /* If all ships placed pass to checkTurn() 
-                * to start turn based game play
-                */
+                /* 
+                 * If all ships placed hide placement controls and 
+                 * pass to checkTurn() to start turn based game play
+                 */
                 if (countShipsPlaced === 5) {
+                    document.getElementById('placement-controls').style.display = 'none';
                     checkTurn(currentPlayer);
                 } else {
                     /* 
-                    * Code to get next ship in playerShips adapted from 
-                    * answer by ChatGPT by https://openai.com
-                    */
+                     * Code to get next ship in playerShips adapted from 
+                     * answer by ChatGPT by https://openai.com
+                     */
 
                     // Get the keys of the playerShips object
                     let shipNames = Object.keys(playerShips);
