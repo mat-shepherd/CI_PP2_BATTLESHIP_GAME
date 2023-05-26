@@ -94,7 +94,6 @@ class Ship {
 
                 // Add the new cell ID to the Ship object's coordinates array
                 this.coordinates.push(newCellId);
-                console.log('Pushed coords ' + this.coordinates);
             }
         }
 
@@ -107,28 +106,22 @@ class Ship {
          * Check which Ship type has been passed to method and add relevant ship
          * to the game board.
          */
-        console.log('Place ship sees ' + this.shipName +' at ' + this.coordinates);
         if (player.name !== 'PLAYER TWO') {
             switch (this.shipName) {
                 case 'Carrier':
                     cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship carrier'>";
-                    console.log('Placing...' +  this.shipName + ' in ' + cell.tagName);
                     break;
                 case 'Battleship':
-                    cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";                  
-                    console.log('Placing...' +  this.shipName + ' in ' + cell.tagName);                    
+                    cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";                                    
                     break;
                 case 'Cruiser':
-                    cell.innerHTML += "<img src='./assets/images/ships/cruiser.png' class='ship'>";
-                    console.log('Placing...' +  this.shipName + ' in ' + cell.tagName);                    
+                    cell.innerHTML += "<img src='./assets/images/ships/cruiser.png' class='ship'>";                 
                     break;
                 case 'Submarine':
-                    cell.innerHTML += "<img src='./assets/images/ships/submarine.png' class='ship'>";
-                    console.log('Placing...' +  this.shipName + ' in ' + cell.tagName);                    
+                    cell.innerHTML += "<img src='./assets/images/ships/submarine.png' class='ship'>";                   
                     break;
                 case 'Destroyer':
-                    cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship destroyer'>";
-                    console.log('Placing...' +  this.shipName + ' in ' + cell.tagName);                    
+                    cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship destroyer'>";                    
                     break;
             }
         }
@@ -209,128 +202,131 @@ class Ship {
      * @param {object} playerShips - object containing player ship objects
      * @param {string} randomShipCoord - coordinate generated for random ship
      */
-    rotateShip(currentPlayer, playerShips) {
+    rotateShip(currentPlayer, playerShips, randomShipCoord) {
         let shipCoord = document.getElementById(this.coordinates[0]);
 
         // Check ship has been placed if not show error
         if (shipCoord !== null) {        
             let shipImg = shipCoord.querySelector('img');
-            let originalRotation = shipImg.style.transform;
+            // Check if coordinates passed from randomShip
+            if (!randomShipCoord) {            
+                let originalRotation = shipImg.style.transform;
 
-            // Get the dimensions of the ship image
-            let shipWidth = shipImg.clientWidth;
-            let shipHeight = shipImg.clientHeight;
+                // Get the dimensions of the ship image
+                let shipWidth = shipImg.clientWidth;
+                let shipHeight = shipImg.clientHeight;
 
-            // Calculate the transform origin as the top center of the image
-            let transformOriginX = shipWidth / 2;
-            let transformOriginY = 0;
+                // Calculate the transform origin as the top center of the image
+                let transformOriginX = shipWidth / 2;
+                let transformOriginY = 0;
 
-            // Apply the transform origin to the ship image
-            shipImg.style.transformOrigin = `${transformOriginX}px ${transformOriginY}px`;
+                // Apply the transform origin to the ship image
+                shipImg.style.transformOrigin = `${transformOriginX}px ${transformOriginY}px`;
 
-            // Get the current rotation angle
-            let currentRotation = parseInt(shipImg.style.transform.replace('rotate(', '').replace('deg)', ''), 10) || 0;
+                // Get the current rotation angle
+                let currentRotation = parseInt(shipImg.style.transform.replace('rotate(', '').replace('deg)', ''), 10) || 0;
 
-            // Calculate the new rotation angle by adding 90 degrees
-            let newRotation = (currentRotation + 90) % 360;
+                // Calculate the new rotation angle by adding 90 degrees
+                let newRotation = (currentRotation + 90) % 360;
 
-            // Change ship direction attribute based on rotation
-            if (newRotation === 90 || newRotation === 270 ) {
-                this.direction = 'horizontal';
-            } else {
-                this.direction = 'vertical';             
-            }
+                // Change ship direction attribute based on rotation
+                if (newRotation === 90 || newRotation === 270 ) {
+                    this.direction = 'horizontal';
+                } else {
+                    this.direction = 'vertical';             
+                }
 
-            // Apply the new rotation to the ship image
-            shipImg.style.transform = `rotate(${newRotation}deg)`;
+                // Apply the new rotation to the ship image
+                shipImg.style.transform = `rotate(${newRotation}deg)`;
 
-            //Adjust image position in cell based on newRotation
-            switch (this.shipName) {
-                case 'Carrier':
-                    switch (newRotation) {
-                        case 0:
-                            shipImg.style.top = '45%';
+                //Adjust image position in cell based on newRotation
+                    switch (this.shipName) {
+                        case 'Carrier':
+                            switch (newRotation) {
+                                case 0:
+                                    shipImg.style.top = '45%';
+                                    break;
+                                default:
+                                    shipImg.style.top = '45%';
+                            }
                             break;
-                        default:
-                            shipImg.style.top = '45%';
+                        case 'Battleship':
+                            switch (newRotation) {
+                                case 90:
+                                    shipImg.style.top = '45%';
+                                    shipImg.style.left = '65%';
+                                    break;
+                                case 180:
+                                    shipImg.style.top = '100%';
+                                    shipImg.style.left = '20%';
+                                    break;
+                                case 270:
+                                    shipImg.style.top = '45%';
+                                    shipImg.style.left = '-35%';
+                                    break;
+                                default:
+                                    shipImg.style.top = '0%';
+                                    shipImg.style.left = '25%';
+                            }
+                            break;
+                        case 'Cruiser':
+                            switch (newRotation) {
+                                case 90:
+                                    shipImg.style.top = '45%';
+                                    shipImg.style.left = '70%';
+                                    break;
+                                case 180:
+                                    shipImg.style.top = '100%';
+                                    shipImg.style.left = '25%';
+                                    break;
+                                case 270:
+                                    shipImg.style.top = '45%';
+                                    shipImg.style.left = '-20%';
+                                    break;
+                                default:
+                                    shipImg.style.top = '0%';
+                                    shipImg.style.left = '20%';
+                            }
+                            break;
+                        case 'Submarine':
+                            switch (newRotation) {
+                                case 90:
+                                    shipImg.style.top = '45%';
+                                    shipImg.style.left = '40%';
+                                    break;
+                                case 180:
+                                    shipImg.style.top = '100%';
+                                    shipImg.style.left = '20%';
+                                    break;
+                                case 270:
+                                    shipImg.style.top = '45%';
+                                    shipImg.style.left = '-35%';                            
+                                    break;
+                                default:
+                                    shipImg.style.top = '25%';
+                                    shipImg.style.left = '20%';                            
+                            }
+                            break;
+                        case 'Destroyer':
+                            switch (newRotation) {
+                                case 90:
+                                    shipImg.style.top = '45%';
+                                    shipImg.style.left = '75%';
+                                    break;
+                                case 180:
+                                    shipImg.style.top = '100%';
+                                    shipImg.style.left = '30%';
+                                    break;
+                                case 270:
+                                    shipImg.style.top = '45%';
+                                    shipImg.style.left = '-20%';                             
+                                    break;
+                                default:
+                                    shipImg.style.top = '0';
+                                    shipImg.style.left = '30%';                               
+                            }
+                            break;
                     }
-                    break;
-                case 'Battleship':
-                    switch (newRotation) {
-                        case 90:
-                            shipImg.style.top = '45%';
-                            shipImg.style.left = '65%';
-                            break;
-                        case 180:
-                            shipImg.style.top = '100%';
-                            shipImg.style.left = '20%';
-                            break;
-                        case 270:
-                            shipImg.style.top = '45%';
-                            shipImg.style.left = '-35%';
-                            break;
-                        default:
-                            shipImg.style.top = '0%';
-                            shipImg.style.left = '25%';
-                    }
-                    break;
-                case 'Cruiser':
-                    switch (newRotation) {
-                        case 90:
-                            shipImg.style.top = '45%';
-                            shipImg.style.left = '70%';
-                            break;
-                        case 180:
-                            shipImg.style.top = '100%';
-                            shipImg.style.left = '25%';
-                            break;
-                        case 270:
-                            shipImg.style.top = '45%';
-                            shipImg.style.left = '-20%';
-                            break;
-                        default:
-                            shipImg.style.top = '0%';
-                            shipImg.style.left = '20%';
-                    }
-                    break;
-                case 'Submarine':
-                    switch (newRotation) {
-                        case 90:
-                            shipImg.style.top = '45%';
-                            shipImg.style.left = '40%';
-                            break;
-                        case 180:
-                            shipImg.style.top = '100%';
-                            shipImg.style.left = '20%';
-                            break;
-                        case 270:
-                            shipImg.style.top = '45%';
-                            shipImg.style.left = '-35%';                            
-                            break;
-                        default:
-                            shipImg.style.top = '25%';
-                            shipImg.style.left = '20%';                            
-                    }
-                    break;
-                case 'Destroyer':
-                    switch (newRotation) {
-                        case 90:
-                            shipImg.style.top = '45%';
-                            shipImg.style.left = '75%';
-                            break;
-                        case 180:
-                            shipImg.style.top = '100%';
-                            shipImg.style.left = '30%';
-                            break;
-                        case 270:
-                            shipImg.style.top = '45%';
-                            shipImg.style.left = '-20%';                             
-                            break;
-                        default:
-                            shipImg.style.top = '0';
-                            shipImg.style.left = '30%';                               
-                    }
-                    break;
             }  
 
             let pivot = this.coordinates[0]; // Pivot point for rotation
@@ -464,7 +460,7 @@ class Ship {
                         countShipsPlaced++;
                     }
                 }
-
+                console.log('Count ships placed...' + countShipsPlaced);
                 /* 
                  * If all ships placed hide placement controls and 
                  * pass to checkTurn() to start turn based game play
@@ -857,7 +853,7 @@ function updatePlacementListener(currentShip, currentPlayer, playerShips, comput
 function randomShip(player, playerShips, computerShips) {
     // pass to clearShips in case ship already placed
     // for each ship in shipObject generate a random alphanumeric coord
-    // pass coordinate to checkShipPlacement
+    // pass coordinate to checkPlacement
     // if coords found generate again
     // if not found add to ship.coordinates
     // pass ship object to placeShip
@@ -871,13 +867,12 @@ function randomShip(player, playerShips, computerShips) {
         case playerShips && !computerShips:
             clearShips(player, playerShips);
             for (let shipKey in playerShips) {
-                console.log("Player Random Ship! " + playerShips[shipKey].shipName);
-
                 let randomCoordInvalid = '';
                 let randomShipCoord = '';
+                let shipObject = playerShips[shipKey];
 
                 do {
-                    playerShips[shipKey].coordinates = [];
+                    shipObject.coordinates = [];
                     // Generate ship row
                     let boardRows = ['','A','B','C','D','E','F','G','H','I','J']
                     let randomShipRow = Math.floor(Math.random() * 10) + 1; 
@@ -895,10 +890,10 @@ function randomShip(player, playerShips, computerShips) {
                     let columnNumber = parseInt(randomShipCoord.slice(1));
 
                     // Push first coordinate to array
-                    playerShips[shipKey].coordinates.push(randomShipCoord);
+                    shipObject.coordinates.push(randomShipCoord);
 
                     // Add ships other coordinates to array based on ship size
-                    for (let cellCount = 0; cellCount < playerShips[shipKey].size - 1; cellCount++) {
+                    for (let cellCount = 0; cellCount < shipObject.size - 1; cellCount++) {
 
                         rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
 
@@ -906,32 +901,63 @@ function randomShip(player, playerShips, computerShips) {
                         let newCellId = rowLetter + columnNumber;
 
                         // Add the new cell ID to the Ship object's coordinates array
-                        playerShips[shipKey].coordinates.push(newCellId);
+                        shipObject.coordinates.push(newCellId);
                     }
 
-                    randomCoordInvalid = playerShips[shipKey].checkPlacement(playerShips[shipKey], playerShips, computerShips);
+                    // Randomly call rotateShip
+                    let rotationNumber = Math.floor(Math.random() * 6);
+                    if (rotationNumber === 1) {
+                        shipObject.rotateShip(player, playerShips, randomShipCoord);
+                    }
 
-                    console.log(playerShips[shipKey].shipName + ' Invalid Coord...' + randomCoordInvalid);
-                    console.log(playerShips[shipKey].shipName + ' ' + playerShips[shipKey].coordinates);
+                    randomCoordInvalid = shipObject.checkPlacement(shipObject, playerShips, computerShips);
+                    console.log(shipObject.shipName + ' Invalid Coord...' + randomCoordInvalid); 
+
+                    /*
+                    console.log(shipObject.shipName + ' ' + shipObject.coordinates);
+
+                    shipObject.confirmPlaceShip(player, playerShips, computerShips);
+                    */                    
                 }
                 while (randomCoordInvalid);
 
-                playerShips[shipKey].placeShip('', player, playerShips, randomShipCoord);
+                console.log("Ships after random loop: " + shipObject.shipName + ' coords ' + shipObject.coordinates);
 
-                // Randomly call rotateShip
-                let rotationNumber = Math.floor(Math.random() * 5);
-                if (rotationNumber === 1) {
-                    playerShips[shipKey].rotateShip(player, playerShips);
-                }                
+                // Place the random ships
+                shipObject.placeShip('', player, playerShips, randomShipCoord);
 
+                /*
+                * If ships coordinates all start with the same letter then
+                * the coordinates have rotated so we should rotate the ship image.
+                * Tried using rotateShip but things got complicated. This is 
+                * something to work on in the future.
+                */
+                let shipCoordinates = shipObject.coordinates;
+                // Get first character of first coordinate
+                let firstCharacter = shipCoordinates[0][0];
+                let isSameFirstCharacter = true;
+                let imgElement = document.getElementById(shipCoordinates[0]);
+                console.log('Img...' + imgElement);
+
+                for (let i = 1; i < shipCoordinates.length; i++) {
+                    if (shipCoordinates[i][0] !== firstCharacter) {
+                        isSameFirstCharacter = false;
+                        break;
+                    }
+                }
+
+                if (isSameFirstCharacter) {
+                    console.log('Same char...' + shipObject.shipName);
+                    imgElement.style.transform = "rotate(90deg)";
+                    shipObject.direction = 'horizontal';
+                }
+
+                shipObject.confirmPlaceShip(player, playerShips, computerShips)
+                                                
                 // checkPlacement also has to handle computerShips
                 // need to alter confirmPlaceShip to handle computerShip placement
                 // to place ships without displaying them
                 // and to pass turn to player once computer ships placed
-                // confirmPlaceShip(currentPlayer, playerShips, passedCoords);
-                // playerShips[shipKey].coordinates = [];
-                // playerShips[shipKey].direction = 'vertical';
-                // playerShips[shipKey].placed = false;
             }
             break;
         case computerShips && !playerShips:
@@ -972,7 +998,6 @@ function clearShips(player, playerShips, computerShips) {
                 * or event listeners
                 */
                 originalCell.replaceWith(clonedCell);
-                clonedCell.innerHTML = ' ';
     
                 /*
                  * Remove placed and no-placement classes
@@ -1023,8 +1048,7 @@ function clearShips(player, playerShips, computerShips) {
                 * omit the true parameter - will not clone child elements
                 * or event listeners
                 */
-                originalCell.replaceWith(clonedCell);
-                clonedCell.innerHTML = ' ';                
+                originalCell.replaceWith(clonedCell);              
     
                 /*
                  * Remove hit and miss classes
@@ -1064,8 +1088,7 @@ function clearShips(player, playerShips, computerShips) {
                 * omit the true parameter - will not clone child elements
                 * or event listeners
                 */
-                originalCell.replaceWith(clonedCell);
-                clonedCell.innerHTML = ' ';                
+                originalCell.replaceWith(clonedCell);            
             }
     
             for (let originalCell of computerShipCellsCombined) {
@@ -1078,7 +1101,6 @@ function clearShips(player, playerShips, computerShips) {
                 * or event listeners
                 */
                 originalCell.replaceWith(clonedCell);
-                clonedCell.innerHTML = ' ';
             }
     
             // Loop over player ship coordinates and clear
