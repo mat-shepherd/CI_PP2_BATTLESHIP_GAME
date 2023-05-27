@@ -842,11 +842,11 @@ function updatePlacementListener(players, playerShips, computerShips, gameBoards
 
 /**
  * Generate random coordinates to place ships randomly.
- * @param {object} player - the player object
+ * @param {object} currentPlayer - the current player object
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
  */
-function randomShip(player, playerShips, computerShips) {
+function randomShip(currentPlayer, playerShips, computerShips) {
     // pass to clearShips in case ship already placed
     // for each ship in shipObject generate a random alphanumeric coord
     // pass coordinate to checkPlacement
@@ -861,7 +861,7 @@ function randomShip(player, playerShips, computerShips) {
     */
     switch (true) {
         case playerShips && !computerShips:
-            clearShips(player, playerShips);
+            clearShips(currentPlayer, playerShips);
             for (let shipKey in playerShips) {
                 let randomCoordInvalid = '';
                 let randomShipCoord = '';
@@ -903,7 +903,7 @@ function randomShip(player, playerShips, computerShips) {
                     // Randomly call rotateShip
                     let rotationNumber = Math.floor(Math.random() * 6);
                     if (rotationNumber === 1) {
-                        shipObject.rotateShip(player, playerShips, randomShipCoord);
+                        shipObject.rotateShip(currentPlayer, playerShips, randomShipCoord);
                     }
 
                     randomCoordInvalid = shipObject.checkPlacement(shipObject, playerShips, computerShips);
@@ -915,7 +915,7 @@ function randomShip(player, playerShips, computerShips) {
                 console.log("Ships after random loop: " + shipObject.shipName + ' coords ' + shipObject.coordinates);
 
                 // Place the random ships
-                shipObject.placeShip('', player, playerShips, randomShipCoord);
+                shipObject.placeShip('', currentPlayer, playerShips, randomShipCoord);
 
                 /*
                 * If ships coordinates all start with the same letter then
@@ -943,7 +943,7 @@ function randomShip(player, playerShips, computerShips) {
                     shipObject.direction = 'horizontal';
                 }
 
-                shipObject.confirmPlaceShip(player, playerShips, computerShips);
+                shipObject.confirmPlaceShip(currentPlayer, playerShips, computerShips);
 
                 // checkPlacement also has to handle computerShips
                 // need to alter confirmPlaceShip to handle computerShip placement
@@ -953,7 +953,7 @@ function randomShip(player, playerShips, computerShips) {
             break;
         case computerShips && !playerShips:
             console.log("Computer Random Ship!");
-            clearShips(player, computerShips);
+            clearShips(currentPlayer, computerShips);
             break;
         default:
             throw `No ship objects or both player and 
