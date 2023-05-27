@@ -48,12 +48,25 @@ class Ship {
      * and pass back to runGame loop. Otherwise, if the player is not computer 
      * place ship image. Then return.
      * @method placeShip
+     * @param {object} players - the object containg player objects
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects
+     * @param {object} gameBoards - object containing game board objects
+     * @param {object} currentPlayer - the current player object in play
+     * @param {object} currentShip - the current ship object in play
      * @param {object} targetCell - clicked target event object
-     * @param {object} currentPlayer - the current player object
-     * @param {object} playerShips - the playerShips object
      * @param {object} randomShipCoord - optional coord passed by randomShip
      */
-    placeShip(targetCell, currentPlayer, playerShips, randomShipCoord) {
+    placeShip(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip,
+        targetCell,
+        randomShipCoord
+    ) {
         /* 
          * Get game board clicked cell object and add first 
          * coordinate of Ship object. If the image is clicked
@@ -812,7 +825,15 @@ function updatePlayerGridListener(
     for (let cell of playerCells) {
         function cellClick(event) {
             // Handle the cell click event
-            currentShip.placeShip(event.target, currentPlayer, playerShips);
+            currentShip.placeShip(
+                players,
+                playerShips,
+                computerShips,
+                gameBoards,
+                currentPlayer,
+                currentShip,
+                event.target
+            );
         }
 
         BattleshipGameEvents.placeEventHandlers[cell.id] = cellClick;
@@ -1015,7 +1036,16 @@ function randomShip(
                 console.log("Ships after random loop: " + shipObject.shipName + ' coords ' + shipObject.coordinates);
 
                 // Place the random ships
-                shipObject.placeShip('', currentPlayer, playerShips, randomShipCoord);
+                shipObject.placeShip(
+                    players,
+                    playerShips,
+                    computerShips,
+                    gameBoards,
+                    currentPlayer,
+                    currentShip,
+                    '',
+                    randomShipCoord
+                );
 
                 /*
                 * If ships coordinates all start with the same letter then
