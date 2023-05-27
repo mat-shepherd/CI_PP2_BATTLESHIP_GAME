@@ -24,6 +24,22 @@ nav h1,
     margin-top: 10px;
 }
 
+#rules-modal-text h2,
+#rules-modal-text h3,
+#rules-modal-text h4 {
+    margin: 1rem 0;
+}
+
+#rules-modal-text ul,
+#rules-modal-text li,
+#rules-modal-text p {
+    margin-left: 1rem;
+}
+
+#rules-modal-text li {
+    margin-top: 1rem;
+}
+
 #game-sidebar h2,
 #game-sidebar h3 {
     font-family: 'Black Ops One', 'Lucida Sans Typewriter', Helvetica, sans-serif;
@@ -292,6 +308,10 @@ footer {
     overflow: auto;
 }
 
+#rules-modal-text {
+    width: 70%;
+}
+
 #intro-modal-contents form {
     display: flex;
     flex-direction: column;
@@ -329,6 +349,7 @@ footer {
     font-size: 3rem;
     margin-right: 1rem;
     font-weight: bold;
+    margin-right: -15%;
 }
 
 .close:hover,
