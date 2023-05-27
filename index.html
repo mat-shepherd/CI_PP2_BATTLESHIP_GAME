@@ -114,6 +114,60 @@
                         <span class="close">&times;</span>
                     </div>
                     <h2>BATTLESHIP GAME RULES</h2>
+                    <p>Welcome to my Battleship Game which I developed as my JavaScript project
+                        while studying at the Code Institute. Learn the game rules and how to play below!</p>
+                    <h3>HOW TO PLAY</h3>
+                    <p>This is a game turn based strategy game against the computer. Each player has 5 ships
+                        in their fleet of varying sizes. Ships are placed on the game board but neither player
+                        can see eachother's ships. Each player then takes turn taking shots on eachother's ships.
+                        When a player sinks all 5 of their opponent's ships they win!
+                    </p>
+                    <h4>SHIP FLEETS</h4>
+                    <p>Each player commands a fleet of 5 ships:</p>
+                    <ul>
+                        <li>CARRIER: 5 CELLS LONG</li>
+                        <li>BATTLESHIP: 4 CELLS LONG</li>
+                        <li>CRUISER: 3 CELLS LONG</li>
+                        <li>SUBMARINE: 3 CELLS LONG</li>
+                        <li>DESTROYER: 2 CELLS LONG</li>
+                    </ul>
+                    <h4>PLACING SHIPS</h4>
+                    <ul>
+                        <li>Click on a square in the game board grid labelled with your name to place a ship.</li>
+                        <li>Using the ship placement controls, click the ROTATE button to rotate a ship 90 degrees.</li>
+                        <li>When you are happy with your ship's placement click the PLACE button using the ship
+                            placement controls. You will then move on to placing your next ship repeating the process
+                            above until all five of your ships are placed.</li>
+                        <li>If you want to reset your ship postions click the CLEAR ALL button using the ship
+                            placement controls.</li>
+                        <li>If you want to randomly place all of your ships and start the game right away, click the
+                            RANDOM button using the ship placement controls.</li>
+                        <li>You can place each ship in any horizontal or vertical position but not diagonally.</li>
+                        <li>Don't place a ship so that any part of it overlaps letters, numbers, the edge of the grid,
+                            or another ship. If you do the game will ask you to place the ship again by click on the
+                            grid.</li>
+                        <li>You can't change the position of any ships once the game has begun.</li>
+                    </ul>
+                    <h4>GAME PLAY</h4>
+                    <ul>
+                        <li>Once all ships are placed, you and the computer will alternate taking shots on eachother's
+                            game boards. You will take the first shot.</li>
+                        <li>Take a shot by hovering over Player Two's game board and clicking on a grid location.</li>
+                        <li>Once a shot has been taken, you will see an explosion at a ship grid location if a shot was
+                            hit or a splash if the shot missed.</li>
+                        <li>If a ship is hit at all of its grid locations it will be sunk i.e. 5 hits on a carrier
+                            will sink the ship. A sunk ship will have explosion markers along it's entire length.</li>
+                        <li>When you hit a computer ship you will see an explosion marker at the guessed ship grid
+                            location. When it's your turn you the try and guess the next location the ship could be
+                            located at.</li>
+                        <li>You won't see a computer's ship until you have hit it at all of its grid locations.</li>
+                        <li>You can track which ships are sunk, which are still afloat, and each player's score
+                            (number of games won) in the 'SCORES' area.</li>
+                        <li>When a player sinks all 5 of their opponent's ships they win!</li>
+                        <li>If you want to play again click the NEW GAME button in the winner message area or using
+                            the link at the top of the screen.</li>
+                    </ul>
+                    <p>GOOD LUCK AND ENJOY!</p>
                 </div>
             </div>
             <div id="intro-modal">
@@ -123,18 +177,20 @@
                         <label for="player-name">PLEASE ENTER YOUR NAME <br>(MAX 10 CHARACTERS)</label>
                         <input type="text" id="player-name" name="player-name" maxlength="10"
                             aria-label="Please enter your name">
-                        <div id="error-message"></div>
+                        <div id="error-message">
+                            <noscript>
+                                <p>This game requires JavaScript to run. Your browser does not support
+                                    JavaScript or it is disabled! <a href="https://www.enable-javascript.com/"
+                                        target="_blank" aria-label="Visit enable-javascript.com (opens in a new tab)">.
+                                        Click here for more infomration on enabling JavaScript</a>.
+                                </p>
+                            </noscript>
+                        </div>
                         <button type="submit" id="start-game-button" aria-label="Start game">START GAME</button>
                     </form>
                 </div>
             </div>
             <div id="player-message">
-                <noscript>
-                    <p>This game requires JavaScript to run. Your browser does not support
-                        JavaScript or it is disabled! <a href="https://www.enable-javascript.com/" target="_blank"
-                            aria-label="Visit enable-javascript.com (opens in a new tab)">
-                            Click here for more infomration on enabling JavaScript</a>.
-                </noscript>
                 <p>`Welcome Player One! Click your grid below to place your first ship.
                     Click the 'ROTATE' button to change ship direction and click the
                     <span class='red-text'>'PLACE'</span> button to confirm ship placement.

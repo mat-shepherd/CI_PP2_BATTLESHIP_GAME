@@ -48,9 +48,17 @@ nav h1,
 }
 
 #error-message,
+#error-message a {
+    text-transform: uppercase;
+    line-height: 1.3em;
+}
+
+#error-message,
+#error-message a,
 .red-text {
     color: #881400;
     font-weight: bold;
+    text-shadow: 1px 1px #000;
 }
 
 /* 
@@ -297,7 +305,9 @@ footer {
 }
 
 #error-message {
+    text-align: center;
     margin-top: 10px;
+    width: 75%;
 }
 
 #intro-modal-contents form input[type=text] {
