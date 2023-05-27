@@ -479,10 +479,13 @@ class Ship {
                     // Get the next ship object using the ship name
                     let nextShip = playerShips[nextShipName];
 
-                    playerMessage(currentPlayer.name + " your turn to place your " + nextShip.shipName);
+                    // Assign nextShip to currentShip
+                    let currentShip = nextShip;
 
-                    updateCellListener(nextShip, currentPlayer, playerShips);
-                    updatePlacementListener(nextShip, currentPlayer, playerShips);
+                    playerMessage(currentPlayer.name + " your turn to place your " + currentShip.shipName);
+
+                    updateCellListener(currentShip, currentPlayer, playerShips);
+                    updatePlacementListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
                 }
             } else {
                 playerMessage(`NO SHIPS TO PLACE! YOU NEED TO CLICK ON YOUR GRID TO ADD A SHIP FIRST AND THEN CLICK PLACE.`, 'error');
@@ -800,7 +803,7 @@ function updateCellListener(currentShip, currentPlayer, playerShips) {
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
  */
-function updatePlacementListener(currentShip, currentPlayer, playerShips, computerShips) {
+function updatePlacementListener(players, playerShips, computerShips, gameBoards, currentPlayer, currentShip) {
     let gameButtons = document.getElementsByClassName('game-button');
     for (let button of gameButtons) {
         /* 
@@ -1021,7 +1024,7 @@ function clearShips(player, playerShips, computerShips) {
             * ship coordinates on click. And reset placement control event listeners.
             */
             updateCellListener(currentShip, currentPlayer, playerShips);
-            updatePlacementListener(currentShip, currentPlayer, playerShips);
+            updatePlacementListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
             break;
 
         case (computerShips && !playerShips):
@@ -1114,7 +1117,7 @@ function clearShips(player, playerShips, computerShips) {
             * ship coordinates on click. And reset placement control event listeners.
             */
             updateCellListener(currentShip, currentPlayer, playerShips);
-            updatePlacementListener(currentShip, currentPlayer, playerShips);
+            updatePlacementListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
             break;
 
         default:
@@ -1315,10 +1318,11 @@ function initPlacement(playerName) {
     updateCellListener(currentShip, currentPlayer, playerShips);
 
     /* 
-     * Add event listeners to placement buttons. Associated with first Ship object initially.
-     * Each method will update the listener to the next Ship object.
+     * Add event listeners to placement buttons. Associated with first 
+     * Ship object initially. confirmPlaceShip called by Place click 
+     * listener will update the listener to the next Ship object.
      */
-    updatePlacementListener(currentShip, currentPlayer, playerShips);
+    updatePlacementListener(players, playerShips, computerShips, gameBoards, currentPlayer, currentShip);
 
     // show initial welcome and instructions in player message
     playerMessage(`Welcome ${players.player.name}! Click your grid below to place your first ship.
