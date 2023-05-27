@@ -494,8 +494,21 @@ class Ship {
 
                     playerMessage(currentPlayer.name + " your turn to place your " + currentShip.shipName);
 
-                    updatePlayerGridListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
-                    updatePlacementListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
+                    updatePlayerGridListener(
+                        players,
+                        playerShips,
+                        computerShips,
+                        gameBoards,
+                        currentPlayer,
+                        currentShip
+                    );
+                    updatePlacementListener(players,
+                        playerShips,
+                        computerShips,
+                        gameBoards,
+                        currentPlayer,
+                        currentShip
+                    );
                 }
             } else {
                 playerMessage(`NO SHIPS TO PLACE! YOU NEED TO CLICK ON YOUR GRID TO ADD A SHIP FIRST AND THEN CLICK PLACE.`, 'error');
@@ -1141,8 +1154,20 @@ function clearShips(
             * Re-add event listeners to each cell in the player game board to record
             * ship coordinates on click. And reset placement control event listeners.
             */
-            updatePlayerGridListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
-            updatePlacementListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
+            updatePlayerGridListener(players,
+                playerShips,
+                computerShips,
+                gameBoards,
+                currentPlayer,
+                currentShip
+            );
+            updatePlacementListener(players,
+                playerShips,
+                computerShips,
+                gameBoards,
+                currentPlayer,
+                currentShip
+            );
             break;
 
         case (computerClear && !playerClear):
@@ -1233,8 +1258,20 @@ function clearShips(
             * Re-add event listeners to each cell in the player game board to record
             * ship coordinates on click. And reset placement control event listeners.
             */
-            updatePlayerGridListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
-            updatePlacementListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
+            updatePlayerGridListener(players,
+                playerShips,
+                computerShips,
+                gameBoards,
+                currentPlayer,
+                currentShip
+            );
+            updatePlacementListener(players,
+                playerShips,
+                computerShips,
+                gameBoards,
+                currentPlayer,
+                currentShip
+            );
             break;
 
         default:
