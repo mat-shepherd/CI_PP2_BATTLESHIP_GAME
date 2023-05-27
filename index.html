@@ -21,7 +21,8 @@
                 <li><a href="#" id="new-game-link" aria-label="Start new game">NEW GAME</a></li>
                 <li><a href="#" id="rules-link" aria-label="How to play">HOW TO PLAY</a></li>
                 <li><a href="#" id="feedback-link" aria-label="Send feedback">SEND FEEDBACK</a></li>
-                <li><a href="#" id="audio-link" aria-label="Toggle audio on or off"><i class="fa-solid fa-volume-low"></i></a></li>
+                <li><a href="#" id="audio-link" aria-label="Toggle audio on or off"><i
+                            class="fa-solid fa-volume-low"></i></a></li>
             </ul>
         </div>
     </nav>
@@ -120,13 +121,20 @@
                     <h2>BATTLESHIP GAME!</h2>
                     <form id="start-game-form">
                         <label for="player-name">PLEASE ENTER YOUR NAME <br>(MAX 10 CHARACTERS)</label>
-                        <input type="text" id="player-name" name="player-name" maxlength="10" aria-label="Please enter your name">
+                        <input type="text" id="player-name" name="player-name" maxlength="10"
+                            aria-label="Please enter your name">
                         <div id="error-message"></div>
                         <button type="submit" id="start-game-button" aria-label="Start game">START GAME</button>
                     </form>
                 </div>
             </div>
             <div id="player-message">
+                <noscript>
+                    <p>This game requires JavaScript to run. Your browser does not support
+                        JavaScript or it is disabled! <a href="https://www.enable-javascript.com/" target="_blank"
+                            aria-label="Visit enable-javascript.com (opens in a new tab)">
+                            Click here for more infomration on enabling JavaScript</a>.
+                </noscript>
                 <p>`Welcome Player One! Click your grid below to place your first ship.
                     Click the 'ROTATE' button to change ship direction and click the
                     <span class='red-text'>'PLACE'</span> button to confirm ship placement.
@@ -139,10 +147,13 @@
             </div>
             <div id="placement-controls">
                 <ul>
-                    <li><button id="place-control" class="game-button" aria-label="Confirm Ship Placement">PLACE</button></li>
+                    <li><button id="place-control" class="game-button"
+                            aria-label="Confirm Ship Placement">PLACE</button></li>
                     <li><button id="rotate-control" class="game-button" aria-label="Rotate Ship">ROTATE</button></li>
-                    <li><button id="random-control" class="game-button" aria-label="Generate random ship locations">RANDOM</button></li>
-                    <li><button id="reset-control" class="game-button" aria-label="Clear all ships from game board">CLEAR ALL</button></li>
+                    <li><button id="random-control" class="game-button"
+                            aria-label="Generate random ship locations">RANDOM</button></li>
+                    <li><button id="reset-control" class="game-button"
+                            aria-label="Clear all ships from game board">CLEAR ALL</button></li>
                 </ul>
                 <h3>SHIP PLACEMENT CONTROLS</h3>
             </div>
