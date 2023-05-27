@@ -496,6 +496,9 @@ class Ship {
                 if (countShipsPlaced === 5) {
                     document.getElementById('placement-controls').style.display = 'none';
                     gameBoards.player.state = gameBoards.computer.state = 'shooting';
+                    // create updateComputerGridListener function to add 
+                    // shooting click listeners here. Can also handle
+                    // no-placement on player grid
                     checkTurn(
                         players,
                         playerShips,
@@ -1581,13 +1584,24 @@ function checkTurn(
 ) {
     // Runs once ships placed
     // Remove click events listeners from player game board - function?
-    // Add shot event listeners to computer game board - clicks call checkShipHit(playerName)
-    // Add no-placement class to player game board divs and remove form computer game board
+    // Add shot event listeners to computer game board - clicks call takeShot
+    // Add no-placement class to player game board divs and remove from computer game board
     // Update playerMessage
-    // Player takes first shot by clicking on computer game board which calls checkShipHit(playerName)
-    // Loops over player ships to see if all ship object sunk attributes are true - call playerWinLose()
-    // Returns and calls takeShot method from computer player object which callShipHit
-    // Loops over ships
+    // Player takes first shot by clicking on computer game board which calls
+    // takeShot method from computer||player object
+    // update player.turn to false and then call
+    // checkShipHit(playerName) method of ship object - call shipHit or shipMiss
+    // shipHit add explosion image & set ship sunk attribute to true, update
+    // ship image with x, hits and ships number in sidebar
+    // update PlayerMessage
+    // if computer ship add ship image too (remember to trim ship div IDs)
+    // shipmiss add splash image & update misses in sidebar
+    // update PlayerMessage
+    // Loops over player ships to see if all ship objects sunk attributes are
+    // true - call playerWinLose()
+    // playerWinLose() Update high score. How to reset game.
+    // No player winlose call checkturn
+    // update PlayerMessage
     // if player turn = true player turn else computer turn
     if (currentPlayer.turn === true) {
         console.log('Player One Turn!');
