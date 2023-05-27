@@ -394,11 +394,21 @@ class Ship {
      * Checks if all players ships have been placed and then passes to
      * checkTurn().
      * @method confirmPlaceShip
-     * @param {object} currentPlayer - the current player
-     * @param {object} playerShips - contains player ship objects
-     * @param {string} computerShips - contains computer ship objects
+     * @param {object} players - the object containg player objects
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects
+     * @param {object} gameBoards - object containing game board objects
+     * @param {object} currentPlayer - the current player object in play
+     * @param {object} currentShip - the current ship object in play
      */
-    confirmPlaceShip(currentPlayer, playerShips, computerShips) {
+    confirmPlaceShip(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip
+    ) {
         let shipCoord = document.getElementById(this.coordinates[0]);
 
         /* Call checkPlacement to validate the coordinates
@@ -837,7 +847,14 @@ function updatePlacementListener(
         clonedButton.addEventListener("click", function () {
             switch (this.id) {
                 case 'place-control':
-                    currentShip.confirmPlaceShip(currentPlayer, playerShips, computerShips);
+                    currentShip.confirmPlaceShip(
+                        players,
+                        playerShips,
+                        computerShips,
+                        gameBoards,
+                        currentPlayer,
+                        currentShip
+                    );
                     break;
                 case 'rotate-control':
                     currentShip.rotateShip(currentPlayer, playerShips);
@@ -1013,7 +1030,14 @@ function randomShip(
                     shipObject.direction = 'horizontal';
                 }
 
-                shipObject.confirmPlaceShip(currentPlayer, playerShips, computerShips);
+                shipObject.confirmPlaceShip(
+                    players,
+                    playerShips,
+                    computerShips,
+                    gameBoards,
+                    currentPlayer,
+                    currentShip
+                );
 
                 // checkPlacement also has to handle computerShips
                 // need to alter confirmPlaceShip to handle computerShip placement
