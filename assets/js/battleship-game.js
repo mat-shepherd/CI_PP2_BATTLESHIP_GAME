@@ -965,11 +965,11 @@ function randomShip(player, playerShips, computerShips) {
  * Clear all ship placements from the game board
  * reset ship coordinates for all player ships
  * and allow the player to start placing ships again.
- * @param {object} player - the current player object
+ * @param {object} currentPlayer - the current player object
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
  */
-function clearShips(player, playerShips, computerShips) {
+function clearShips(currentPlayer, playerShips, computerShips) {
     /* Check which parameters are passed to the function
      * to determine which player areas and ship objects should
      * be cleared.
@@ -1017,7 +1017,6 @@ function clearShips(player, playerShips, computerShips) {
 
             // Reset currentShip and prevShip back to players first ship, the Carrier 
             let currentShip = playerShips.Carrier;
-            let currentPlayer = player;
 
             /*
             * Re-add event listeners to each cell in the player game board to record
@@ -1110,7 +1109,6 @@ function clearShips(player, playerShips, computerShips) {
 
             // Reset currentShip and prevShip back to players first ship, the Carrier 
             currentShip = playerShips.Carrier;
-            currentPlayer = player;
 
             /*
             * Re-add event listeners to each cell in the player game board to record
