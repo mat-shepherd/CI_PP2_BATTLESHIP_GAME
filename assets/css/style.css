@@ -31,12 +31,12 @@ nav h1,
 }
 
 #rules-modal-text ul,
-#rules-modal-text li,
-#rules-modal-text p {
+#rules-modal-text li {
     margin-left: 1rem;
 }
 
-#rules-modal-text li {
+#rules-modal-text li,
+#rules-modal-text p {
     margin-top: 1rem;
 }
 
