@@ -753,7 +753,8 @@ function checkName(playerName) {
 /**
  * Update player grid cell click event listeners by removing existing and
  * then adding new click event listeners to call methods of the current
- * ship object. 
+ * ship object.
+ * @function updatePlayerGridListener
  * @param {object} currentShip - the current ship object being placed
  * @param {object} currentPlayer - the player placing ships
  * @param {object} playerShips - the player's ship objects'
@@ -798,12 +799,22 @@ function updatePlayerGridListener(currentShip, currentPlayer, playerShips) {
 /**
  * Update placement buttons with click event listeners to call methods of 
  * current ship object. 
- * @param {object} currentShip - the ship object from playerShips currently being placed
- * @param {object} currentPlayer - the player object from players that is placing ships
+ * @function updatePlacementListener
+ * @param {object} players - the object containg player objects
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
+ * @param {object} gameBoards - object containing game board objects
+ * @param {object} currentPlayer - the current player object in play
+ * @param {object} currentShip - the current ship object in play
  */
-function updatePlacementListener(players, playerShips, computerShips, gameBoards, currentPlayer, currentShip) {
+function updatePlacementListener(
+    players,
+    playerShips,
+    computerShips,
+    gameBoards,
+    currentPlayer,
+    currentShip
+) {
     let gameButtons = document.getElementsByClassName('game-button');
     for (let button of gameButtons) {
         /* 
@@ -864,9 +875,13 @@ function updatePlacementListener(players, playerShips, computerShips, gameBoards
 
 /**
  * Generate random coordinates to place ships randomly.
- * @param {object} currentPlayer - the current player object
+ * @function randomShip
+ * @param {object} players - the object containg player objects
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
+ * @param {object} gameBoards - object containing game board objects
+ * @param {object} currentPlayer - the current player object in play
+ * @param {object} currentShip - the current ship object in play
  * @param {boolean} playerRandom - true if player ships to be randomised
  * @param {boolean} computerRandom - true if computer ships to be randomised
  */
@@ -1026,7 +1041,7 @@ function randomShip(
  * @param {object} computerShips - object containing the computer's ship objects
  * @param {object} gameBoards - object containing game board objects
  * @param {object} currentPlayer - the current player object in play
- * @param {object} currentPlayer - the current ship object in play
+ * @param {object} currentShip - the current ship object in play
  * @param {boolean} playerClear - true if clearing player objects
  * @param {boolean} computerClear - true if clearing computer objects
  */
