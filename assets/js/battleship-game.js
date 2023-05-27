@@ -754,7 +754,7 @@ function checkName(playerName) {
  * Update player grid cell click event listeners by removing existing and
  * then adding new click event listeners to call methods of the current
  * ship object. 
- * @param {object} currentShip - the ship currently being place
+ * @param {object} currentShip - the current ship object being placed
  * @param {object} currentPlayer - the player placing ships
  * @param {object} playerShips - the player's ship objects'
  */
@@ -826,7 +826,18 @@ function updatePlacementListener(players, playerShips, computerShips, gameBoards
                     * passing computerShips undefined as we 
                     * only want to randomly generate player ships a this point
                     */
-                    randomShip(currentPlayer, playerShips);
+                    let playerRandom = true;
+                    let computerRandom = false;
+                    randomShip(
+                        players,
+                        playerShips,
+                        computerShips,
+                        gameBoards,
+                        currentPlayer,
+                        currentShip,
+                        playerRandom,
+                        computerRandom
+                    );
                     break;
                 case 'reset-control':
                     /*
@@ -845,8 +856,19 @@ function updatePlacementListener(players, playerShips, computerShips, gameBoards
  * @param {object} currentPlayer - the current player object
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
+ * @param {boolean} playerRandom - true if player ships to be randomised
+ * @param {boolean} computerRandom - true if computer ships to be randomised
  */
-function randomShip(currentPlayer, playerShips, computerShips) {
+function randomShip(
+    players,
+    playerShips,
+    computerShips,
+    gameBoards,
+    currentPlayer,
+    currentShip,
+    playerRandom,
+    computerRandom
+) {
     // pass to clearShips in case ship already placed
     // for each ship in shipObject generate a random alphanumeric coord
     // pass coordinate to checkPlacement
@@ -857,10 +879,11 @@ function randomShip(currentPlayer, playerShips, computerShips) {
 
     /*
     * clears playerShips or computerShips
-    * depending on which are passed as parameters
+    * depending on playerRandom or computerRandom being 
+    * passed as parameters
     */
     switch (true) {
-        case playerShips && !computerShips:
+        case playerRandom && !computerRandom:
             clearShips(currentPlayer, playerShips);
             for (let shipKey in playerShips) {
                 let randomCoordInvalid = '';
@@ -951,7 +974,7 @@ function randomShip(currentPlayer, playerShips, computerShips) {
                 // and to pass turn to player once computer ships placed
             }
             break;
-        case computerShips && !playerShips:
+        case computerRandom && !playerRandom:
             console.log("Computer Random Ship!");
             clearShips(currentPlayer, computerShips);
             break;
