@@ -844,7 +844,18 @@ function updatePlacementListener(players, playerShips, computerShips, gameBoards
                     * clears playerShips and/or computerShips
                     * depending on which are passed as parameters
                     */
-                    clearShips(currentPlayer, playerShips);
+                    let playerClear = true;
+                    let computerClear = false;
+                    clearShips(
+                        players,
+                        playerShips,
+                        computerShips,
+                        gameBoards,
+                        currentPlayer,
+                        currentShip,
+                        playerClear,
+                        computerClear
+                    );
                     break;
             }
         });
@@ -884,7 +895,18 @@ function randomShip(
     */
     switch (true) {
         case playerRandom && !computerRandom:
-            clearShips(currentPlayer, playerShips);
+            let playerClear = true;
+            let computerClear = false;
+            clearShips(
+                players,
+                playerShips,
+                computerShips,
+                gameBoards,
+                currentPlayer,
+                currentShip,
+                playerClear,
+                computerClear
+            );
             for (let shipKey in playerShips) {
                 let randomCoordInvalid = '';
                 let randomShipCoord = '';
@@ -976,7 +998,18 @@ function randomShip(
             break;
         case computerRandom && !playerRandom:
             console.log("Computer Random Ship!");
-            clearShips(currentPlayer, computerShips);
+            playerClear = false;
+            computerClear = true;
+            clearShips(
+                players,
+                playerShips,
+                computerShips,
+                gameBoards,
+                currentPlayer,
+                currentShip,
+                playerClear,
+                computerClear
+            );
             break;
         default:
             throw `No ship objects or both player and 
@@ -988,17 +1021,31 @@ function randomShip(
  * Clear all ship placements from the game board
  * reset ship coordinates for all player ships
  * and allow the player to start placing ships again.
- * @param {object} currentPlayer - the current player object
+ * @param {object} players - the object containg player objects
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
+ * @param {object} gameBoards - object containing game board objects
+ * @param {object} currentPlayer - the current player object in play
+ * @param {object} currentPlayer - the current ship object in play
+ * @param {boolean} playerClear - true if clearing player objects
+ * @param {boolean} computerClear - true if clearing computer objects
  */
-function clearShips(currentPlayer, playerShips, computerShips) {
+function clearShips(
+    players,
+    playerShips,
+    computerShips,
+    gameBoards,
+    currentPlayer,
+    currentShip,
+    playerClear,
+    computerClear
+) {
     /* Check which parameters are passed to the function
      * to determine which player areas and ship objects should
      * be cleared.
      */
     switch (true) {
-        case (playerShips && !computerShips):
+        case (playerClear && !computerClear):
             let playerShipCells = document.getElementsByClassName('player-play-area');
 
             for (let originalCell of playerShipCells) {
@@ -1049,7 +1096,7 @@ function clearShips(currentPlayer, playerShips, computerShips) {
             updatePlacementListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
             break;
 
-        case (computerShips && !playerShips):
+        case (computerClear && !playerClear):
             let compShipCells = document.getElementsByClassName('computer-play-area');
 
             for (let originalCell of compShipCells) {
@@ -1088,7 +1135,7 @@ function clearShips(currentPlayer, playerShips, computerShips) {
             }
             break;
 
-        case (playerShips && computerShips):
+        case (playerClear && computerClear):
             let playerShipCellsCombined = document.getElementsByClassName('player-play-area');
             let computerShipCellsCombined = document.getElementsByClassName('computer-play-area');
 
