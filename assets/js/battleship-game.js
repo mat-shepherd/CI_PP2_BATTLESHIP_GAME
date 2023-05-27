@@ -49,11 +49,11 @@ class Ship {
      * place ship image. Then return.
      * @method placeShip
      * @param {object} targetCell - clicked target event object
-     * @param {object} player - the player object from  players{}
+     * @param {object} currentPlayer - the current player object
      * @param {object} playerShips - the playerShips object
      * @param {object} randomShipCoord - optional coord passed by randomShip
      */
-    placeShip(targetCell, player, playerShips, randomShipCoord) {
+    placeShip(targetCell, currentPlayer, playerShips, randomShipCoord) {
         /* 
          * Get game board clicked cell object and add first 
          * coordinate of Ship object. If the image is clicked
@@ -102,14 +102,14 @@ class Ship {
 
         // Remove ship image and coordinates if ship already placed
         if (this.coordinates.length > this.size) {
-            this.removeShip(player);
+            this.removeShip(currentPlayer);
         }
 
         /*
          * Check which Ship type has been passed to method and add relevant ship
          * to the game board.
          */
-        if (player.name !== 'PLAYER TWO') {
+        if (currentPlayer.name !== 'PLAYER TWO') {
             switch (this.shipName) {
                 case 'Carrier':
                     cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship carrier'>";
@@ -140,10 +140,10 @@ class Ship {
      * Optionally sends a message to playerMessage and highlights a cel
      *  with an error warning if placement not valid.
      * @method removeShip
-     * @param {object} player - the player object from  players{}
+     * @param {object} currentPlayer - the current player object
      * @param {string} conflictingCoord - coordinate of conflicting ship
      */
-    removeShip(player, conflictingCoord) {
+    removeShip(currentPlayer, conflictingCoord) {
         // Get the element at the placed ship coordinates or at conflicting coordinates         
         let existCoord = document.getElementById(this.coordinates[0]);
 
@@ -174,10 +174,10 @@ class Ship {
                 existCoord.classList.remove('red-background');
             }, 4000);
 
-            playerMessage(`<span class='red-text'>${player.name} ships can't overlap or extend past 
+            playerMessage(`<span class='red-text'>${currentPlayer.name} ships can't overlap or extend past 
             the edge of the grid. Please place your ${this.shipName} again!</span>`, 'error');
         } else {
-            playerMessage(`${player.name} click <span class="red-text">'ROTATE'</span>
+            playerMessage(`${currentPlayer.name} click <span class="red-text">'ROTATE'</span>
             to change the direction of your ship or 'PLACE' when you are ready 
             to place your next ship.`);
         }
@@ -1328,6 +1328,8 @@ function initPlacement(playerName) {
 
     // hide intro screen modal to show game boards
     document.getElementById('intro-modal').style.display = "none";
+
+
 }
 
 // RUNGAME - need to look at parameters to pass from initPlacement to rungame
@@ -1336,11 +1338,11 @@ function initPlacement(playerName) {
  * The checkTurn function is called by confirmPlaceShip when final ship
  * has been placed. This handles changing game board event listeners to
  * start taking shots.
- * @param {object} players - holds player objects
+ * @param {object} currentPlayer - holds the current player object
  * @param {object} playerShips - holds player ship objects
  * @param {object} computerShips - holds computer ship objects
  */
-function checkTurn(players, playerShips, computerShips) {
+function checkTurn(currentPlayer, playerShips, computerShips) {
     // Runs once ships placed
     // Remove click events listeners from player game board - function?
     // Add shot event listeners to computer game board - clicks call checkShipHit(playerName)
@@ -1351,7 +1353,7 @@ function checkTurn(players, playerShips, computerShips) {
     // Returns and calls takeShot method from computer player object which callShipHit
     // Loops over ships
     // if player turn = true player turn else computer turn
-    if (players.turn === true) {
+    if (currentPlayer.turn === true) {
         console.log('Player One Turn!');
 
         // Remove placement class from player area cells 
@@ -1364,7 +1366,7 @@ function checkTurn(players, playerShips, computerShips) {
         }
 
         // add checkShipHit event listeners to computer game board
-        playerMessage(players.name + " CLICK ANYWHERE ON PLAYER TWO'S GRID TO TAKE A SHOT ON THEM!");
+        playerMessage(currentPlayer.name + " CLICK ANYWHERE ON PLAYER TWO'S GRID TO TAKE A SHOT ON THEM!");
     } else {
         console.log('Player Two Turn!');
         playerMessage("PLAYER TWO IS TAKING THEIR SHOT ON YOU!");
