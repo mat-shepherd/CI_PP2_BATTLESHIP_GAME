@@ -495,6 +495,7 @@ class Ship {
                  */
                 if (countShipsPlaced === 5) {
                     document.getElementById('placement-controls').style.display = 'none';
+                    gameBoards.player.state = gameBoards.computer.state = 'shooting';
                     checkTurn(
                         players,
                         playerShips,
@@ -602,11 +603,13 @@ class Ship {
  * @class Gameboard
  * @param {string} owner - the player that owns the gameboard
  * @param {string} label - the name label that should be displayed above the game board
+ * @param {string} state - the state of play, placing or shooting
 */
 class Gameboard {
-    constructor(owner, label) {
+    constructor(owner, label, state) {
         this.owner = owner;
         this.label = label;
+        this.state = state;
     }
 
     /**
@@ -1588,6 +1591,7 @@ function checkTurn(
     // if player turn = true player turn else computer turn
     if (currentPlayer.turn === true) {
         console.log('Player One Turn!');
+        console.log(gameBoards.player.state);
 
         // Remove placement class from player area cells 
         let playerCells = document.getElementsByClassName('player-play-area');
