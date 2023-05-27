@@ -3,7 +3,7 @@
 /* 
 * Tried to avoid global variables but this one was hard
 * to avoid. Added namespace to avoid conflicts.
-* In future iteration try adding updateCellListeners as 
+* In future iteration try adding updatePlayerGridListeners as 
 * a method of Gameboard class and add eventHandlers as attribute. 
 */
 
@@ -484,7 +484,7 @@ class Ship {
 
                     playerMessage(currentPlayer.name + " your turn to place your " + currentShip.shipName);
 
-                    updateCellListener(currentShip, currentPlayer, playerShips);
+                    updatePlayerGridListener(currentShip, currentPlayer, playerShips);
                     updatePlacementListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
                 }
             } else {
@@ -751,14 +751,14 @@ function checkName(playerName) {
 }
 
 /**
- * Update cell click event listeners by removing existing and then
- * adding new click event listeners to call methods of the current
+ * Update player grid cell click event listeners by removing existing and
+ * then adding new click event listeners to call methods of the current
  * ship object. 
  * @param {object} currentShip - the ship currently being place
  * @param {object} currentPlayer - the player placing ships
  * @param {object} playerShips - the player's ship objects'
  */
-function updateCellListener(currentShip, currentPlayer, playerShips) {
+function updatePlayerGridListener(currentShip, currentPlayer, playerShips) {
     let playerCells = document.getElementsByClassName('player-play-area');
     /* 
     * Method to store event handlers for later reference
@@ -1022,7 +1022,7 @@ function clearShips(currentPlayer, playerShips, computerShips) {
             * Re-add event listeners to each cell in the player game board to record
             * ship coordinates on click. And reset placement control event listeners.
             */
-            updateCellListener(currentShip, currentPlayer, playerShips);
+            updatePlayerGridListener(currentShip, currentPlayer, playerShips);
             updatePlacementListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
             break;
 
@@ -1114,7 +1114,7 @@ function clearShips(currentPlayer, playerShips, computerShips) {
             * Re-add event listeners to each cell in the player game board to record
             * ship coordinates on click. And reset placement control event listeners.
             */
-            updateCellListener(currentShip, currentPlayer, playerShips);
+            updatePlayerGridListener(currentShip, currentPlayer, playerShips);
             updatePlacementListener(null, playerShips, computerShips, null, currentPlayer, currentShip);
             break;
 
@@ -1313,7 +1313,7 @@ function initPlacement(playerName) {
      * ship coordinates on click. Event listeners will be updated by
      * confirmPlaceShip method.
      */
-    updateCellListener(currentShip, currentPlayer, playerShips);
+    updatePlayerGridListener(currentShip, currentPlayer, playerShips);
 
     /* 
      * Add event listeners to placement buttons. Associated with first 
