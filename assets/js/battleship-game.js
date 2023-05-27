@@ -495,7 +495,14 @@ class Ship {
                  */
                 if (countShipsPlaced === 5) {
                     document.getElementById('placement-controls').style.display = 'none';
-                    checkTurn(currentPlayer);
+                    checkTurn(
+                        players,
+                        playerShips,
+                        computerShips,
+                        gameBoards,
+                        currentPlayer,
+                        currentShip
+                    );
                 } else {
                     /* 
                      * Code to get next ship in playerShips adapted from 
@@ -1554,11 +1561,21 @@ function initPlacement(playerName) {
  * has been placed. This handles changing game board event listeners to
  * start taking shots.
  * @function checkTurn
- * @param {object} currentPlayer - holds the current player object
- * @param {object} playerShips - holds player ship objects
- * @param {object} computerShips - holds computer ship objects
+ * @param {object} players - the object containg player objects
+ * @param {object} playerShips - object containing the player's ship objects
+ * @param {object} computerShips - object containing the computer's ship objects
+ * @param {object} gameBoards - object containing game board objects
+ * @param {object} currentPlayer - the current player object in play
+ * @param {object} currentShip - the current ship object in play
  */
-function checkTurn(currentPlayer, playerShips, computerShips) {
+function checkTurn(
+    players,
+    playerShips,
+    computerShips,
+    gameBoards,
+    currentPlayer,
+    currentShip
+) {
     // Runs once ships placed
     // Remove click events listeners from player game board - function?
     // Add shot event listeners to computer game board - clicks call checkShipHit(playerName)
