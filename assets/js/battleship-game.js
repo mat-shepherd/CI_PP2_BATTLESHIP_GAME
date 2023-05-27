@@ -204,11 +204,23 @@ class Ship {
      * for help here. After much trial and error the following code was 
      * pieced together and adapted from code provided by chatGPT by https://openai.com
      * @method rotateShip
-     * @param {object} currentPlayer - current player object
-     * @param {object} playerShips - object containing player ship objects
+     * @param {object} players - the object containg player objects
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects
+     * @param {object} gameBoards - object containing game board objects
+     * @param {object} currentPlayer - the current player object in play
+     * @param {object} currentShip - the current ship object in play
      * @param {string} randomShipCoord - coordinate generated for random ship
      */
-    rotateShip(currentPlayer, playerShips, randomShipCoord) {
+    rotateShip(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip,
+        randomShipCoord
+    ) {
         let shipCoord = document.getElementById(this.coordinates[0]);
 
         // Check ship has been placed if not show error
@@ -891,7 +903,14 @@ function updatePlacementListener(
                     );
                     break;
                 case 'rotate-control':
-                    currentShip.rotateShip(currentPlayer, playerShips);
+                    currentShip.rotateShip(
+                        players,
+                        playerShips,
+                        computerShips,
+                        gameBoards,
+                        currentPlayer,
+                        currentShip
+                    );
                     break;
                 case 'random-control':
                     /* randomShip will accept playerShips and computerShips
@@ -1024,7 +1043,15 @@ function randomShip(
                     // Randomly call rotateShip
                     let rotationNumber = Math.floor(Math.random() * 6);
                     if (rotationNumber === 1) {
-                        shipObject.rotateShip(currentPlayer, playerShips, randomShipCoord);
+                        shipObject.rotateShip(
+                            players,
+                            playerShips,
+                            computerShips,
+                            gameBoards,
+                            currentPlayer,
+                            currentShip,
+                            randomShipCoord
+                        );
                     }
 
                     randomCoordInvalid = shipObject.checkPlacement(shipObject, playerShips, computerShips);
