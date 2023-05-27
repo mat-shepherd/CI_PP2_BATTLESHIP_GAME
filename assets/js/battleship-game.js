@@ -571,7 +571,7 @@ class Gameboard {
                         playGrid += `<div id="iC ${gridLetters[j + i].trim()}" class="index-column">${gridLetters[j + i].trim()}</div>`;
                     } else {
                         // create alphanumeric grid references to use in cell IDs
-                        let cellId = this.owner === 'computer' ? `P-${gridLetters[i]}${j}` : `${gridLetters[i]}${j}`;
+                        let cellId = this.owner === 'computer' ? `${gridLetters[i]}${j}` : `${gridLetters[i]}${j}C`;
                         // change initial class on cells based on Player owner to control hover icons
                         let cellClass = this.owner === 'computer' ? 'computer-play-area no-placement' : 'player-play-area ship-placement';
                         playGrid += `<div id="${cellId}" class="${cellClass}">${cellId}</div>`;
