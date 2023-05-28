@@ -653,47 +653,53 @@ class Gameboard {
         currentPlayer,
         currentShip
     ) {
-        let playerCells = document.getElementsByClassName('player-play-area');
-        /* 
-        * Method to store event handlers for later reference
-        * adapted from answer by ChatGPT by https://openai.com
-        */
-
-        // Remove existing click event listeners from the cells
-        for (let cell of playerCells) {
-            const clickHandler = gameBoards.player.placeEventHandlers[cell.id];
-            if (clickHandler) {
-                cell.removeEventListener('click', clickHandler);
-                delete gameBoards.player.placeEventHandlers[cell.id];
-            }
-        }
-
-        // Add new click event listeners to the cells
-        for (let cell of playerCells) {
-            function cellClick(event) {
-                // Handle the cell click event
-                currentShip.placeShip(
-                    players,
-                    playerShips,
-                    computerShips,
-                    gameBoards,
-                    currentPlayer,
-                    currentShip,
-                    event.target
-                );
-            }
-
-            gameBoards.player.placeEventHandlers[cell.id] = cellClick;
-            /* Check cell doesn't already contain placed ship 
-            * then add click listener, remove ship-placement
-            * class and add no-placement class.
+        if (this.owner === 'player') {
+            let playerCells = document.getElementsByClassName('player-play-area');
+            /* 
+            * Method to store event handlers for later reference
+            * adapted from answer by ChatGPT by https://openai.com
             */
-            if (!cell.classList.contains('placed')) {
-                cell.addEventListener("click", cellClick);
-            } else {
-                cell.classList.remove('ship-placement');
-                cell.classList.add('no-placement');
+
+            // Remove existing click event listeners from the cells
+            for (let cell of playerCells) {
+                const clickHandler = gameBoards.player.placeEventHandlers[cell.id];
+                if (clickHandler) {
+                    cell.removeEventListener('click', clickHandler);
+                    delete gameBoards.player.placeEventHandlers[cell.id];
+                }
             }
+
+            // Add new click event listeners to the cells
+            for (let cell of playerCells) {
+                function cellClick(event) {
+                    // Handle the cell click event
+                    currentShip.placeShip(
+                        players,
+                        playerShips,
+                        computerShips,
+                        gameBoards,
+                        currentPlayer,
+                        currentShip,
+                        event.target
+                    );
+                }
+
+                gameBoards.player.placeEventHandlers[cell.id] = cellClick;
+                /* Check cell doesn't already contain placed ship 
+                * then add click listener, remove ship-placement
+                * class and add no-placement class.
+                */
+                if (!cell.classList.contains('placed')) {
+                    cell.addEventListener("click", cellClick);
+                } else {
+                    cell.classList.remove('ship-placement');
+                    cell.classList.add('no-placement');
+                }
+            }
+        } else if (this.owner === 'computer') {
+
+        } else {
+            throw `Unknown game board!`;
         }
     }
 }
