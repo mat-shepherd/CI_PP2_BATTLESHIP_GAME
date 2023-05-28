@@ -758,7 +758,7 @@ class Gameboard {
             for (let cell of computerCells) {
                 function cellShot(event) {
                     // Handle the shot cell click event
-                    currentShip.checkShipHit(
+                    this.takeShot(
                         players,
                         playerShips,
                         computerShips,
