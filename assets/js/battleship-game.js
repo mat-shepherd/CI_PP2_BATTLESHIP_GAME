@@ -512,7 +512,7 @@ class Ship {
 
                     playerMessage(currentPlayer.name + " your turn to place your " + currentShip.shipName);
 
-                    gameBoards.player.updatePlayerGridListener(
+                    gameBoards.player.updateGridListener(
                         players,
                         playerShips,
                         computerShips,
@@ -634,10 +634,10 @@ class Gameboard {
     }
 
     /**
-     * Update player grid cell click event listeners by removing existing and
-     * then adding new click event listeners to call methods of the current
-     * ship object.
-     * @function updatePlayerGridListener
+     * Update grid cell click event listeners for this game board by removing 
+     * existing and then adding new click event listeners to call methods of 
+     * the currentShip object.
+     * @function updateGridListener
      * @param {object} players - the object containg player objects
      * @param {object} playerShips - object containing the player's ship objects
      * @param {object} computerShips - object containing the computer's ship objects
@@ -645,7 +645,7 @@ class Gameboard {
      * @param {object} currentPlayer - the current player object in play
      * @param {object} currentShip - the current ship object in play
      */
-    updatePlayerGridListener(
+    updateGridListener(
         players,
         playerShips,
         computerShips,
@@ -1208,7 +1208,7 @@ function clearShips(
             * Re-add event listeners to each cell in the player game board to record
             * ship coordinates on click. And reset placement control event listeners.
             */
-            gameBoards.player.updatePlayerGridListener(
+            gameBoards.player.updateGridListener(
                 players,
                 playerShips,
                 computerShips,
@@ -1314,14 +1314,16 @@ function clearShips(
             * Re-add event listeners to each cell in the player game board to record
             * ship coordinates on click. And reset placement control event listeners.
             */
-            gameBoards.player.updatePlayerGridListener(players,
+            gameBoards.player.updateGridListener(
+                players,
                 playerShips,
                 computerShips,
                 gameBoards,
                 currentPlayer,
                 currentShip
             );
-            gameBoards.player.updatePlacementListener(players,
+            gameBoards.player.updatePlacementListener(
+                players,
                 playerShips,
                 computerShips,
                 gameBoards,
@@ -1525,7 +1527,7 @@ function initPlacement(playerName) {
      * ship coordinates on click. Event listeners will be updated by
      * confirmPlaceShip method.
      */
-    gameBoards.player.updatePlayerGridListener(players, playerShips, computerShips, gameBoards, currentPlayer, currentShip);
+    gameBoards.player.updateGridListener(players, playerShips, computerShips, gameBoards, currentPlayer, currentShip);
 
     /* 
      * Add event listeners to placement buttons. Associated with first 
