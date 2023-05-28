@@ -472,15 +472,23 @@ class Ship {
                 }
                 console.log('Count ships placed...' + countShipsPlaced);
                 /* 
-                 * If all ships placed hide placement controls and 
-                 * pass to checkTurn() to start turn based game play
+                 * If all ships placed hide placement controls, set game board
+                 * state to shooting, add computer grid shoot click listeners 
+                 * and pass to checkTurn() to start turn based game play
                  */
+                // no-placement on player grid
                 if (countShipsPlaced === 5) {
                     document.getElementById('placement-controls').style.display = 'none';
                     gameBoards.player.state = gameBoards.computer.state = 'shooting';
-                    // create updateComputerGridListener function to add 
-                    // shooting click listeners here. Can also handle
-                    // no-placement on player grid
+                    gameBoards.computer.updateGridListener(
+                        players,
+                        playerShips,
+                        computerShips,
+                        gameBoards,
+                        currentPlayer,
+                        currentShip
+                    );
+
                     checkTurn(
                         players,
                         playerShips,
@@ -533,6 +541,43 @@ class Ship {
                 throw `No Ships Placed to Confirm!`;
             }
         }
+    }
+
+    /**
+     * Check's if a player's guess results in a ship being hit and provide
+     * feedback to player if hit
+     * @method checkShipHit
+     * @param {object} players - the object containg player objects
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects
+     * @param {object} gameBoards - object containing game board objects
+     * @param {object} currentPlayer - the current player object in play
+     * @param {object} currentShip - the current ship object in play
+     * @param {object} targetCell - clicked target event object
+     * @param {object} randomShotCoord - optional coord passed by randomShot 
+     * 
+
+     */
+    checkShipHit(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip,
+        targetCell
+    ) {
+        console.log('Shots fired!!');
+        /* Loop through all of the opposing player's ship coordinates
+        * and check if shot coordinates found . If found, pass oppPlayer 
+        * and shotCoord to hitShip method. If not, pass oppPlayer 
+        * and shotCoord to missShip method. Then pass to checkWinLose().
+        */
+        // let oppPlayer = player.
+
+        // set player turn attribute to false so game play passes back to computer
+        player.turn = false;
+        let playerWin = checkWinLose(player, shotCoord);
     }
 
     /**
@@ -637,7 +682,7 @@ class Gameboard {
      * Update grid cell click event listeners for this game board by removing 
      * existing and then adding new click event listeners to call methods of 
      * the currentShip object.
-     * @function updateGridListener
+     * @method updateGridListener
      * @param {object} players - the object containg player objects
      * @param {object} playerShips - object containing the player's ship objects
      * @param {object} computerShips - object containing the computer's ship objects
@@ -712,7 +757,7 @@ class Gameboard {
             for (let cell of computerCells) {
                 function cellShot(event) {
                     // Handle the shot cell click event
-                    currentShip.takeShot(
+                    currentShip.checkShipHit(
                         players,
                         playerShips,
                         computerShips,
@@ -728,7 +773,7 @@ class Gameboard {
                 * then add click listener, remove ship-placement
                 * class and add no-placement class.
                 */
-                if (!cell.classList.contains('placed')) {
+                if (!cell.classList.contains('hit') && !cell.classList.contains('miss')) {
                     cell.addEventListener("click", cellShot);
                 } else {
                     cell.classList.remove('ship-placement');
@@ -824,18 +869,6 @@ class Player {
      * to take a shot.
      * @method 
      */
-
-    takeShot(
-        players,
-        playerShips,
-        computerShips,
-        gameBoards,
-        currentPlayer,
-        currentShip,
-        targetCell
-    ) {
-        console.log('Shots fired!!');
-    }
 }
 
 // HELPER FUNCTIONS
@@ -1186,6 +1219,30 @@ function randomShip(
 }
 
 /**
+ * Generate random coordinates to shoot ships randomly.
+ * @function randomShot
+ * @param {object} players - the object containg player objects
+ * @param {object} playerShips - object containing the player's ship objects
+ * @param {object} computerShips - object containing the computer's ship objects
+ * @param {object} gameBoards - object containing game board objects
+ * @param {object} currentPlayer - the current player object in play
+ * @param {object} currentShip - the current ship object in play
+ * @param {boolean} playerRandom - true if player ships to be randomised
+ * @param {boolean} computerRandom - true if computer ships to be randomised
+ */
+function randomShot(
+    players,
+    playerShips,
+    computerShips,
+    gameBoards,
+    currentPlayer,
+    currentShip,
+    playerRandom,
+    computerRandom
+) {
+}
+
+/**
  * Clear all ship placements from the game board
  * reset ship coordinates for all player ships
  * and allow the player to start placing ships again.
@@ -1401,31 +1458,11 @@ function addButtonPulse() {
 }
 
 /**
- * Check's if a player's guess results in a ship being hit and provide
- * feedback to player if hit
- * @method checkShipHit
- * @param {} player - player who took shot, we will check opposite player for hit
- * @param {} shotCoord - coordinates of shop from takeShot()
- */
-function checkShipHit(player, shotCoord) {
-    /* Loop through all of the opposing player's ship coordinates
-     * and check if shot coordinates found . If found, pass oppPlayer 
-     * and shotCoord to hitShip method. If not, pass oppPlayer 
-     * and shotCoord to missShip method. Then pass to checkWinLose().
-    */
-    // let oppPlayer = player.
-
-    // set player turn attribute to false so game play passes back to computer
-    player.turn = false;
-    let playerWin = checkWinLose(player, shotCoord);
-}
-
-/**
  * Check if all of players ships have been sunk by loop the ship
  * objects shipsRemaining values. Return win true or false
  * @method checkWinLose
  * @param {} oppPlayer - opposing player to check against
- * @param {} shotCoord - coordinates of shot from takeShot()
+ * @param {} shotCoord - coordinates of shot from checkShipHit()
  * @return {boolean} win - win true of false
  */
 function checkWinLose(player, shotCoord) {
@@ -1575,18 +1612,32 @@ function initPlacement(playerName) {
     let currentPlayer = players.player;
 
     /*
-     * Add event listeners to each cell in the player game board to record
-     * ship coordinates on click. Event listeners will be updated by
+     * Add ship placement event listeners to each cell in the player game board 
+     * to record ship coordinates on click. Event listeners will be updated by
      * confirmPlaceShip method.
      */
-    gameBoards.player.updateGridListener(players, playerShips, computerShips, gameBoards, currentPlayer, currentShip);
+    gameBoards.player.updateGridListener(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip
+    );
 
     /* 
      * Add event listeners to placement buttons. Associated with first 
      * Ship object initially. confirmPlaceShip called by Place click 
      * listener will update the listener to the next Ship object.
      */
-    updatePlacementListener(players, playerShips, computerShips, gameBoards, currentPlayer, currentShip);
+    updatePlacementListener(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip
+    );
 
     // show initial welcome and instructions in player message
     playerMessage(`Welcome ${players.player.name}! Click your grid below to place your first ship.
@@ -1624,15 +1675,16 @@ function checkTurn(
 ) {
     // Runs once ships placed
     // Remove click events listeners from player game board - function?
-    // Add shot event listeners to computer game board - clicks call takeShot
+    // Add shot event listeners to computer game board - clicks call checkShipHit
     // Add no-placement class to player game board divs and remove from computer game board
     // Update playerMessage
     // Player takes first shot by clicking on computer game board which calls
-    // takeShot method from computer||player object
+    // Loop over each player ship calling checkShipHit method on ship objects
     // update player.turn to false and then call
-    // checkShipHit(playerName) method of ship object - call shipHit or shipMiss
+    // call shipHit or shipMiss
     // shipHit add explosion image & set ship sunk attribute to true, update
     // ship image with x, hits and ships number in sidebar
+    // computer's turn remove listeners from computer grid
     // update PlayerMessage
     // if computer ship add ship image too (remember to trim ship div IDs)
     // shipmiss add splash image & update misses in sidebar
@@ -1656,12 +1708,15 @@ function checkTurn(
             }
         }
 
+        // call updateGridListeners to add shoot listeners to computer grid
+
         // add checkShipHit event listeners to computer game board
         playerMessage(currentPlayer.name + " CLICK ANYWHERE ON PLAYER TWO'S GRID TO TAKE A SHOT ON THEM!");
     } else {
         console.log('Player Two Turn!');
         playerMessage("PLAYER TWO IS TAKING THEIR SHOT ON YOU!");
         // call takeShot
+        // remove shoot listeners from computer gameboard
     }
 }
 
