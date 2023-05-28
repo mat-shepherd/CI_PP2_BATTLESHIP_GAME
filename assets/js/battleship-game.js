@@ -591,8 +591,8 @@ class Ship {
     hitShip() {
         // if computer player will need to add ship image to cell
         // then add hit effect
-        // remove click listener from cell
-        // add no-placement class to cell
+        // call updategridlistener
+        // add hit class to cell (updateGridListener will add no placement)
 
         /* test placing a ship and explosion effect
         let testDiv = document.getElementById('p52');
@@ -613,8 +613,9 @@ class Ship {
      */
     missShip() {
         // missShip effect
-        // remove clicklistener from cell
-        // add no-placement clas to cell
+        // add miss effect
+        // call updategridlistener
+        // add hit class to cell (updateGridListener will add no placement)
 
     }
 
@@ -758,7 +759,7 @@ class Gameboard {
             for (let cell of computerCells) {
                 function cellShot(event) {
                     // Handle the shot cell click event
-                    this.takeShot(
+                    players.player.takeShot(
                         players,
                         playerShips,
                         computerShips,
@@ -770,10 +771,14 @@ class Gameboard {
                 }
 
                 gameBoards.player.shootEventHandlers[cell.id] = cellShot;
-                /* Check cell doesn't already contain placed ship 
-                * then add click listener, remove ship-placement
-                * class and add no-placement class.
-                */
+                /* Check cell doesn't already contain hit or miss 
+                 * then add click listener, remove existing no-placement
+                 * class, add shot class but if cell contains hit or miss 
+                 * add no-placement class again.
+                 */
+                cell.classList.remove('no-placement');
+                cell.classList.add('shot');
+
                 if (!cell.classList.contains('hit') && !cell.classList.contains('miss')) {
                     cell.addEventListener("click", cellShot);
                 } else {
@@ -887,8 +892,29 @@ class Player {
         targetCell,
         randomShotCoord
     ) {
+        // Shot is taken set this player's turn to false
+        this.turn = false;
+        console.log(this);
+        console.log(this.name + ' turn is ' + this.turn);
+
+        /*
+         * We need to set other player's turn to true.
+         * Have to find the player which isn't this player.
+         */
+        let nextPlayer = this.name !== 'PLAYER TWO' ? players.computer : players.player;
+        nextPlayer.turn = true;
+        console.log(nextPlayer.name + ' turn is ' + nextPlayer.turn);
+
         // call checkShipHit and pass targetCell 
         // for each of this player's ships
+        checkTurn(
+            players,
+            playerShips,
+            computerShips,
+            gameBoards,
+            currentPlayer,
+            currentShip
+        );
     }
 
     /**
