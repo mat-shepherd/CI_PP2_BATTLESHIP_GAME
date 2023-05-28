@@ -671,8 +671,8 @@ class Gameboard {
 
             // Add new click event listeners to the cells
             for (let cell of playerCells) {
-                function cellClick(event) {
-                    // Handle the cell click event
+                function cellPlace(event) {
+                    // Handle the place cell click event
                     currentShip.placeShip(
                         players,
                         playerShips,
@@ -684,20 +684,58 @@ class Gameboard {
                     );
                 }
 
-                gameBoards.player.placeEventHandlers[cell.id] = cellClick;
+                gameBoards.player.placeEventHandlers[cell.id] = cellPlace;
                 /* Check cell doesn't already contain placed ship 
                 * then add click listener, remove ship-placement
                 * class and add no-placement class.
                 */
                 if (!cell.classList.contains('placed')) {
-                    cell.addEventListener("click", cellClick);
+                    cell.addEventListener("click", cellPlace);
                 } else {
                     cell.classList.remove('ship-placement');
                     cell.classList.add('no-placement');
                 }
             }
         } else if (this.owner === 'computer') {
+            let computerCells = document.getElementsByClassName('computer-play-area');
 
+            // Remove existing place click event listeners from the cells
+            for (let cell of computerCells) {
+                const clickHandler = gameBoards.computer.shootEventHandlers[cell.id];
+                if (clickHandler) {
+                    cell.removeEventListener('click', clickHandler);
+                    delete gameBoards.computer.shootEventHandlers[cell.id];
+                }
+            }
+
+            // Add new shoot click event listeners to the cells
+            for (let cell of computerCells) {
+                function cellShot(event) {
+                    // Handle the shot cell click event
+                    currentShip.takeShot(
+                        players,
+                        playerShips,
+                        computerShips,
+                        gameBoards,
+                        currentPlayer,
+                        currentShip,
+                        event.target
+                    );
+                }
+
+                gameBoards.player.shootEventHandlers[cell.id] = cellShot;
+                /* Check cell doesn't already contain placed ship 
+                * then add click listener, remove ship-placement
+                * class and add no-placement class.
+                */
+                if (!cell.classList.contains('placed')) {
+                    cell.addEventListener("click", cellShot);
+                } else {
+                    cell.classList.remove('ship-placement');
+                    cell.classList.add('no-placement');
+                }
+
+            }
         } else {
             throw `Unknown game board!`;
         }
@@ -787,8 +825,16 @@ class Player {
      * @method 
      */
 
-    takeShot() {
-
+    takeShot(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip,
+        targetCell
+    ) {
+        console.log('Shots fired!!');
     }
 }
 
