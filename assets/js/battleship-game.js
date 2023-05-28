@@ -451,6 +451,7 @@ class Ship {
                 this.placed = true;
 
                 // Once ship is placed remove click event listeners from occupied cells
+                // Don't do if shooting
                 let placedShipCells = this.coordinates;
                 console.log(this.coordinates);
                 for (let i in placedShipCells) {
@@ -1205,7 +1206,7 @@ function randomShip(
 
                 console.log("Ships after random loop: " + shipObject.shipName + ' coords ' + shipObject.coordinates);
 
-                // Place the random ships
+                // Place the random ships if not computerRandom
                 shipObject.placeShip(
                     players,
                     playerShips,
@@ -1489,12 +1490,34 @@ function clearShips(
 
 /**
  * Add pulse effect to placement buttons to prompt player.
+ * @function addButtonPulse
  */
 function addButtonPulse() {
     let gameButtons = document.getElementsByClassName('game-button');
     for (let button of gameButtons) {
         button.classList.add("pulse");
     }
+}
+
+/**
+ * Disable click listeners when state of play is shooting
+ * and we need to lock the opposite gameboard
+ * @function disableClickListeners
+ */
+// Disable click listeners
+function disableClickListeners(parentElement) {
+    parentElement.style.pointerEvents = "none";
+    element.style.cursor = 'default';
+}
+
+/**
+ * Enable click listeners when state of play is shooting
+ * and we need to unlock a gameboard
+ * @function enableClickListeners
+ */
+function enableClickListeners(parentElement) {
+    parentElement.style.pointerEvents = "auto";
+    element.style.cursor = 'pointer';
 }
 
 /**
@@ -1711,8 +1734,11 @@ function initShooting(
     currentPlayer,
     currentShip
 ) {
+    let playerCells = document.getElementsByClassName('player-play-area');
+
     document.getElementById('placement-controls').style.display = 'none';
     gameBoards.player.state = gameBoards.computer.state = 'shooting';
+
     let playerRandom = false;
     let computerRandom = true;
     randomShip(
@@ -1725,6 +1751,18 @@ function initShooting(
         playerRandom,
         computerRandom
     );
+
+    // Remove placement class from player area cells 
+    for (let cell of playerCells) {
+        if (cell.classList.contains('ship-placement')) {
+            cell.classList.remove('ship-placement');
+            cell.classList.add('no-placement');
+        }
+    }
+
+    // This updates initial grid listeners to shoot
+    // but when alternating need to make sure player
+    // can't click on oppoiste board
     gameBoards.computer.updateGridListener(
         players,
         playerShips,
@@ -1733,6 +1771,7 @@ function initShooting(
         currentPlayer,
         currentShip
     );
+    // Remove - checkplacement will pass to checkturn once computer ships placed
     checkTurn(
         players,
         playerShips,
@@ -1787,16 +1826,24 @@ function checkTurn(
     // No player winlose call checkturn
     // update PlayerMessage
     // if player turn = true player turn else computer turn
+
+    let computerCells = document.getElementsByClassName('computer-play-area');
+    let computerBoard = document.getElementById('computer-gameboard');
+
     if (currentPlayer.name !== "PLAYER TWO") {
         console.log('Player One Turn!');
         console.log(gameBoards.player.state);
 
-        // Remove placement class from player area cells 
-        let playerCells = document.getElementsByClassName('player-play-area');
-        for (let cell of playerCells) {
-            if (cell.classList.contains('ship-placement')) {
-                cell.classList.remove('ship-placement');
-                cell.classList.add('no-placement');
+        /* 
+         * Unlock computer game board when player needs to
+         * take shot
+         */
+        enableClickListeners(computerBoard);
+
+        // Remove no-placement class from computer area cells 
+        for (let cell of computerCells) {
+            if (cell.classList.contains('no-placement')) {
+                cell.classList.remove('no-placement');
             }
         }
 
@@ -1806,9 +1853,25 @@ function checkTurn(
         playerMessage(currentPlayer.name + " CLICK ANYWHERE ON PLAYER TWO'S GRID TO TAKE A SHOT ON THEM!");
     } else {
         console.log('Player Two Turn!');
+
+        /* 
+         * Lock computer game board while computer taking
+         * shot so player can't trigger takeShot
+         */
+        disableClickListeners(computerBoard);
+        // Remove placement class from computer area cells
+        // ship hit or miss should use no-shot class 
+        for (let cell of computerCells) {
+            if (!cell.classList.contains('no-placement')) {
+                cell.classList.add('no-placement');
+            }
+        }
+
         playerMessage("PLAYER TWO IS TAKING THEIR SHOT ON YOU!");
         // call takeShot
         // remove shoot listeners from computer gameboard
+
+
     }
 }
 
