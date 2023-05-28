@@ -1112,16 +1112,8 @@ function randomShip(
     playerRandom,
     computerRandom
 ) {
-    // pass to clearShips in case ship already placed
-    // for each ship in shipObject generate a random alphanumeric coord
-    // pass coordinate to checkPlacement
-    // if coords found generate again
-    // if not found add to ship.coordinates
-    // pass ship object to placeShip
-    // pass to runGame
-
     /*
-    * clears playerShips or computerShips
+    * Clears playerShips or computerShips
     * depending on playerRandom or computerRandom being 
     * passed as parameters
     */
@@ -1142,6 +1134,7 @@ function randomShip(
                 playerClear,
                 computerClear
             );
+            // For each ship in shipObject generate a random alphanumeric coord
             for (let shipKey in playerShips) {
                 let randomCoordInvalid = '';
                 let randomShipCoord = '';
