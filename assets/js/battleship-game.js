@@ -59,7 +59,12 @@ class Ship {
         if (targetCell.tagName === 'IMG') {
             cellId = targetCell.parentElement.id;
         } else if (randomShipCoord) {
-            cellId = randomShipCoord;
+            if (randomShipCoord.endsWith('C')) {
+                // If computer cell remove the last character of ID
+                cellId = randomShipCoord.slice(0, -1);
+            } else {
+                cellId = randomShipCoord;
+            }
         } else {
             cellId = targetCell.id;
         }
