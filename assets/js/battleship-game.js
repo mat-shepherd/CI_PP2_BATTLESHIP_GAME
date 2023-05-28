@@ -1,21 +1,3 @@
-// GLOBAL VARIABLE
-
-/* 
-* Tried to avoid global variables but this one was hard
-* to avoid. Added namespace to avoid conflicts.
-* In future iteration try adding updatePlayerGridListeners as 
-* a method of Gameboard class and add eventHandlers as attribute. 
-*/
-
-const BattleshipGameEvents = {
-    placeEventHandlers: {
-        // For ship placement click event handlers
-    },
-    shootEventHandlers: {
-        // For game shot click event handlers
-    }
-};
-
 // CLASSES
 
 /** 
@@ -613,6 +595,8 @@ class Gameboard {
         this.owner = owner;
         this.label = label;
         this.state = state;
+        this.placeEventHandlers = {};
+        this.shootEventHandlers = {};
     }
 
     /**
@@ -839,10 +823,10 @@ function updatePlayerGridListener(
 
     // Remove existing click event listeners from the cells
     for (let cell of playerCells) {
-        const clickHandler = BattleshipGameEvents.placeEventHandlers[cell.id];
+        const clickHandler = gameBoards.player.placeEventHandlers[cell.id];
         if (clickHandler) {
             cell.removeEventListener('click', clickHandler);
-            delete BattleshipGameEvents.placeEventHandlers[cell.id];
+            delete gameBoards.player.placeEventHandlers[cell.id];
         }
     }
 
@@ -861,7 +845,7 @@ function updatePlayerGridListener(
             );
         }
 
-        BattleshipGameEvents.placeEventHandlers[cell.id] = cellClick;
+        gameBoards.player.placeEventHandlers[cell.id] = cellClick;
         /* Check cell doesn't already contain placed ship 
          * then add click listener, remove ship-placement
          * class and add no-placement class.
