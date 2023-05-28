@@ -57,15 +57,20 @@ class Ship {
          */
         let cellId = '';
         if (targetCell.tagName === 'IMG') {
+            // If click on image get parent div.
             cellId = targetCell.parentElement.id;
         } else if (randomShipCoord) {
+            /* If random coordinate passed use that
+             * If random computer cell remove the last 
+             * character of ID
+             */
             if (randomShipCoord.endsWith('C')) {
-                // If computer cell remove the last character of ID
                 cellId = randomShipCoord.slice(0, -1);
             } else {
                 cellId = randomShipCoord;
             }
         } else {
+            // otherwise use ID of clicked element
             cellId = targetCell.id;
         }
         let cell = document.getElementById(cellId);
