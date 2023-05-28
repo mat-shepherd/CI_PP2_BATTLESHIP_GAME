@@ -577,7 +577,6 @@ class Ship {
         // let oppPlayer = player.
 
         // set player turn attribute to false so game play passes back to computer
-        player.turn = false;
         let playerWin = checkWinLose(player, shotCoord);
     }
 
@@ -805,14 +804,13 @@ class Gameboard {
  * @param {boolean} turn - stores true if it is player's turn
  */
 class Player {
-    constructor(playerName, shipsRemaining, hits, misses, score, highScore, turn) {
+    constructor(playerName, shipsRemaining, hits, misses, score, highScore) {
         this.name = playerName;
         this.shipsRemaining = shipsRemaining;
         this.hits = hits;
         this.misses = misses;
         this.score = score;
         this.highScore = highScore;
-        this.turn = turn;
     }
 
     /**
@@ -892,21 +890,17 @@ class Player {
         targetCell,
         randomShotCoord
     ) {
-        // Shot is taken set this player's turn to false
-        this.turn = false;
-        console.log(this);
-        console.log(this.name + ' turn is ' + this.turn);
-
         /*
-         * We need to set other player's turn to true.
-         * Have to find the player which isn't this player.
-         */
+        * We need to set currentPlayer to the nextplayer
+        * before passing back to checkTurn
+        */
         let nextPlayer = this.name !== 'PLAYER TWO' ? players.computer : players.player;
-        nextPlayer.turn = true;
-        console.log(nextPlayer.name + ' turn is ' + nextPlayer.turn);
 
         // call checkShipHit and pass targetCell 
         // for each of this player's ships
+        // change currentPlayer each time checkTurn is called 
+        // then don't need turn attribute
+        currentPlayer = nextPlayer;
         checkTurn(
             players,
             playerShips,
@@ -1727,8 +1721,8 @@ function checkTurn(
     // Add no-placement class to player game board divs and remove from computer game board
     // Update playerMessage
     // Player takes first shot by clicking on computer game board which calls
+    // takeShot which will set currentPlayer to nextPlayer for turn handling &
     // Loop over each player ship calling checkShipHit method on ship objects
-    // update player.turn to false and then call
     // call shipHit or shipMiss
     // shipHit add explosion image & set ship sunk attribute to true, update
     // ship image with x, hits and ships number in sidebar
@@ -1743,7 +1737,7 @@ function checkTurn(
     // No player winlose call checkturn
     // update PlayerMessage
     // if player turn = true player turn else computer turn
-    if (currentPlayer.turn === true) {
+    if (currentPlayer.name !== "PLAYER TWO") {
         console.log('Player One Turn!');
         console.log(gameBoards.player.state);
 
