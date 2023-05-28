@@ -512,7 +512,7 @@ class Ship {
 
                     playerMessage(currentPlayer.name + " your turn to place your " + currentShip.shipName);
 
-                    updatePlayerGridListener(
+                    gameBoards.player.updatePlayerGridListener(
                         players,
                         playerShips,
                         computerShips,
@@ -631,6 +631,70 @@ class Gameboard {
             }
         }
         this.owner === 'computer' ? computerGameboard.innerHTML = playGrid : playerGameboard.innerHTML = playGrid;
+    }
+
+    /**
+     * Update player grid cell click event listeners by removing existing and
+     * then adding new click event listeners to call methods of the current
+     * ship object.
+     * @function updatePlayerGridListener
+     * @param {object} players - the object containg player objects
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects
+     * @param {object} gameBoards - object containing game board objects
+     * @param {object} currentPlayer - the current player object in play
+     * @param {object} currentShip - the current ship object in play
+     */
+    updatePlayerGridListener(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip
+    ) {
+        let playerCells = document.getElementsByClassName('player-play-area');
+        /* 
+        * Method to store event handlers for later reference
+        * adapted from answer by ChatGPT by https://openai.com
+        */
+
+        // Remove existing click event listeners from the cells
+        for (let cell of playerCells) {
+            const clickHandler = gameBoards.player.placeEventHandlers[cell.id];
+            if (clickHandler) {
+                cell.removeEventListener('click', clickHandler);
+                delete gameBoards.player.placeEventHandlers[cell.id];
+            }
+        }
+
+        // Add new click event listeners to the cells
+        for (let cell of playerCells) {
+            function cellClick(event) {
+                // Handle the cell click event
+                currentShip.placeShip(
+                    players,
+                    playerShips,
+                    computerShips,
+                    gameBoards,
+                    currentPlayer,
+                    currentShip,
+                    event.target
+                );
+            }
+
+            gameBoards.player.placeEventHandlers[cell.id] = cellClick;
+            /* Check cell doesn't already contain placed ship 
+            * then add click listener, remove ship-placement
+            * class and add no-placement class.
+            */
+            if (!cell.classList.contains('placed')) {
+                cell.addEventListener("click", cellClick);
+            } else {
+                cell.classList.remove('ship-placement');
+                cell.classList.add('no-placement');
+            }
+        }
     }
 }
 
@@ -792,70 +856,6 @@ function checkName(playerName) {
         initPlacement(playerName);
     } else {
         errorMsg.innerHTML = '<p>YOU MUST ENTER YOUR NAME TO START</p>';
-    }
-}
-
-/**
- * Update player grid cell click event listeners by removing existing and
- * then adding new click event listeners to call methods of the current
- * ship object.
- * @function updatePlayerGridListener
- * @param {object} players - the object containg player objects
- * @param {object} playerShips - object containing the player's ship objects
- * @param {object} computerShips - object containing the computer's ship objects
- * @param {object} gameBoards - object containing game board objects
- * @param {object} currentPlayer - the current player object in play
- * @param {object} currentShip - the current ship object in play
- */
-function updatePlayerGridListener(
-    players,
-    playerShips,
-    computerShips,
-    gameBoards,
-    currentPlayer,
-    currentShip
-) {
-    let playerCells = document.getElementsByClassName('player-play-area');
-    /* 
-    * Method to store event handlers for later reference
-    * adapted from answer by ChatGPT by https://openai.com
-    */
-
-    // Remove existing click event listeners from the cells
-    for (let cell of playerCells) {
-        const clickHandler = gameBoards.player.placeEventHandlers[cell.id];
-        if (clickHandler) {
-            cell.removeEventListener('click', clickHandler);
-            delete gameBoards.player.placeEventHandlers[cell.id];
-        }
-    }
-
-    // Add new click event listeners to the cells
-    for (let cell of playerCells) {
-        function cellClick(event) {
-            // Handle the cell click event
-            currentShip.placeShip(
-                players,
-                playerShips,
-                computerShips,
-                gameBoards,
-                currentPlayer,
-                currentShip,
-                event.target
-            );
-        }
-
-        gameBoards.player.placeEventHandlers[cell.id] = cellClick;
-        /* Check cell doesn't already contain placed ship 
-         * then add click listener, remove ship-placement
-         * class and add no-placement class.
-         */
-        if (!cell.classList.contains('placed')) {
-            cell.addEventListener("click", cellClick);
-        } else {
-            cell.classList.remove('ship-placement');
-            cell.classList.add('no-placement');
-        }
     }
 }
 
@@ -1208,14 +1208,16 @@ function clearShips(
             * Re-add event listeners to each cell in the player game board to record
             * ship coordinates on click. And reset placement control event listeners.
             */
-            updatePlayerGridListener(players,
+            gameBoards.player.updatePlayerGridListener(
+                players,
                 playerShips,
                 computerShips,
                 gameBoards,
                 currentPlayer,
                 currentShip
             );
-            updatePlacementListener(players,
+            updatePlacementListener(
+                players,
                 playerShips,
                 computerShips,
                 gameBoards,
@@ -1312,14 +1314,14 @@ function clearShips(
             * Re-add event listeners to each cell in the player game board to record
             * ship coordinates on click. And reset placement control event listeners.
             */
-            updatePlayerGridListener(players,
+            gameBoards.player.updatePlayerGridListener(players,
                 playerShips,
                 computerShips,
                 gameBoards,
                 currentPlayer,
                 currentShip
             );
-            updatePlacementListener(players,
+            gameBoards.player.updatePlacementListener(players,
                 playerShips,
                 computerShips,
                 gameBoards,
@@ -1523,7 +1525,7 @@ function initPlacement(playerName) {
      * ship coordinates on click. Event listeners will be updated by
      * confirmPlaceShip method.
      */
-    updatePlayerGridListener(players, playerShips, computerShips, gameBoards, currentPlayer, currentShip);
+    gameBoards.player.updatePlayerGridListener(players, playerShips, computerShips, gameBoards, currentPlayer, currentShip);
 
     /* 
      * Add event listeners to placement buttons. Associated with first 
