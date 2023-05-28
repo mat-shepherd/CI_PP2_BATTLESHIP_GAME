@@ -478,18 +478,7 @@ class Ship {
                  */
                 // no-placement on player grid
                 if (countShipsPlaced === 5) {
-                    document.getElementById('placement-controls').style.display = 'none';
-                    gameBoards.player.state = gameBoards.computer.state = 'shooting';
-                    gameBoards.computer.updateGridListener(
-                        players,
-                        playerShips,
-                        computerShips,
-                        gameBoards,
-                        currentPlayer,
-                        currentShip
-                    );
-
-                    checkTurn(
+                    initShooting(
                         players,
                         playerShips,
                         computerShips,
@@ -1136,10 +1125,13 @@ function randomShip(
     * depending on playerRandom or computerRandom being 
     * passed as parameters
     */
+    console.log('playerRandom...' + playerRandom + ' computerRandom...' + computerRandom);
+    let playerClear;
+    let computerClear;
     switch (true) {
-        case playerRandom && !computerRandom:
-            let playerClear = true;
-            let computerClear = false;
+        case playerRandom:
+            playerClear = true;
+            computerClear = false;
             clearShips(
                 players,
                 playerShips,
@@ -1263,7 +1255,7 @@ function randomShip(
                 // and to pass turn to player once computer ships placed
             }
             break;
-        case computerRandom && !playerRandom:
+        case computerRandom:
             console.log("Computer Random Ship!");
             playerClear = false;
             computerClear = true;
@@ -1277,6 +1269,9 @@ function randomShip(
                 playerClear,
                 computerClear
             );
+
+            // creating separate random ship code here without calling 
+            // placeship and checkplacement
             break;
         default:
             throw `No ship objects or both player and 
@@ -1691,6 +1686,58 @@ function initPlacement(playerName) {
     document.getElementById('intro-modal').style.display = "none";
 
 
+}
+
+/**
+ * The computer game board initialisation function called by confirmPlaceShip 
+ * when all player ships have been placed.
+ * Hid placement controls, generates computer random ships, updates computer
+ * game board shoot listeners and calles checkTurn().
+ * @param {object} players - the object containg player objects
+ * @param {object} playerShips - object containing the player's ship objects
+ * @param {object} computerShips - object containing the computer's ship objects
+ * @param {object} gameBoards - object containing game board objects
+ * @param {object} currentPlayer - the current player object in play
+ * @param {object} currentShip - the current ship object in play
+ */
+function initShooting(
+    players,
+    playerShips,
+    computerShips,
+    gameBoards,
+    currentPlayer,
+    currentShip
+) {
+    document.getElementById('placement-controls').style.display = 'none';
+    gameBoards.player.state = gameBoards.computer.state = 'shooting';
+    let playerRandom = false;
+    let computerRandom = true;
+    randomShip(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip,
+        playerRandom,
+        computerRandom
+    );
+    gameBoards.computer.updateGridListener(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip
+    );
+    checkTurn(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip
+    );
 }
 
 // RUNGAME - need to look at parameters to pass from initPlacement to rungame
