@@ -565,7 +565,8 @@ class Ship {
         gameBoards,
         currentPlayer,
         currentShip,
-        targetCell
+        targetCell,
+        randomShotCoord
     ) {
         console.log('Shots fired!!');
         /* Loop through all of the opposing player's ship coordinates
@@ -865,10 +866,55 @@ class Player {
     }
 
     /**
-     * For computer player only. Generates random coordinate on the board
-     * to take a shot.
-     * @method 
+     * Loops through each of this player's ships and calls checkShipHit
+     * @method takeShot
+     * @param {object} players - the object containg player objects
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects
+     * @param {object} gameBoards - object containing game board objects
+     * @param {object} currentPlayer - the current player object in play
+     * @param {object} currentShip - the current ship object in play
+     * @param {object} targetCell - clicked target event object
+     * @param {object} randomShotCoord - optional coord passed by randomShot 
      */
+    takeShot(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip,
+        targetCell,
+        randomShotCoord
+    ) {
+        // call checkShipHit and pass targetCell 
+        // for each of this player's ships
+    }
+
+    /**
+     * Generate random shot coordinates for this player and pass to checkShipHit
+     * @method randomShot
+     * @param {object} players - the object containg player objects
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects
+     * @param {object} gameBoards - object containing game board objects
+     * @param {object} currentPlayer - the current player object in play
+     * @param {object} currentShip - the current ship object in play
+     * @param {boolean} playerRandom - true if player ships to be randomised
+     * @param {boolean} computerRandom - true if computer ships to be randomised
+     */
+    randomShot(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip,
+        playerRandom,
+        computerRandom
+    ) {
+        // call checkShipHit for each of this player's ships
+    }
 }
 
 // HELPER FUNCTIONS
@@ -1216,30 +1262,6 @@ function randomShip(
             throw `No ship objects or both player and 
             computer ship objects passed to randomShip()`;
     }
-}
-
-/**
- * Generate random coordinates to shoot ships randomly.
- * @function randomShot
- * @param {object} players - the object containg player objects
- * @param {object} playerShips - object containing the player's ship objects
- * @param {object} computerShips - object containing the computer's ship objects
- * @param {object} gameBoards - object containing game board objects
- * @param {object} currentPlayer - the current player object in play
- * @param {object} currentShip - the current ship object in play
- * @param {boolean} playerRandom - true if player ships to be randomised
- * @param {boolean} computerRandom - true if computer ships to be randomised
- */
-function randomShot(
-    players,
-    playerShips,
-    computerShips,
-    gameBoards,
-    currentPlayer,
-    currentShip,
-    playerRandom,
-    computerRandom
-) {
 }
 
 /**
