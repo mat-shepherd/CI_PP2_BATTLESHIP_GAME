@@ -1102,6 +1102,25 @@ function updatePlacementListener(
 }
 
 /**
+ * Generate a random grid
+ * coordinate
+ * @function randomCoord
+ * @returns {string} randomShipCoord - alphanumeric coordinate
+ */
+function randomCoord() {
+    // Generate ship row
+    let boardRows = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+    let randomShipRow = Math.floor(Math.random() * 10) + 1;
+    let randomShipLetter = boardRows[randomShipRow];
+
+    // Generate ship column
+    let randomShipCol = Math.floor(Math.random() * 10) + 1;
+    randomShipCoord = randomShipLetter + randomShipCol;
+
+    return randomShipCoord;
+}
+ 
+/**
  * Generate random coordinates to place ships randomly.
  * @function randomShip
  * @param {object} players - the object containg player objects
@@ -1129,6 +1148,7 @@ function randomShip(
     * passed as parameters
     */
     console.log('playerRandom...' + playerRandom + ' computerRandom...' + computerRandom);
+    console.log('Current player..' + currentPlayer.name);
     let playerClear;
     let computerClear;
     switch (true) {
@@ -1507,7 +1527,6 @@ function addButtonPulse() {
 // Disable click listeners
 function disableClickListeners(parentElement) {
     parentElement.style.pointerEvents = "none";
-    element.style.cursor = 'default';
 }
 
 /**
@@ -1517,7 +1536,6 @@ function disableClickListeners(parentElement) {
  */
 function enableClickListeners(parentElement) {
     parentElement.style.pointerEvents = "auto";
-    element.style.cursor = 'pointer';
 }
 
 /**
