@@ -60,15 +60,7 @@ class Ship {
             // If click on image get parent div.
             cellId = targetCell.parentElement.id;
         } else if (randomShipCoord) {
-            /* If random coordinate passed use that
-             * If random computer cell remove the last 
-             * character of ID
-             */
-            if (randomShipCoord.endsWith('C')) {
-                cellId = randomShipCoord.slice(0, -1);
-            } else {
-                cellId = randomShipCoord;
-            }
+            cellId = randomShipCoord;
         } else {
             // otherwise use ID of clicked element
             cellId = targetCell.id;
@@ -924,6 +916,8 @@ class Player {
         targetCell,
         randomShotCoord
     ) {
+        // Take targetCell and check against ship coords 
+
         /*
         * We need to set currentPlayer to the nextplayer
         * before passing back to checkTurn
