@@ -600,7 +600,6 @@ class Ship {
                 document.querySelector('[id^="explode-"]').remove();
                 shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
             }, 3500);
-            return;
         } else {
             targetCell += "C"; // add C back to coordinates to match computer IDs
             shotCell = document.getElementById(targetCell);
@@ -609,7 +608,6 @@ class Ship {
                 document.querySelector('[id^="explode-"]').remove();
                 shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
             }, 3500);
-            return;
         }
         // if computer player will need to add ship image to cell
         // then add hit effect
@@ -633,12 +631,42 @@ class Ship {
      * feedback to player if hit
      * @method missShip
      */
-    missShip() {
+    missShip(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip,
+        targetCell
+    ) {
         // missShip effect
         // add miss effect
         // call updategridlistener
-        // add hit class to cell (updateGridListener will add no placement)
-
+        // add miss class to cell (updateGridListener will add no placement)
+        let shotCell;
+        if (currentPlayer === players.computer) {
+            shotCell = document.getElementById(targetCell);
+            // Check if miss already added
+            if (!shotCell.classList.contains('miss')) {
+                shotCell.innerHTML += `<img src='./assets/images/effects/splash.gif' id='splash-${targetCell}' class='splash'>`;
+                setTimeout(function () {
+                    document.querySelector('[id^="splash-"]').remove();
+                    shotCell.innerHTML += "<img src='./assets/images/effects/miss.png' class='miss'>";
+                }, 3500);
+            }
+        } else {
+            targetCell += "C"; // add C back to coordinates to match computer IDs
+            shotCell = document.getElementById(targetCell);
+            // Check if miss already added
+            if (!shotCell.classList.contains('miss')) {
+                shotCell.innerHTML += `<img src='./assets/images/effects/splash.gif' id='splash-${targetCell}' class='splash'>`;
+                setTimeout(function () {
+                    document.querySelector('[id^="splash-"]').remove();
+                    shotCell.innerHTML += "<img src='./assets/images/effects/miss.png' class='miss'>";
+                }, 3500);
+            }
+        }
     }
 
     /**
@@ -1041,7 +1069,9 @@ class Player {
                     currentShip,
                     targetCell
                 );
-                return shotResult = true; // Return true if hit
+                shotResult = true; // Return true if hit
+                // Break out of checking loop if hit is found
+                break;
             } else {
                 checkShip.missShip(
                     players,

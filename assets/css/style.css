@@ -643,7 +643,9 @@ footer {
 }
 
 #player-gameboard .explosion,
-#computer-gameboard .explosion {
+#computer-gameboard .explosion,
+#player-gameboard .splash,
+#computer-gameboard .splash {
     max-width: 50px;
     z-index: 200;
     position: absolute;
@@ -651,12 +653,24 @@ footer {
     left: 0;
 }
 
+#player-gameboard .splash,
+#computer-gameboard .splash {
+    left: 20%;
+}
+
 #player-gameboard .fire,
-#computer-gameboard .fire {
+#computer-gameboard .fire,
+#player-gameboard .miss,
+#computer-gameboard .miss {
     z-index: 200;
     position: absolute;
     top: 12%;
     left: 20%;
+}
+
+#player-gameboard .miss,
+#computer-gameboard .miss {
+    top: 20%;
 }
 
 .ship-invalid {
