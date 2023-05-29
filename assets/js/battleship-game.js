@@ -361,8 +361,9 @@ class Ship {
      * If so rotate the image 90 degree.
      * Used by randomShip.
      * @method matchRotation
+     * @param {object} shipFirstCell - first cell of computer ship object
      */
-    matchRotation() {
+    matchRotation(shipFirstCell) {
         /*
         * If ships coordinates all start with the same letter then
         * the coordinates have rotated so we should rotate the ship image.
@@ -370,10 +371,15 @@ class Ship {
         * something to work on in the future.
         */
         let shipCoordinates = this.coordinates;
+        let imgElement;
         // Get first character of first coordinate
         let firstCharacter = shipCoordinates[0][0];
         let isSameFirstCharacter = true;
-        let imgElement = document.getElementById(shipCoordinates[0]);
+        if (shipFirstCell) {
+            imgElement = shipFirstCell;
+        } else {
+            imgElement = document.getElementById(shipCoordinates[0]);
+        }
 
         for (let i = 1; i < shipCoordinates.length; i++) {
             if (shipCoordinates[i][0] !== firstCharacter) {
@@ -787,7 +793,7 @@ class Ship {
 
 
             // Rotate if needed
-            this.matchRotation();
+            this.matchRotation(shipFirstCell);
         }
 
         // Update player message
