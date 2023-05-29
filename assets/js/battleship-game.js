@@ -8,14 +8,16 @@
  * @param {string} size - number of cells a ship occupies
  * @param {object} coordinates - cell coordinates of ships location
  * @param {string} direction - direction of ships rotation
+ * @param {object} hits - coordinates ship has been hit at
  * @param {boolean} sunk - true if ship is sunk false if not
 */
 class Ship {
-    constructor(shipName, size, coordinates, direction, sunk) {
+    constructor(shipName, size, coordinates, direction, hits, sunk) {
         this.shipName = shipName;
         this.size = size;
         this.coordinates = coordinates;
         this.direction = direction;
+        this.hits = hits;
         this.sunk = sunk;
     }
 
@@ -589,6 +591,7 @@ class Ship {
         targetCell
     ) {
         let shotCell;
+        let shipSize = this.size;
 
         /* 
         * Add audio and play if not already added but respect mute.
@@ -611,9 +614,14 @@ class Ship {
             explodeSound.play();
         }
 
-        // Add hit coordinate to player hits attribute
+        /*
+         * Add hit coordinates to player hits attribute and 
+         * ship hits hits attribute.
+         */
         currentPlayer.hits.push(targetCell);
+        this.hits.push(targetCell);
         console.log(currentPlayer.name + ' has ' + currentPlayer.hits.length + ' ship hits');
+
         // Update hits score
         currentPlayer.updateHits(players, playerShips, computerShips);
         if (currentPlayer === players.computer) {
@@ -634,21 +642,18 @@ class Ship {
                 shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
             }, 3500);
         }
-        // if computer player will need to add ship image to cell
-        // then add hit effect
-        // call updategridlistener
-        // add hit class to cell (updateGridListener will add no placement)
 
-        /* test placing a ship and explosion effect
-        let testDiv = document.getElementById('p52');
-        let gridLocation = testDiv.className;
-        testDiv.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
-        testDiv.innerHTML += `<img src='./assets/images/effects/explosion.gif' id='explode-${gridLocation}' class='explosion'>`;
-        setTimeout(function () {
-            document.querySelector('[id^="explode-"]').remove();
-            testDiv.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
-        }, 3700);
-        */
+        // Check if ship has been hit max number of times and call sinkShip
+        console.log('Ship hits...' + this.hits.length + ' Ship Size...' + shipSize);
+        if (this.hits.length === shipSize) {
+            this.sinkShip(
+                players,
+                playerShips,
+                computerShips,
+                currentPlayer
+            );
+        }
+
     }
 
     /**
@@ -725,9 +730,51 @@ class Ship {
      * If ship has been hit maximum amount of times sink ship
      * Update ship objects sunk attribute to true
      * @method sinkShip
+     * @param {object} players - the object containg player objects
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects
+     * @param {object} currentPlayer - the current player object in play
      */
-    sinkShip() {
+    sinkShip(
+        players,
+        playerShips,
+        computerShips,
+        currentPlayer
+    ) {
+        /* 
+        * Find current player's opposing player and generate ID of ship
+        * score element.
+        */
+        let oppPlayer = currentPlayer === players.player ? 'p2' : 'p1';
+        let oppShip = this.shipName.toLowerCase();
+        let oppShipElem = `${oppPlayer}-${oppShip}`;
 
+        // Find opposing player's ship elelemnt and mark sunk
+        let sunkShip = document.getElementById(oppShipElem);
+        console.log('sunk ship elem...' + sunkShip);
+        sunkShip.innerHTML = `<img src='../assets/images/effects/sunk.png' class='ship-sunk'>`;
+
+        // Set ship' sunk attrbiute to true
+        this.sunk = true;
+
+        // Count opposing player's sunk ships and update score board
+        let shipScore;
+        let shipsRemaining = 0;
+        if (oppPlayer = 'p2') {
+            shipScore = document.getElementById('p2-ships');
+            for (let shipKey in computerShips) {
+                shipsRemaining = computerShips[shipKey].sunk === false ? shipsRemaining++ : shipsRemaining;
+            }
+            console.log('Ships remaining... ' + shipsRemaining);
+        } else {
+            shipScore = document.getElementById('p1-ships');
+            for (let shipKey in playerShips) {
+                shipsRemaining = computerShips[shipKey].sunk === false ? shipsRemaining++ : shipsRemaining;
+                console.log('Ships remaining... ' + shipsRemaining);
+            }
+        }
+        // Update player ship score
+        shipScore.innerHTML = shipsRemaining;
     }
 }
 
@@ -1872,11 +1919,12 @@ function initPlacement(playerName) {
             let size = shipTypes[shipName];
             let coordinates = [];
             let direction = 'vertical';
+            let hits = [];
             let sunk = false;
             if (owner === 'player') {
-                playerShips[shipName] = new Ship(shipName, size, coordinates, direction, sunk);
+                playerShips[shipName] = new Ship(shipName, size, coordinates, direction, hits, sunk);
             } else {
-                computerShips[shipName] = new Ship(shipName, size, coordinates, direction, sunk);
+                computerShips[shipName] = new Ship(shipName, size, coordinates, direction, hits, sunk);
             }
         }
     }
