@@ -8,18 +8,14 @@
  * @param {string} size - number of cells a ship occupies
  * @param {object} coordinates - cell coordinates of ships location
  * @param {string} direction - direction of ships rotation
- * @param {boolean} placed - true if ship placement confirmed
- * @param {object} hits - coordinates where ship is hit
  * @param {boolean} sunk - true if ship is sunk false if not
 */
 class Ship {
-    constructor(shipName, size, coordinates, direction, placed, hits, sunk) {
+    constructor(shipName, size, coordinates, direction, sunk) {
         this.shipName = shipName;
         this.size = size;
         this.coordinates = coordinates;
         this.direction = direction;
-        this.placed = placed;
-        this.hits = hits;
         this.sunk = sunk;
     }
 
@@ -592,12 +588,12 @@ class Ship {
         currentShip,
         targetCell
     ) {
-        // Add hit coordinate to ship hits attribute
-        this.hits.push(targetCell);
-        console.log(this.shipName + ' has been hit ' + this.hits + ' times');
+        let shotCell;
+        // Add hit coordinate to player hits attribute
+        currentPlayer.hits.push(targetCell);
+        console.log(currentPlayer.name + ' has ' + currentPlayer.hits.length + ' ship hits');
         // Update hits score
         currentPlayer.updateHits(players, playerShips, computerShips);
-        let shotCell;
         if (currentPlayer === players.computer) {
             shotCell = document.getElementById(targetCell);
             shotCell.classList.add('hit');
@@ -647,12 +643,14 @@ class Ship {
         currentShip,
         targetCell
     ) {
-        // missShip effect
-        // add miss effect
-        // call updategridlistener
-        // add miss class to cell (updateGridListener will add no placement)
         let shotCell;
+        // Add miss coordinate to player misses attribute
+        currentPlayer.misses.push(targetCell);
+        console.log(currentPlayer.name + ' has missed ' + currentPlayer.misses.length + ' times');
+        // Update player miss score
+        currentPlayer.updateMisses(players, playerShips, computerShips);
         if (currentPlayer === players.computer) {
+            updatesMis;
             shotCell = document.getElementById(targetCell);
             // Check if miss already added
             if (!shotCell.classList.contains('miss')) {
@@ -893,7 +891,7 @@ class Player {
     }
 
     /**
-     * Updates
+     * Updates the current player hits score
      * @method updateHits
      * @param {object} players - the object containg player objects		
      * @param {object} playerShips - object containing the player's ship objects
@@ -901,31 +899,35 @@ class Player {
      */
     updateHits(players, playerShips, computerShips) {
         let scoreDiv;
-        let shipHits = 0;
-        let oppPlayerShips;
+        let playerHits = this.hits.length;
 
         if (this === players.player) {
             scoreDiv = 'p1-hits';
-            oppPlayerShips = computerShips;
         } else {
             scoreDiv = 'p2-hits';
-            oppPlayerShips = playerShips;
-        }
-        for (let shipName in oppPlayerShips) {
-            let checkShip = oppPlayerShips[shipName];
-            shipHits += checkShip.hits.length;
         }
         let hits = document.getElementById(scoreDiv);
-        hits.innerText = shipHits;
+        hits.innerText = playerHits;
     }
 
     /**
-     * This method 
-     *
-     * @method 
+     * Updates the current player misses score
+     * @method updateMisses
+     * @param {object} players - the object containg player objects		
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects	
      */
-    updateMisses() {
+    updateMisses(players, playerShips, computerShips) {
+        let scoreDiv;
+        let playerMisses = this.misses.length;
 
+        if (this === players.player) {
+            scoreDiv = 'p1-misses';
+        } else {
+            scoreDiv = 'p2-misses';
+        }
+        let misses = document.getElementById(scoreDiv);
+        misses.innerText = playerMisses;
     }
 
     /**
@@ -986,9 +988,9 @@ class Player {
         let shotCell = document.getElementById(shotCellId);
 
         /*
-         * If shot is on computer cell remove C from end
-         * of shotCellId to get coordinates
-         */
+        * If shot is on computer cell remove C from end
+        * of shotCellId to get coordinates
+        */
         if (shotCellId.endsWith('C')) {
             shotCoord = shotCellId.slice(0, -1);
         } else {
@@ -1016,17 +1018,12 @@ class Player {
                 playerWinLose(currentPlayer);
             } else {
                 // playerWin false show hit message
-                console.log("You hit one of " + oppPlayer.name + "'s ships at " + targetCell);
-                setTimeout(function () {
-                    playerMessage(`You hit one of ${oppPlayer.name}'s ships at ${targetCell}`);
-                }, 4000);
+                playerMessage(`You hit one of ${oppPlayer.name}'s ships at ${targetCell.id}`);
             }
         } else {
             // Miss false show miss message
             console.log("You missed " + oppPlayer.name + " ships ");
-            setTimeout(function () {
-                playerMessage(`You missed ${oppPlayer.name}'s ships at ${targetCell}`);
-            }, 4000);
+            playerMessage(`You missed ${oppPlayer.name}'s ships at ${targetCell.id}`);
         }
 
         // 
@@ -1825,8 +1822,8 @@ function initPlacement(playerName) {
          * each, store this in a players object.
          */
         let shipsRemaining = 5;
-        let hits = 0;
-        let misses = 0;
+        let hits = [];
+        let misses = [];
         let score = 0;
         let highScore = 0;
         if (owner === 'player') {
@@ -1851,12 +1848,11 @@ function initPlacement(playerName) {
             let size = shipTypes[shipName];
             let coordinates = [];
             let direction = 'vertical';
-            let placed = false;
-            let hits = [];
+            let sunk = false;
             if (owner === 'player') {
-                playerShips[shipName] = new Ship(shipName, size, coordinates, direction, placed, hits);
+                playerShips[shipName] = new Ship(shipName, size, coordinates, direction, sunk);
             } else {
-                computerShips[shipName] = new Ship(shipName, size, coordinates, direction, placed, hits);
+                computerShips[shipName] = new Ship(shipName, size, coordinates, direction, sunk);
             }
         }
     }
@@ -2057,8 +2053,10 @@ function checkTurn(
                 cell.classList.add('no-placement');
             }
         }
+        setTimeout(function () {
+            playerMessage("PLAYER TWO IS TAKING THEIR SHOT ON YOU!");
+        }, 4500);
 
-        playerMessage("PLAYER TWO IS TAKING THEIR SHOT ON YOU!");
         // call takeShot
         // remove shoot listeners from computer gameboard
 
