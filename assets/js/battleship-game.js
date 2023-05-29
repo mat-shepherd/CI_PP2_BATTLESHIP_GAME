@@ -1147,159 +1147,146 @@ function randomShip(
     * depending on playerRandom or computerRandom being 
     * passed as parameters
     */
-    console.log('playerRandom...' + playerRandom + ' computerRandom...' + computerRandom);
-    console.log('Current player..' + currentPlayer.name);
+
     let playerClear;
     let computerClear;
-    switch (true) {
-        case playerRandom:
-            playerClear = true;
-            computerClear = false;
-            clearShips(
-                players,
-                playerShips,
-                computerShips,
-                gameBoards,
-                currentPlayer,
-                currentShip,
-                playerClear,
-                computerClear
-            );
-            // For each ship in shipObject generate a random alphanumeric coord
-            for (let shipKey in playerShips) {
-                let randomCoordInvalid = '';
-                let randomShipCoord = '';
-                let shipObject = playerShips[shipKey];
 
-                do {
-                    shipObject.coordinates = [];
-                    // Generate ship row
-                    let boardRows = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-                    let randomShipRow = Math.floor(Math.random() * 10) + 1;
-                    let randomShipLetter = boardRows[randomShipRow];
+    // Set playe ship objects to randomise
+    if (playerRandom) {
+        targetShips = playerShips;
+        playerClear = true;
+        computerClear = false;
+        console.log("Computer Random Ship!");        
+    } else if(computerRandom) {
+        targetShips = computerShips;
+        playerClear = false;
+        computerClear = true; 
+        console.log("Computer Random Ship!");       
+    } else {
+        Throw `No playerRandom computerRandom passed!`;
+    }
 
-                    // Generate ship column
-                    let randomShipCol = Math.floor(Math.random() * 10) + 1;
-                    randomShipCoord = randomShipLetter + randomShipCol;
+    console.log('playerRandom...' + playerRandom + ' computerRandom...' + computerRandom);
 
-                    /* 
-                    * Increase the row letter and column number based on the size of the ship.
-                    * Code adapted from answer provided by ChatGPT by https://openai.com/
-                    */
-                    let rowLetter = randomShipCoord[0];
-                    let columnNumber = parseInt(randomShipCoord.slice(1));
+    clearShips(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip,
+        playerClear,
+        computerClear
+    );
 
-                    // Push first coordinate to array
-                    shipObject.coordinates.push(randomShipCoord);
+    // For each ship in shipObject generate a random alphanumeric coord
+    for (let shipKey in targetShips) {
+        let randomCoordInvalid = '';
+        let randomShipCoord = '';
+        let shipObject = targetShips[shipKey];
 
-                    // Add ships other coordinates to array based on ship size
-                    for (let cellCount = 0; cellCount < shipObject.size - 1; cellCount++) {
+        do {
+            shipObject.coordinates = [];
+            // Generate a random coordinate for ship
+            randomShipCoord = randomCoord();
 
-                        rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
+            /* 
+            * Increase the row letter and column number based on the size of the ship.
+            * Code adapted from answer provided by ChatGPT by https://openai.com/
+            */
+            let rowLetter = randomShipCoord[0];
+            let columnNumber = parseInt(randomShipCoord.slice(1));
 
-                        // Generate the new cell ID
-                        let newCellId = rowLetter + columnNumber;
+            // Push first coordinate to array
+            shipObject.coordinates.push(randomShipCoord);
 
-                        // Add the new cell ID to the Ship object's coordinates array
-                        shipObject.coordinates.push(newCellId);
-                    }
+            // Add ships other coordinates to array based on ship size
+            for (let cellCount = 0; cellCount < shipObject.size - 1; cellCount++) {
 
-                    // Randomly call rotateShip
-                    let rotationNumber = Math.floor(Math.random() * 6);
-                    if (rotationNumber === 1) {
-                        shipObject.rotateShip(
-                            players,
-                            playerShips,
-                            computerShips,
-                            gameBoards,
-                            currentPlayer,
-                            currentShip,
-                            randomShipCoord
-                        );
-                    }
+                rowLetter = String.fromCharCode(rowLetter.charCodeAt(0) + 1);
 
-                    randomCoordInvalid = shipObject.checkPlacement(shipObject, playerShips, computerShips);
-                    console.log(shipObject.shipName + ' Invalid Coord...' + randomCoordInvalid);
+                // Generate the new cell ID
+                let newCellId = rowLetter + columnNumber;
 
-                }
-                while (randomCoordInvalid);
+                // Add the new cell ID to the Ship object's coordinates array
+                shipObject.coordinates.push(newCellId);
+            }
 
-                console.log("Ships after random loop: " + shipObject.shipName + ' coords ' + shipObject.coordinates);
-
-                // Place the random ships if not computerRandom
-                shipObject.placeShip(
+            // Randomly call rotateShip
+            let rotationNumber = Math.floor(Math.random() * 6);
+            if (rotationNumber === 1) {
+                shipObject.rotateShip(
                     players,
                     playerShips,
                     computerShips,
                     gameBoards,
                     currentPlayer,
                     currentShip,
-                    '',
                     randomShipCoord
                 );
-
-                /*
-                * If ships coordinates all start with the same letter then
-                * the coordinates have rotated so we should rotate the ship image.
-                * Tried using rotateShip but things got complicated. This is 
-                * something to work on in the future.
-                */
-                let shipCoordinates = shipObject.coordinates;
-                // Get first character of first coordinate
-                let firstCharacter = shipCoordinates[0][0];
-                let isSameFirstCharacter = true;
-                let imgElement = document.getElementById(shipCoordinates[0]);
-                console.log('Img...' + imgElement);
-
-                for (let i = 1; i < shipCoordinates.length; i++) {
-                    if (shipCoordinates[i][0] !== firstCharacter) {
-                        isSameFirstCharacter = false;
-                        break;
-                    }
-                }
-
-                if (isSameFirstCharacter) {
-                    console.log('Same char...' + shipObject.shipName);
-                    imgElement.style.transform = "rotate(90deg)";
-                    shipObject.direction = 'horizontal';
-                }
-
-                shipObject.confirmPlaceShip(
-                    players,
-                    playerShips,
-                    computerShips,
-                    gameBoards,
-                    currentPlayer,
-                    currentShip
-                );
-
-                // checkPlacement also has to handle computerShips
-                // need to alter confirmPlaceShip to handle computerShip placement
-                // to place ships without displaying them
-                // and to pass turn to player once computer ships placed
             }
-            break;
-        case computerRandom:
-            console.log("Computer Random Ship!");
-            playerClear = false;
-            computerClear = true;
-            clearShips(
+
+            randomCoordInvalid = shipObject.checkPlacement(shipObject, playerShips, computerShips);
+            console.log(shipObject.shipName + ' Invalid Coord...' + randomCoordInvalid);
+
+        }
+        while (randomCoordInvalid);
+
+        console.log("Ships after random loop: " + shipObject.shipName + ' coords ' + shipObject.coordinates);
+
+        // Place the random ships if not computerRandom
+        if (playerRandom) {
+            shipObject.placeShip(
                 players,
                 playerShips,
                 computerShips,
                 gameBoards,
                 currentPlayer,
                 currentShip,
-                playerClear,
-                computerClear
+                '',
+                randomShipCoord
             );
 
-            // creating separate random ship code here without calling 
-            // placeship and checkplacement
-            break;
-        default:
-            throw `No ship objects or both player and 
-            computer ship objects passed to randomShip()`;
+            /*
+            * If ships coordinates all start with the same letter then
+            * the coordinates have rotated so we should rotate the ship image.
+            * Tried using rotateShip but things got complicated. This is 
+            * something to work on in the future.
+            */
+            let shipCoordinates = shipObject.coordinates;
+            // Get first character of first coordinate
+            let firstCharacter = shipCoordinates[0][0];
+            let isSameFirstCharacter = true;
+            let imgElement = document.getElementById(shipCoordinates[0]);
+            console.log('Img...' + imgElement);
+
+            for (let i = 1; i < shipCoordinates.length; i++) {
+                if (shipCoordinates[i][0] !== firstCharacter) {
+                    isSameFirstCharacter = false;
+                    break;
+                }
+            }
+
+            if (isSameFirstCharacter) {
+                console.log('Same char...' + shipObject.shipName);
+                imgElement.style.transform = "rotate(90deg)";
+                shipObject.direction = 'horizontal';
+            }
+
+            shipObject.confirmPlaceShip(
+                players,
+                playerShips,
+                computerShips,
+                gameBoards,
+                currentPlayer,
+                currentShip
+            );
+        }
+
+        // checkPlacement also has to handle computerShips
+        // need to alter confirmPlaceShip to handle computerShip placement
+        // to place ships without displaying them
+        // and to pass turn to player once computer ships placed
     }
 }
 
