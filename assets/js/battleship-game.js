@@ -1090,6 +1090,46 @@ class Player {
     }
 
     /**
+     * Check if all of players ships have been sunk by looping the ship
+     * objects sunk attribute values. Return win true or false
+     * @method checkWinLose
+     * @param {object} players - the object containg player objects
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects
+     * @param {object} currentPlayer - the current player object in play
+     * @returns {boolean} win - win true of false
+     */
+    checkWinLose(
+        players,
+        playerShips,
+        computerShips,
+        currentPlayer
+    ) {
+        /* Loop through all of the opposing player's ship objects
+         * and check if all ships sunk
+         */
+        let win = false;
+        let oppPlayer = this.player === players.player ? players.computer : players.player;
+        let oppPlayerShips = oppPlayer === players.computer ? computerShips : playerShips;
+        let shipsRemaining = 5;
+
+        for (let shipName in oppPlayerShips) {
+            if (oppPlayerShips[shipName].sunk === true) {
+                shipsRemaining--; // Increment shipsRemaining down if sunk is true
+            }
+        }
+
+        // If opposing player's shipsremaining is 0 this player wins
+        if (shipsRemaining === 0) {
+            let win = true;
+        } else {
+            let win = false;
+        }
+
+        return win;
+    }
+
+    /**
      * Loops through each of this player's ships and calls checkShipHit
      * @method takeShot
      * @param {object} players - the object containg player objects
@@ -1160,10 +1200,16 @@ class Player {
          */
         if (shotHit) {
             // Check if win or lose
-            let playerWin = checkWinLose(currentPlayer, targetCell);
+            let playerWin = currentPlayer.checkWinLose(
+                players,
+                playerShips,
+                computerShips,
+                currentPlayer
+            );
             // If playerWin true
             if (playerWin) {
-                playerWinLose(currentPlayer);
+                // playerWinLose(currentPlayer);
+                alert('We have a winner!');
             } else {
                 // playerWin false show hit message
                 playerMessage(`${currentPlayer.name} hit one of ${oppPlayer.name}'s ships at ${shotCoord}. ${hitMessage[rMsg]}`);
@@ -1822,25 +1868,6 @@ function disableClickListeners(parentElement) {
 function enableClickListeners(parentElement) {
     parentElement.style.pointerEvents = "auto";
 }
-
-/**
- * Check if all of players ships have been sunk by loop the ship
- * objects shipsRemaining values. Return win true or false
- * @method checkWinLose
- * @param {} oppPlayer - opposing player to check against
- * @param {} shotCoord - coordinates of shot from checkShipHit()
- * @returns {boolean} win - win true of false
- */
-function checkWinLose(player, shotCoord) {
-    /* Loop through all of the opposing player's ship objects
-     * if all equal true then return player name and win true.
-    */
-    let win = false;
-
-    return win;
-}
-
-
 
 /**
  * Add pulse effect to placement buttons to prompt player.
