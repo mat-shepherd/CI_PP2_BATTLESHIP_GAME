@@ -647,8 +647,32 @@ class Ship {
         // Add miss coordinate to player misses attribute
         currentPlayer.misses.push(targetCell);
         console.log(currentPlayer.name + ' has missed ' + currentPlayer.misses.length + ' times');
+
         // Update player miss score
         currentPlayer.updateMisses(players, playerShips, computerShips);
+
+        /* 
+         * Add audio and play if not already added but respect mute.
+         * Code adapted from ChatGPT by https://openai.com/
+         * ? in .firstChild makes sure variable is assigned null
+         * if element not found
+         */
+        let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
+
+        if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
+            let splashSound = document.querySelector('#splash-sound');
+
+            if (!splashSound) {
+                splashSound = new Audio('../assets/sounds/miss-splash.mp3');
+                splashSound.id = 'splash-sound';
+                splashSound.volume = 0.5;
+                document.body.appendChild(splashSound);
+                console.log('Sound added');
+            }
+
+            splashSound.play();
+        }
+
         if (currentPlayer === players.computer) {
             shotCell = document.getElementById(targetCell);
             // Check if miss already added
@@ -1169,10 +1193,8 @@ function audioToggle() {
     function toggleMute(elem) {
         if (elem.paused) {
             elem.muted = false;
-            elem.play();
         } else {
             elem.muted = true;
-            elem.pause();
         }
     }
 }
