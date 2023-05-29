@@ -746,6 +746,8 @@ class Ship {
         * score element.
         */
         let oppPlayer = currentPlayer === players.player ? 'p2' : 'p1';
+        let currentPlayerName = currentPlayer === players.player ? players.player.name : players.computer.name;
+        let oppPlayerName = currentPlayer === players.player ? players.computer.name : players.player.name;
         let oppShip = this.shipName.toLowerCase();
         let oppShipElem = `${oppPlayer}-${oppShip}`;
 
@@ -787,6 +789,11 @@ class Ship {
             // Rotate if needed
             this.matchRotation();
         }
+
+        // Update player message
+        setTimeout(function () {
+            playerMessage(`${currentPlayerName} SUNK ${oppPlayerName}'s ${this.shipName}!`);
+        }, 4500);
 
         // Count opposing player's sunk ships and update score board
         let shipScore;
@@ -1156,7 +1163,7 @@ class Player {
                 playerMessage(`${currentPlayer.name} hit one of ${oppPlayer.name}'s ships at ${shotCoord}. ${hitMessage[rMsg]}`);
             }
         } else {
-            // Miss false show miss message
+            // Miss false - show miss message
             console.log(currentPlayer.name + " missed " + oppPlayer.name + " ships ");
             playerMessage(`${currentPlayer.name} missed at ${shotCoord}. ${missMessage[rMsg]}`);
         }
