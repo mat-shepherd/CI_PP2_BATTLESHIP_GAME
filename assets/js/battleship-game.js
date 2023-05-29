@@ -589,6 +589,28 @@ class Ship {
         targetCell
     ) {
         let shotCell;
+
+        /* 
+        * Add audio and play if not already added but respect mute.
+        * Code adapted from ChatGPT by https://openai.com/
+        * ? in .firstChild makes sure variable is assigned null
+        * if element not found
+        */
+        let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
+
+        if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
+            let explodeSound = document.querySelector('#explode-sound');
+
+            if (!explodeSound) {
+                explodeSound = new Audio('../assets/sounds/explosion.mp3');
+                explodeSound.id = 'explode-sound';
+                explodeSound.volume = 0.3;
+                document.body.appendChild(explodeSound);
+            }
+
+            explodeSound.play();
+        }
+
         // Add hit coordinate to player hits attribute
         currentPlayer.hits.push(targetCell);
         console.log(currentPlayer.name + ' has ' + currentPlayer.hits.length + ' ship hits');
@@ -644,19 +666,13 @@ class Ship {
         targetCell
     ) {
         let shotCell;
-        // Add miss coordinate to player misses attribute
-        currentPlayer.misses.push(targetCell);
-        console.log(currentPlayer.name + ' has missed ' + currentPlayer.misses.length + ' times');
-
-        // Update player miss score
-        currentPlayer.updateMisses(players, playerShips, computerShips);
 
         /* 
-         * Add audio and play if not already added but respect mute.
-         * Code adapted from ChatGPT by https://openai.com/
-         * ? in .firstChild makes sure variable is assigned null
-         * if element not found
-         */
+        * Add audio and play if not already added but respect mute.
+        * Code adapted from ChatGPT by https://openai.com/
+        * ? in .firstChild makes sure variable is assigned null
+        * if element not found
+        */
         let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
 
         if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
@@ -665,13 +681,19 @@ class Ship {
             if (!splashSound) {
                 splashSound = new Audio('../assets/sounds/miss-splash.mp3');
                 splashSound.id = 'splash-sound';
-                splashSound.volume = 0.5;
+                splashSound.volume = 0.3;
                 document.body.appendChild(splashSound);
-                console.log('Sound added');
             }
 
             splashSound.play();
         }
+
+        // Add miss coordinate to player misses attribute
+        currentPlayer.misses.push(targetCell);
+        console.log(currentPlayer.name + ' has missed ' + currentPlayer.misses.length + ' times');
+
+        // Update player miss score
+        currentPlayer.updateMisses(players, playerShips, computerShips);
 
         if (currentPlayer === players.computer) {
             shotCell = document.getElementById(targetCell);
