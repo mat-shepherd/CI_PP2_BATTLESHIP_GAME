@@ -971,7 +971,7 @@ class Player {
     ) {
         // Random hit and miss mesages
         let hitMessage = ["AMAZING SHOT!", "MUST HAVE X-RAY VISION!", "MAKING IT LOOK EASY!", "BEGINNER'S LUCK?", "HEADING FOR THE WIN?"];
-        let missMessage = ["BETTER LUCK NEXT TIME!", "SO CLOSE!?", "IT'S A GAME OF LUCK...OR IS IT?", "KEEP TRYING!", "MAYBE DON'T PLAY THE LOTTO TODAY!"];
+        let missMessage = ["BETTER LUCK NEXT TIME!", "SO CLOSE!?", "IT'S A GAME OF LUCK...OR IS IT?", "KEEP TRYING!", "MAYBE THEY SHOULDN'T PLAY THE LOTTO TODAY!"];
         let rMsg = Math.floor(Math.random() * 5);
         // Get element of targetCell
         let shotCellId = '';
@@ -1013,6 +1013,9 @@ class Player {
 
         console.log('Shot hit...' + shotHit);
 
+        /* Check if shot is hit or miss and check if hit results in win.
+         * Otherwise show player hit or miss message.
+         */
         if (shotHit) {
             // Check if win or lose
             let playerWin = checkWinLose(currentPlayer, targetCell);
@@ -1021,12 +1024,12 @@ class Player {
                 playerWinLose(currentPlayer);
             } else {
                 // playerWin false show hit message
-                playerMessage(`${currentPlayer.name} hit one of ${oppPlayer.name}'s ships at ${targetCell.id}. ${hitMessage[rMsg]}`);
+                playerMessage(`${currentPlayer.name} hit one of ${oppPlayer.name}'s ships at ${shotCoord}. ${hitMessage[rMsg]}`);
             }
         } else {
             // Miss false show miss message
             console.log(currentPlayer.name + " missed " + oppPlayer.name + " ships ");
-            playerMessage(`${currentPlayer.name} missed! ${missMessage[rMsg]}`);
+            playerMessage(`${currentPlayer.name} missed at ${shotCoord}. ${missMessage[rMsg]}`);
         }
 
         // 
@@ -2011,12 +2014,15 @@ function checkTurn(
             }
         }
 
-        // call updateGridListeners to add shoot listeners to computer grid
-
-        // add checkShipHit event listeners to computer game board
-        setTimeout(function () {
+        // Only delay message update after first turn.
+        console.log('First turn?...' + players.player.hits.length + ' ' + players.player.misses.length);
+        if (players.player.hits.length === 0 && players.player.misses.length === 0)
             playerMessage(currentPlayer.name + " CLICK ANYWHERE ON PLAYER TWO'S GRID TO TAKE A SHOT ON THEM!");
-        }, 4500);
+        else {
+            setTimeout(function () {
+                playerMessage(currentPlayer.name + " CLICK ANYWHERE ON PLAYER TWO'S GRID TO TAKE A SHOT ON THEM!");
+            }, 4500);
+        }
 
     } else {
         console.log('Player Two Turn!');
