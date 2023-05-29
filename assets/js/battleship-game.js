@@ -365,6 +365,40 @@ class Ship {
         }
     }
 
+
+    /**
+     * Checks if a ships coordinates indicate it has been rotated.
+     * If so rotate the image 90 degree.
+     * Used by randomShip.
+     * @method matchRotation
+     */
+    matchRotation() {
+        /*
+        * If ships coordinates all start with the same letter then
+        * the coordinates have rotated so we should rotate the ship image.
+        * Tried using rotateShip but things got complicated. This is 
+        * something to work on in the future.
+        */
+        let shipCoordinates = this.coordinates;
+        // Get first character of first coordinate
+        let firstCharacter = shipCoordinates[0][0];
+        let isSameFirstCharacter = true;
+        let imgElement = document.getElementById(shipCoordinates[0]);
+
+        for (let i = 1; i < shipCoordinates.length; i++) {
+            if (shipCoordinates[i][0] !== firstCharacter) {
+                isSameFirstCharacter = false;
+                break;
+            }
+        }
+
+        if (isSameFirstCharacter && imgElement) {
+            console.log('Same char...' + this.shipName);
+            imgElement.style.transform = "rotate(90deg)";
+            this.direction = 'horizontal';
+        }
+    }
+
     /**
      * Check's a ships coordinates to make sure it isn't outside
      * of the game board's playable area and they are not overlapping
@@ -1119,7 +1153,7 @@ function randomCoord() {
 
     return randomShipCoord;
 }
- 
+
 /**
  * Generate random coordinates to place ships randomly.
  * @function randomShip
@@ -1156,14 +1190,14 @@ function randomShip(
         targetShips = playerShips;
         playerClear = true;
         computerClear = false;
-        console.log("Computer Random Ship!");        
-    } else if(computerRandom) {
+        console.log("Computer Random Ship!");
+    } else if (computerRandom) {
         targetShips = computerShips;
         playerClear = false;
-        computerClear = true; 
-        console.log("Computer Random Ship!");       
+        computerClear = true;
+        console.log("Computer Random Ship!");
     } else {
-        Throw `No playerRandom computerRandom passed!`;
+        Throw`No playerRandom computerRandom passed!`;
     }
 
     console.log('playerRandom...' + playerRandom + ' computerRandom...' + computerRandom);
@@ -1249,30 +1283,11 @@ function randomShip(
 
             /*
             * If ships coordinates all start with the same letter then
-            * the coordinates have rotated so we should rotate the ship image.
-            * Tried using rotateShip but things got complicated. This is 
-            * something to work on in the future.
+            * the coordinates have rotated so rotate the ship image.
             */
-            let shipCoordinates = shipObject.coordinates;
-            // Get first character of first coordinate
-            let firstCharacter = shipCoordinates[0][0];
-            let isSameFirstCharacter = true;
-            let imgElement = document.getElementById(shipCoordinates[0]);
-            console.log('Img...' + imgElement);
+            shipObject.matchRotation();
 
-            for (let i = 1; i < shipCoordinates.length; i++) {
-                if (shipCoordinates[i][0] !== firstCharacter) {
-                    isSameFirstCharacter = false;
-                    break;
-                }
-            }
-
-            if (isSameFirstCharacter) {
-                console.log('Same char...' + shipObject.shipName);
-                imgElement.style.transform = "rotate(90deg)";
-                shipObject.direction = 'horizontal';
-            }
-
+            // Confirm placement of random ships
             shipObject.confirmPlaceShip(
                 players,
                 playerShips,
