@@ -752,7 +752,7 @@ class Ship {
         // Find opposing player's ship elelemnt and mark sunk
         let sunkShip = document.getElementById(oppShipElem);
         console.log('sunk ship elem...' + sunkShip);
-        sunkShip.innerHTML = `<img src='../assets/images/effects/sunk.png' class='ship-sunk'>`;
+        sunkShip.innerHTML += `<img src='../assets/images/effects/sunk.png' class='ship-sunk'>`;
 
         // Set ship' sunk attrbiute to true
         this.sunk = true;

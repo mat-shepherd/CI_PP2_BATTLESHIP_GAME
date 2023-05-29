@@ -414,12 +414,20 @@ footer {
     margin-top: 10px;
 }
 
+.score-ship {
+    position: relative;
+}
+
 #player-two-stats .score-ship>img {
     filter: grayscale(100%);
 }
 
 #player-two-stats .score-ship>img.ship-sunk {
     filter: none;
+    position: absolute;
+    top: -45%;
+    left: -33%;
+    z-index: 200;
 }
 
 #game-body {
