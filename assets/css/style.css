@@ -659,7 +659,8 @@ footer {
 }
 
 #player-gameboard .fire,
-#computer-gameboard .fire #player-gameboard .splash-miss,
+#computer-gameboard .fire,
+#player-gameboard .splash-miss,
 #computer-gameboard .splash-miss {
     z-index: 200;
     position: absolute;
