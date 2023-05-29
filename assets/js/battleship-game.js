@@ -650,7 +650,6 @@ class Ship {
         // Update player miss score
         currentPlayer.updateMisses(players, playerShips, computerShips);
         if (currentPlayer === players.computer) {
-            updatesMis;
             shotCell = document.getElementById(targetCell);
             // Check if miss already added
             if (!shotCell.classList.contains('miss')) {
@@ -970,6 +969,10 @@ class Player {
         targetCell,
         randomShotCoord
     ) {
+        // Random hit and miss mesages
+        let hitMessage = ["AMAZING SHOT!", "MUST HAVE X-RAY VISION!", "MAKING IT LOOK EASY!", "BEGINNER'S LUCK?", "HEADING FOR THE WIN?"];
+        let missMessage = ["BETTER LUCK NEXT TIME!", "SO CLOSE!?", "IT'S A GAME OF LUCK...OR IS IT?", "KEEP TRYING!", "MAYBE DON'T PLAY THE LOTTO TODAY!"];
+        let rMsg = Math.floor(Math.random() * 5);
         // Get element of targetCell
         let shotCellId = '';
         let shotCoord;
@@ -1018,12 +1021,12 @@ class Player {
                 playerWinLose(currentPlayer);
             } else {
                 // playerWin false show hit message
-                playerMessage(`You hit one of ${oppPlayer.name}'s ships at ${targetCell.id}`);
+                playerMessage(`${currentPlayer.name} hit one of ${oppPlayer.name}'s ships at ${targetCell.id}. ${hitMessage[rMsg]}`);
             }
         } else {
             // Miss false show miss message
-            console.log("You missed " + oppPlayer.name + " ships ");
-            playerMessage(`You missed ${oppPlayer.name}'s ships at ${targetCell.id}`);
+            console.log(currentPlayer.name + " missed " + oppPlayer.name + " ships ");
+            playerMessage(`${currentPlayer.name} missed! ${missMessage[rMsg]}`);
         }
 
         // 
@@ -1110,32 +1113,6 @@ class Player {
         );
 
         return false;
-    }
-
-
-    /**
-     * Generate random shot coordinates for this player and pass to checkShipHit
-     * @method randomShot
-     * @param {object} players - the object containg player objects
-     * @param {object} playerShips - object containing the player's ship objects
-     * @param {object} computerShips - object containing the computer's ship objects
-     * @param {object} gameBoards - object containing game board objects
-     * @param {object} currentPlayer - the current player object in play
-     * @param {object} currentShip - the current ship object in play
-     * @param {boolean} playerRandom - true if player ships to be randomised
-     * @param {boolean} computerRandom - true if computer ships to be randomised
-     */
-    randomShot(
-        players,
-        playerShips,
-        computerShips,
-        gameBoards,
-        currentPlayer,
-        currentShip,
-        playerRandom,
-        computerRandom
-    ) {
-        // call checkShipHit for each of this player's ships
     }
 }
 
@@ -2037,7 +2014,10 @@ function checkTurn(
         // call updateGridListeners to add shoot listeners to computer grid
 
         // add checkShipHit event listeners to computer game board
-        playerMessage(currentPlayer.name + " CLICK ANYWHERE ON PLAYER TWO'S GRID TO TAKE A SHOT ON THEM!");
+        setTimeout(function () {
+            playerMessage(currentPlayer.name + " CLICK ANYWHERE ON PLAYER TWO'S GRID TO TAKE A SHOT ON THEM!");
+        }, 4500);
+
     } else {
         console.log('Player Two Turn!');
 
@@ -2056,10 +2036,22 @@ function checkTurn(
         setTimeout(function () {
             playerMessage("PLAYER TWO IS TAKING THEIR SHOT ON YOU!");
         }, 4500);
+        setTimeout(function () {
+            // Call randomShot for computer shot
+            let randomShotCoord = randomCoord();
+            currentPlayer.takeShot(
+                players,
+                playerShips,
+                computerShips,
+                gameBoards,
+                currentPlayer,
+                currentShip,
+                '',
+                randomShotCoord
+            );
+        }, 4500);
 
-        // call takeShot
         // remove shoot listeners from computer gameboard
-
 
     }
 }
