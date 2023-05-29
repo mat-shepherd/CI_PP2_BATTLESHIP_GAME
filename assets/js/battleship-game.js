@@ -595,6 +595,7 @@ class Ship {
         let shotCell;
         if (currentPlayer === players.computer) {
             shotCell = document.getElementById(targetCell);
+            shotCell.classList.add('hit');
             shotCell.innerHTML += `<img src='./assets/images/effects/explosion.gif' id='explode-${targetCell}' class='explosion'>`;
             setTimeout(function () {
                 document.querySelector('[id^="explode-"]').remove();
@@ -603,6 +604,7 @@ class Ship {
         } else {
             targetCell += "C"; // add C back to coordinates to match computer IDs
             shotCell = document.getElementById(targetCell);
+            shotCell.classList.add('hit');
             shotCell.innerHTML += `<img src='./assets/images/effects/explosion.gif' id='explode-${targetCell}' class='explosion'>`;
             setTimeout(function () {
                 document.querySelector('[id^="explode-"]').remove();
@@ -649,10 +651,11 @@ class Ship {
             shotCell = document.getElementById(targetCell);
             // Check if miss already added
             if (!shotCell.classList.contains('miss')) {
+                shotCell.classList.add('miss');
                 shotCell.innerHTML += `<img src='./assets/images/effects/splash.gif' id='splash-${targetCell}' class='splash'>`;
                 setTimeout(function () {
                     document.querySelector('[id^="splash-"]').remove();
-                    shotCell.innerHTML += "<img src='./assets/images/effects/miss.png' class='miss'>";
+                    shotCell.innerHTML += "<img src='./assets/images/effects/miss.png' class='splash-miss'>";
                 }, 3500);
             }
         } else {
@@ -660,10 +663,11 @@ class Ship {
             shotCell = document.getElementById(targetCell);
             // Check if miss already added
             if (!shotCell.classList.contains('miss')) {
+                shotCell.classList.add('miss');
                 shotCell.innerHTML += `<img src='./assets/images/effects/splash.gif' id='splash-${targetCell}' class='splash'>`;
                 setTimeout(function () {
                     document.querySelector('[id^="splash-"]').remove();
-                    shotCell.innerHTML += "<img src='./assets/images/effects/miss.png' class='miss'>";
+                    shotCell.innerHTML += "<img src='./assets/images/effects/miss.png' class='splash-miss'>";
                 }, 3500);
             }
         }
@@ -1036,7 +1040,7 @@ class Player {
      * @param {object} currentPlayer - the current player object in play
      * @param {object} currentShip - the current ship object in play
      * @param {string} targetCell - clicked shot cell coords
-     * @returns {boolean} shotResult - Returns true if hit or false if miss
+     * @returns {boolean} - Returns true if hit or false if miss
      */
     checkShipHit(
         players,
@@ -1051,13 +1055,14 @@ class Player {
         // Find opposing player and their ship objects
         let oppPlayer = currentPlayer === players.player ? players.computer : players.player;
         let oppPlayerShips = oppPlayer === players.computer ? computerShips : playerShips;
-        let shotResult;
+        let lastShip;
         /*
         * Loop through opposing player ships and check if targetCell
         * coordinates match any of the players ship coordinates.
         */
         for (let shipName in oppPlayerShips) {
             let checkShip = oppPlayerShips[shipName];
+            lastShip = checkShip;
             console.log('Check if ' + targetCell + ' hit on coords...' + oppPlayerShips[shipName].coordinates);
             if (checkShip.coordinates.includes(targetCell)) {
                 checkShip.hitShip(
@@ -1069,23 +1074,22 @@ class Player {
                     currentShip,
                     targetCell
                 );
-                shotResult = true; // Return true if hit
-                // Break out of checking loop if hit is found
-                break;
-            } else {
-                checkShip.missShip(
-                    players,
-                    playerShips,
-                    computerShips,
-                    gameBoards,
-                    currentPlayer,
-                    currentShip,
-                    targetCell
-                );
-                shotResult = false; // Return false if miss                
+                return true; // Return true if hit
             }
         }
-        return shotResult;
+
+        // If no hit found register miss using last ship  object checked
+        lastShip.missShip(
+            players,
+            playerShips,
+            computerShips,
+            gameBoards,
+            currentPlayer,
+            currentShip,
+            targetCell
+        );
+
+        return false;
     }
 
 

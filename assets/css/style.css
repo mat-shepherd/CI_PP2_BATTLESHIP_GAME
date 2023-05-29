@@ -659,17 +659,16 @@ footer {
 }
 
 #player-gameboard .fire,
-#computer-gameboard .fire,
-#player-gameboard .miss,
-#computer-gameboard .miss {
+#computer-gameboard .fire #player-gameboard .splash-miss,
+#computer-gameboard .splash-miss {
     z-index: 200;
     position: absolute;
     top: 12%;
     left: 20%;
 }
 
-#player-gameboard .miss,
-#computer-gameboard .miss {
+#player-gameboard .splash-miss,
+#computer-gameboard .splash-miss {
     top: 20%;
 }
 
