@@ -399,7 +399,7 @@ class Ship {
      * @param {object} checkShip - contains ship object being checked
      * @param {object} playerShips - contains player ship objects
      * @param {object} computerShips - contains computer ship objects
-     * @return {string} coord - returns coordinate if conflicting or null if valid
+     * @returns {string} coord - returns coordinate if conflicting or null if valid
      */
     checkPlacement(checkShip, playerShips, computerShips) {
         /*
@@ -575,8 +575,42 @@ class Ship {
      * If ship hits coord size is equal to ship size then
      * call sink ship
      * @method hitShip
+     * @param {object} players - the object containg player objects
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects
+     * @param {object} gameBoards - object containing game board objects
+     * @param {object} currentPlayer - the current player object in play
+     * @param {object} currentShip - the current ship object in play
+     * @param {string} targetCell - clicked shot cell coords
      */
-    hitShip() {
+    hitShip(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip,
+        targetCell
+    ) {
+        let shotCell;
+        if (currentPlayer === players.computer) {
+            shotCell = document.getElementById(targetCell);
+            shotCell.innerHTML += `<img src='./assets/images/effects/explosion.gif' id='explode-${targetCell}' class='explosion'>`;
+            setTimeout(function () {
+                document.querySelector('[id^="explode-"]').remove();
+                shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
+            }, 3500);
+            return;
+        } else {
+            targetCell += "C"; // add C back to coordinates to match computer IDs
+            shotCell = document.getElementById(targetCell);
+            shotCell.innerHTML += `<img src='./assets/images/effects/explosion.gif' id='explode-${targetCell}' class='explosion'>`;
+            setTimeout(function () {
+                document.querySelector('[id^="explode-"]').remove();
+                shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
+            }, 3500);
+            return;
+        }
         // if computer player will need to add ship image to cell
         // then add hit effect
         // call updategridlistener
@@ -949,6 +983,7 @@ class Player {
      * @param {object} currentPlayer - the current player object in play
      * @param {object} currentShip - the current ship object in play
      * @param {string} targetCell - clicked shot cell coords
+     * @returns {boolean} Returns true if hit or false if miss
      */
     checkShipHit(
         players,
@@ -981,7 +1016,8 @@ class Player {
                     currentPlayer,
                     currentShip,
                     targetCell
-                ); // Return the conflicting coordinate
+                ); 
+                return true; // Return true if hit
             } else {
                 console.log("Hit " + oppPlayer.name + "'s " + checkShip.shipName);
                 checkShip.hitShip(
@@ -992,7 +1028,8 @@ class Player {
                     currentPlayer,
                     currentShip,
                     targetCell
-                ); // Return the conflicting coordinate
+                );
+                return false; // Return true if miss                
             }
         }
         /* Loop through all of the opposing player's ship coordinates
@@ -1608,7 +1645,7 @@ function enableClickListeners(parentElement) {
  * @method checkWinLose
  * @param {} oppPlayer - opposing player to check against
  * @param {} shotCoord - coordinates of shot from checkShipHit()
- * @return {boolean} win - win true of false
+ * @returns {boolean} win - win true of false
  */
 function checkWinLose(player, shotCoord) {
     /* Loop through all of the opposing player's ship objects
