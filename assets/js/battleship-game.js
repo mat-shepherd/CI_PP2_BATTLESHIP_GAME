@@ -107,19 +107,19 @@ class Ship {
         if (currentPlayer.name !== 'PLAYER TWO') {
             switch (this.shipName) {
                 case 'Carrier':
-                    cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship carrier'>";
+                    cell.innerHTML += "<img src='../assets/images/ships/carrier.png' class='ship carrier'>";
                     break;
                 case 'Battleship':
-                    cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                    cell.innerHTML += "<img src='../assets/images/ships/battleship.png' class='ship'>";
                     break;
                 case 'Cruiser':
-                    cell.innerHTML += "<img src='./assets/images/ships/cruiser.png' class='ship'>";
+                    cell.innerHTML += "<img src='../assets/images/ships/cruiser.png' class='ship'>";
                     break;
                 case 'Submarine':
-                    cell.innerHTML += "<img src='./assets/images/ships/submarine.png' class='ship'>";
+                    cell.innerHTML += "<img src='../assets/images/ships/submarine.png' class='ship'>";
                     break;
                 case 'Destroyer':
-                    cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship destroyer'>";
+                    cell.innerHTML += "<img src='../assets/images/ships/destroyer.png' class='ship destroyer'>";
                     break;
             }
         }
@@ -357,7 +357,7 @@ class Ship {
 
 
     /**
-     * Checks if a ships coordinates indicate it has been rotated.
+     * Checks if a ship's coordinates indicate it has been rotated.
      * If so rotate the image 90 degree.
      * Used by randomShip.
      * @method matchRotation
@@ -627,19 +627,19 @@ class Ship {
         if (currentPlayer === players.computer) {
             shotCell = document.getElementById(targetCell);
             shotCell.classList.add('hit');
-            shotCell.innerHTML += `<img src='./assets/images/effects/explosion.gif' id='explode-${targetCell}' class='explosion'>`;
+            shotCell.innerHTML += `<img src='../assets/images/effects/explosion.gif' id='explode-${targetCell}' class='explosion'>`;
             setTimeout(function () {
                 document.querySelector('[id^="explode-"]').remove();
-                shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
+                shotCell.innerHTML += "<img src='../assets/images/effects/fire.gif' class='fire'>";
             }, 3500);
         } else {
             targetCell += "C"; // add C back to coordinates to match computer IDs
             shotCell = document.getElementById(targetCell);
             shotCell.classList.add('hit');
-            shotCell.innerHTML += `<img src='./assets/images/effects/explosion.gif' id='explode-${targetCell}' class='explosion'>`;
+            shotCell.innerHTML += `<img src='../assets/images/effects/explosion.gif' id='explode-${targetCell}' class='explosion'>`;
             setTimeout(function () {
                 document.querySelector('[id^="explode-"]').remove();
-                shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
+                shotCell.innerHTML += "<img src='../assets/images/effects/fire.gif' class='fire'>";
             }, 3500);
         }
 
@@ -705,10 +705,10 @@ class Ship {
             // Check if miss already added
             if (!shotCell.classList.contains('miss')) {
                 shotCell.classList.add('miss');
-                shotCell.innerHTML += `<img src='./assets/images/effects/splash.gif' id='splash-${targetCell}' class='splash'>`;
+                shotCell.innerHTML += `<img src='../assets/images/effects/splash.gif' id='splash-${targetCell}' class='splash'>`;
                 setTimeout(function () {
                     document.querySelector('[id^="splash-"]').remove();
-                    shotCell.innerHTML += "<img src='./assets/images/effects/miss.png' class='splash-miss'>";
+                    shotCell.innerHTML += "<img src='../assets/images/effects/miss.png' class='splash-miss'>";
                 }, 3500);
             }
         } else {
@@ -717,10 +717,10 @@ class Ship {
             // Check if miss already added
             if (!shotCell.classList.contains('miss')) {
                 shotCell.classList.add('miss');
-                shotCell.innerHTML += `<img src='./assets/images/effects/splash.gif' id='splash-${targetCell}' class='splash'>`;
+                shotCell.innerHTML += `<img src='../assets/images/effects/splash.gif' id='splash-${targetCell}' class='splash'>`;
                 setTimeout(function () {
                     document.querySelector('[id^="splash-"]').remove();
-                    shotCell.innerHTML += "<img src='./assets/images/effects/miss.png' class='splash-miss'>";
+                    shotCell.innerHTML += "<img src='../assets/images/effects/miss.png' class='splash-miss'>";
                 }, 3500);
             }
         }
@@ -751,25 +751,61 @@ class Ship {
 
         // Find opposing player's ship elelemnt and mark sunk
         let sunkShip = document.getElementById(oppShipElem);
-        console.log('sunk ship elem...' + sunkShip);
+        console.log('sunk ship elem...' + sunkShip.id);
         sunkShip.innerHTML += `<img src='../assets/images/effects/sunk.png' class='ship-sunk'>`;
 
-        // Set ship' sunk attrbiute to true
+        // Set ship' sunk attribute to true
         this.sunk = true;
+
+        if (oppPlayer === 'p2') {
+            // Get ship's first coordinate
+            let shipFirstCoord = this.coordinates[0];
+            // Append C to get computer cell ID
+            shipFirstCoord += 'C';
+            let shipFirstCell = document.getElementById(shipFirstCoord);
+
+            // Add sunk ship image to computer grid if computer ship
+            switch (this.shipName) {
+                case 'Carrier':
+                    shipFirstCell.innerHTML += "<img src='../assets/images/ships/carrier.png' class='ship carrier'>";
+                    break;
+                case 'Battleship':
+                    shipFirstCell.innerHTML += "<img src='../assets/images/ships/battleship.png' class='ship'>";
+                    break;
+                case 'Cruiser':
+                    shipFirstCell.innerHTML += "<img src='../assets/images/ships/cruiser.png' class='ship'>";
+                    break;
+                case 'Submarine':
+                    shipFirstCell.innerHTML += "<img src='../assets/images/ships/submarine.png' class='ship'>";
+                    break;
+                case 'Destroyer':
+                    shipFirstCell.innerHTML += "<img src='../assets/images/ships/destroyer.png' class='ship destroyer'>";
+                    break;
+            }
+
+
+            // Rotate if needed
+            this.matchRotation();
+        }
 
         // Count opposing player's sunk ships and update score board
         let shipScore;
         let shipsRemaining = 0;
-        if (oppPlayer = 'p2') {
+        if (oppPlayer === 'p2') {
             shipScore = document.getElementById('p2-ships');
             for (let shipKey in computerShips) {
-                shipsRemaining = computerShips[shipKey].sunk === false ? shipsRemaining++ : shipsRemaining;
+                if (computerShips[shipKey].sunk === false) {
+                    shipsRemaining++; // Increment shipsRemaining if sunk is false
+                }
+                console.log(computerShips[shipKey].shipName + ' sunk ' + computerShips[shipKey].sunk);
             }
             console.log('Ships remaining... ' + shipsRemaining);
         } else {
             shipScore = document.getElementById('p1-ships');
             for (let shipKey in playerShips) {
-                shipsRemaining = computerShips[shipKey].sunk === false ? shipsRemaining++ : shipsRemaining;
+                if (playerShips[shipKey].sunk === false) {
+                    shipsRemaining++; // Increment shipsRemaining if sunk is false
+                }
                 console.log('Ships remaining... ' + shipsRemaining);
             }
         }
@@ -1521,7 +1557,7 @@ function randomShip(
             );
 
             /*
-            * If ships coordinates all start with the same letter then
+            * If ship's coordinates all start with the same letter then
             * the coordinates have rotated so rotate the ship image.
             */
             shipObject.matchRotation();
@@ -1536,11 +1572,6 @@ function randomShip(
                 currentShip
             );
         }
-
-        // checkPlacement also has to handle computerShips
-        // need to alter confirmPlaceShip to handle computerShip placement
-        // to place ships without displaying them
-        // and to pass turn to player once computer ships placed
     }
 }
 
