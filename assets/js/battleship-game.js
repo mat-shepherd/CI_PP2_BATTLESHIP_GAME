@@ -592,6 +592,11 @@ class Ship {
         currentShip,
         targetCell
     ) {
+        // Add hit coordinate to ship hits attribute
+        this.hits.push(targetCell);
+        console.log(this.shipName + ' has been hit ' + this.hits + ' times');
+        // Update hits score
+        currentPlayer.updateHits(players, playerShips, computerShips);
         let shotCell;
         if (currentPlayer === players.computer) {
             shotCell = document.getElementById(targetCell);
@@ -888,12 +893,30 @@ class Player {
     }
 
     /**
-     * This method 
-     *
+     * Updates
      * @method updateHits
+     * @param {object} players - the object containg player objects		
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects
      */
-    updateHits() {
+    updateHits(players, playerShips, computerShips) {
+        let scoreDiv;
+        let shipHits = 0;
+        let oppPlayerShips;
 
+        if (this === players.player) {
+            scoreDiv = 'p1-hits';
+            oppPlayerShips = computerShips;
+        } else {
+            scoreDiv = 'p2-hits';
+            oppPlayerShips = playerShips;
+        }
+        for (let shipName in oppPlayerShips) {
+            let checkShip = oppPlayerShips[shipName];
+            shipHits += checkShip.hits.length;
+        }
+        let hits = document.getElementById(scoreDiv);
+        hits.innerText = shipHits;
     }
 
     /**
@@ -1829,7 +1852,7 @@ function initPlacement(playerName) {
             let coordinates = [];
             let direction = 'vertical';
             let placed = false;
-            let hits = 0;
+            let hits = [];
             if (owner === 'player') {
                 playerShips[shipName] = new Ship(shipName, size, coordinates, direction, placed, hits);
             } else {
