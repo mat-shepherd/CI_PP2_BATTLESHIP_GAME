@@ -916,7 +916,42 @@ class Player {
         targetCell,
         randomShotCoord
     ) {
-        // Take targetCell and check against ship coords 
+        // Get element of targetCell
+        let shotCellId = '';
+        if (targetCell.tagName === 'IMG') {
+            // If click on image get parent div.
+            shotCellId = targetCell.parentElement.id;
+        } else if (randomShotCoord) {
+            shotCellId = randomShotCoord;
+        } else {
+            // otherwise use ID of clicked element
+            shotCellId = targetCell.id;
+        }
+        let shotCell = document.getElementById(shotCellId);
+        let shotCoord = '';
+
+        /*
+         * If shot is on computer cell remove C from end
+         * of shotCellId to get coordinates
+         */
+        if (shotCellId.endsWith('C')) {
+            shotCoord = shotCellId.slice(0, -1);
+        } else {
+            shotCoord = shotCellId;
+        }
+
+        // Pass to checkShipHit()
+        let shotHit = checkShipHit(
+            players,
+            playerShips,
+            computerShips,
+            gameBoards,
+            currentPlayer,
+            currentShip,
+            shotCoord
+        );
+
+        // 
 
         /*
         * We need to set currentPlayer to the nextplayer
