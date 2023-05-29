@@ -570,43 +570,6 @@ class Ship {
     }
 
     /**
-     * Check's if a player's guess results in a ship being hit and provide
-     * feedback to player if hit
-     * @method checkShipHit
-     * @param {object} players - the object containg player objects
-     * @param {object} playerShips - object containing the player's ship objects
-     * @param {object} computerShips - object containing the computer's ship objects
-     * @param {object} gameBoards - object containing game board objects
-     * @param {object} currentPlayer - the current player object in play
-     * @param {object} currentShip - the current ship object in play
-     * @param {object} targetCell - clicked target event object
-     * @param {object} randomShotCoord - optional coord passed by randomShot 
-     * 
-
-     */
-    checkShipHit(
-        players,
-        playerShips,
-        computerShips,
-        gameBoards,
-        currentPlayer,
-        currentShip,
-        targetCell,
-        randomShotCoord
-    ) {
-        console.log('Shots fired!!');
-        /* Loop through all of the opposing player's ship coordinates
-        * and check if shot coordinates found . If found, pass oppPlayer 
-        * and shotCoord to hitShip method. If not, pass oppPlayer 
-        * and shotCoord to missShip method. Then pass to checkWinLose().
-        */
-        // let oppPlayer = player.
-
-        // set player turn attribute to false so game play passes back to computer
-        let playerWin = checkWinLose(player, shotCoord);
-    }
-
-    /**
      * Provides feedback to player that ship was hit and 
      * updates ship hits attribute.
      * If ship hits coord size is equal to ship size then
@@ -918,6 +881,8 @@ class Player {
     ) {
         // Get element of targetCell
         let shotCellId = '';
+        let shotCoord;
+
         if (targetCell.tagName === 'IMG') {
             // If click on image get parent div.
             shotCellId = targetCell.parentElement.id;
@@ -928,7 +893,6 @@ class Player {
             shotCellId = targetCell.id;
         }
         let shotCell = document.getElementById(shotCellId);
-        let shotCoord = '';
 
         /*
          * If shot is on computer cell remove C from end
@@ -941,7 +905,7 @@ class Player {
         }
 
         // Pass to checkShipHit()
-        let shotHit = checkShipHit(
+        let shotHit = currentPlayer.checkShipHit(
             players,
             playerShips,
             computerShips,
@@ -973,6 +937,75 @@ class Player {
             currentShip
         );
     }
+
+    /**
+     * Check's if a player's guess results in a ship being hit and provide
+     * feedback to player if hit
+     * @method checkShipHit
+     * @param {object} players - the object containg player objects
+     * @param {object} playerShips - object containing the player's ship objects
+     * @param {object} computerShips - object containing the computer's ship objects
+     * @param {object} gameBoards - object containing game board objects
+     * @param {object} currentPlayer - the current player object in play
+     * @param {object} currentShip - the current ship object in play
+     * @param {string} targetCell - clicked shot cell coords
+     */
+    checkShipHit(
+        players,
+        playerShips,
+        computerShips,
+        gameBoards,
+        currentPlayer,
+        currentShip,
+        targetCell
+    ) {
+        console.log('Shots fired by...' + currentPlayer.name);
+        // Find opposing player and their ship objects
+        let oppPlayer = currentPlayer === players.player ? players.computer : players.player;
+        let oppPlayerShips = oppPlayer === players.computer ? computerShips : playerShips;
+
+        /*
+        * Loop through opposing player ships and check if targetCell
+        * coordinates match any of the players ship coordinates.
+        */
+        for (let shipName in oppPlayerShips) {
+            let checkShip = oppPlayerShips[shipName];
+            if (checkShip.coordinates.includes(targetCell)) {
+                console.log("You hit one of " + oppPlayer.name + "'s ships at " + targetCell);
+                playerMessage(`You hit one of ${oppPlayer.name}'s ships at ${targetCell}`);
+                checkShip.hitShip(
+                    players,
+                    playerShips,
+                    computerShips,
+                    gameBoards,
+                    currentPlayer,
+                    currentShip,
+                    targetCell
+                ); // Return the conflicting coordinate
+            } else {
+                console.log("Hit " + oppPlayer.name + "'s " + checkShip.shipName);
+                checkShip.hitShip(
+                    players,
+                    playerShips,
+                    computerShips,
+                    gameBoards,
+                    currentPlayer,
+                    currentShip,
+                    targetCell
+                ); // Return the conflicting coordinate
+            }
+        }
+        /* Loop through all of the opposing player's ship coordinates
+        * and check if shot coordinates found . If found, pass oppPlayer 
+        * and shotCoord to hitShip method. If not, pass oppPlayer 
+        * and shotCoord to missShip method. Then pass to checkWinLose().
+        */
+        // let oppPlayer = player.
+
+        // set player turn attribute to false so game play passes back to computer
+        let playerWin = checkWinLose(currentPlayer, targetCell);
+    }
+
 
     /**
      * Generate random shot coordinates for this player and pass to checkShipHit
@@ -1214,7 +1247,7 @@ function randomShip(
     let playerClear;
     let computerClear;
 
-    // Set playe ship objects to randomise
+    // Set player ship objects to randomise
     if (playerRandom) {
         targetShips = playerShips;
         playerClear = true;
