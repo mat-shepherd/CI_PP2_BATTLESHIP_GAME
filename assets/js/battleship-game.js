@@ -327,23 +327,6 @@ class Ship {
                         }
                         break;
                 }
-
-                /* 
-             * Workaround to stop fire and miss icons rotating
-             * with ship. Rotate 90 degrees counter clockwise.
-             */
-                let fireIcon = shipImg.querySelector('.fire');
-                let splashMiss = shipImg.querySelector('.splash-miss');
-                if (fireIcon) {
-                    fireIcon.style.transform = "rotate(-90deg)";
-                    fireIcon.style.top = "10%";
-                    fireIcon.style.left = "10%";
-                }
-                if (splashMiss) {
-                    splashMiss.style.transform = "rotate(-90deg)";
-                    splashMiss.style.top = "10%";
-                    splashMiss.style.left = "10%";
-                }
             }
 
             let pivot = this.coordinates[0]; // Pivot point for rotation
@@ -409,23 +392,6 @@ class Ship {
             console.log('Same char...' + this.shipName);
             imgElement.style.transform = "rotate(90deg)";
             this.direction = 'horizontal';
-
-            /* 
-             * Workaround to stop fire and miss icons rotating
-             * with ship. Rotate 90 degrees counter clockwise.
-             */
-            let fireIcon = imgElement.querySelector('.fire');
-            let splashMiss = imgElement.querySelector('.splash-miss');
-            if (fireIcon) {
-                fireIcon.style.transform = "rotate(-90deg)";
-                fireIcon.style.top = "10%";
-                fireIcon.style.left = "10%";
-            }
-            if (splashMiss) {
-                splashMiss.style.transform = "rotate(-90deg)";
-                splashMiss.style.top = "10%";
-                splashMiss.style.left = "10%";
-            }
         }
     }
 
@@ -667,6 +633,8 @@ class Ship {
 
         // Update hits score
         currentPlayer.updateHits(players, playerShips, computerShips);
+
+        // Add ship images when sunk
         if (currentPlayer === players.computer) {
             shotCell = document.getElementById(targetCell);
             shotCell.classList.add('hit');
@@ -684,6 +652,23 @@ class Ship {
                 document.querySelector('[id^="explode-"]').remove();
                 shotCell.innerHTML += "<img src='../assets/images/effects/fire.gif' class='fire'>";
             }, 3500);
+        }
+
+        /* 
+        * Workaround to stop fire and miss icons rotating
+        * with ship. Rotate 90 degrees counter clockwise.
+        */
+        let fireIcon = shotCell.querySelector('.fire');
+        let splashMiss = shotCell.querySelector('.splash-miss');
+        if (fireIcon) {
+            fireIcon.style.transform = "rotate(-90deg)";
+            fireIcon.style.top = "10%";
+            fireIcon.style.left = "10%";
+        }
+        if (splashMiss) {
+            splashMiss.style.transform = "rotate(-90deg)";
+            splashMiss.style.top = "10%";
+            splashMiss.style.left = "10%";
         }
 
         // Check if ship has been hit max number of times and call sinkShip
@@ -1098,7 +1083,7 @@ class Player {
     updateMisses(players, playerShips, computerShips) {
         let scoreDiv;
         let playerMisses = this.misses.length;
-
+        console.log(this.name + ' has missed at ' + this.misses);
         if (this === players.player) {
             scoreDiv = 'p1-misses';
         } else {
