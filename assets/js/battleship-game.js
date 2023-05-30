@@ -1199,7 +1199,6 @@ class Player {
             // otherwise use ID of clicked element
             shotCellId = targetCell.id;
         }
-        let shotCell = document.getElementById(shotCellId);
 
         /*
         * If shot is on computer cell remove C from end
@@ -1209,6 +1208,17 @@ class Player {
             shotCoord = shotCellId.slice(0, -1);
         } else {
             shotCoord = shotCellId;
+        }
+
+        // Remove shoot click listeners from shot cell
+        if (currentPlayer === players.player) {
+            console.log('Click listener remove..' + shotCellId);
+            let shotCell = document.getElementById(shotCellId);
+            const clickHandler = gameBoards.player.shootEventHandlers[shotCellId];
+            if (clickHandler) {
+                shotCell.removeEventListener('click', clickHandler);
+                delete gameBoards.player.shootEventHandlers[shotCellId];
+            }
         }
 
         // Pass to checkShipHit()
@@ -2148,7 +2158,7 @@ function initShooting(
 /**
  * The checkTurn function is called by confirmPlaceShip when final ship
  * has been placed. This handles changing game board event listeners to
- * start taking shots.
+ * start taking shots and passes back and forth to takeShot.
  * @function checkTurn
  * @param {object} players - the object containg player objects
  * @param {object} playerShips - object containing the player's ship objects
@@ -2165,28 +2175,10 @@ function checkTurn(
     currentPlayer,
     currentShip
 ) {
-    // Runs once ships placed
-    // Remove click events listeners from player game board - function?
-    // Add shot event listeners to computer game board - clicks call checkShipHit
-    // Add no-placement class to player game board divs and remove from computer game board
-    // Update playerMessage
-    // Player takes first shot by clicking on computer game board which calls
-    // takeShot which will set currentPlayer to nextPlayer for turn handling &
-    // Loop over each player ship calling checkShipHit method on ship objects
-    // call shipHit or shipMiss
-    // shipHit add explosion image & set ship sunk attribute to true, update
-    // ship image with x, hits and ships number in sidebar
-    // computer's turn remove listeners from computer grid
-    // update PlayerMessage
-    // if computer ship add ship image too (remember to trim ship div IDs)
-    // shipmiss add splash image & update misses in sidebar
-    // update PlayerMessage
-    // Loops over player ships to see if all ship objects sunk attributes are
-    // true - call checkWinLose(player) whcih calls
-    // playerWinLose() if true. Update high score. How to reset game.
-    // No player winlose call checkturn
-    // update PlayerMessage
-    // if player turn = true player turn else computer turn
+    /* 
+     * Get computer game baord and elements and check if it is
+     * player's or computer's turn.
+     */
 
     let computerCells = document.getElementsByClassName('computer-play-area');
     let computerBoard = document.getElementById('computer-gameboard');
@@ -2250,9 +2242,6 @@ function checkTurn(
                 randomShotCoord
             );
         }, 4500);
-
-        // remove shoot listeners from computer gameboard
-
     }
 }
 
