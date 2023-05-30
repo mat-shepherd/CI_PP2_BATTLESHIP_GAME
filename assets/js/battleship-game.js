@@ -561,7 +561,8 @@ class Ship {
                         currentPlayer,
                         currentShip
                     );
-                    updatePlacementListener(players,
+                    updatePlacementListener(
+                        players,
                         playerShips,
                         computerShips,
                         gameBoards,
@@ -2088,8 +2089,8 @@ function initPlacement(playerName) {
 /**
  * The computer game board initialisation function called by confirmPlaceShip 
  * when all player ships have been placed.
- * Hid placement controls, generates computer random ships, updates computer
- * game board shoot listeners and calles checkTurn().
+ * Hide placement controls, generates computer random ships, updates computer
+ * game board shoot listeners and calls checkTurn().
  * @param {object} players - the object containg player objects
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
@@ -2110,6 +2111,7 @@ function initShooting(
     document.getElementById('placement-controls').style.display = 'none';
     gameBoards.player.state = gameBoards.computer.state = 'shooting';
 
+    // Generate random ships for the computer player
     let playerRandom = false;
     let computerRandom = true;
     randomShip(
@@ -2123,6 +2125,15 @@ function initShooting(
         computerRandom
     );
 
+    // Remove placement click listeners from player area cells
+    for (let cell of playerCells) {
+        const clickHandler = gameBoards.player.placeEventHandlers[cell.id];
+        if (clickHandler) {
+            cell.removeEventListener('click', clickHandler);
+            delete gameBoards.player.placeEventHandlers[cell.id];
+        }
+    }
+
     // Remove placement class from player area cells 
     for (let cell of playerCells) {
         if (cell.classList.contains('ship-placement')) {
@@ -2133,7 +2144,7 @@ function initShooting(
 
     // This updates initial grid listeners to shoot
     // but when alternating need to make sure player
-    // can't click on oppoiste board
+    // can't click on opposite board
     gameBoards.computer.updateGridListener(
         players,
         playerShips,
@@ -2142,7 +2153,7 @@ function initShooting(
         currentPlayer,
         currentShip
     );
-    // Remove - checkplacement will pass to checkturn once computer ships placed
+
     checkTurn(
         players,
         playerShips,
@@ -2176,7 +2187,7 @@ function checkTurn(
     currentShip
 ) {
     /* 
-     * Get computer game baord and elements and check if it is
+     * Get computer game board and elements and check if it is
      * player's or computer's turn.
      */
 
