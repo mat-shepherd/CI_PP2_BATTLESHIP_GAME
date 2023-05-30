@@ -392,6 +392,23 @@ class Ship {
             console.log('Same char...' + this.shipName);
             imgElement.style.transform = "rotate(90deg)";
             this.direction = 'horizontal';
+
+            /* 
+             * Workaround to stop fire and miss icons rotating
+             * with ship. Rotate 90 degrees counter clockwise.
+             */
+            let fireIcon = imgElement.querySelector('.fire');
+            let splashMiss = imgElement.querySelector('.splash-miss');
+            if (fireIcon) {
+                fireIcon.style.transform = "rotate(-90deg)";
+                fireIcon.style.top = "10%";
+                fireIcon.style.left = "10%";
+            }
+            if (splashMiss) {
+                splashMiss.style.transform = "rotate(-90deg)";
+                splashMiss.style.top = "10%";
+                splashMiss.style.left = "10%";
+            }
         }
     }
 
