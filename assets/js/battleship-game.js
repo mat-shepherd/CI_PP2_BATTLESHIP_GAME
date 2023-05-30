@@ -403,17 +403,20 @@ class Ship {
      * @param {object} checkShip - contains ship object being checked
      * @param {object} playerShips - contains player ship objects
      * @param {object} computerShips - contains computer ship objects
+     * @param {boolean} computerRandom - true if called by randomShips for computer
      * @returns {string} coord - returns coordinate if conflicting or null if valid
      */
-    checkPlacement(checkShip, playerShips, computerShips) {
+    checkPlacement(checkShip, playerShips, computerShips, computerRandom) {
         /*
          * Loop through playerShips and get ship coordinates that
          * aren't the ship being checked. Check the current ship's
          * coordinates against all other coordinates.
          */
-        for (let shipName in playerShips) {
+
+        let shipObject = computerRandom ? computerShips : playerShips;
+        for (let shipName in shipObject) {
             if (shipName !== checkShip.shipName) {
-                let otherShip = playerShips[shipName];
+                let otherShip = shipObject[shipName];
                 for (let coord of otherShip.coordinates) {
                     if (checkShip.coordinates.includes(coord)) {
                         return coord; // Return the conflicting coordinate
@@ -1581,8 +1584,8 @@ function randomShip(
             }
 
             // Randomly call rotateShip
-            let rotationNumber = Math.floor(Math.random() * 6);
-            if (rotationNumber === 1) {
+            let rotationNumber = Math.floor(Math.random() * 2);
+            if (rotationNumber === 0) {
                 shipObject.rotateShip(
                     players,
                     playerShips,
@@ -1594,7 +1597,8 @@ function randomShip(
                 );
             }
 
-            randomCoordInvalid = shipObject.checkPlacement(shipObject, playerShips, computerShips);
+            // Call checkPlacement and pass computerRandom as a flag to check computerShips
+            randomCoordInvalid = shipObject.checkPlacement(shipObject, playerShips, computerShips, computerRandom);
             console.log(shipObject.shipName + ' Invalid Coord...' + randomCoordInvalid);
 
         }
