@@ -1090,19 +1090,41 @@ class Player {
     /**
      * This method 
      *
-     * @method 
+     * @method updateScore
+     * @param {object} currentPlayer - the current player object in play
      */
     updateScore(currentPlayer) {
+        let scoreDiv;
+        let playerScore = currentPlayer.score;
 
+        if (currentPlayer !== 'PLAYER TWO') {
+            scoreDiv = 'p1-score';
+        } else {
+            scoreDiv = 'p2-score';
+        }
+
+        let score = document.getElementById(scoreDiv);
+        score.innerText = playerScore;
     }
 
     /**
      * This method 
      *
-     * @method 
+     * @method updateHighScore
+     * @param {object} currentPlayer - the current player object in play
      */
     updateHighScore(currentPlayer) {
+        let highScoreDiv;
+        let playerHighScore = currentPlayer.highscore;
 
+        if (currentPlayer !== 'PLAYER TWO') {
+            scoreDiv = 'p1-score';
+        } else {
+            scoreDiv = 'p2-score';
+        }
+
+        let highScore = document.getElementById(highScoreDiv);
+        highScore.innerText = playerHighScore;
     }
 
     /**
@@ -1236,6 +1258,7 @@ class Player {
             console.log(currentPlayer.name + ' win status...' + playerWin);
             // If playerWin true
             if (playerWin) {
+                // Call function to show win message
                 playerWinLose(currentPlayer, oppPlayer);
                 // Stop further execution
                 return;
@@ -1908,6 +1931,10 @@ function removeButtonPulse() {
  * @param {object} currentPlayer - the opposing player object
  */
 function playerWinLose(currentPlayer, oppPlayer) {
+    // Update score
+
+    // Update high score
+
     // Get win-modal elements
     let winModal = document.getElementById('win-modal');
     let winHeading = document.getElementById('winner-heading');
