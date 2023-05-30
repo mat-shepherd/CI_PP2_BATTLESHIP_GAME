@@ -1092,7 +1092,7 @@ class Player {
      *
      * @method 
      */
-    updateScore() {
+    updateScore(currentPlayer) {
 
     }
 
@@ -1101,7 +1101,7 @@ class Player {
      *
      * @method 
      */
-    updateHighScore() {
+    updateHighScore(currentPlayer) {
 
     }
 
@@ -1914,16 +1914,16 @@ function playerWinLose(currentPlayer) {
 
     let winMessages = [
         `WINNER WINNER CHICKEN DINNER!`,
-        `<i class="fa - solid fa - music"></i> YOU'RE THE BEST AROUND...
-        NOTHING'S GONNA EVER KEEP YOU DOWN<i class="fa - solid fa - music"></i>`,
+        `<i class="fa-solid fa-music"></i> YOU'RE THE BEST AROUND...
+        NOTHING'S GONNA EVER KEEP YOU DOWN<i class="fa-solid fa-music"></i>`,
         `YOU ARE THE BEST NAVAL COMMANDER THAT I KNOW!`,
         `I HOPE PLAYER TWO HAS BATTLESHIP INSURANCE!`,
     ];
 
     let loseMessages = [
         `DON'T WORRY, YOU'LL GET 'EM NEXT TIME!`,
-        `<i class="fa - solid fa - music"></i>YOU'RE HERE, THERE'S NOTHING I FEAR
-        AND I KNOW THAT MY HEART WILL GO ON...<i class="fa - solid fa - music"></i>`,
+        `<i class="fa-solid fa-music"></i>YOU'RE HERE, THERE'S NOTHING I FEAR
+        AND I KNOW THAT MY HEART WILL GO ON...<i class="fa-solid fa-music"></i>`,
         `I HOPE YOU HAVE SOME MORE BATTLESHIPS TUCKED AWAY SOMEWHERE!?`,
         `WELL AT LEAST YOU ARE GOOD LOOKING AND HAVE AN AMAZING PERSONALITY ;)`
     ];
@@ -1958,6 +1958,9 @@ function playerWinLose(currentPlayer) {
         <p>Your score is ${currentPlayer.score}</p><br>
         <p>Your high score is ${currentPlayer.highscore}</p><br>
         <p>Click below if you want to play again!</p>`;
+
+        // Change lose heading color
+        winHeading.style.color = "#881400";
 
         // Play loser sound unless muted
         if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {

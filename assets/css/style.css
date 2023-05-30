@@ -68,6 +68,10 @@ nav h1,
     text-transform: uppercase;
 }
 
+#win-modal-contents h2 {
+    color: #0000BC;
+}
+
 #error-message,
 #error-message a {
     text-transform: uppercase;
