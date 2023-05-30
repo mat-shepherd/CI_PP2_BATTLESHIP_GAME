@@ -1236,7 +1236,7 @@ class Player {
             console.log(currentPlayer.name + ' win status...' + playerWin);
             // If playerWin true
             if (playerWin) {
-                playerWinLose(currentPlayer);
+                playerWinLose(currentPlayer, oppPlayer);
                 // Stop further execution
                 return;
             } else {
@@ -1903,8 +1903,11 @@ function removeButtonPulse() {
 /**
  * If all ships sunk notify player of win or loss.
  * Give the player option to start new game.
+ * @function playerWinLose
+ * @param {object} currentPlayer - the current player object in play
+ * @param {object} currentPlayer - the opposing player object
  */
-function playerWinLose(currentPlayer) {
+function playerWinLose(currentPlayer, oppPlayer) {
     // Get win-modal elements
     let winModal = document.getElementById('win-modal');
     let winHeading = document.getElementById('winner-heading');
@@ -1953,7 +1956,7 @@ function playerWinLose(currentPlayer) {
         }
 
     } else {
-        winHeading.innerHTML = `YOU LOST ${currentPlayer.name}!`;
+        winHeading.innerHTML = `${oppPlayer.name}! YOU LOST!`;
         winBody.innerHTML = `<p>${loseMessages[rMsg]}.</p><br>
         <p>Your score is ${currentPlayer.score}</p><br>
         <p>Your high score is ${currentPlayer.highscore}</p><br>
