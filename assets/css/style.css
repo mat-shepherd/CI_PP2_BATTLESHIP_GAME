@@ -446,6 +446,7 @@ footer {
     filter: grayscale(100%);
 }
 
+#player-one-stats .score-ship>img.ship-sunk,
 #player-two-stats .score-ship>img.ship-sunk {
     filter: none;
     position: absolute;
