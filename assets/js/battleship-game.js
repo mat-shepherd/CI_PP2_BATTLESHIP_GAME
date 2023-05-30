@@ -107,19 +107,19 @@ class Ship {
         if (currentPlayer.name !== 'PLAYER TWO') {
             switch (this.shipName) {
                 case 'Carrier':
-                    cell.innerHTML += "<img src='../assets/images/ships/carrier.png' class='ship carrier'>";
+                    cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship carrier'>";
                     break;
                 case 'Battleship':
-                    cell.innerHTML += "<img src='../assets/images/ships/battleship.png' class='ship'>";
+                    cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
                     break;
                 case 'Cruiser':
-                    cell.innerHTML += "<img src='../assets/images/ships/cruiser.png' class='ship'>";
+                    cell.innerHTML += "<img src='./assets/images/ships/cruiser.png' class='ship'>";
                     break;
                 case 'Submarine':
-                    cell.innerHTML += "<img src='../assets/images/ships/submarine.png' class='ship'>";
+                    cell.innerHTML += "<img src='./assets/images/ships/submarine.png' class='ship'>";
                     break;
                 case 'Destroyer':
-                    cell.innerHTML += "<img src='../assets/images/ships/destroyer.png' class='ship destroyer'>";
+                    cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship destroyer'>";
                     break;
             }
         }
@@ -614,7 +614,7 @@ class Ship {
             let explodeSound = document.querySelector('#explode-sound');
 
             if (!explodeSound) {
-                explodeSound = new Audio('../assets/sounds/explosion.mp3');
+                explodeSound = new Audio('./assets/sounds/explosion.mp3');
                 explodeSound.id = 'explode-sound';
                 explodeSound.volume = 0.3;
                 document.body.appendChild(explodeSound);
@@ -638,19 +638,19 @@ class Ship {
         if (currentPlayer === players.computer) {
             shotCell = document.getElementById(targetCell);
             shotCell.classList.add('hit');
-            shotCell.innerHTML += `<img src='../assets/images/effects/explosion.gif' id='explode-${targetCell}' class='explosion'>`;
+            shotCell.innerHTML += `<img src='./assets/images/effects/explosion.gif' id='explode-${targetCell}' class='explosion'>`;
             setTimeout(function () {
                 document.querySelector('[id^="explode-"]').remove();
-                shotCell.innerHTML += "<img src='../assets/images/effects/fire.gif' class='fire'>";
+                shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
             }, 3500);
         } else {
             targetCell += "C"; // add C back to coordinates to match computer IDs
             shotCell = document.getElementById(targetCell);
             shotCell.classList.add('hit');
-            shotCell.innerHTML += `<img src='../assets/images/effects/explosion.gif' id='explode-${targetCell}' class='explosion'>`;
+            shotCell.innerHTML += `<img src='./assets/images/effects/explosion.gif' id='explode-${targetCell}' class='explosion'>`;
             setTimeout(function () {
                 document.querySelector('[id^="explode-"]').remove();
-                shotCell.innerHTML += "<img src='../assets/images/effects/fire.gif' class='fire'>";
+                shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
             }, 3500);
         }
 
@@ -695,7 +695,7 @@ class Ship {
             let splashSound = document.querySelector('#splash-sound');
 
             if (!splashSound) {
-                splashSound = new Audio('../assets/sounds/miss-splash.mp3');
+                splashSound = new Audio('./assets/sounds/miss-splash.mp3');
                 splashSound.id = 'splash-sound';
                 splashSound.volume = 0.3;
                 document.body.appendChild(splashSound);
@@ -716,10 +716,10 @@ class Ship {
             // Check if miss already added
             if (!shotCell.classList.contains('miss')) {
                 shotCell.classList.add('miss');
-                shotCell.innerHTML += `<img src='../assets/images/effects/splash.gif' id='splash-${targetCell}' class='splash'>`;
+                shotCell.innerHTML += `<img src='./assets/images/effects/splash.gif' id='splash-${targetCell}' class='splash'>`;
                 setTimeout(function () {
                     document.querySelector('[id^="splash-"]').remove();
-                    shotCell.innerHTML += "<img src='../assets/images/effects/miss.png' class='splash-miss'>";
+                    shotCell.innerHTML += "<img src='./assets/images/effects/miss.png' class='splash-miss'>";
                 }, 3500);
             }
         } else {
@@ -728,10 +728,10 @@ class Ship {
             // Check if miss already added
             if (!shotCell.classList.contains('miss')) {
                 shotCell.classList.add('miss');
-                shotCell.innerHTML += `<img src='../assets/images/effects/splash.gif' id='splash-${targetCell}' class='splash'>`;
+                shotCell.innerHTML += `<img src='./assets/images/effects/splash.gif' id='splash-${targetCell}' class='splash'>`;
                 setTimeout(function () {
                     document.querySelector('[id^="splash-"]').remove();
-                    shotCell.innerHTML += "<img src='../assets/images/effects/miss.png' class='splash-miss'>";
+                    shotCell.innerHTML += "<img src='./assets/images/effects/miss.png' class='splash-miss'>";
                 }, 3500);
             }
         }
@@ -765,7 +765,7 @@ class Ship {
         // Find opposing player's ship elelemnt and mark sunk
         let sunkShip = document.getElementById(oppShipElem);
         console.log('sunk ship elem...' + sunkShip.id);
-        sunkShip.innerHTML += `<img src='../assets/images/effects/sunk.png' class='ship-sunk'>`;
+        sunkShip.innerHTML += `<img src='./assets/images/effects/sunk.png' class='ship-sunk'>`;
 
         // Set ship' sunk attribute to true
         this.sunk = true;
@@ -783,19 +783,19 @@ class Ship {
             // Add sunk ship image to computer grid if computer ship
             switch (this.shipName) {
                 case 'Carrier':
-                    shipFirstCell.innerHTML += "<img src='../assets/images/ships/carrier.png' class='ship carrier'>";
+                    shipFirstCell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship carrier'>";
                     break;
                 case 'Battleship':
-                    shipFirstCell.innerHTML += "<img src='../assets/images/ships/battleship.png' class='ship'>";
+                    shipFirstCell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
                     break;
                 case 'Cruiser':
-                    shipFirstCell.innerHTML += "<img src='../assets/images/ships/cruiser.png' class='ship'>";
+                    shipFirstCell.innerHTML += "<img src='./assets/images/ships/cruiser.png' class='ship'>";
                     break;
                 case 'Submarine':
-                    shipFirstCell.innerHTML += "<img src='../assets/images/ships/submarine.png' class='ship'>";
+                    shipFirstCell.innerHTML += "<img src='./assets/images/ships/submarine.png' class='ship'>";
                     break;
                 case 'Destroyer':
-                    shipFirstCell.innerHTML += "<img src='../assets/images/ships/destroyer.png' class='ship destroyer'>";
+                    shipFirstCell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship destroyer'>";
                     break;
             }
 
@@ -1144,14 +1144,15 @@ class Player {
         for (let shipName in oppPlayerShips) {
             if (oppPlayerShips[shipName].sunk === true) {
                 shipsRemaining--; // Increment shipsRemaining down if sunk is true
+                console.log(oppPlayer.name + ' has ' + shipsRemaining + ' ships remaining');
             }
         }
 
         // If opposing player's shipsremaining is 0 this player wins
         if (shipsRemaining === 0) {
-            let win = true;
+            win = true;
         } else {
-            let win = false;
+            win = false;
         }
 
         return win;
@@ -1234,6 +1235,7 @@ class Player {
                 computerShips,
                 currentPlayer
             );
+            console.log(currentPlayer.name + ' win status...' + playerWin);
             // If playerWin true
             if (playerWin) {
                 // playerWinLose(currentPlayer);
@@ -2180,8 +2182,8 @@ function checkTurn(
     // shipmiss add splash image & update misses in sidebar
     // update PlayerMessage
     // Loops over player ships to see if all ship objects sunk attributes are
-    // true - call playerWinLose()
-    // playerWinLose() Update high score. How to reset game.
+    // true - call checkWinLose(player) whcih calls
+    // playerWinLose() if true. Update high score. How to reset game.
     // No player winlose call checkturn
     // update PlayerMessage
     // if player turn = true player turn else computer turn
