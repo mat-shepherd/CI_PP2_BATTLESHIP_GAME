@@ -2167,11 +2167,18 @@ function checkTurn(
      * player's or computer's turn.
      */
 
+    let wholeGameboard = document.getElementById('gameboard');
     let computerCells = document.getElementsByClassName('computer-play-area');
     let computerBoard = document.getElementById('computer-gameboard');
 
     if (currentPlayer.name !== "PLAYER TWO") {
         console.log('Player One Turn!');
+
+        /* 
+         * Add class to gameboard to add row-reverse
+         * to show P2 grid on top on mobile
+         */
+        wholeGameboard.classList.add('gameboard-reverse');
 
         /* 
          * Unlock computer game board when player needs to
@@ -2197,6 +2204,12 @@ function checkTurn(
 
     } else {
         console.log('Player Two Turn!');
+
+        /* 
+         * Remove class on gameboard to remove row-reverse
+         * to show P1 grid on top on mobile
+         */
+        wholeGameboard.classList.remove('gameboard-reverse');
 
         /* 
          * Lock computer game board while computer taking
