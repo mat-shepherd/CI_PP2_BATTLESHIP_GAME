@@ -142,17 +142,13 @@ class Ship {
         // Get the element at the placed ship coordinates or at conflicting coordinates         
         let existCoord = document.getElementById(this.coordinates[0]);
 
-        console.log('Conflict ' + conflictingCoord);
         /*
          * If Ship object has already been placed or placement isn't valid remove it
          * from the game board and remove coordinates from the ship coordinates array
          */
-        console.log('All ship coords ' + this.coordinates);
-        console.log('Placed ship first coord ' + existCoord.id);
         this.coordinates.splice(0, this.size);
-        console.log('new placed ship coords...' + this.coordinates);
 
-        //If an image is found in
+        // If an image is found at coords then remove
         let imageElement = existCoord.querySelector('img');
         if (imageElement !== null) {
             existCoord.removeChild(imageElement);
@@ -389,7 +385,6 @@ class Ship {
         }
 
         if (isSameFirstCharacter && imgElement) {
-            console.log('Same char...' + this.shipName);
             imgElement.style.transform = "rotate(90deg)";
             this.direction = 'horizontal';
         }
@@ -471,7 +466,6 @@ class Ship {
             this.removeShip(currentPlayer, conflictingCoord);
         } else {
             // Check ship has been placed and is in valid position if not show error
-            console.log('ConfirmPlaceShip Coord of ' + this.shipName + ' ' + shipCoord);
             if (shipCoord !== null && !conflictingCoord) {
                 /* 
                  * Increase z-index of ship to bring to to top 
@@ -486,7 +480,7 @@ class Ship {
                 // Once ship is placed remove click event listeners from occupied cells
                 // Don't do if shooting
                 let placedShipCells = this.coordinates;
-                console.log(this.coordinates);
+
                 for (let i in placedShipCells) {
                     let cell = document.getElementById(placedShipCells[i]);
 
@@ -514,11 +508,11 @@ class Ship {
                         countShipsPlaced++;
                     }
                 }
-                console.log('Count ships placed...' + countShipsPlaced);
+
                 /* 
-                 * If all ships placed hide placement controls, set game board
-                 * state to shooting, add computer grid shoot click listeners 
-                 * and pass to checkTurn() to start turn based game play
+                 * If all ships placed hide placement controls, add computer
+                 * grid shoot click listeners and pass to checkTurn() to start
+                 * turn based game play
                  */
                 // no-placement on player grid
                 if (countShipsPlaced === 5) {
@@ -630,7 +624,6 @@ class Ship {
          */
         currentPlayer.hits.push(targetCell);
         this.hits.push(targetCell);
-        console.log(currentPlayer.name + ' has ' + currentPlayer.hits.length + ' ship hits');
 
         // Update hits score
         currentPlayer.updateHits(players, playerShips, computerShips);
@@ -656,7 +649,6 @@ class Ship {
         }
 
         // Check if ship has been hit max number of times and call sinkShip
-        console.log('Ship hits...' + this.hits.length + ' Ship Size...' + shipSize);
         if (this.hits.length === shipSize) {
             this.sinkShip(
                 players,
@@ -707,7 +699,6 @@ class Ship {
 
         // Add miss coordinate to player misses attribute
         currentPlayer.misses.push(targetCell);
-        console.log(currentPlayer.name + ' has missed ' + currentPlayer.misses.length + ' times');
 
         // Update player miss score
         currentPlayer.updateMisses(players, playerShips, computerShips);
@@ -765,7 +756,6 @@ class Ship {
 
         // Find opposing player's ship elelemnt and mark sunk
         let sunkShip = document.getElementById(oppShipElem);
-        console.log('sunk ship elem...' + sunkShip.id);
         sunkShip.innerHTML += `<img src='./assets/images/effects/sunk.png' class='ship-sunk'>`;
 
         // Set ship' sunk attribute to true
@@ -807,11 +797,9 @@ class Ship {
             * Workaround to stop fire and miss icons rotating
             * with ship. Rotate 90 degrees counter clockwise.
             */
-            console.log(sunkShip.id + ' includes transform... ' + sunkShip.style.cssText.includes('transform'));
             if (sunkShip.style.cssText.includes('transform')) {
                 let fireIcon = sunkShip.querySelector('.fire');
                 let splashMiss = sunkShip.querySelector('.splash-miss');
-                console.log('Fire?.. ' + fireIcon);
                 if (fireIcon) {
                     fireIcon.style.transform = "rotate(-90deg)";
                     fireIcon.style.top = "10%";
@@ -862,13 +850,11 @@ class Ship {
  * @class Gameboard
  * @param {string} owner - the player that owns the gameboard
  * @param {string} label - the name label that should be displayed above the game board
- * @param {string} state - the state of play, placing or shooting
 */
 class Gameboard {
-    constructor(owner, label, state) {
+    constructor(owner, label) {
         this.owner = owner;
         this.label = label;
-        this.state = state;
         this.placeEventHandlers = {};
         this.shootEventHandlers = {};
     }
@@ -1090,12 +1076,13 @@ class Player {
     updateMisses(players, playerShips, computerShips) {
         let scoreDiv;
         let playerMisses = this.misses.length;
-        console.log(this.name + ' has missed at ' + this.misses);
+
         if (this === players.player) {
             scoreDiv = 'p1-misses';
         } else {
             scoreDiv = 'p2-misses';
         }
+
         let misses = document.getElementById(scoreDiv);
         misses.innerText = playerMisses;
     }
@@ -1148,7 +1135,7 @@ class Player {
                 console.log(oppPlayer.name + ' has ' + shipsRemaining + ' ships remaining');
             }
         }
-
+        console.log("Ships remaining..." + shipsRemaining);
         // If opposing player's shipsremaining is 0 this player wins
         if (shipsRemaining === 0) {
             win = true;
@@ -1213,7 +1200,6 @@ class Player {
 
         // Remove shoot click listeners from shot cell
         if (currentPlayer === players.player) {
-            console.log('Click listener remove..' + shotCellId);
             let shotCell = document.getElementById(shotCellId);
             const clickHandler = gameBoards.player.shootEventHandlers[shotCellId];
             if (clickHandler) {
@@ -1232,8 +1218,6 @@ class Player {
             currentShip,
             shotCoord
         );
-
-        console.log('Shot hit...' + shotHit);
 
         /* Check if shot is hit or miss and check if hit results in win.
          * Otherwise show player hit or miss message.
@@ -1257,7 +1241,6 @@ class Player {
             }
         } else {
             // Miss false - show miss message
-            console.log(currentPlayer.name + " missed " + oppPlayer.name + " ships ");
             playerMessage(`${currentPlayer.name} missed at ${shotCoord}. ${missMessage[rMsg]}`);
         }
 
@@ -1306,7 +1289,6 @@ class Player {
         currentShip,
         targetCell
     ) {
-        console.log('Shots fired by...' + currentPlayer.name);
         // Find opposing player and their ship objects
         let oppPlayer = currentPlayer === players.player ? players.computer : players.player;
         let oppPlayerShips = oppPlayer === players.computer ? computerShips : playerShips;
@@ -1318,7 +1300,7 @@ class Player {
         for (let shipName in oppPlayerShips) {
             let checkShip = oppPlayerShips[shipName];
             lastShip = checkShip;
-            console.log('Check if ' + targetCell + ' hit on coords...' + oppPlayerShips[shipName].coordinates);
+
             if (checkShip.coordinates.includes(targetCell)) {
                 checkShip.hitShip(
                     players,
@@ -1565,17 +1547,13 @@ function randomShip(
         targetShips = playerShips;
         playerClear = true;
         computerClear = false;
-        console.log("Computer Random Ship!");
     } else if (computerRandom) {
         targetShips = computerShips;
         playerClear = false;
         computerClear = true;
-        console.log("Computer Random Ship!");
     } else {
         Throw`No playerRandom computerRandom passed!`;
     }
-
-    console.log('playerRandom...' + playerRandom + ' computerRandom...' + computerRandom);
 
     clearShips(
         players,
@@ -1637,12 +1615,11 @@ function randomShip(
 
             // Call checkPlacement and pass computerRandom as a flag to check computerShips
             randomCoordInvalid = shipObject.checkPlacement(shipObject, playerShips, computerShips, computerRandom);
-            console.log(shipObject.shipName + ' Invalid Coord...' + randomCoordInvalid);
-
         }
         while (randomCoordInvalid);
+        let randomPlayer = playerRandom ? 'P1' : 'P2';
 
-        console.log("Ships after random loop: " + shipObject.shipName + ' coords ' + shipObject.coordinates);
+        console.log(randomPlayer + " - Ships after random loop: " + shipObject.shipName + ' coords ' + shipObject.coordinates);
 
         // Place the random ships if not computerRandom
         if (playerRandom) {
@@ -1993,7 +1970,7 @@ function initPlacement(playerName) {
      * and player objects in players{}. Then create ship objects
      * for each player and store in playerShips{} and 
      * computerShips{}.
-    */
+     */
     for (let keys in playerTypes) {
         let owner = keys;
         // if playerName known use that for player one label
@@ -2109,7 +2086,6 @@ function initShooting(
     let playerCells = document.getElementsByClassName('player-play-area');
 
     document.getElementById('placement-controls').style.display = 'none';
-    gameBoards.player.state = gameBoards.computer.state = 'shooting';
 
     // Generate random ships for the computer player
     let playerRandom = false;
@@ -2196,7 +2172,6 @@ function checkTurn(
 
     if (currentPlayer.name !== "PLAYER TWO") {
         console.log('Player One Turn!');
-        console.log(gameBoards.player.state);
 
         /* 
          * Unlock computer game board when player needs to
@@ -2212,7 +2187,6 @@ function checkTurn(
         }
 
         // Only delay message update after first turn.
-        console.log('First turn?...' + players.player.hits.length + ' ' + players.player.misses.length);
         if (players.player.hits.length === 0 && players.player.misses.length === 0)
             playerMessage(currentPlayer.name + " CLICK ANYWHERE ON PLAYER TWO'S GRID TO TAKE A SHOT ON THEM!");
         else {
