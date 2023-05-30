@@ -1125,9 +1125,11 @@ class Player {
          * and check if all ships sunk
          */
         let win = false;
-        let oppPlayer = this.player === players.player ? players.computer : players.player;
+        let oppPlayer = currentPlayer === players.player ? players.computer : players.player;
         let oppPlayerShips = oppPlayer === players.computer ? computerShips : playerShips;
         let shipsRemaining = 5;
+        console.log('Check win lose called. Current player...' + currentPlayer.name + '. Ships...');
+        console.log('Opposing player...' + oppPlayer.name + '. Opposing ships...' + JSON.stringify(oppPlayerShips));
 
         for (let shipName in oppPlayerShips) {
             if (oppPlayerShips[shipName].sunk === true) {
@@ -1135,7 +1137,7 @@ class Player {
                 console.log(oppPlayer.name + ' has ' + shipsRemaining + ' ships remaining');
             }
         }
-        console.log("Ships remaining..." + shipsRemaining);
+
         // If opposing player's shipsremaining is 0 this player wins
         if (shipsRemaining === 0) {
             win = true;
@@ -1207,7 +1209,7 @@ class Player {
                 delete gameBoards.player.shootEventHandlers[shotCellId];
             }
         }
-
+        console.log('Checking shot for...' + currentPlayer.name);
         // Pass to checkShipHit()
         let shotHit = currentPlayer.checkShipHit(
             players,
@@ -1223,6 +1225,7 @@ class Player {
          * Otherwise show player hit or miss message.
          */
         if (shotHit) {
+            console.log("shotHit..." + shotHit);
             // Check if win or lose
             let playerWin = currentPlayer.checkWinLose(
                 players,
@@ -1233,8 +1236,9 @@ class Player {
             console.log(currentPlayer.name + ' win status...' + playerWin);
             // If playerWin true
             if (playerWin) {
-                // playerWinLose(currentPlayer);
-                alert('We have a winner!');
+                playerWinLose(currentPlayer);
+                // Stop further execution
+                return;
             } else {
                 // playerWin false show hit message
                 playerMessage(`${currentPlayer.name} hit one of ${oppPlayer.name}'s ships at ${shotCoord}. ${hitMessage[rMsg]}`);
@@ -1243,8 +1247,6 @@ class Player {
             // Miss false - show miss message
             playerMessage(`${currentPlayer.name} missed at ${shotCoord}. ${missMessage[rMsg]}`);
         }
-
-        // 
 
         /*
         * We need to set currentPlayer to the nextplayer
@@ -1903,8 +1905,80 @@ function removeButtonPulse() {
  * Give the player option to start new game.
  */
 function playerWinLose(currentPlayer) {
-    // show intro-modal again but replace contents with win/lose message
-    // show new game button
+    // Get win-modal elements
+    let winModal = document.getElementById('win-modal');
+    let winHeading = document.getElementById('winner-heading');
+    let winBody = document.getElementById('winner-body');
+
+    let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
+
+    let winMessages = [
+        `WINNER WINNER CHICKEN DINNER!`,
+        `<i class="fa - solid fa - music"></i> YOU'RE THE BEST AROUND...
+        NOTHING'S GONNA EVER KEEP YOU DOWN<i class="fa - solid fa - music"></i>`,
+        `YOU ARE THE BEST NAVAL COMMANDER THAT I KNOW!`,
+        `I HOPE PLAYER TWO HAS BATTLESHIP INSURANCE!`,
+    ];
+
+    let loseMessages = [
+        `DON'T WORRY, YOU'LL GET 'EM NEXT TIME!`,
+        `<i class="fa - solid fa - music"></i>YOU'RE HERE, THERE'S NOTHING I FEAR
+        AND I KNOW THAT MY HEART WILL GO ON...<i class="fa - solid fa - music"></i>`,
+        `I HOPE YOU HAVE SOME MORE BATTLESHIPS TUCKED AWAY SOMEWHERE!?`,
+        `WELL AT LEAST YOU ARE GOOD LOOKING AND HAVE AN AMAZING PERSONALITY ;)`
+    ];
+
+    let rMsg = Math.floor(Math.random() * 4);
+
+    // Set win-modal element if P1 Winner or Loser
+    if (currentPlayer.name !== "PLAYER TWO") {
+        winHeading.innerHTML = `${currentPlayer.name} IS THE WINNER!`;
+        winBody.innerHTML = `<p>${winMessages[rMsg]}.</p><br>
+        <p>Your score is ${currentPlayer.score}</p><br>
+        <p>Your high score is ${currentPlayer.highscore}</p><br>        
+        <p>Click below if you want to play again!</p>`;
+
+        // Play winner sound unless muted
+        if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
+            let winSound = document.querySelector('#win-sound');
+
+            if (!winSound) {
+                winSound = new Audio('./assets/sounds/winner.mp3');
+                winSound.id = 'win-sound';
+                winSound.volume = 0.3;
+                document.body.appendChild(winSound);
+            }
+
+            winSound.play();
+        }
+
+    } else {
+        winHeading.innerHTML = `YOU LOST ${currentPlayer.name}!`;
+        winBody.innerHTML = `<p>${loseMessages[rMsg]}.</p><br>
+        <p>Your score is ${currentPlayer.score}</p><br>
+        <p>Your high score is ${currentPlayer.highscore}</p><br>
+        <p>Click below if you want to play again!</p>`;
+
+        // Play loser sound unless muted
+        if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
+            let loseSound = document.querySelector('#lose-sound');
+
+            if (!loseSound) {
+                loseSound = new Audio('./assets/sounds/winner.mp3');
+                loseSound.id = 'lose-sound';
+                loseSound.volume = 0.3;
+                document.body.appendChild(loseSound);
+            }
+
+            loseSound.play();
+        }
+
+    }
+
+    // Display win-modal
+    setTimeout(() => {
+        winModal.style.display = 'flex';
+    }, 3000);
 }
 
 /**
@@ -1963,6 +2037,17 @@ function initPlacement(playerName) {
     const playerShips = {};
     const computerShips = {};
     const gameBoards = {};
+
+    // Temporary code that sinks comp ships
+    document.getElementById('feedback-link').addEventListener('click', function () {
+        // Loop through computerShips and set each ship's "sunk" attribute to true
+        for (let shipName in computerShips) {
+            computerShips[shipName].sunk = true;
+        }
+
+        // Display feedback or perform any other desired actions
+        console.log("All computer ships sunk!");
+    });
 
     /*  
      * Loop over playerTypes, create a gameboard and player
@@ -2242,6 +2327,7 @@ function checkTurn(
         }, 4500);
     }
 }
+
 
 // DOCUMENT LOAD EVENT LISTENER
 
