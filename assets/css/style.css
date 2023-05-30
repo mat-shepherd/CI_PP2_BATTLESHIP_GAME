@@ -207,6 +207,13 @@ footer {
     color: #fff;
 }
 
+#links a:hover,
+#links a:active,
+#links a:focus {
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
 /* Game Container
    ========================================================================== */
 #game-container {
