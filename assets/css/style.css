@@ -12,13 +12,15 @@ body {
 
 nav h1,
 #intro-modal-contents h2,
-#rules-modal-contents h2 {
+#rules-modal-contents h2,
+#win-modal-contents h2 {
     font-family: 'Black Ops One', 'Lucida Sans Typewriter', Helvetica, sans-serif;
     letter-spacing: 0.1rem;
 }
 
 #intro-modal-contents h2,
-#rules-modal-contents h2 {
+#rules-modal-contents h2,
+#win-modal-contents h2 {
     font-size: 3rem;
     text-transform: uppercase;
     margin-top: 10px;
@@ -53,8 +55,10 @@ nav h1,
 #placement-controls,
 #placement-controls button,
 #start-game-form label,
+#win-modal-contents,
 #player-name,
 #start-game-button,
+#new-game-button,
 #error-message {
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
 }
@@ -493,7 +497,8 @@ footer {
 /* Placement Buttons - Adapted from https: //codepen.io/Brandon-Stoyles/pen/RajYmd */
 
 .game-button,
-#start-game-button {
+#start-game-button,
+#new-game-button {
     background-color: #7C7C7C;
     border-bottom: 6px inset rgba(0, 0, 0, .5);
     border-left: 6px inset rgba(0, 0, 0, .5);
@@ -511,7 +516,8 @@ footer {
     width: auto;
 }
 
-#start-game-button {
+#start-game-button,
+#new-game-button {
     padding: 1rem;
 }
 
@@ -541,7 +547,9 @@ footer {
 #rotate-control:focus,
 #rotate-control:hover,
 #start-game-button:hover,
-#start-game-button:focus {
+#start-game-button:focus,
+#new-game-button:hover,
+#new-game-button:focus {
     background-color: #006800;
 }
 
