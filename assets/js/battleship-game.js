@@ -654,23 +654,6 @@ class Ship {
             }, 3500);
         }
 
-        /* 
-        * Workaround to stop fire and miss icons rotating
-        * with ship. Rotate 90 degrees counter clockwise.
-        */
-        let fireIcon = shotCell.querySelector('.fire');
-        let splashMiss = shotCell.querySelector('.splash-miss');
-        if (fireIcon) {
-            fireIcon.style.transform = "rotate(-90deg)";
-            fireIcon.style.top = "10%";
-            fireIcon.style.left = "10%";
-        }
-        if (splashMiss) {
-            splashMiss.style.transform = "rotate(-90deg)";
-            splashMiss.style.top = "10%";
-            splashMiss.style.left = "10%";
-        }
-
         // Check if ship has been hit max number of times and call sinkShip
         console.log('Ship hits...' + this.hits.length + ' Ship Size...' + shipSize);
         if (this.hits.length === shipSize) {
@@ -794,6 +777,9 @@ class Ship {
             shipFirstCoord += 'C';
             let shipFirstCell = document.getElementById(shipFirstCoord);
 
+            // Set sunkShip to computer ship cell to reference later
+            sunkShip = shipFirstCell;
+
             // Add sunk ship image to computer grid if computer ship
             switch (this.shipName) {
                 case 'Carrier':
@@ -813,9 +799,29 @@ class Ship {
                     break;
             }
 
-
             // Rotate if needed
             this.matchRotation(shipFirstCell);
+
+            /* 
+            * Workaround to stop fire and miss icons rotating
+            * with ship. Rotate 90 degrees counter clockwise.
+            */
+            console.log(sunkShip.id + ' includes transform... ' + sunkShip.style.cssText.includes('transform'));
+            if (sunkShip.style.cssText.includes('transform')) {
+                let fireIcon = sunkShip.querySelector('.fire');
+                let splashMiss = sunkShip.querySelector('.splash-miss');
+                console.log('Fire?.. ' + fireIcon);
+                if (fireIcon) {
+                    fireIcon.style.transform = "rotate(-90deg)";
+                    fireIcon.style.top = "10%";
+                    fireIcon.style.left = "10%";
+                }
+                if (splashMiss) {
+                    splashMiss.style.transform = "rotate(-90deg)";
+                    splashMiss.style.top = "10%";
+                    splashMiss.style.left = "10%";
+                }
+            }
         }
 
         // Update player message
