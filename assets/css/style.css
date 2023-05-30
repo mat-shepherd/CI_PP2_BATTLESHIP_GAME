@@ -63,6 +63,10 @@ nav h1,
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
 }
 
+#win-modal-contents {
+    line-height: 1.3rem;
+}
+
 #player-message,
 #win-modal-contents {
     text-transform: uppercase;
