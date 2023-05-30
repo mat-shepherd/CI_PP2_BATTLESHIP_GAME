@@ -2268,6 +2268,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add click event listeners to nav links
     document.getElementById('new-game-link').addEventListener('click', newGame);
+    document.getElementById('new-game-button').addEventListener('click', newGame);
     document.getElementById('rules-link').addEventListener('click', openRulesModal);
     document.getElementById('audio-link').addEventListener('click', audioToggle);
 
