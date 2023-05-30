@@ -1028,15 +1028,6 @@ class Player {
     }
 
     /**
-     * This method 
-     *
-     * @method shipsRemaining
-     */
-    updateShipsRemaining() {
-
-    }
-
-    /**
      * Update the sidebar with player's name
      * @method updateName
      * @param {string} playername - name entered by player 
@@ -1088,42 +1079,43 @@ class Player {
     }
 
     /**
-     * This method 
-     *
+     * Updates the winning player's score on the scoreboard
      * @method updateScore
-     * @param {object} currentPlayer - the current player object in play
      */
-    updateScore(currentPlayer) {
+    updateScore() {
         let scoreDiv;
-        let playerScore = currentPlayer.score;
 
-        if (currentPlayer !== 'PLAYER TWO') {
+        // Update winning player score
+        this.score++;
+
+        let playerScore = this.score;
+
+        if (this.name !== 'PLAYER TWO') {
             scoreDiv = 'p1-score';
         } else {
             scoreDiv = 'p2-score';
         }
 
+        // Update winning player score on scoreboard
         let score = document.getElementById(scoreDiv);
         score.innerText = playerScore;
     }
 
     /**
-     * This method 
-     *
+     * Updates the player one's high score on the scoreboard
      * @method updateHighScore
-     * @param {object} currentPlayer - the current player object in play
      */
-    updateHighScore(currentPlayer) {
-        let highScoreDiv;
-        let playerHighScore = currentPlayer.highscore;
+    updateHighScore() {
+        // Update winning player high score if current score is greater
+        let currentScore = this.score;
+        let currentHighScore = this.highscore;
+        console.log(this.name + "...high score..." + this.highscore);
+        this.highscore = currentScore > currentHighScore ? currentScore : currentHighScore;
 
-        if (currentPlayer !== 'PLAYER TWO') {
-            scoreDiv = 'p1-score';
-        } else {
-            scoreDiv = 'p2-score';
-        }
+        let playerHighScore = this.highscore;
 
-        let highScore = document.getElementById(highScoreDiv);
+        // Update winning player score on scoreboard
+        let highScore = document.getElementById(high - score);
         highScore.innerText = playerHighScore;
     }
 
@@ -1259,7 +1251,7 @@ class Player {
             // If playerWin true
             if (playerWin) {
                 // Call function to show win message
-                playerWinLose(currentPlayer, oppPlayer);
+                playerWinLose(players, currentPlayer, oppPlayer);
                 // Stop further execution
                 return;
             } else {
@@ -1927,13 +1919,18 @@ function removeButtonPulse() {
  * If all ships sunk notify player of win or loss.
  * Give the player option to start new game.
  * @function playerWinLose
+ * @param {object} players - the object containg player objects
  * @param {object} currentPlayer - the current player object in play
- * @param {object} currentPlayer - the opposing player object
+ * @param {object} oppPlayer - the opposing player object
  */
-function playerWinLose(currentPlayer, oppPlayer) {
-    // Update score
-
-    // Update high score
+function playerWinLose(players, currentPlayer, oppPlayer) {
+    // Update score in scoreboard
+    currentPlayer.updateScore();
+    console.log();
+    // Update high score in scoreboard if player one
+    if (currentPlayer.name !== "PLAYER TWO") {
+        currentPlayer.updateHighScore();
+    }
 
     // Get win-modal elements
     let winModal = document.getElementById('win-modal');
@@ -1964,8 +1961,8 @@ function playerWinLose(currentPlayer, oppPlayer) {
     if (currentPlayer.name !== "PLAYER TWO") {
         winHeading.innerHTML = `${currentPlayer.name} IS THE WINNER!`;
         winBody.innerHTML = `<p>${winMessages[rMsg]}.</p><br>
-        <p>Your score is ${currentPlayer.score}</p><br>
-        <p>Your high score is ${currentPlayer.highscore}</p><br>        
+        <p>Your score is ${players.player.score}</p><br>
+        <p>Your high score is ${players.player.highscore}</p><br>        
         <p>Click below if you want to play again!</p>`;
 
         // Play winner sound unless muted
@@ -1985,8 +1982,8 @@ function playerWinLose(currentPlayer, oppPlayer) {
     } else {
         winHeading.innerHTML = `${oppPlayer.name}! YOU LOST!`;
         winBody.innerHTML = `<p>${loseMessages[rMsg]}.</p><br>
-        <p>Your score is ${currentPlayer.score}</p><br>
-        <p>Your high score is ${currentPlayer.highscore}</p><br>
+        <p>Your score is ${players.player.score}</p><br>
+        <p>Your high score is ${players.player.highscore}</p><br>
         <p>Click below if you want to play again!</p>`;
 
         // Change lose heading color
