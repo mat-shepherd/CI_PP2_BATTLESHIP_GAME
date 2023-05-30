@@ -1967,7 +1967,7 @@ function playerWinLose(currentPlayer) {
             let loseSound = document.querySelector('#lose-sound');
 
             if (!loseSound) {
-                loseSound = new Audio('./assets/sounds/winner.mp3');
+                loseSound = new Audio('./assets/sounds/loser.mp3');
                 loseSound.id = 'lose-sound';
                 loseSound.volume = 0.3;
                 document.body.appendChild(loseSound);
@@ -2044,8 +2044,8 @@ function initPlacement(playerName) {
     // Temporary code that sinks comp ships
     document.getElementById('feedback-link').addEventListener('click', function () {
         // Loop through computerShips and set each ship's "sunk" attribute to true
-        for (let shipName in computerShips) {
-            computerShips[shipName].sunk = true;
+        for (let shipName in playerShips) {
+            playerShips[shipName].sunk = true;
         }
 
         // Display feedback or perform any other desired actions
