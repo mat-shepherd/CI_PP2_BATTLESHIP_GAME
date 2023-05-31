@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battleship Game Page Not Found!</title>
+    <meta name="description" content="Oh no you sunk our Battleship! Page Not Found!">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <nav>
+        <div id="logo">
+            <h1>BATTLESHIP GAME</h1>
+        </div>
+        <div id="links">
+            <ul>
+                <li><a href="#" id="new-game-link-404" aria-label="Start new game">NEW GAME</a></li>
+                <li><a href="#" id="rules-link" aria-label="How to play">HOW TO PLAY</a></li>
+                <li><a href="#" id="audio-link" aria-label="Toggle audio on or off"><i
+                            class="fa-solid fa-volume-mute"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="game-container">
+        <!-- Sidebar for tracking game pieces and score -->
+        <section id="game-sidebar">
+            <div id="score-inner">
+                <!-- Player Scores -->
+                <div id="score-stats">
+                    <h2>SCORES</h2>
+                    <div id="player-score-stats">
+                        <div class="score-title"><strong id="p1-score-title">P1:</strong>
+                            <div id="p1-score" class="score-number">0</div>
+                        </div>
+                        <div class="score-title"><strong>P2:</strong>
+                            <div id="p2-score" class="score-number">0</div>
+                        </div>
+                    </div>
+                    <h3>PLAYER HIGH SCORE</h3>
+                    <div id="high-score">0</div>
+                </div>
+                <!-- Player One Game Stats -->
+                <div id="player-one-stats">
+                    <h2 id="p1-stats-heading">PLAYER ONE</h2>
+                    <div class="score-title"><strong>HITS:</strong>
+                        <div id="p1-hits" class="score-number">0</div>
+                    </div>
+                    <div class="score-title"><strong>MISSES:</strong>
+                        <div id="p1-misses" class="score-number">0</div>
+                    </div>
+                    <div class="score-title"><strong>SHIPS:</strong>
+                        <div id="p1-ships" class="score-number">5</div>
+                    </div>
+                    <div class="ship-list">
+                        <div id="p1-carrier" class="score-ship">
+                            <img src="./assets/images/ships/carrier-icon.png" alt="Player One Carrier">
+                        </div>
+                        <div id="p1-battleship" class="score-ship">
+                            <img src="./assets/images/ships/battleship-icon.png" alt="Player One Battleship">
+                        </div>
+                        <div id="p1-cruiser" class="score-ship">
+                            <img src="./assets/images/ships/cruiser-icon.png" alt="Player One Cruiser">
+                        </div>
+                        <div id="p1-submarine" class="score-ship">
+                            <img src="./assets/images/ships/submarine-icon.png" alt="Player One Submarine">
+                        </div>
+                        <div id="p1-destroyer" class="score-ship">
+                            <img src="./assets/images/ships/destroyer-icon.png" alt="Player One Destroyer">
+                        </div>
+                    </div>
+                </div>
+                <!-- Player Two Game Stats -->
+                <div id="player-two-stats">
+                    <h2>PLAYER TWO</h2>
+                    <div class="score-title"><strong>HITS:</strong>
+                        <div id="p2-hits" class="score-number">0</div>
+                    </div>
+                    <div class="score-title"><strong>MISSES:</strong>
+                        <div id="p2-misses" class="score-number">0</div>
+                    </div>
+                    <div class="score-title"><strong>SHIPS:</strong>
+                        <div id="p2-ships" class="score-number">5</div>
+                    </div>
+                    <div class="ship-list">
+                        <div id="p2-carrier" class="score-ship">
+                            <img src="./assets/images/ships/carrier-icon.png" alt="Player Two Carrier">
+                        </div>
+                        <div id="p2-battleship" class="score-ship">
+                            <img src="./assets/images/ships/battleship-icon.png" alt="Player Two Battleship">
+                        </div>
+                        <div id="p2-cruiser" class="score-ship">
+                            <img src="./assets/images/ships/cruiser-icon.png" alt="Player Two Cruiser">
+                        </div>
+                        <div id="p2-submarine" class="score-ship">
+                            <img src="./assets/images/ships/submarine-icon.png" alt="Player Two Submarine">
+                        </div>
+                        <div id="p2-destroyer" class="score-ship">
+                            <img src="./assets/images/ships/destroyer-icon.png" alt="Player Two Destroyer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Main gameplay area -->
+        <section id="game-body">
+            <div id="rules-modal">
+                <div id="rules-modal-contents">
+                    <div id="rules-modal-text">
+                        <div class="close-container">
+                            <span class="close">&times;</span>
+                        </div>
+                        <h2>HOW TO PLAY BATTLESHIP</h2>
+                        <p>Welcome to my Battleship Game which I developed as my JavaScript project
+                            while studying at the Code Institute. Learn the game rules and how to play below!</p>
+                        <h3>HOW TO PLAY</h3>
+                        <p>This is a game turn based strategy game against the computer. Each player has 5 ships
+                            in their fleet of varying sizes. Ships are placed on the game board but neither player
+                            can see eachother's ships. Each player then takes turn taking shots on eachother's ships.
+                            When a player sinks all 5 of their opponent's ships they win!
+                        </p>
+                        <h4>AUDIO</h4>
+                        <p>This game has some simple audio effects but they are disabled by default. If you want to turn
+                            audio on use the AUDIO OFF / ON button, below the start game BUTTON on the intro screen, or
+                            the <i class="fa-solid fa-volume-mute"></i> speaker icon in the top right of the navigation
+                            menu at any point in the game.
+                        </p>
+                        <h4>SHIP FLEETS</h4>
+                        <p>Each player commands a fleet of 5 ships:</p>
+                        <ul>
+                            <li>CARRIER: 5 CELLS LONG</li>
+                            <li>BATTLESHIP: 4 CELLS LONG</li>
+                            <li>CRUISER: 3 CELLS LONG</li>
+                            <li>SUBMARINE: 3 CELLS LONG</li>
+                            <li>DESTROYER: 2 CELLS LONG</li>
+                        </ul>
+                        <h4>GETTING STARTED</h4>
+                        <ul>
+                            <li>To start the game enter your name (maximum 10 characters) in the space provided on the
+                                intro
+                                screen and click the START GAME button.
+                            </li>
+                        </ul>
+                        <h4>PLACING SHIPS</h4>
+                        <ul>
+                            <li>Click on a square in the game board grid labelled with your name to place a ship.</li>
+                            <li>Using the ship placement controls, click the ROTATE button to rotate a ship 90 degrees.
+                            </li>
+                            <li>When you are happy with your ship's placement click the PLACE button using the ship
+                                placement controls. You will then move on to placing your next ship repeating the
+                                process
+                                above until all five of your ships are placed.</li>
+                            <li>If you want to reset your ship postions click the CLEAR ALL button using the ship
+                                placement controls.</li>
+                            <li>If you want to randomly place all of your ships and start the game right away, click the
+                                RANDOM button using the ship placement controls.</li>
+                            <li>You can place each ship in any horizontal or vertical position but not diagonally.</li>
+                            <li>Don't place a ship so that any part of it overlaps letters, numbers, the edge of the
+                                grid,
+                                or another ship. If you do the game will ask you to place the ship again by click on the
+                                grid.</li>
+                            <li>You can't change the position of any ships once the game has begun.</li>
+                        </ul>
+                        <h4>GAME PLAY</h4>
+                        <ul>
+                            <li>Once all ships are placed, you and the computer will alternate taking shots on
+                                eachother's
+                                game boards. You will take the first shot.</li>
+                            <li>Take a shot by hovering over Player Two's game board and clicking on a grid location.
+                            </li>
+                            <li>Once a shot has been taken, you will see an explosion at a ship grid location if a shot
+                                was
+                                hit or a splash if the shot missed.</li>
+                            <li>If a ship is hit at all of its grid locations it will be sunk i.e. 5 hits on a carrier
+                                will sink the ship. A sunk ship will have explosion markers along it's entire length.
+                            </li>
+                            <li>When you hit a computer ship you will see an explosion marker at the guessed ship grid
+                                location. When it's your turn you the try and guess the next location the ship could be
+                                located at.</li>
+                            <li>You won't see a computer's ship until you have hit it at all of its grid locations.</li>
+                            <li>You can track which ships are sunk, which are still afloat, and each player's score
+                                (number of games won) in the 'SCORES' area.</li>
+                            <li>When a player sinks all 5 of their opponent's ships they win!</li>
+                            <li>If you want to play again click the NEW GAME button in the winner message area or using
+                                the link at the top of the screen.</li>
+                        </ul>
+                        <h4><strong>GOOD LUCK AND ENJOY!</strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div id="intro-modal">
+                <div id="intro-modal-contents">
+                    <h2>PAGE NOT FOUND</h2>
+                    <h3>OH NO! YOU SUNK OUR BATTLESHIP!</h3>
+                    <p>You have found a page that doesn't exist. Our crew is scrambling to get you back on course
+                        captain!</p>
+                    <p>Please click the New Game button below to head back to the main game page and safe waters!</p>
+                    <div id="error-message">
+                        <noscript>
+                            <p>This game requires JavaScript to run. Your browser does not support
+                                JavaScript or it is disabled! <a href="https://www.enable-javascript.com/"
+                                    target="_blank" aria-label="Visit enable-javascript.com (opens in a new tab)">.
+                                    Click here for more information on enabling JavaScript</a>.
+                            </p>
+                        </noscript>
+                    </div>
+                    <button type="submit" id="new-game-button-404" aria-label="New game">NEW GAME</button>
+                </div>
+            </div>
+            <div id="win-modal">
+                <div id="win-modal-contents">
+                    <h2 id="winner-heading">WINNER MESSAGE HEADING!</h2>
+                    <span id="winner-body">Winner winner chicken dinner!</span>
+                    <button type="submit" id="new-game-button" aria-label="New game">NEW GAME</button>
+                </div>
+            </div>
+            <div id="player-message">
+                <p></p>
+            </div>
+            <div id="gameboard">
+                <div id="player-gameboard"></div>
+                <div id="computer-gameboard"></div>
+            </div>
+            <div id="placement-controls">
+                <ul>
+                    <li><button id="place-control" class="game-button"
+                            aria-label="Confirm Ship Placement">PLACE</button></li>
+                    <li><button id="rotate-control" class="game-button" aria-label="Rotate Ship">ROTATE</button></li>
+                    <li><button id="random-control" class="game-button"
+                            aria-label="Generate random ship locations">RANDOM</button></li>
+                    <li><button id="reset-control" class="game-button"
+                            aria-label="Clear all ships from game board">CLEAR ALL</button></li>
+                </ul>
+                <h3>SHIP PLACEMENT CONTROLS</h3>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div id="footer-social">
+            <p>Matthew Shepherd 2023 &copy;</p>
+            <!-- Footer GitHub Link -->
+            <a href="https://github.com/mat-shepherd" class="social-icon" target="_blank" rel="noopener"
+                aria-label="Visit my GitHub page (opens in a new tab)"><i class="fa-brands fa-github fa-2xl"></i></a>
+        </div>
+    </footer>
+    <!-- Main Game Script -->
+    <script src="./assets/js/battleship-game.js"></script>
+    <!-- Fontawesome Icons -->
+    <script src="https://kit.fontawesome.com/5a0f54d2c3.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

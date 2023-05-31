@@ -946,7 +946,7 @@ class Gameboard {
                 }
             }
         }
-        
+
         // Check which gameboard we are adding to the page
         if (this.owner === 'computer') {
             computerGameboard.innerHTML = playGrid;
@@ -996,7 +996,7 @@ class Gameboard {
 
             // Add new click event listeners to the cells
             for (let cell of playerCells) {
-                let cellPlace = function(event) {
+                let cellPlace = function (event) {
                     // Handle the place cell click event
                     currentShip.placeShip(
                         players,
@@ -1035,7 +1035,7 @@ class Gameboard {
 
             // Add new shoot click event listeners to the cells
             for (let cell of computerCells) {
-                let cellShot = function(event) {
+                let cellShot = function (event) {
                     // Handle the shot cell click event
                     players.player.takeShot(
                         players,
@@ -1470,12 +1470,12 @@ function audioToggle() {
 
     if (audioLinkIcon.classList.contains('fa-volume-mute')) {
         audioLink.innerHTML = `<i class="fa-solid fa-volume-low"></i>`;
-        audioButton.innerHTML  = `<i class="fa-solid fa-volume-low"></i> AUDIO ON`;
-        audioButton.className = 'audio-on';               
+        audioButton.innerHTML = `<i class="fa-solid fa-volume-low"></i> AUDIO ON`;
+        audioButton.className = 'audio-on';
     } else {
         audioLink.innerHTML = `<i class="fa-solid fa-volume-mute"></i>`;
         audioButton.innerHTML = `<i class="fa-solid fa-volume-mute"></i> AUDIO OFF`;
-        audioButton.className = 'audio-off'; 
+        audioButton.className = 'audio-off';
     }
 
     // Get all video and audio elements on the page
@@ -2140,7 +2140,7 @@ function checkURL() {
 
     // If new game call initPlacement to bypass intro modal
     if (newGame) {
-        initPlacement('',existPlayerName, playerScore, playerHighScore, computerScore, newGame);
+        initPlacement('', existPlayerName, playerScore, playerHighScore, computerScore, newGame);
     }
 }
 
@@ -2243,8 +2243,8 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
             let turn = true;
             // Check for existing scores and name if new game
             playerName = existPlayerName ? existPlayerName : playerName;
-            score = playerScore ? playerScore: score;
-            highScore = playerHighScore ? playerHighScore: highScore;      
+            score = playerScore ? playerScore : score;
+            highScore = playerHighScore ? playerHighScore : highScore;
 
             players[keys] = new Player(playerName, shipsRemaining, hits, misses, score, highScore, turn);
             // Replace player one's name in sidebar with name provided 
@@ -2253,7 +2253,7 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
             // set inital turn attribute to False so player gets second turn
             let turn = false;
             // Check for existing score if new game
-            score = computerScore ? computerScore: score;
+            score = computerScore ? computerScore : score;
 
             playerName = playerTypes[keys];
             players[keys] = new Player(playerName, shipsRemaining, hits, misses, score, highScore, turn);
@@ -2327,7 +2327,7 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
         // Set scores from URL in scoreboard
         document.getElementById('p1-score').innerText = playerScore;
         document.getElementById('high-score').innerText = playerHighScore;
-        document.getElementById('p2-score').innerText = computerScore;     
+        document.getElementById('p2-score').innerText = computerScore;
 
     } else {
         // show initial welcome and instructions in player message
@@ -2417,16 +2417,16 @@ function initShooting(
     let audioLinkIcon = audioLink ? audioLink.firstChild : null;
 
     if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
-    let gameStart = document.querySelector('#game-start-music');
+        let gameStart = document.querySelector('#game-start-music');
 
-    if (!gameStart) {
-        gameStart = new Audio('./assets/sounds/battleship-intro.mp3');
-        gameStart.id = 'game-start-music';
-        gameStart.volume = 0.3;
-        document.body.appendChild(gameStart);
-    }
+        if (!gameStart) {
+            gameStart = new Audio('./assets/sounds/battleship-intro.mp3');
+            gameStart.id = 'game-start-music';
+            gameStart.volume = 0.3;
+            document.body.appendChild(gameStart);
+        }
 
-    gameStart.play();
+        gameStart.play();
     }
 
     checkTurn(
@@ -2538,22 +2538,22 @@ function checkTurn(
             let randomShotCoord;
 
             do {
-                    shotCoordInvalid = false;
-                    let computerShots = players.computer.hits.concat(players.computer.misses);
-                    randomShotCoord = randomCoord();
-                    console.log(randomShotCoord);
-                    console.log(computerShots);                    
-                    // Loop through computer shots and make sure shot not already taken
+                shotCoordInvalid = false;
+                let computerShots = players.computer.hits.concat(players.computer.misses);
+                randomShotCoord = randomCoord();
+                console.log(randomShotCoord);
+                console.log(computerShots);
+                // Loop through computer shots and make sure shot not already taken
 
-                    for (let shot of computerShots) {
-                        if (shot === randomShotCoord) {
-                            shotCoordInvalid = true;
-                            console.log('shotCoordInvalid...'+shotCoordInvalid);
+                for (let shot of computerShots) {
+                    if (shot === randomShotCoord) {
+                        shotCoordInvalid = true;
+                        console.log('shotCoordInvalid...' + shotCoordInvalid);
                         break;
-                        }
                     }
-                } 
-                while (shotCoordInvalid);
+                }
+            }
+            while (shotCoordInvalid);
 
             currentPlayer.takeShot(
                 players,
@@ -2569,6 +2569,14 @@ function checkTurn(
     }
 }
 
+/**
+ * Function to load index page. Used for 404 page click listeners.
+ * @function loadIndex
+ */
+function loadIndex() {
+    window.location.href = 'index.html';
+}
+
 
 // DOCUMENT LOAD EVENT LISTENER
 
@@ -2582,10 +2590,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add click event listeners to nav links and audio toggle
     document.getElementById('new-game-link').addEventListener('click', newGame);
+    document.getElementById('new-game-link-404').addEventListener('click', loadIndex);
     document.getElementById('new-game-button').addEventListener('click', newGame);
+    document.getElementById('new-game-button-404').addEventListener('click', loadIndex);
     document.getElementById('rules-link').addEventListener('click', openRulesModal);
     document.getElementById('audio-link').addEventListener('click', audioToggle);
-    document.getElementById('audio-button').addEventListener('click', audioToggle);    
+    document.getElementById('audio-button').addEventListener('click', audioToggle);
 
     // Add click event listener to modal close button
     document.getElementsByClassName("close")[0].addEventListener('click', closeRulesModal);
