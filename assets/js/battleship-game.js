@@ -227,11 +227,9 @@ class Ship {
             let shipImg = shipCoord.querySelector('img');
             // Check if coordinates passed from randomShip
             if (!randomShipCoord) {
-                let originalRotation = shipImg.style.transform;
 
                 // Get the dimensions of the ship image
                 let shipWidth = shipImg.clientWidth;
-                let shipHeight = shipImg.clientHeight;
 
                 // Calculate the transform origin as the top center of the image
                 let transformOriginX = shipWidth / 2;
@@ -1595,7 +1593,7 @@ function randomCoord() {
 
     // Generate ship column
     let randomShipCol = Math.floor(Math.random() * 10) + 1;
-    randomShipCoord = randomShipLetter + randomShipCol;
+    let randomShipCoord = randomShipLetter + randomShipCol;
 
     return randomShipCoord;
 }
@@ -1630,6 +1628,7 @@ function randomShip(
 
     let playerClear;
     let computerClear;
+    let targetShips;
 
     // Set player ship objects to randomise
     if (playerRandom) {
@@ -1641,7 +1640,7 @@ function randomShip(
         playerClear = false;
         computerClear = true;
     } else {
-        Throw`No playerRandom computerRandom passed!`;
+        throw `No playerRandom computerRandom passed!`;
     }
 
     clearShips(
