@@ -314,6 +314,10 @@ footer {
     border: 1px solid #888;
 }
 
+#win-modal-contents h2 {
+    margin-top: 2rem;
+}
+
 #intro-modal-contents,
 #win-modal-contents {
     justify-content: center;
