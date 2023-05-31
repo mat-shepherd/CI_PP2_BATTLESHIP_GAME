@@ -2369,11 +2369,12 @@ function checkTurn(
 document.getElementById('player-name').focus();
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Add click event listeners to nav links
+    // Add click event listeners to nav links and audio toggle
     document.getElementById('new-game-link').addEventListener('click', newGame);
     document.getElementById('new-game-button').addEventListener('click', newGame);
     document.getElementById('rules-link').addEventListener('click', openRulesModal);
     document.getElementById('audio-link').addEventListener('click', audioToggle);
+    document.getElementById('audio-button').addEventListener('click', audioToggle);    
 
     // Add click event listener to modal close button
     document.getElementsByClassName("close")[0].addEventListener('click', closeRulesModal);

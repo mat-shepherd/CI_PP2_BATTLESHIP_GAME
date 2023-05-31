@@ -508,11 +508,17 @@ footer {
 
 /* Placement Buttons - Adapted from https: //codepen.io/Brandon-Stoyles/pen/RajYmd */
 
+
+.game-button,
+#start-game-button,
+#new-game-button {
+    background-color: #7C7C7C;
+}
+
 .game-button,
 #start-game-button,
 #new-game-button,
 #audio-button {
-    background-color: #7C7C7C;
     border-bottom: 6px inset rgba(0, 0, 0, .5);
     border-left: 6px inset rgba(0, 0, 0, .5);
     border-right: 6px inset rgba(255, 255, 255, .5);
@@ -539,6 +545,25 @@ footer {
     padding: 1.1rem 0.7rem;
 }
 
+.audio-off {
+    background-color: #7C7C7C;
+}
+
+
+.audio-on {
+    background-color: #0000BC;
+}
+
+.audio-off:hover,
+.audio-off:focus {
+    background-color: #0000BC;
+}
+
+.audio-on:hover,
+.audio-on:focus {
+
+}
+
 .game-button:focus,
 .game-button:hover {
     background-color: #BCBCBC;
@@ -549,9 +574,7 @@ footer {
 }
 
 #place-control:focus,
-#place-control:hover,
-#audio-button:hover,
-#audio-button:focus {
+#place-control:hover {
     background-color: #A81000;
 }
 
