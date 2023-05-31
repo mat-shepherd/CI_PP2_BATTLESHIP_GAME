@@ -2200,19 +2200,6 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
     const computerShips = {};
     const gameBoards = {};
 
-    // Temporary code that sinks comp ships
-    document.getElementById('feedback-link').addEventListener('click', function () {
-        // Loop through computerShips and set each ship's "sunk" attribute to true
-        let computerShipsKeys = Object.keys(computerShips);
-        for (let i = 0; i < computerShipsKeys.length; i++) {
-            let shipName = computerShipsKeys[i];
-            computerShips[shipName].sunk = true;
-        }
-
-        // Display feedback or perform any other desired actions
-        console.log("All computer ships sunk!");
-    });
-
     /*  
      * Loop over playerTypes, create a gameboard and player
      * object for each. Store gameboard objects in gameBoards{} 
