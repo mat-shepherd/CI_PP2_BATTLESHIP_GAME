@@ -103,10 +103,11 @@ class Ship {
         /* 
         * Add audio and play if not already added but respect mute.
         * Code adapted from ChatGPT by https://openai.com/
-        * ? in .firstChild makes sure variable is assigned null
+        * Check audioLink to make sure variable is assigned null
         * if element not found
         */
-        let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
+        let audioLink = document.getElementById('audio-link');
+        let audioLinkIcon = audioLink ? audioLink.firstChild : null;
 
         if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
             let boatSplash = document.querySelector('#boat-splash');
@@ -619,10 +620,11 @@ class Ship {
         /* 
         * Add audio and play if not already added but respect mute.
         * Code adapted from ChatGPT by https://openai.com/
-        * ? in .firstChild makes sure variable is assigned null
+        * Check audioLink to make sure variable is assigned null
         * if element not found
         */
-        let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
+        let audioLink = document.getElementById('audio-link');
+        let audioLinkIcon = audioLink ? audioLink.firstChild : null;
 
         if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
             let explodeSound = document.querySelector('#explode-sound');
@@ -698,10 +700,11 @@ class Ship {
         /* 
         * Add audio and play if not already added but respect mute.
         * Code adapted from ChatGPT by https://openai.com/
-        * ? in .firstChild makes sure variable is assigned null
+        * Check audioLink to make sure variable is assigned null
         * if element not found
         */
-        let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
+        let audioLink = document.getElementById('audio-link');
+        let audioLinkIcon = audioLink ? audioLink.firstChild : null;
 
         if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
             let splashSound = document.querySelector('#splash-sound');
@@ -776,10 +779,11 @@ class Ship {
         /* 
          * Add sink ship audio and play if not already added but respect mute.
          * Code adapted from ChatGPT by https://openai.com/
-         * ? in .firstChild makes sure variable is assigned null
+         * Check .audioLink to make sure variable is assigned null
          * if element not found
         */
-        let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
+        let audioLink = document.getElementById('audio-link');
+        let audioLinkIcon = audioLink ? audioLink.firstChild : null;
 
         if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
             let sinkSound = document.querySelector('#sink-sound');
@@ -937,7 +941,13 @@ class Gameboard {
                 }
             }
         }
-        this.owner === 'computer' ? computerGameboard.innerHTML = playGrid : playerGameboard.innerHTML = playGrid;
+        
+        // Check which gameboard we are adding to the page
+        if (this.owner === 'computer') {
+            computerGameboard.innerHTML = playGrid;
+        } else {
+            playerGameboard.innerHTML = playGrid;
+        }
     }
 
     /**
@@ -1998,7 +2008,8 @@ function playerWinLose(players, currentPlayer, oppPlayer) {
     let winHeading = document.getElementById('winner-heading');
     let winBody = document.getElementById('winner-body');
 
-    let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
+    let audioLink = document.getElementById('audio-link');
+    let audioLinkIcon = audioLink ? audioLink.firstChild : null;
 
     let winMessages = [
         `WINNER WINNER CHICKEN DINNER!`,
@@ -2368,7 +2379,8 @@ function initShooting(
     );
 
     // Play game start music
-    let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
+    let audioLink = document.getElementById('audio-link');
+    let audioLinkIcon = audioLink ? audioLink.firstChild : null;
 
     if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
     let gameStart = document.querySelector('#game-start-music');
