@@ -869,9 +869,7 @@ class Ship {
                 if (computerShips[shipKey].sunk === false) {
                     shipsRemaining++; // Increment shipsRemaining if sunk is false
                 }
-                console.log(computerShips[shipKey].shipName + ' sunk ' + computerShips[shipKey].sunk);
             }
-            console.log('Ships remaining... ' + shipsRemaining);
         } else {
             shipScore = document.getElementById('p1-ships');
             let playerShipsKeys = Object.keys(playerShips);
@@ -880,7 +878,6 @@ class Ship {
                 if (playerShips[shipKey].sunk === false) {
                     shipsRemaining++; // Increment shipsRemaining if sunk is false
                 }
-                console.log('Ships remaining... ' + shipsRemaining);
             }
         }
         // Update player ship score
@@ -1174,7 +1171,7 @@ class Player {
         // Update winning player high score if current score is greater
         let currentScore = this.score;
         let currentHighScore = this.highScore;
-        console.log(this.name + "...high score..." + this.highScore);
+
         this.highScore = currentScore > currentHighScore ? currentScore : currentHighScore;
 
         let playerHighScore = this.highScore;
@@ -1207,13 +1204,10 @@ class Player {
         let oppPlayer = currentPlayer === players.player ? players.computer : players.player;
         let oppPlayerShips = oppPlayer === players.computer ? computerShips : playerShips;
         let shipsRemaining = 5;
-        console.log('Check win lose called. Current player...' + currentPlayer.name + '. Ships...');
-        console.log('Opposing player...' + oppPlayer.name + '. Opposing ships...' + JSON.stringify(oppPlayerShips));
 
         for (let shipName in oppPlayerShips) {
             if (oppPlayerShips[shipName].sunk === true) {
                 shipsRemaining--; // Increment shipsRemaining down if sunk is true
-                console.log(oppPlayer.name + ' has ' + shipsRemaining + ' ships remaining');
             }
         }
 
@@ -1288,7 +1282,7 @@ class Player {
                 delete gameBoards.player.shootEventHandlers[shotCellId];
             }
         }
-        console.log('Checking shot for...' + currentPlayer.name);
+
         // Pass to checkShipHit()
         let shotHit = currentPlayer.checkShipHit(
             players,
@@ -1304,7 +1298,6 @@ class Player {
          * Otherwise show player hit or miss message.
          */
         if (shotHit) {
-            console.log("shotHit..." + shotHit);
             // Check if win or lose
             let playerWin = currentPlayer.checkWinLose(
                 players,
@@ -1312,7 +1305,7 @@ class Player {
                 computerShips,
                 currentPlayer
             );
-            console.log(currentPlayer.name + ' win status...' + playerWin);
+
             // If playerWin true
             if (playerWin) {
                 // Call function to show win message
@@ -2016,7 +2009,7 @@ function enableClickListeners(parentElement) {
 function playerWinLose(players, currentPlayer, oppPlayer) {
     // Update score in scoreboard
     currentPlayer.updateScore();
-    console.log();
+
     // Update high score in scoreboard if player one
     if (currentPlayer.name !== "PLAYER TWO") {
         currentPlayer.updateHighScore();
@@ -2324,11 +2317,8 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
         Click 'RANDOM' to place ships randomly.`);
     }
 
-    // hide intro screen modal to show game boards
+    // Hide intro screen modal to show game boards
     document.getElementById('intro-modal').style.display = "none";
-
-    console.log("Init..." + JSON.stringify(players.player));
-    console.log("Init..." + JSON.stringify(players.computer));
 }
 
 /**
@@ -2528,14 +2518,12 @@ function checkTurn(
                 shotCoordInvalid = false;
                 let computerShots = players.computer.hits.concat(players.computer.misses);
                 randomShotCoord = randomCoord();
-                console.log(randomShotCoord);
-                console.log(computerShots);
+
                 // Loop through computer shots and make sure shot not already taken
 
                 for (let shot of computerShots) {
                     if (shot === randomShotCoord) {
                         shotCoordInvalid = true;
-                        console.log('shotCoordInvalid...' + shotCoordInvalid);
                         break;
                     }
                 }
