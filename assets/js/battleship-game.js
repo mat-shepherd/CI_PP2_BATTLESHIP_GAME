@@ -2073,14 +2073,45 @@ function playerWinLose(players, currentPlayer, oppPlayer) {
 }
 
 /**
- * Clear all ships from game board. Reset coordinates.
- * Clear all click listeners. Reset score excluding 
- * high score.
- * Call initPlacement().
+ * Start a new game by reloading the page and using URL 
+ * paramaters to retain player name and scores. 
+ * Includes flag to call initPlacement().
+ * @function newGame
  */
 function newGame() {
-    // REPLACE THIS! TEMPORARY WAY OF STARING NEW GAME
-    location.reload();
+    // Retain scores and player name
+    let playerName = document.getElementById('p1-stats-heading').innerText;
+    let playerScore = document.getElementById('p1-score').innerText;
+    let playerHighScore = document.getElementById('high-score').innerText;
+    let computerScore = document.getElementById('p2-score').innerText;
+
+    // 
+    const url = `index.html?playerName=${playerName}&playerScore=${playerScore}&playerHighScore=${playerHighScore}&computerScore=${computerScore}&newGame=true`;
+    window.location.href = url;
+}
+
+/**
+ * Check window URl on load to see if this is a new game
+ * and if player name and scores can be retrieved.
+ * @function checkURL
+ */
+function checkURL() {
+    /* 
+    * Code adapted from 
+    * https://www.sitepoint.com/get-url-parameters-with-javascript/
+    */
+
+    let urlParams = new URLSearchParams(window.location.search);
+    let existPlayerName = urlParams.get("playerName");
+    let playerScore = parseInt(urlParams.get("playerScore"));
+    let playerHighScore = parseInt(urlParams.get("playerHighScore"));
+    let computerScore = parseInt(urlParams.get("computerScore"));
+    let newGame = urlParams.get("newGame");
+
+    // If new game call initPlacement to bypass intro modal
+    if (newGame) {
+        initPlacement('',existPlayerName, playerScore, playerHighScore, computerScore, newGame);
+    }
 }
 
 
@@ -2116,9 +2147,15 @@ function playerMessage(message, effect) {
  * entered on the start-game-form. Calls functions to create
  * players and gameboards, add placement button and gameboard grid
  * event listeners then passes to runGame().
- * @param {string} playerName - players name entered in start-game-form.
+ * @param {string} existPlayerName - players name entered in start-game-form.
+ * @param {number} playerScore - optional retained score if new game started 
+ * @param {number} playerHighScore - optional retained high score if new game 
+ * started 
+ * @param {number} computerScore - optional retained computer score if new game
+ * started
+ * @param {boolean} newGame - optional flag to indicate this is a new game
  */
-function initPlacement(playerName) {
+function initPlacement(playerName, existPlayerName, playerScore, playerHighScore, computerScore, newGame) {
     /**
     * Define game object variables
     */
@@ -2166,12 +2203,20 @@ function initPlacement(playerName) {
         if (owner === 'player') {
             // set inital turn attribute to True so player gets first turn
             let turn = true;
+            // Check for existing scores and name if new game
+            playerName = existPlayerName ? existPlayerName : playerName;
+            score = playerScore ? playerScore: score;
+            highScore = playerHighScore ? playerHighScore: highScore;      
+
             players[keys] = new Player(playerName, shipsRemaining, hits, misses, score, highScore, turn);
             // Replace player one's name in sidebar with name provided 
             players[keys].updateName(playerName.toUpperCase());
         } else {
-            // set inital turn attribute to Flase so player gets second turn
+            // set inital turn attribute to False so player gets second turn
             let turn = false;
+            // Check for existing score if new game
+            score = computerScore ? computerScore: score;
+
             playerName = playerTypes[keys];
             players[keys] = new Player(playerName, shipsRemaining, hits, misses, score, highScore, turn);
         }
@@ -2227,16 +2272,29 @@ function initPlacement(playerName) {
         currentShip
     );
 
-    // show initial welcome and instructions in player message
-    playerMessage(`Welcome ${players.player.name}! Click your grid below to place your first ship.
-    Click the 'ROTATE' button to change ship direction and click the 
-    <span class='red-text'>'PLACE'</span> button to confirm ship placement. 
-    Click 'RANDOM' to place ships randomly.`);
+    // If this is a new game via new game link to show new game message 
+    if (newGame) {
+        setTimeout(() => {
+            playerMessage(`NEW GAME STARTED! Good luck ${players.player.name}!`);
+
+            setTimeout(() => {
+                // Show initial welcome and instructions in player message
+                playerMessage(`Welcome ${players.player.name}! Click your grid below to place your first ship.
+                Click the 'ROTATE' button to change ship direction and click the 
+                <span class='red-text'>'PLACE'</span> button to confirm ship placement. 
+                Click 'RANDOM' to place ships randomly.`);
+            }, 2000);
+        }, 2000);
+    } else {
+        // show initial welcome and instructions in player message
+        playerMessage(`Welcome ${players.player.name}! Click your grid below to place your first ship.
+        Click the 'ROTATE' button to change ship direction and click the 
+        <span class='red-text'>'PLACE'</span> button to confirm ship placement. 
+        Click 'RANDOM' to place ships randomly.`);
+    }
 
     // hide intro screen modal to show game boards
     document.getElementById('intro-modal').style.display = "none";
-
-
 }
 
 /**
@@ -2502,5 +2560,11 @@ document.addEventListener('DOMContentLoaded', function () {
         playerName = document.getElementById('player-name').value;
         checkName(playerName);
     });
+
+    /*
+     * Check URL parameters. If this is a new game 
+     * call initPlacement() to bypass intro modal.
+     */
+    checkURL();
 
 });
