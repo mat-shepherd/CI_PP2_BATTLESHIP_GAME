@@ -2272,19 +2272,17 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
         currentShip
     );
 
-    // If this is a new game via new game link to show new game message 
+    // If this is a new game via new game link show new game message 
     if (newGame) {
-        setTimeout(() => {
-            playerMessage(`NEW GAME STARTED! Good luck ${players.player.name}!`);
+        playerMessage(`NEW GAME STARTED! Good luck ${players.player.name}!`);
 
-            setTimeout(() => {
-                // Show initial welcome and instructions in player message
-                playerMessage(`Welcome ${players.player.name}! Click your grid below to place your first ship.
-                Click the 'ROTATE' button to change ship direction and click the 
-                <span class='red-text'>'PLACE'</span> button to confirm ship placement. 
-                Click 'RANDOM' to place ships randomly.`);
-            }, 2000);
-        }, 2000);
+        setTimeout(() => {
+            // Show initial welcome and instructions in player message
+            playerMessage(`Welcome ${players.player.name}! Click your grid below to place your first ship.
+            Click the 'ROTATE' button to change ship direction and click the 
+            <span class='red-text'>'PLACE'</span> button to confirm ship placement. 
+            Click 'RANDOM' to place ships randomly.`);
+        }, 3000);
     } else {
         // show initial welcome and instructions in player message
         playerMessage(`Welcome ${players.player.name}! Click your grid below to place your first ship.
