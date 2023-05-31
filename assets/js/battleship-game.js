@@ -2415,12 +2415,39 @@ function checkTurn(
                 cell.classList.add('no-placement');
             }
         }
+
+        // Add some delays to make sure player messages shown
         setTimeout(function () {
             playerMessage("PLAYER TWO IS TAKING THEIR SHOT ON YOU!");
         }, 4500);
+
         setTimeout(function () {
-            // Call randomShot for computer shot
-            let randomShotCoord = randomCoord();
+
+            /*
+             * Call randomShot for computer shot but check not a shot
+             * already taken.
+             */
+            let shotCoordInvalid = false;
+            let randomShotCoord;
+
+            do {
+                    shotCoordInvalid = false;
+                    let computerShots = players.computer.hits.concat(players.computer.misses);
+                    randomShotCoord = randomCoord();
+                    console.log(randomShotCoord);
+                    console.log(computerShots);                    
+                    // Loop through computer shots and make sure shot not already taken
+
+                    for (let shot of computerShots) {
+                        if (shot === randomShotCoord) {
+                            shotCoordInvalid = true;
+                            console.log('shotCoordInvalid...'+shotCoordInvalid);
+                        break;
+                        }
+                    }
+                } 
+                while (shotCoordInvalid);
+
             currentPlayer.takeShot(
                 players,
                 playerShips,
