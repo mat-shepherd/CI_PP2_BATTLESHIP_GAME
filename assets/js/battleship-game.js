@@ -862,7 +862,9 @@ class Ship {
         let shipsRemaining = 0;
         if (oppPlayer === 'p2') {
             shipScore = document.getElementById('p2-ships');
-            for (let shipKey in computerShips) {
+            let shipKeys = Object.keys(computerShips);
+            for (let i = 0; i < shipKeys.length; i++) {
+                let shipKey = shipKeys[i];
                 if (computerShips[shipKey].sunk === false) {
                     shipsRemaining++; // Increment shipsRemaining if sunk is false
                 }
@@ -871,7 +873,9 @@ class Ship {
             console.log('Ships remaining... ' + shipsRemaining);
         } else {
             shipScore = document.getElementById('p1-ships');
-            for (let shipKey in playerShips) {
+            let playerShipsKeys = Object.keys(playerShips);
+            for (let i = 0; i < playerShipsKeys.length; i++) {
+                let shipKey = playerShipsKeys[i];
                 if (playerShips[shipKey].sunk === false) {
                     shipsRemaining++; // Increment shipsRemaining if sunk is false
                 }
@@ -1369,9 +1373,11 @@ class Player {
         let lastShip;
         /*
         * Loop through opposing player ships and check if targetCell
-        * coordinates match any of the players ship coordinates.
+        * coordinates match any of that player's ship coordinates.
         */
-        for (let shipName in oppPlayerShips) {
+        let oppPlayerShipsKeys = Object.keys(oppPlayerShips);
+        for (let i = 0; i < oppPlayerShipsKeys.length; i++) {
+            let shipName = oppPlayerShipsKeys[i];
             let checkShip = oppPlayerShips[shipName];
             lastShip = checkShip;
 
@@ -1388,7 +1394,6 @@ class Player {
                 return true; // Return true if hit
             }
         }
-
         // If no hit found register miss using last ship  object checked
         lastShip.missShip(
             players,
@@ -1665,7 +1670,9 @@ function randomShip(
     );
 
     // For each ship in shipObject generate a random alphanumeric coord
-    for (let shipKey in targetShips) {
+    let targetShipsKeys = Object.keys(targetShips);
+    for (let i = 0; i < targetShipsKeys.length; i++) {
+        let shipKey = targetShipsKeys[i];
         let randomCoordInvalid = '';
         let randomShipCoord = '';
         let shipObject = targetShips[shipKey];
@@ -1814,7 +1821,9 @@ function clearShips(
              * Loop over player ship and clear coordinates
              * and placed attributes
              */
-            for (let shipKey in playerShips) {
+            let playerShipsKeys = Object.keys(playerShips);
+            for (let i = 0; i < playerShipsKeys.length; i++) {
+                let shipKey = playerShipsKeys[i];
                 playerShips[shipKey].coordinates = [];
                 playerShips[shipKey].direction = 'vertical';
                 playerShips[shipKey].placed = false;
@@ -1877,7 +1886,9 @@ function clearShips(
             * Loop over computer ships and clear coordinates
             * and placed attributes
             */
-            for (let shipKey in computerShips) {
+            let computerShipsKeys = Object.keys(computerShips);
+            for (let i = 0; i < computerShipsKeys.length; i++) {
+                let shipKey = computerShipsKeys[i];
                 computerShips[shipKey].coordinates = [];
                 computerShips[shipKey].direction = 'vertical';
                 computerShips[shipKey].placed = false;
@@ -1913,14 +1924,18 @@ function clearShips(
             }
 
             // Loop over player ship coordinates and clear
-            for (let shipKey in playerShips) {
+            playerShipsKeys = Object.keys(playerShips);
+            for (let i = 0; i < playerShipsKeys.length; i++) {
+                let shipKey = playerShipsKeys[i];
                 playerShips[shipKey].coordinates = [];
                 playerShips[shipKey].direction = 'vertical';
                 playerShips[shipKey].placed = false;
             }
 
             // Loop over computer ship coordinates and clear        
-            for (let shipKey in computerShips) {
+            computerShipsKeys = Object.keys(computerShips);
+            for (let i = 0; i < computerShipsKeys.length; i++) {
+                let shipKey = computerShipsKeys[i];
                 computerShips[shipKey].coordinates = [];
                 computerShips[shipKey].direction = 'vertical';
                 computerShips[shipKey].placed = false;
@@ -2184,7 +2199,9 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
     // Temporary code that sinks comp ships
     document.getElementById('feedback-link').addEventListener('click', function () {
         // Loop through computerShips and set each ship's "sunk" attribute to true
-        for (let shipName in computerShips) {
+        let computerShipsKeys = Object.keys(computerShips);
+        for (let i = 0; i < computerShipsKeys.length; i++) {
+            let shipName = computerShipsKeys[i];
             computerShips[shipName].sunk = true;
         }
 
@@ -2199,9 +2216,11 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
      * for each player and store in playerShips{} and 
      * computerShips{}.
      */
-    for (let keys in playerTypes) {
+    let playerTypesKeys = Object.keys(playerTypes);
+    for (let i = 0; i < playerTypesKeys.length; i++) {
+        let keys = playerTypesKeys[i];
         let owner = keys;
-        // if playerName known use that for player one label
+        // If playerName known use that for player one label
         let label = owner === 'player' && playerName ? playerName : playerTypes[keys];
         gameBoards[keys] = new Gameboard(owner, label);
         gameBoards[keys].createGameBoard();
@@ -2241,7 +2260,9 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
          * ship object for each, store these in a playerShips and 
          * computerShips object.
          */
-        for (let shipName in shipTypes) {
+        let shipTypesKeys = Object.keys(shipTypes);
+        for (let i = 0; i < shipTypesKeys.length; i++) {
+            let shipName = shipTypesKeys[i];
             let size = shipTypes[shipName];
             let coordinates = [];
             let direction = 'vertical';
