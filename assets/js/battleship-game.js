@@ -2285,6 +2285,22 @@ function initShooting(
         currentShip
     );
 
+    // Play game start music
+    let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
+    
+    if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
+    let gameStart = document.querySelector('#game-start-music');
+
+    if (!gameStart) {
+        gameStart = new Audio('./assets/sounds/battleship-intro.mp3');
+        gameStart.id = 'game-start-music';
+        gameStart.volume = 0.3;
+        document.body.appendChild(gameStart);
+    }
+
+    gameStart.play();
+    }
+
     checkTurn(
         players,
         playerShips,
