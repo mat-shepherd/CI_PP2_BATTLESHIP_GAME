@@ -12,6 +12,7 @@ body {
 
 nav h1,
 #intro-modal-contents h2,
+#intro-modal-contents h3,
 #rules-modal-contents h2,
 #win-modal-contents h2 {
     font-family: 'Black Ops One', 'Lucida Sans Typewriter', Helvetica, sans-serif;
@@ -59,9 +60,15 @@ nav h1,
 #player-name,
 #start-game-button,
 #new-game-button,
+#new-game-button-404,
 #error-message,
 #audio-button {
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+}
+
+#intro-modal-contents p {
+    text-transform: uppercase;
+    font-size: 1.5rem;
 }
 
 #win-modal-contents {
@@ -519,13 +526,15 @@ footer {
 
 .game-button,
 #start-game-button,
-#new-game-button {
+#new-game-button,
+#new-game-button-404 {
     background-color: #7C7C7C;
 }
 
 .game-button,
 #start-game-button,
 #new-game-button,
+#new-game-button-404,
 #audio-button {
     border-bottom: 6px inset rgba(0, 0, 0, .5);
     border-left: 6px inset rgba(0, 0, 0, .5);
@@ -544,7 +553,8 @@ footer {
 }
 
 #start-game-button,
-#new-game-button {
+#new-game-button,
+#new-game-button-404 {
     padding: 1.2rem;
 }
 
@@ -594,7 +604,9 @@ footer {
 #start-game-button:hover,
 #start-game-button:focus,
 #new-game-button:hover,
-#new-game-button:focus {
+#new-game-button:focus,
+#new-game-button-404:hover,
+#new-game-button-404:focus {
     background-color: #006800;
 }
 

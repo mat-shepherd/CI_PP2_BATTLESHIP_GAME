@@ -2585,17 +2585,35 @@ function loadIndex() {
  * add link and button event listeners, and start-game-form submit 
  * listener which passes to checkName() to see if game can start 
  */
-document.getElementById('player-name').focus();
+
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Focus on player name field if present
+    let nameField = document.getElementById('player-name');
+    if (nameField) {
+        document.getElementById('player-name').focus();
+    }
+
     // Add click event listeners to nav links and audio toggle
-    document.getElementById('new-game-link').addEventListener('click', newGame);
-    document.getElementById('new-game-link-404').addEventListener('click', loadIndex);
-    document.getElementById('new-game-button').addEventListener('click', newGame);
-    document.getElementById('new-game-button-404').addEventListener('click', loadIndex);
+    let newGameLink = document.getElementById('new-game-link');
+    let newGameLinkNF = document.getElementById('new-game-link-404');
+    let newGameButton = document.getElementById('new-game-button');
+    let newGameButtonNF = document.getElementById('new-game-button-404');
+    let audioIcon = document.getElementById('audio-button');
+
+    // Check if elements are present on index or 404 page
+    if (newGameLink) {
+        newGameLink.addEventListener('click', newGame);
+        newGameButton.addEventListener('click', newGame);
+        audioIcon.addEventListener('click', audioToggle);
+    }
+    if (newGameLinkNF) {
+        newGameLinkNF.addEventListener('click', loadIndex);
+        newGameButtonNF.addEventListener('click', loadIndex);
+    }
+
     document.getElementById('rules-link').addEventListener('click', openRulesModal);
     document.getElementById('audio-link').addEventListener('click', audioToggle);
-    document.getElementById('audio-button').addEventListener('click', audioToggle);
 
     // Add click event listener to modal close button
     document.getElementsByClassName("close")[0].addEventListener('click', closeRulesModal);
@@ -2613,12 +2631,15 @@ document.addEventListener('DOMContentLoaded', function () {
     let playerName = '';
 
     let startForm = document.getElementById('start-game-form');
-    startForm.addEventListener('submit', function (event) {
-        //Prevent page refresh
-        event.preventDefault();
-        playerName = document.getElementById('player-name').value;
-        checkName(playerName);
-    });
+
+    if (startForm) {
+        startForm.addEventListener('submit', function (event) {
+            //Prevent page refresh
+            event.preventDefault();
+            playerName = document.getElementById('player-name').value;
+            checkName(playerName);
+        });
+    }
 
     /*
      * Check URL parameters. If this is a new game 
