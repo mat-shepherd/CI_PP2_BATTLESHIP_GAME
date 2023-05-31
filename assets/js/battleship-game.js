@@ -1153,14 +1153,14 @@ class Player {
     updateHighScore() {
         // Update winning player high score if current score is greater
         let currentScore = this.score;
-        let currentHighScore = this.highscore;
-        console.log(this.name + "...high score..." + this.highscore);
-        this.highscore = currentScore > currentHighScore ? currentScore : currentHighScore;
+        let currentHighScore = this.highScore;
+        console.log(this.name + "...high score..." + this.highScore);
+        this.highScore = currentScore > currentHighScore ? currentScore : currentHighScore;
 
-        let playerHighScore = this.highscore;
+        let playerHighScore = this.highScore;
 
         // Update winning player score on scoreboard
-        let highScore = document.getElementById(high - score);
+        let highScore = document.getElementById('high-score');
         highScore.innerText = playerHighScore;
     }
 
@@ -2132,8 +2132,8 @@ function initPlacement(playerName) {
     // Temporary code that sinks comp ships
     document.getElementById('feedback-link').addEventListener('click', function () {
         // Loop through computerShips and set each ship's "sunk" attribute to true
-        for (let shipName in playerShips) {
-            playerShips[shipName].sunk = true;
+        for (let shipName in computerShips) {
+            computerShips[shipName].sunk = true;
         }
 
         // Display feedback or perform any other desired actions
