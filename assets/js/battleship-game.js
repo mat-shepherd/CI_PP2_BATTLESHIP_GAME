@@ -6,8 +6,8 @@
  * @class Ship
  * @param {string} shipName - name of ship type
  * @param {string} size - number of cells a ship occupies
- * @param {object} coordinates - cell coordinates of ships location
- * @param {string} direction - direction of ships rotation
+ * @param {object} coordinates - cell coordinates of ship's location
+ * @param {string} direction - direction of ship's rotation
  * @param {object} hits - coordinates ship has been hit at
  * @param {boolean} sunk - true if ship is sunk false if not
 */
@@ -759,6 +759,7 @@ class Ship {
      * @param {object} playerShips - object containing the player's ship objects
      * @param {object} computerShips - object containing the computer's ship objects
      * @param {object} currentPlayer - the current player object in play
+     * @returns {Promise} - a promise that resolves after a delay
      */
     sinkShip(
         players,
