@@ -636,7 +636,7 @@ class Ship {
             setTimeout(function () {
                 document.querySelector('[id^="explode-"]').remove();
                 shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
-            }, 3500);
+            }, 2500);
         } else {
             targetCell += "C"; // add C back to coordinates to match computer IDs
             shotCell = document.getElementById(targetCell);
@@ -645,7 +645,7 @@ class Ship {
             setTimeout(function () {
                 document.querySelector('[id^="explode-"]').remove();
                 shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
-            }, 3500);
+            }, 2500);
         }
 
         // Check if ship has been hit max number of times and call sinkShip
