@@ -71,6 +71,10 @@ nav h1,
     font-size: 1.5rem;
 }
 
+#intro-contents-404 p {
+    font-size: 1.2rem;
+}
+
 #win-modal-contents {
     line-height: 1.3rem;
 }
@@ -373,8 +377,24 @@ footer {
     width: 75%;
 }
 
+#intro-contents-404 #error-message {
+    width: auto;
+}
+
+#intro-contents-404 p {
+    margin-bottom: 1.5rem;
+}
+
 #intro-modal-contents form input[type=text] {
     height: 50px;
+}
+
+#intro-contents-404 {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 #intro-modal-contents #start-game-button,
@@ -768,6 +788,22 @@ footer {
 
 .ship-invalid {
     background-color: #A81000;
+}
+
+#ship-404 {
+    position: relative;
+}
+
+#ship-404 #battleship-404 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#ship-404 img:not(#battleship-404) {
+    position: relative;
 }
 
 /* Footer
