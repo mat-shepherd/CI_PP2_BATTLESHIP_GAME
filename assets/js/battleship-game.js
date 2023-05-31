@@ -978,7 +978,10 @@ class Gameboard {
             let playerCells = document.getElementsByClassName('player-play-area');
             /* 
             * Method to store event handlers for later reference
-            * adapted from answer by ChatGPT by https://openai.com
+            * adapted from answer by ChatGPT by https://openai.com.
+            * ChatGPT also helped with JSHint issue relating to
+            * "Functions declared within loops referencing an outer
+            *  scoped variable may lead to confusing semantics" 
             */
 
             // Remove existing click event listeners from the cells
@@ -992,7 +995,7 @@ class Gameboard {
 
             // Add new click event listeners to the cells
             for (let cell of playerCells) {
-                function cellPlace(event) {
+                let cellPlace = function(event) {
                     // Handle the place cell click event
                     currentShip.placeShip(
                         players,
@@ -1003,7 +1006,7 @@ class Gameboard {
                         currentShip,
                         event.target
                     );
-                }
+                };
 
                 gameBoards.player.placeEventHandlers[cell.id] = cellPlace;
                 /* Check cell doesn't already contain placed ship 
@@ -1031,7 +1034,7 @@ class Gameboard {
 
             // Add new shoot click event listeners to the cells
             for (let cell of computerCells) {
-                function cellShot(event) {
+                let cellShot = function(event) {
                     // Handle the shot cell click event
                     players.player.takeShot(
                         players,
@@ -1042,7 +1045,7 @@ class Gameboard {
                         currentShip,
                         event.target
                     );
-                }
+                };
 
                 gameBoards.player.shootEventHandlers[cell.id] = cellShot;
                 /* Check cell doesn't already contain hit or miss 
