@@ -59,7 +59,8 @@ nav h1,
 #player-name,
 #start-game-button,
 #new-game-button,
-#error-message {
+#error-message,
+#audio-button {
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
 }
 
@@ -362,7 +363,8 @@ footer {
 }
 
 #intro-modal-contents #start-game-button,
-#win-modal-contents #new-game-button {
+#win-modal-contents #new-game-button,
+#audio-button {
     margin-top: 50px;
 }
 
@@ -508,7 +510,8 @@ footer {
 
 .game-button,
 #start-game-button,
-#new-game-button {
+#new-game-button,
+#audio-button {
     background-color: #7C7C7C;
     border-bottom: 6px inset rgba(0, 0, 0, .5);
     border-left: 6px inset rgba(0, 0, 0, .5);
@@ -528,11 +531,12 @@ footer {
 
 #start-game-button,
 #new-game-button {
-    padding: 1rem;
+    padding: 1.2rem;
 }
 
-#placement-controls button {
-    padding: 0.7rem;
+#placement-controls button,
+#audio-button {
+    padding: 1.1rem 0.7rem;
 }
 
 .game-button:focus,
@@ -545,7 +549,9 @@ footer {
 }
 
 #place-control:focus,
-#place-control:hover {
+#place-control:hover,
+#audio-button:hover,
+#audio-button:focus {
     background-color: #A81000;
 }
 
