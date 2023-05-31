@@ -2023,7 +2023,7 @@ function playerWinLose(players, currentPlayer, oppPlayer) {
         winHeading.innerHTML = `${currentPlayer.name} IS THE WINNER!`;
         winBody.innerHTML = `<p>${winMessages[rMsg]}.</p><br>
         <p>Your score is ${players.player.score}</p><br>
-        <p>Your high score is ${players.player.highscore}</p><br>        
+        <p>Your high score is ${players.player.highScore}</p><br>        
         <p>Click below if you want to play again!</p>`;
 
         // Play winner sound unless muted
