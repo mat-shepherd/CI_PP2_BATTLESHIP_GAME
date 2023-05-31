@@ -100,6 +100,27 @@ class Ship {
             this.removeShip(currentPlayer);
         }
 
+        /* 
+        * Add audio and play if not already added but respect mute.
+        * Code adapted from ChatGPT by https://openai.com/
+        * ? in .firstChild makes sure variable is assigned null
+        * if element not found
+        */
+        let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
+
+        if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
+            let boatSplash = document.querySelector('#boat-splash');
+
+            if (!boatSplash) {
+                boatSplash = new Audio('./assets/sounds/boat-splash.mp3');
+                boatSplash.id = 'boat-splash';
+                boatSplash.volume = 0.3;
+                document.body.appendChild(boatSplash);
+            }
+
+            boatSplash.play();
+        }
+
         /*
          * Check which Ship type has been passed to method and add relevant ship
          * to the game board.
@@ -2287,7 +2308,7 @@ function initShooting(
 
     // Play game start music
     let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
-    
+
     if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
     let gameStart = document.querySelector('#game-start-music');
 
