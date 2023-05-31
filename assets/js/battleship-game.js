@@ -1383,11 +1383,17 @@ function audioToggle() {
     // Check state of audio button icon and toggle
     let audioLink = document.getElementById('audio-link');
     let audioLinkIcon = document.getElementById('audio-link').firstChild;
+    let audioButton = document.getElementById('audio-button');
+
 
     if (audioLinkIcon.classList.contains('fa-volume-mute')) {
         audioLink.innerHTML = `<i class="fa-solid fa-volume-low"></i>`;
+        audioButton.innerHTML  = `<i class="fa-solid fa-volume-low"></i> AUDIO ON`;
+        audioButton.className = 'audio-on';               
     } else {
         audioLink.innerHTML = `<i class="fa-solid fa-volume-mute"></i>`;
+        audioButton.innerHTML = `<i class="fa-solid fa-volume-mute"></i> AUDIO OFF`;
+        audioButton.className = 'audio-off'; 
     }
 
     // Get all video and audio elements on the page

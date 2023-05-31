@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Mobile Styles
+   Desktop Styles
    ========================================================================== */
 
 /* Fonts
@@ -80,7 +80,7 @@ nav h1,
 #error-message,
 #error-message a {
     text-transform: uppercase;
-    line-height: 1.3em;
+    line-height: 1.3rem;
 }
 
 #error-message,
@@ -89,6 +89,10 @@ nav h1,
     color: #881400;
     font-weight: bold;
     text-shadow: 1px 1px #000;
+}
+
+.audio-link {
+    font-size: 1.3rem;
 }
 
 /* 
@@ -554,14 +558,12 @@ footer {
     background-color: #0000BC;
 }
 
-.audio-off:hover,
-.audio-off:focus {
+.audio-off:hover {
     background-color: #0000BC;
 }
 
-.audio-on:hover,
-.audio-on:focus {
-
+.audio-on:hover {
+    background-color: #A81000;
 }
 
 .game-button:focus,
