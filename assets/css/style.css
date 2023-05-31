@@ -383,6 +383,7 @@ footer {
 
 #intro-contents-404 p {
     margin-bottom: 1.5rem;
+    font-weight: bolder;
 }
 
 #intro-modal-contents form input[type=text] {
