@@ -879,11 +879,15 @@ class Ship {
         // Update player ship score
         shipScore.innerHTML = shipsRemaining;
 
-        // This code snippet provided by ChatGPT
+        /*
+         * This code snippet helps add a delay between the ship sunk message
+         * and the next player message from CheckTurn(). 
+         * Snippet provided by ChatGPT by https://openai.com/
+         */
         return new Promise((resolve) => {
             delay(2500).then(() => {
-            playerMessage(`${currentPlayerName} SUNK ${oppPlayerName}'s ${this.shipName}!`);
-            resolve();
+                playerMessage(`${currentPlayerName} SUNK ${oppPlayerName}'s ${this.shipName}!`);
+                resolve();
             });
         });
     }
@@ -1393,10 +1397,13 @@ class Player {
 }
 
 // HELPER FUNCTIONS
+
 /**
  * Helps delay code execution where playermessages
  * need time to display.
  * Code adapted from answer by ChatGPT by https://openai.com
+ * @function delay
+ * @param {number } ms - number of milliseconds to delay
  */
 function delay(ms) {
     return new Promise((resolve) => {
@@ -1408,6 +1415,7 @@ function delay(ms) {
  * Displays the rules modal. Adapted from
  * code by W3C Schools at 
  * https://www.w3schools.com/howto/howto_css_modals.asp
+ * @function openRulesModal
  */
 function openRulesModal() {
     // Get the modal
@@ -1421,6 +1429,7 @@ function openRulesModal() {
  * Hides the rules modal. Adapted from
  * code by W3C Schools at 
  * https://www.w3schools.com/howto/howto_css_modals.asp
+ * @function closeRulesModal
  */
 function closeRulesModal() {
     // Get the modal
@@ -1433,6 +1442,7 @@ function closeRulesModal() {
 /**
  * Turns audio on and off. Code adapted from
  * https://stackoverflow.com/a/37218500/21643967
+ * @function audioToggle
  */
 function audioToggle() {
     // Check state of audio button icon and toggle
@@ -1468,6 +1478,7 @@ function audioToggle() {
  * Checks that a name has been entered on the intro screen
  * before passing flow on to initPlacement(). If no name entered
  * this displays an error message in the form.
+ * @function checkName
  * @param {string} playername - name entered by player 
  */
 function checkName(playerName) {
@@ -1735,6 +1746,7 @@ function randomShip(
  * Clear all ship placements from the game board
  * reset ship coordinates for all player ships
  * and allow the player to start placing ships again.
+ * @function clearShips
  * @param {object} players - the object containg player objects
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
@@ -1952,7 +1964,6 @@ function addButtonPulse() {
  * and we need to lock the opposite gameboard
  * @function disableClickListeners
  */
-// Disable click listeners
 function disableClickListeners(parentElement) {
     parentElement.style.pointerEvents = "none";
 }
@@ -1964,16 +1975,6 @@ function disableClickListeners(parentElement) {
  */
 function enableClickListeners(parentElement) {
     parentElement.style.pointerEvents = "auto";
-}
-
-/**
- * Add pulse effect to placement buttons to prompt player.
- */
-function removeButtonPulse() {
-    let gameButtons = document.getElementsByClassName('game-button');
-    for (let button of gameButtons) {
-        button.classList.remove("pulse");
-    }
 }
 
 /**
@@ -2118,7 +2119,9 @@ function checkURL() {
 /**
  * Update the player-message area with text to provide the player
  * with directions during gameplay.
+ * @function playerMessage
  * @param {string} message - text to be displayed in player-message area
+ * @param {string} effect - flag for passing type of effect to show on message
  */
 function playerMessage(message, effect) {
     let playMsg = document.getElementById('player-message');
@@ -2147,7 +2150,9 @@ function playerMessage(message, effect) {
  * entered on the start-game-form. Calls functions to create
  * players and gameboards, add placement button and gameboard grid
  * event listeners then passes to runGame().
- * @param {string} existPlayerName - players name entered in start-game-form.
+ * @function initPlacement
+ * @param {string} playerName - player's name entered in start-game-form.
+ * @param {string} existPlayerName - player's name passed from newGame
  * @param {number} playerScore - optional retained score if new game started 
  * @param {number} playerHighScore - optional retained high score if new game 
  * started 
@@ -2296,10 +2301,11 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
 }
 
 /**
- * The computer game board initialisation function called by confirmPlaceShip 
+ * The main gameplay initialisation function called by confirmPlaceShip 
  * when all player ships have been placed.
  * Hide placement controls, generates computer random ships, updates computer
  * game board shoot listeners and calls checkTurn().
+ * @function initShooting
  * @param {object} players - the object containg player objects
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
