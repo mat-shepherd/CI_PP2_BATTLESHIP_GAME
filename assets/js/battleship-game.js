@@ -501,7 +501,7 @@ class Ship {
                 // Don't do if shooting
                 let placedShipCells = this.coordinates;
 
-                for (let i in placedShipCells) {
+                for (let i = 0; i < placedShipCells.length; i++) {
                     let cell = document.getElementById(placedShipCells[i]);
 
                     // If the cell still contains error remove it
@@ -2298,6 +2298,12 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
             <span class='red-text'>'PLACE'</span> button to confirm ship placement. 
             Click 'RANDOM' to place ships randomly.`);
         }, 3000);
+
+        // Set scores from URL in scoreboard
+        document.getElementById('p1-score').innerText = playerScore;
+        document.getElementById('high-score').innerText = playerHighScore;
+        document.getElementById('p2-score').innerText = computerScore;     
+
     } else {
         // show initial welcome and instructions in player message
         playerMessage(`Welcome ${players.player.name}! Click your grid below to place your first ship.
@@ -2308,6 +2314,9 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
 
     // hide intro screen modal to show game boards
     document.getElementById('intro-modal').style.display = "none";
+
+    console.log("Init..." + JSON.stringify(players.player));
+    console.log("Init..." + JSON.stringify(players.computer));
 }
 
 /**
