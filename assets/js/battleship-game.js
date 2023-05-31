@@ -754,6 +754,27 @@ class Ship {
         let oppShip = this.shipName.toLowerCase();
         let oppShipElem = `${oppPlayer}-${oppShip}`;
 
+        /* 
+         * Add sink ship audio and play if not already added but respect mute.
+         * Code adapted from ChatGPT by https://openai.com/
+         * ? in .firstChild makes sure variable is assigned null
+         * if element not found
+        */
+        let audioLinkIcon = document.getElementById('audio-link')?.firstChild;
+
+        if (audioLinkIcon && !audioLinkIcon.classList.contains('fa-volume-mute')) {
+            let sinkSound = document.querySelector('#sink-sound');
+
+            if (!sinkSound) {
+                sinkSound = new Audio('./assets/sounds/sink-ship.mp3');
+                sinkSound.id = 'sink-sound';
+                sinkSound.volume = 0.3;
+                document.body.appendChild(sinkSound);
+            }
+
+            sinkSound.play();
+        }
+
         // Find opposing player's ship elelemnt and mark sunk
         let sunkShip = document.getElementById(oppShipElem);
         sunkShip.innerHTML += `<img src='./assets/images/effects/sunk.png' class='ship-sunk'>`;
@@ -885,7 +906,7 @@ class Gameboard {
                         let cellId = this.owner === 'computer' ? `${gridLetters[i]}${j}C` : `${gridLetters[i]}${j}`;
                         // change initial class on cells based on Player owner to control hover icons
                         let cellClass = this.owner === 'computer' ? 'computer-play-area no-placement' : 'player-play-area ship-placement';
-                        playGrid += `<div id="${cellId}" class="${cellClass}">${cellId}</div>`;
+                        playGrid += `<div id="${cellId}" class="${cellClass}"></div>`;
                     }
                 }
             }
