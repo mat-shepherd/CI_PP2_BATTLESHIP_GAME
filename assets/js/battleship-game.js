@@ -834,11 +834,6 @@ class Ship {
             }
         }
 
-        // Update player message
-        setTimeout(function () {
-            playerMessage(`${currentPlayerName} SUNK ${oppPlayerName}'s ${this.shipName}!`);
-        }, 4500);
-
         // Count opposing player's sunk ships and update score board
         let shipScore;
         let shipsRemaining = 0;
@@ -862,6 +857,14 @@ class Ship {
         }
         // Update player ship score
         shipScore.innerHTML = shipsRemaining;
+
+        // This code snippet provided by ChatGPT
+        return new Promise((resolve) => {
+            delay(2500).then(() => {
+            playerMessage(`${currentPlayerName} SUNK ${oppPlayerName}'s ${this.shipName}!`);
+            resolve();
+            });
+        });
     }
 }
 
@@ -1369,6 +1372,16 @@ class Player {
 }
 
 // HELPER FUNCTIONS
+/**
+ * Helps delay code execution where playermessages
+ * need time to display.
+ * Code adapted from answer by ChatGPT by https://openai.com
+ */
+function delay(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+}
 
 /**
  * Displays the rules modal. Adapted from
