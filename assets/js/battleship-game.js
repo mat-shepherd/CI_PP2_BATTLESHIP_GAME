@@ -921,7 +921,7 @@ class Gameboard {
         let playerGameboard = document.getElementById('player-gameboard');
         let computerGameboard = document.getElementById('computer-gameboard');
         let gridLetters = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-        let playGrid = `<div id="gameboard-label">${this.label}'s SHIPS</div>`;
+        let playGrid = `<div class="gameboard-label">${this.label}'s SHIPS</div>`;
         for (let i = 0; i <= 10; i++) {
             // first iteration creates first cell in index row
             if (i == 0) {
@@ -2490,6 +2490,7 @@ function checkTurn(
         setTimeout(function () {
             wholeGameboard.classList.remove('gameboard-reverse');
         }, 3500);
+
 
         /* 
          * Lock computer game board while computer taking
