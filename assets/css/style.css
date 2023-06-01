@@ -255,11 +255,9 @@ footer {
     width: 100vw;
 }
 
-#game-sidebar,
 #game-body,
 #player-gameboard,
 #computer-gameboard,
-#score-inner,
 #score-stats,
 #player-one-stats,
 #player-two-stats,
@@ -393,8 +391,12 @@ footer {
     font-weight: bolder;
 }
 
-#intro-modal-contents form input[type=text] {
-    height: 50px;
+#intro-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
 }
 
 #intro-contents-404 {
@@ -403,12 +405,6 @@ footer {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-}
-
-#intro-modal-contents #start-game-button,
-#win-modal-contents #new-game-button,
-#audio-button {
-    margin-top: 50px;
 }
 
 /* Rules Modal Close Button */
@@ -434,15 +430,23 @@ footer {
 
 /* Game Sidebar
    ========================================================================== */
+
 #game-sidebar {
-    width: 15%;
-    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 auto;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
     background: #848482 url('../images/backgrounds/metal-plates.webp') repeat top left;
 }
 
 #score-inner {
+    display: flex;
+    flex-direction: row;
     height: 97%;
-    width: 85%;
+    width: 90%;
     padding-top: 20px;
     background-color: #848482;
     -moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(255, 255, 255, .4);
@@ -468,8 +472,6 @@ footer {
 #player-two-stats {
     height: 40%;
     align-items: center;
-    padding: 30px 0;
-    border-top: 1px dashed lightgrey;
 }
 
 .score-title,
@@ -523,9 +525,13 @@ footer {
 }
 
 #player-message,
+#placement-controls {
+    min-height: 75px;
+}
+
+#player-message,
 #placement-controls,
 #player-name {
-    min-height: 75px;
     border-radius: 10px;
     background-color: #000;
     line-height: 1.75em;
@@ -537,6 +543,7 @@ footer {
 
 #player-name {
     max-width: 52%;
+    min-height: 3rem;
 }
 
 #placement-controls li {
@@ -842,6 +849,14 @@ footer {
         font-size: 3rem;
     }
 
+    #intro-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+    }
+
     #player-name {
         font-size: 2rem;
     }
@@ -851,18 +866,15 @@ footer {
 
 
     /* Game Intro, Rules & Win Modal
-    ====================================================================== */
+       ====================================================================== */
 
     #intro-modal-contents,
     #win-modal-contents {
-        height: 100%;
         row-gap: 0;
         justify-content: flex-start;
     }
-
-    #intro-modal-contents button,
-    #win-modal-contents button {}
 }
+
 
 /* ==========================================================================
    Smaller screens and laptops
@@ -871,26 +883,28 @@ footer {
 @media only screen and (min-width: 1024px) {
 
     /* Game Intro, Rules & Win Modal
-       ====================================================================== */
+    ====================================================================== */
 
-    #intro-modal-contents,
-    #rules-modal-contents,
-    #win-modal-contents {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        row-gap: 50px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid #888;
+    #intro-modal-contents #start-game-button,
+    #win-modal-contents #new-game-button,
+    #audio-button {
+        margin-top: 50px;
     }
 
     #gameboard {
         flex-direction: column;
         column-gap: 150px;
     }
-}
 
+    /* Player Message, Modal Player Name & Placement Controls
+        ================================================================== */
+
+    #player-message,
+    #placement-controls,
+    #player-name {
+        min-height: 75px;
+    }
+}
 
 /* ==========================================================================
     Desktop small screens
@@ -899,7 +913,7 @@ footer {
 @media only screen and (min-width: 1200px) {
 
     /* Outer Body
-           ================================================================== */
+       ====================================================================== */
     nav,
     footer {
         padding: 1% 0;
@@ -910,10 +924,11 @@ footer {
     }
 
     /* Navigation
-           ================================================================== */
+       ====================================================================== */
     #logo {
         width: 15%;
         margin: 0;
+        padding-left: 10px;
     }
 
     #links {
@@ -929,15 +944,20 @@ footer {
         flex-direction: row;
         height: auto;
         min-height: 95vh;
-        width: 100vw;
+        width: auto;
     }
 
     #game-body {
         width: 85%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin: 0 auto;
+        align-items: center;
+        flex-wrap: nowrap;
     }
 
     #game-sidebar,
-    #game-body,
     #player-gameboard,
     #computer-gameboard,
     #score-inner,
@@ -954,7 +974,11 @@ footer {
     }
 
     /* Game Intro, Rules & Win Modal
-       ====================================================================== */
+    ====================================================================== */
+
+    #intro-modal {
+        justify-content: flex-start;
+    }
 
     #intro-modal-contents,
     #rules-modal-contents,
@@ -970,11 +994,13 @@ footer {
 
     #intro-modal-contents,
     #win-modal-contents {
-        width: 50%;
+        width: 70%;
+        height: 55%;
+        margin-top: 7.5%;
     }
 
     /* Game Board
-        ===================================================================== */
+    ===================================================================== */
 
     #gameboard {
         display: flex;
@@ -1012,6 +1038,22 @@ footer {
         box-sizing: content-box;
         padding: 0;
     }
+
+    /* Game Sidebar
+       ====================================================================== */
+
+    #game-sidebar {
+        display: flex;
+        flex-direction: row;
+        width: 15%;
+        min-width: 250px;
+    }
+
+    #player-one-stats,
+    #player-two-stats {
+        padding: 30px 0;
+        border-top: 1px dashed lightgrey;
+    }
 }
 
 /* ==========================================================================
@@ -1021,10 +1063,11 @@ footer {
 @media only screen and (min-width: 1600px) {
 
     /* Game Intro, Rules & Win Modal
-           ================================================================== */
+    ====================================================================== */
 
     #intro-modal-contents,
     #win-modal-contents {
-        width: 50%;
+        width: 60%;
+        height: 55%;
     }
 }
