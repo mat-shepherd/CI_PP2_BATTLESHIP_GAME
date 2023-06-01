@@ -649,7 +649,7 @@ class Ship {
         // Update hits score
         currentPlayer.updateHits(players, playerShips, computerShips);
 
-        // Add ship images when sunk
+        // Add explosion images when hit
         if (currentPlayer === players.computer) {
             shotCell = document.getElementById(targetCell);
             shotCell.classList.add('hit');
@@ -657,6 +657,24 @@ class Ship {
             setTimeout(function () {
                 document.querySelector('[id^="explode-"]').remove();
                 shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
+                /* 
+                * Workaround to stop fire and miss icons rotating
+                * with ship. Rotate 90 degrees counter clockwise.
+                */
+                if (shotCell.style.cssText.includes('transform')) {
+                    let fireIcon = shotCell.querySelector('.fire');
+                    let splashMiss = shotCell.querySelector('.splash-miss');
+                    if (fireIcon) {
+                        fireIcon.style.transform = "rotate(-90deg)";
+                        fireIcon.style.top = "10%";
+                        fireIcon.style.left = "10%";
+                    }
+                    if (splashMiss) {
+                        splashMiss.style.transform = "rotate(-90deg)";
+                        splashMiss.style.top = "10%";
+                        splashMiss.style.left = "10%";
+                    }
+                }
             }, 2500);
         } else {
             targetCell += "C"; // add C back to coordinates to match computer IDs
@@ -666,6 +684,24 @@ class Ship {
             setTimeout(function () {
                 document.querySelector('[id^="explode-"]').remove();
                 shotCell.innerHTML += "<img src='./assets/images/effects/fire.gif' class='fire'>";
+                /* 
+                * Workaround to stop fire and miss icons rotating
+                * with ship. Rotate 90 degrees counter clockwise.
+                */
+                if (shotCell.style.cssText.includes('transform')) {
+                    let fireIcon = shotCell.querySelector('.fire');
+                    let splashMiss = shotCell.querySelector('.splash-miss');
+                    if (fireIcon) {
+                        fireIcon.style.transform = "rotate(-90deg)";
+                        fireIcon.style.top = "10%";
+                        fireIcon.style.left = "10%";
+                    }
+                    if (splashMiss) {
+                        splashMiss.style.transform = "rotate(-90deg)";
+                        splashMiss.style.top = "10%";
+                        splashMiss.style.left = "10%";
+                    }
+                }
             }, 2500);
         }
 
@@ -2479,7 +2515,7 @@ function checkTurn(
         else {
             setTimeout(function () {
                 playerMessage(currentPlayer.name + " CLICK ANYWHERE ON PLAYER TWO'S GRID TO TAKE A SHOT ON THEM!");
-            }, 4500);
+            }, 3000);
         }
 
     } else {
