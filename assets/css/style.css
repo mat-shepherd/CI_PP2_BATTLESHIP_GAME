@@ -729,6 +729,8 @@ footer {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    column-gap: 150px;
+    row-gap: 70px;
 }
 
 #player-gameboard,
@@ -774,6 +776,19 @@ footer {
 
 #placement-controls {
     order: 2;
+}
+
+/* Bring active gameboard to top on small screens */
+.gameboard-reverse #player-gameboard {
+    order: 2;
+}
+
+.gameboard-reverse #computer-gameboard {
+    order: 1;
+}
+
+.gameboard-reverse #placement-controls {
+    order: 3;
 }
 
 #player-gameboard .index-row,
@@ -1108,8 +1123,15 @@ footer {
         flex-wrap: nowrap;
     }
 
-    #computer-gameboard {
+    /* Adjust gameboard margin bottom when order reversed */
+
+    #computer-gameboard,
+    .gameboard-reverse #player-gameboard {
         margin-bottom: 10%;
+    }
+
+    .gameboard-reverse #computer-gameboard {
+        margin-bottom: 0;
     }
 
     /* Game Intro, Rules & Win Modal
