@@ -132,13 +132,13 @@ class Ship {
                     cell.innerHTML += "<img src='./assets/images/ships/carrier.png' class='ship carrier'>";
                     break;
                 case 'Battleship':
-                    cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship'>";
+                    cell.innerHTML += "<img src='./assets/images/ships/battleship.png' class='ship battleship'>";
                     break;
                 case 'Cruiser':
-                    cell.innerHTML += "<img src='./assets/images/ships/cruiser.png' class='ship'>";
+                    cell.innerHTML += "<img src='./assets/images/ships/cruiser.png' class='ship cruiser'>";
                     break;
                 case 'Submarine':
-                    cell.innerHTML += "<img src='./assets/images/ships/submarine.png' class='ship'>";
+                    cell.innerHTML += "<img src='./assets/images/ships/submarine.png' class='ship submarine'>";
                     break;
                 case 'Destroyer':
                     cell.innerHTML += "<img src='./assets/images/ships/destroyer.png' class='ship destroyer'>";
@@ -921,7 +921,7 @@ class Gameboard {
         let playerGameboard = document.getElementById('player-gameboard');
         let computerGameboard = document.getElementById('computer-gameboard');
         let gridLetters = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-        let playGrid = `<div class="gameboard-label">${this.label}'s SHIPS</div>`;
+        let playGrid = `<div id="gameboard-label">${this.label}'s SHIPS</div>`;
         for (let i = 0; i <= 10; i++) {
             // first iteration creates first cell in index row
             if (i == 0) {
@@ -2345,6 +2345,8 @@ function initShooting(
     let playerCells = document.getElementsByClassName('player-play-area');
 
     document.getElementById('placement-controls').style.display = 'none';
+    // Once placement controls removed increase gap between boards
+    document.getElementById('gameboard').style.columnGap = '150px';
 
     // Generate random ships for the computer player
     let playerRandom = false;

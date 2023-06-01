@@ -729,7 +729,6 @@ footer {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    column-gap: 150px;
     row-gap: 70px;
 }
 
@@ -743,6 +742,17 @@ footer {
 
 #computer-gameboard {
     margin-bottom: 10%;
+}
+
+/* Adjust gameboard margin bottom when order reversed */
+
+#computer-gameboard,
+.gameboard-reverse #player-gameboard {
+    margin-bottom: 10%;
+}
+
+.gameboard-reverse #computer-gameboard {
+    margin-bottom: 0;
 }
 
 #gameboard #gameboard-label {
@@ -764,6 +774,27 @@ footer {
     height: 25px;
     box-sizing: content-box;
     padding: 0;
+}
+
+/* Rezize ships images for smaller grid */
+#player-gameboard>div img,
+#computer-gameboard>div img {
+    width: 57%;
+}
+
+#player-gameboard>div img.carrier,
+#computer-gameboard>div img.carrier {
+    width: 100%;
+}
+
+#player-gameboard>div img.submarine,
+#computer-gameboard>div img.submarine {
+    width: 70%;
+}
+
+#player-gameboard>div img.destroyer,
+#computer-gameboard>div img.destroyer {
+    width: 40%;
 }
 
 #player-gameboard {
@@ -1003,10 +1034,17 @@ footer {
     /* Game Board
        ====================================================================== */
 
+    /* Make ship cells and ships iamges larger */
+
     #player-gameboard>div,
     #computer-gameboard>div {
         width: 50px;
         height: 50px;
+    }
+
+    #player-gameboard>div img,
+    #computer-gameboard>div img {
+        width: auto;
     }
 
     #player-message {
@@ -1123,16 +1161,6 @@ footer {
         flex-wrap: nowrap;
     }
 
-    /* Adjust gameboard margin bottom when order reversed */
-
-    #computer-gameboard {
-        margin-bottom: 10%;
-    }
-
-    .gameboard-reverse #computer-gameboard {
-        margin-bottom: 0;
-    }
-
     /* Game Intro, Rules & Win Modal
     ====================================================================== */
 
@@ -1179,15 +1207,6 @@ footer {
         grid-template-columns: repeat(11, 1fr);
         grid-template-rows: repeat(12, 1fr);
         gap: 0px 0px;
-    }
-
-    #gameboard #gameboard-label {
-        grid-column: 1 / span 11;
-        width: 100%;
-        align-items: center;
-        text-transform: uppercase;
-        border: none;
-        padding-left: 25px;
     }
 
     /* Game Sidebar
@@ -1241,12 +1260,18 @@ footer {
         margin-bottom: 0;
     }
 
+    #player-gamebaord,
+    .gameboard-reverse #computer-gameboard,
+    .gameboard-reverse #player-gameboard {
+        margin-bottom: 0;
+    }
+
     /* Don't reverse game boards on wider screens */
-    .#player-gameboard {
+    #player-gameboard {
         order: 1;
     }
 
-    .#computer-gameboard {
+    #computer-gameboard {
         order: 3;
     }
 
