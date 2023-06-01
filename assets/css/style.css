@@ -633,7 +633,7 @@ footer {
 #start-game-button,
 #new-game-button,
 #new-game-button-404 {
-    background-color: #7C7C7C;
+    background-color: #333332;
 }
 
 .game-button,
@@ -669,7 +669,7 @@ footer {
 }
 
 .audio-off {
-    background-color: #7C7C7C;
+    background-color: #333332;
 }
 
 
@@ -682,12 +682,12 @@ footer {
 }
 
 .audio-on:hover {
-    background-color: #A81000;
+    background-color: #333332;
 }
 
 .game-button:focus,
 .game-button:hover {
-    background-color: #BCBCBC;
+    background-color: #7C7C7C;
 }
 
 #place-control {
