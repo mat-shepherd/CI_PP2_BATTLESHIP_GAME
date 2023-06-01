@@ -921,7 +921,7 @@ class Gameboard {
         let playerGameboard = document.getElementById('player-gameboard');
         let computerGameboard = document.getElementById('computer-gameboard');
         let gridLetters = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-        let playGrid = `<div id="gameboard-label">${this.label}</div>`;
+        let playGrid = `<div id="gameboard-label">${this.label}'s SHIPS</div>`;
         for (let i = 0; i <= 10; i++) {
             // first iteration creates first cell in index row
             if (i == 0) {
@@ -2450,11 +2450,13 @@ function checkTurn(
     if (currentPlayer.name !== "PLAYER TWO") {
         console.log('Player One Turn!');
 
-        /* 
-         * Add class to gameboard to add row-reverse
-         * to show P2 grid on top on mobile
+        /*
+         * After a delay add class to gameboard that
+         * makes P1 grid show on top on mobile
          */
-        wholeGameboard.classList.add('gameboard-reverse');
+        setTimeout(function () {
+            wholeGameboard.classList.add('gameboard-reverse');
+        }, 3500);
 
         /* 
          * Unlock computer game board when player needs to
@@ -2482,10 +2484,12 @@ function checkTurn(
         console.log('Player Two Turn!');
 
         /* 
-         * Remove class on gameboard to remove row-reverse
-         * to show P1 grid on top on mobile
+         * After a delay remove class from gameboard that
+         * makes P1 grid show on top on mobile
          */
-        wholeGameboard.classList.remove('gameboard-reverse');
+        setTimeout(function () {
+            wholeGameboard.classList.remove('gameboard-reverse');
+        }, 3500);
 
         /* 
          * Lock computer game board while computer taking

@@ -1125,8 +1125,7 @@ footer {
 
     /* Adjust gameboard margin bottom when order reversed */
 
-    #computer-gameboard,
-    .gameboard-reverse #player-gameboard {
+    #computer-gameboard {
         margin-bottom: 10%;
     }
 
@@ -1205,6 +1204,12 @@ footer {
     #player-two-stats {
         padding: 30px 0;
         border-top: 1px dashed lightgrey;
+    }
+
+    #score-stats,
+    #player-one-stats,
+    #player-two-stats {
+        height: auto;
     }
 }
 
