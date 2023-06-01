@@ -384,7 +384,7 @@ footer {
     top: 0;
     width: 100%;
     height: 100%;
-    background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left;
+    background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left /cover;
     justify-content: center;
 }
 
