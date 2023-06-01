@@ -291,7 +291,7 @@ footer {
 #links {
     width: 100%;
     text-align: center;
-    margin: 0 auto 2% auto;
+    margin: 4% auto 2% auto;
 }
 
 #links ul li {
@@ -1016,6 +1016,10 @@ footer {
     nav,
     footer {
         padding: 2% 0;
+    }
+
+    #links {
+        margin: 2% auto;
     }
 
 
