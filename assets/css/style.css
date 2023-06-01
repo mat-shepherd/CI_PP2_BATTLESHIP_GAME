@@ -365,7 +365,8 @@ footer {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-#intro-modal {
+#intro-modal,
+#intro-modal-404 {
     display: flex;
 }
 
@@ -374,6 +375,7 @@ footer {
 }
 
 #intro-modal,
+#intro-modal-404,
 #win-modal {
     flex-direction: column;
     position: absolute;
@@ -1185,7 +1187,8 @@ footer {
     /* Game Intro, Rules & Win Modal
     ====================================================================== */
 
-    #intro-modal {
+    #intro-modal,
+    #intro-modal-404 {
         justify-content: flex-start;
     }
 
@@ -1198,6 +1201,10 @@ footer {
         margin: 0 auto;
         padding: 20px;
         border: 1px solid #888;
+    }
+
+    #intro-modal-404 #intro-modal-contents {
+        row-gap: 20px;
     }
 
     #intro-modal-contents,
