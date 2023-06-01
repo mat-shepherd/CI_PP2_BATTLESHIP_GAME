@@ -1,8 +1,8 @@
-# Nurture SEO
+# BattleShip Game
 
 (Developer: Matthew Shepherd)
 
-![Mockup image]()
+![Mockup image](docs/responsive-device-screenshots.PNG)
 
 [Live webpage](https://mat-shepherd.github.io/CI_PP2_BATTLESHIP_GAME/)
 
@@ -10,7 +10,7 @@ This project is a JavaScript-based Battleship game base don the clasic baord gam
 
 ## Table of Contents
 
-- [Nurture SEO](#nurture-seo)
+- [BattleShip Game](#battleship-game)
   - [Table of Contents](#table-of-contents)
   - [Project Goals](#project-goals)
     - [Business Goals](#business-goals)
