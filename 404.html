@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <!-- Navigation bar -->
     <nav>
         <div id="logo">
             <h1>BATTLESHIP GAME</h1>
@@ -107,6 +108,7 @@
         </section>
         <!-- Main gameplay area -->
         <section id="game-body">
+            <!-- Rules modal displayed on nav link click -->
             <div id="rules-modal">
                 <div id="rules-modal-contents">
                     <div id="rules-modal-text">
@@ -191,6 +193,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Intro modal hidden once game starts -->
             <div id="intro-modal">
                 <div id="intro-modal-contents">
                     <h2>PAGE NOT FOUND</h2>
@@ -220,6 +223,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Winner modal hidden by default -->
             <div id="win-modal">
                 <div id="win-modal-contents">
                     <h2 id="winner-heading">WINNER MESSAGE HEADING!</h2>
@@ -227,13 +231,16 @@
                     <button type="submit" id="new-game-button" aria-label="New game">NEW GAME</button>
                 </div>
             </div>
+            <!-- Player message area -->
             <div id="player-message">
                 <p></p>
             </div>
+            <!-- Main game board with player grids -->
             <div id="gameboard">
                 <div id="player-gameboard"></div>
                 <div id="computer-gameboard"></div>
             </div>
+            <!-- Ship placement buttons  -->
             <div id="placement-controls">
                 <ul>
                     <li><button id="place-control" class="game-button"
