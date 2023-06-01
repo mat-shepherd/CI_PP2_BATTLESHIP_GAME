@@ -6,7 +6,7 @@
 
 [Live webpage](https://mat-shepherd.github.io/CI_PP2_BATTLESHIP_GAME/)
 
-This project is a JavaScript-based Battleship game base don the clasic baord game of Battleship. This is a responsive two-page game site which aims to provide casual online gamers with a simple, fun and and interactive gaming experienc.
+This project is a JavaScript-based Battleship game based on the classic baord game of Battleship. This is a responsive two-page game site which aims to provide casual online gamers with a simple, fun, and and interactive gaming experienc.
 
 ## Table of Contents
 
@@ -108,14 +108,21 @@ I have divided my user stories into prospective customers, existing customers, a
 
 #### Players
 
-1. As a prospective customer, I want to see a list of the services offered by the consultant so that I can understand if the consultant can provide the solution my business is seeking.
-2. As a prospective customer, I want to see a description of each service so I can understand the services provided.
-3. As a prospective customer, I want to see details of the consultant's customers so I can feel confident that the consultant can deliver results for a business like mine.
-4. As a prospective customer, I want to see details of the consultant's work experience and expertise to understand if they have the expertise required to handle my project.
-5. As a prospective customer, I want to submit questions or details of my project through the website so I can connect with the consultant to discuss my project and receive answers, set up, a call or receive a project proposal.
-6. As a prospective customer, I want to locate the consultant's contact details so I can see where they are located and phone or email them about my project and any questions I may have.
-7. As a prospective customer, I want to see a confirmation that my contact form has been submitted and be able to navigate back to the main site.
-8. As a prospective customer, I want to locate the consultant's social media details so I can see if they are thought leaders in the space, learn from their content and see what other social media users say about them.
+1. As a player, I want to play an accessible, easy to understand, fun, and visually attractive game that is responsive on any device.
+2. As a player, I want to see a list of game rules and instructions so I can understand how to play the game
+3. As a player, I want to enter my name so I can understand which player represents me on the game board and to keep track of my current score and high score
+4. As a player, I want my name to be validated and to be provided with feedback on any errors with name entry to ensure I can understand which player I am in the game.
+5. As a player, I want to start a new game and receive directions on how to setup the game board
+6. As a player, while setting up the game board, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the game board
+7. As a player, I want any controls or buttons to be colourful, apparent, and attractive.
+8. As a player, while setting up the game board, I want the ability to reset the game board to remove the game pieces (ships) and start placement over again
+9. As a player, once the game board is set up I want to see notifications and visual cues to understand the game has started and which player's turn it is to take a shot
+10. As a player, I want to see notifications and visual cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
+11. As a player, once a turn has been taken, I want to see notifications and visual cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
+12. As a player, I want to see notifications and visual cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
+13. As a player, I want to see notifications and visual cues indicating when all of a player's ships have been sunk and which player has won the game
+14. As a player, when a game has ended, I want to be given the option to start a new game
+15. As a player, when a game has ended, I want my high score to be retained until I end my browser session
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -123,9 +130,7 @@ I have divided my user stories into prospective customers, existing customers, a
 
 ### Design Choices
 
-I researched other digital marketing agency websites to find a bright, clean, and simple layout that fit my desired content and that was also responsive. I based my site design on the layout of [Workhu's](https://workhu.com/) website.
 
-The imagery used on the site was chosen to convey growth and as such is primarily focused on images of nature. The hero image was chosen to convey the digital marketing services provided.
 
 ### Colours
 
@@ -134,7 +139,8 @@ Primary Colours - Light Grey / Grey
 
 Secondary Colours - RED / Green / Blue
 
-To remain WCAG AAA compliant, I chose dark colour variants for background colours behind white text to maintain maximum contrast. Colour contrast compliance was tested using [WebAIM's Contrast Checker tool](https://webaim.org/resources/contrastchecker/). Brighter green, yellow, and blue colours used in gradients in the service containers were purposefully not placed behind the heading text to avoid poor contrast and accessibility issues.
+To remain WCAG AAA compliant, I chose dark colour variants for background colours behind white text to maintain maximum contrast. Colour contrast compliance was tested using [WebAIM's Contrast Checker tool](https://webaim.org/resources/contrastchecker/). 
+
 <br>
 
 ![Colour scheme]()
@@ -147,7 +153,7 @@ To remain WCAG AAA compliant, I chose dark colour variants for background colour
 
 The pages are structured in an easy-to-navigate z-shaped pattern allowing visitors to quickly consume key information while scanning the page from left to right. Starting at the  top left of the page the visitor will notice the site logo followed by the navigation menu and a Get a Quote call to action button. This allows the user to quickly understand the name of the business, how to navigate the site, and how to get in touch with the site owner to get a quote.
 
-For simplicity, the site consists of one primary page and two helper pages, a 404 page and a thank you page. There are 10 distinct sections used across the site's pages:
+For simplicity, the site consists of one primary page and one helper page, a 404 page. There are ... distinct sections used across the site's pages:
 
 - A header section containing the business logo, a responsive navigation menu and a call to action button
 
@@ -218,7 +224,7 @@ For simplicity, the site consists of one primary page and two helper pages, a 40
 
 ## Features
 
-The website consists of three pages in total, an index page, a thank you page, and a 404 page. The site's pages contain 13 distinct features:
+The website consists of two pages in total, an index page and a 404 page. The site's pages contain ... distinct features:
 
 ### Existing Features
 
@@ -247,9 +253,9 @@ The website consists of three pages in total, an index page, a thank you page, a
 
 ### 404 Page
 
-- which displays a 404 page not found message, a 404 image, and a text directing the user to click on a "Return Home" button to navigate back to the index page.
+- which displays a 404 page not found message, a ship image, and a text directing the user to click on a "New Game" button to navigate back to the index page.
 - the header and footer navigation remains consistent with the index page design and all internal navigation links on this page will direct the user back to the index page.
-- User stories covered: 15
+- User stories covered:
 
 ![Footer Section](docs/features/404-page.webp)
 
