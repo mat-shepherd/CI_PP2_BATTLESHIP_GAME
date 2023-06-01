@@ -2144,8 +2144,17 @@ function newGame() {
     let playerHighScore = document.getElementById('high-score').innerText;
     let computerScore = document.getElementById('p2-score').innerText;
 
-    // 
-    const url = `index.html?playerName=${playerName}&playerScore=${playerScore}&playerHighScore=${playerHighScore}&computerScore=${computerScore}&newGame=true`;
+    let url;
+    /*
+    * Check if player name has been entered. If not just reload so the user 
+    * can enter their name in the start game form.
+    */
+    if (playerName !== 'PLAYER ONE') {
+        url = `index.html?playerName=${playerName}&playerScore=${playerScore}&playerHighScore=${playerHighScore}&computerScore=${computerScore}&newGame=true`;
+    } else {
+        url = `index.html`;
+    }
+
     window.location.href = url;
 }
 
