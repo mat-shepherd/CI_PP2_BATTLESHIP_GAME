@@ -1241,7 +1241,28 @@ footer {
         margin-bottom: 0;
     }
 
+    /* Don't reverse game boards on wider screens */
+    .#player-gameboard {
+        order: 1;
+    }
+
+    .#computer-gameboard {
+        order: 3;
+    }
+
     #placement-controls {
         order: 3;
+    }
+
+    .gameboard-reverse #player-gameboard {
+        order: 1;
+    }
+
+    .gameboard-reverse #computer-gameboard {
+        order: 3;
+    }
+
+    .gameboard-reverse #placement-controls {
+        order: 2;
     }
 }
