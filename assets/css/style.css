@@ -128,11 +128,15 @@ by https://openai.com
     animation: flash-animation 2s infinite;
 }
 
-#player-message,
-#placement-controls,
 #player-name {
     color: #6DFF33;
     padding: 0.5rem;
+}
+
+#placement-controls,
+#player-message {
+    color: #6DFF33;
+    padding: 1rem;
 }
 
 #placement-controls h3 {
@@ -146,7 +150,7 @@ by https://openai.com
 }
 
 #player-name {
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-transform: uppercase;
 }
 
@@ -180,6 +184,62 @@ by https://openai.com
     }
 }
 
+
+#scroll-container {
+    border: 3px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#scroll-text {
+    text-align: right;
+
+    /* animation properties */
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+
+    -moz-animation: my-animation 15s linear infinite;
+    -webkit-animation: my-animation 15s linear infinite;
+    animation: my-animation 15s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+    from {
+        -moz-transform: translateX(-100%);
+    }
+
+    to {
+        -moz-transform: translateX(100%);
+    }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+    from {
+        -webkit-transform: translateX(-100%);
+    }
+
+    to {
+        -webkit-transform: translateX(100%);
+    }
+}
+
+@keyframes my-animation {
+    from {
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+
+    to {
+        -moz-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+}
+
 /* Reset
    ========================================================================== */
 
@@ -201,15 +261,23 @@ body {
     min-height: 100vh;
 }
 
+nav {
+    padding: 1% 0;
+}
+
 nav,
 footer {
     background-color: #333332;
     color: #fff;
-    padding: 1% 0;
+    padding: 5% 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+footer {
+    padding: 10% 0;
 }
 
 /* Navigation
@@ -252,7 +320,6 @@ footer {
     flex-direction: column-reverse;
     height: auto;
     min-height: 95vh;
-    width: 100vw;
 }
 
 #game-body,
@@ -273,7 +340,7 @@ footer {
 #game-body {
     position: relative;
     flex: 1;
-    width: 100vw;
+    width: 100%;
     min-height: 100%;
     background: navy url('../images/backgrounds/ocean.gif') repeat left top;
 }
@@ -371,6 +438,10 @@ footer {
     align-items: center;
 }
 
+#start-game-form {
+    max-width: 90%;
+}
+
 #start-game-form label {
     text-align: center;
     margin-bottom: 50px;
@@ -444,7 +515,7 @@ footer {
 
 #score-inner {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 97%;
     width: 90%;
     padding-top: 20px;
@@ -472,6 +543,8 @@ footer {
 #player-two-stats {
     height: 40%;
     align-items: center;
+    padding: 30px 0;
+    border-top: 1px dashed lightgrey;
 }
 
 .score-title,
@@ -510,13 +583,12 @@ footer {
 /* Player Message, Modal Player Name & Placement Controls
    ========================================================================== */
 #player-message {
-    width: 55%;
-    max-width: 900px;
+    width: 100%;
     margin: 20px auto;
 }
 
 #placement-controls {
-    width: 55%;
+    width: 80%;
     margin: 40px auto;
 }
 
@@ -542,7 +614,7 @@ footer {
 }
 
 #player-name {
-    max-width: 52%;
+    max-width: 90%;
     min-height: 3rem;
 }
 
@@ -656,7 +728,7 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    row-gap: 70px;
+    flex-wrap: wrap;
 }
 
 #player-gameboard,
@@ -665,6 +737,10 @@ footer {
     grid-template-columns: repeat(11, 1fr);
     grid-template-rows: repeat(12, 1fr);
     gap: 0px 0px;
+}
+
+#computer-gameboard {
+    margin-bottom: 10%;
 }
 
 #gameboard #gameboard-label {
@@ -682,10 +758,22 @@ footer {
     justify-content: center;
     align-items: start;
     border: 0.5px #fff dotted;
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
     box-sizing: content-box;
     padding: 0;
+}
+
+#player-gameboard {
+    order: 1;
+}
+
+#computer-gameboard {
+    order: 3;
+}
+
+#placement-controls {
+    order: 2;
 }
 
 #player-gameboard .index-row,
@@ -861,8 +949,13 @@ footer {
         font-size: 2rem;
     }
 
-    /* Game Container
-       ====================================================================== */
+    /* Outer Body
+    ========================================================================= */
+
+    nav,
+    footer {
+        padding: 2% 0;
+    }
 
 
     /* Game Intro, Rules & Win Modal
@@ -873,6 +966,37 @@ footer {
         row-gap: 0;
         justify-content: flex-start;
     }
+
+    #player-name {
+        max-width: 75%;
+    }
+
+    /* Game Sidebar
+       ====================================================================== */
+
+    #score-inner {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #player-one-stats,
+    #player-two-stats {
+        padding: 0;
+        border-top: none;
+    }
+
+    /* Game Board
+       ====================================================================== */
+
+    #player-gameboard>div,
+    #computer-gameboard>div {
+        width: 50px;
+        height: 50px;
+    }
+
+    #player-message {
+        width: 80%;
+    }
 }
 
 
@@ -882,8 +1006,16 @@ footer {
 
 @media only screen and (min-width: 1024px) {
 
+    /* Outer Body
+    ========================================================================= */
+
+    nav,
+    footer {
+        padding: 1% 0;
+    }
+
     /* Game Intro, Rules & Win Modal
-    ====================================================================== */
+    ========================================================================= */
 
     #intro-modal-contents #start-game-button,
     #win-modal-contents #new-game-button,
@@ -891,9 +1023,8 @@ footer {
         margin-top: 50px;
     }
 
-    #gameboard {
-        flex-direction: column;
-        column-gap: 150px;
+    #player-name {
+        max-width: 52%;
     }
 
     /* Player Message, Modal Player Name & Placement Controls
@@ -903,6 +1034,11 @@ footer {
     #placement-controls,
     #player-name {
         min-height: 75px;
+    }
+
+    #placement-controls,
+    #player-name {
+        padding: 0.5rem;
     }
 }
 
@@ -916,7 +1052,6 @@ footer {
        ====================================================================== */
     nav,
     footer {
-        padding: 1% 0;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -973,6 +1108,10 @@ footer {
         flex-wrap: nowrap;
     }
 
+    #computer-gameboard {
+        margin-bottom: 10%;
+    }
+
     /* Game Intro, Rules & Win Modal
     ====================================================================== */
 
@@ -981,7 +1120,6 @@ footer {
     }
 
     #intro-modal-contents,
-    #rules-modal-contents,
     #win-modal-contents {
         display: flex;
         flex-direction: column;
@@ -999,16 +1137,20 @@ footer {
         margin-top: 7.5%;
     }
 
+    /* Player Message, Modal Player Name & Placement Controls
+        ================================================================== */
+
+    #player-message {
+        width: 55%;
+        max-width: 900px;
+    }
+
+    #placement-controls {
+        width: 55%;
+    }
+
     /* Game Board
     ===================================================================== */
-
-    #gameboard {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        row-gap: 70px;
-    }
 
     #player-gameboard,
     #computer-gameboard {
@@ -1025,18 +1167,6 @@ footer {
         text-transform: uppercase;
         border: none;
         padding-left: 25px;
-    }
-
-    #player-gameboard>div,
-    #computer-gameboard>div {
-        display: flex;
-        justify-content: center;
-        align-items: start;
-        border: 0.5px #fff dotted;
-        width: 50px;
-        height: 50px;
-        box-sizing: content-box;
-        padding: 0;
     }
 
     /* Game Sidebar
@@ -1069,5 +1199,22 @@ footer {
     #win-modal-contents {
         width: 60%;
         height: 55%;
+    }
+
+    /* Game Board
+        ===================================================================== */
+
+    #gameboard {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #computer-gameboard {
+        order: 2;
+        margin-bottom: 0;
+    }
+
+    #placement-controls {
+        order: 3;
     }
 }
