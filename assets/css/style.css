@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Desktop Styles
+   Mobile devices
    ========================================================================== */
 
 /* Fonts
@@ -22,7 +22,7 @@ nav h1,
 #intro-modal-contents h2,
 #rules-modal-contents h2,
 #win-modal-contents h2 {
-    font-size: 3rem;
+    font-size: 2.2rem;
     text-transform: uppercase;
     margin-top: 10px;
 }
@@ -146,7 +146,7 @@ by https://openai.com
 }
 
 #player-name {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
 }
 
@@ -207,7 +207,7 @@ footer {
     color: #fff;
     padding: 1% 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -215,13 +215,15 @@ footer {
 /* Navigation
    ========================================================================== */
 #logo {
-    width: 15%;
+    width: 100%;
+    margin: 0 auto 2% auto;
     text-align: center;
 }
 
 #links {
-    width: 85%;
-    text-align: right;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 2% auto;
 }
 
 #links ul li {
@@ -247,13 +249,10 @@ footer {
    ========================================================================== */
 #game-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     height: auto;
     min-height: 95vh;
-}
-
-#game-body {
-    position: relative;
+    width: 100vw;
 }
 
 #game-sidebar,
@@ -270,7 +269,15 @@ footer {
     justify-content: flex-start;
     margin: 0 auto;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+}
+
+#game-body {
+    position: relative;
+    flex: 1;
+    width: 100vw;
+    min-height: 100%;
+    background: navy url('../images/backgrounds/ocean.gif') repeat left top;
 }
 
 /* Game Intro, Rules & Win Modals - Code adpated from 
@@ -309,7 +316,6 @@ footer {
     width: 100%;
     height: 100%;
     background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left;
-    border-radius: 10px;
     justify-content: center;
 }
 
@@ -319,7 +325,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 50px;
+    row-gap: 20px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #888;
@@ -331,11 +337,12 @@ footer {
 
 #intro-modal-contents,
 #win-modal-contents {
+    text-align: center;
     justify-content: center;
     background-color: rgb(0, 0, 0);
     /* Fallback color */
     background-color: rgba(0, 0, 0, 0.3);
-    width: 50%;
+    width: 90%;
 }
 
 /* Code to center modal adapted from 
@@ -496,12 +503,6 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 200;
-}
-
-#game-body {
-    width: 85%;
-    height: auto;
-    background: navy url('../images/backgrounds/ocean.gif') repeat left top;
 }
 
 /* Player Message, Modal Player Name & Placement Controls
@@ -774,7 +775,7 @@ footer {
 
 #player-gameboard .fire,
 #computer-gameboard .fire,
-#player-gameboard .splash-miss,
+#gameboard #player-gameboard .splash-miss,
 #computer-gameboard .splash-miss {
     z-index: 200;
     position: absolute;
@@ -826,12 +827,114 @@ footer {
     margin-top: 20px;
 }
 
-
 /* ==========================================================================
-   Desktop and Landscape Tablet Styles
+   iPads & tablets
    ========================================================================== */
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 600px) {
+
+    /* Fonts
+       ====================================================================== */
+
+    #intro-modal-contents h2,
+    #rules-modal-contents h2,
+    #win-modal-contents h2 {
+        font-size: 3rem;
+    }
+
+    #player-name {
+        font-size: 2rem;
+    }
+
+    /* Game Container
+       ====================================================================== */
+
+
+    /* Game Intro, Rules & Win Modal
+    ====================================================================== */
+
+    #intro-modal-contents,
+    #win-modal-contents {
+        height: 100%;
+        row-gap: 0;
+        justify-content: flex-start;
+    }
+
+    #intro-modal-contents button,
+    #win-modal-contents button {}
+}
+
+/* ==========================================================================
+   Smaller screens and laptops
+   ========================================================================== */
+
+@media only screen and (min-width: 1024px) {
+
+    /* Game Intro, Rules & Win Modal
+       ====================================================================== */
+
+    #intro-modal-contents,
+    #rules-modal-contents,
+    #win-modal-contents {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 50px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #888;
+    }
+
+    #gameboard {
+        flex-direction: column;
+        column-gap: 150px;
+    }
+}
+
+
+/* ==========================================================================
+    Desktop small screens
+   ========================================================================== */
+
+@media only screen and (min-width: 1200px) {
+
+    /* Outer Body
+           ================================================================== */
+    nav,
+    footer {
+        padding: 1% 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Navigation
+           ================================================================== */
+    #logo {
+        width: 15%;
+        margin: 0;
+    }
+
+    #links {
+        width: 85%;
+        text-align: right;
+        margin: 0;
+    }
+
+    /* Game Container
+       ====================================================================== */
+    #game-container {
+        display: flex;
+        flex-direction: row;
+        height: auto;
+        min-height: 95vh;
+        width: 100vw;
+    }
+
+    #game-body {
+        width: 85%;
+    }
 
     #game-sidebar,
     #game-body,
@@ -842,11 +945,86 @@ footer {
     #player-one-stats,
     #player-two-stats,
     .ship-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin: 0 auto;
+        align-items: center;
         flex-wrap: nowrap;
     }
 
+    /* Game Intro, Rules & Win Modal
+       ====================================================================== */
+
+    #intro-modal-contents,
+    #rules-modal-contents,
+    #win-modal-contents {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 50px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #888;
+    }
+
+    #intro-modal-contents,
+    #win-modal-contents {
+        width: 50%;
+    }
+
+    /* Game Board
+        ===================================================================== */
+
     #gameboard {
-        flex-direction: row;
-        column-gap: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        row-gap: 70px;
+    }
+
+    #player-gameboard,
+    #computer-gameboard {
+        display: grid;
+        grid-template-columns: repeat(11, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        gap: 0px 0px;
+    }
+
+    #gameboard #gameboard-label {
+        grid-column: 1 / span 11;
+        width: 100%;
+        align-items: center;
+        text-transform: uppercase;
+        border: none;
+        padding-left: 25px;
+    }
+
+    #player-gameboard>div,
+    #computer-gameboard>div {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        border: 0.5px #fff dotted;
+        width: 50px;
+        height: 50px;
+        box-sizing: content-box;
+        padding: 0;
+    }
+}
+
+/* ==========================================================================
+   Desktops and wide screens 
+   ========================================================================== */
+
+@media only screen and (min-width: 1600px) {
+
+    /* Game Intro, Rules & Win Modal
+           ================================================================== */
+
+    #intro-modal-contents,
+    #win-modal-contents {
+        width: 50%;
     }
 }
