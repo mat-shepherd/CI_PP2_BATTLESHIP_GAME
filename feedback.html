@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 
-<body>
+<body id="feedback-page">
     <!-- Navigation bar -->
     <nav>
         <div id="logo">
@@ -196,30 +196,30 @@
             <!-- Intro modal hidden once game starts -->
             <div id="intro-modal-404">
                 <div id="intro-modal-contents">
-                    <h2>PAGE NOT FOUND</h2>
-                    <h3>OH NO! YOU SUNK OUR BATTLESHIP!</h3>
-                    <div id="ship-404">
-                        <img src="./assets/images/ships/battleship-icon.png" alt="Battelship" id="battleship-404">
-                        <img src="./assets/images/effects/fire.gif" class="fire" alt="Animated Fire">
-                        <img src="./assets/images/effects/fire.gif" class="fire" alt="Animated Fire">
-                        <img src="./assets/images/effects/fire.gif" class="fire" alt="Animated Fire">
-                        <img src="./assets/images/effects/fire.gif" class="fire" alt="Animated Fire">
-                    </div>
-                    <div id="intro-contents-404">
-                        <p>You have found a page that doesn't exist. Our crew is scrambling to get you back on course
-                            captain!</p>
-                        <p>Please click the New Game button below to head back to the main game page and safe waters!
-                        </p>
-                        <div id="error-message">
-                            <noscript>
-                                <p>This game requires JavaScript to run. Your browser does not support
-                                    JavaScript or it is disabled! <a href="https://www.enable-javascript.com/"
-                                        target="_blank" aria-label="Visit enable-javascript.com (opens in a new tab)">.
-                                        Click here for more information on enabling JavaScript</a>.
-                                </p>
-                            </noscript>
-                            <button type="submit" id="new-game-button-404" aria-label="New game">NEW GAME</button>
-                        </div>
+                    <h2>BATTLESHIP FEEDBACK</h2>
+                    <div id=" intro-contents-404">
+                        <form id="feedback-form">
+                            <h4 id="feedback-title">HAVE FEEDBACK? LET ME KNOW!</h4>
+                            <label for="name">NAME</label>
+                            <input type="text" id="name" name="name" aria-label="Please enter your name">
+                            <label for="email">EMAIL</label>
+                            <input type="email" id="email" name="email" aria-label="Please enter your email">
+                            <label for="feedback">YOUR FEEDBACK</label>
+                            <textarea id="feedback" name="feedback" aria-label="Please provide feedback"></textarea>
+                            <div id="error-message">
+                                <noscript>
+                                    <p>This form requires JavaScript to work. Your browser does not support
+                                        JavaScript or it is disabled! <a href="https://www.enable-javascript.com/"
+                                            target="_blank"
+                                            aria-label="Visit enable-javascript.com (opens in a new tab)">.
+                                            Click here for more information on enabling JavaScript</a>.
+                                    </p>
+                                </noscript>
+                            </div>
+                            <div id="intro-buttons">
+                                <input type="submit" id="submit-feedback-button" aria-label="Submit feedback">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -249,7 +249,8 @@
                     <li><button id="random-control" class="game-button"
                             aria-label="Generate random ship locations">RANDOM</button></li>
                     <li><button id="reset-control" class="game-button"
-                            aria-label="Clear all ships from game board">CLEAR ALL</button></li>
+                            aria-label="Clear all ships from game board">CLEAR
+                            ALL</button></li>
                 </ul>
                 <h3>SHIP PLACEMENT CONTROLS</h3>
             </div>
@@ -267,6 +268,16 @@
                 aria-label="Visit my GitHub page (opens in a new tab)"><i class="fa-brands fa-github fa-2xl"></i></a>
         </div>
     </footer>
+    <!-- EmailJS Script -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("service_nshz11a");
+        })();
+    </script>
+    <!-- Feedback Form Script -->
+    <script src="./assets/js/feedback-form.js"></script>
     <!-- Main Game Script -->
     <script src="./assets/js/battleship-game.js"></script>
     <!-- Fontawesome Icons -->

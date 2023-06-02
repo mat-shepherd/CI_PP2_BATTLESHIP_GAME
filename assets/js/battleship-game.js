@@ -2623,14 +2623,14 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('player-name').focus();
     }
 
-    // Add click event listeners to nav links and audio toggle
+    // Add click event listeners to nav links, form and audio toggle
     let newGameLink = document.getElementById('new-game-link');
     let newGameLinkNF = document.getElementById('new-game-link-404');
     let newGameButton = document.getElementById('new-game-button');
     let newGameButtonNF = document.getElementById('new-game-button-404');
     let audioIcon = document.getElementById('audio-button');
 
-    // Check if elements are present on index or 404 page
+    // Check if elements are present on index, 404, or feedback page
     if (newGameLink) {
         newGameLink.addEventListener('click', newGame);
         newGameButton.addEventListener('click', newGame);
@@ -2638,6 +2638,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (newGameLinkNF) {
         newGameLinkNF.addEventListener('click', loadIndex);
+    }
+    if (newGameButtonNF) {
         newGameButtonNF.addEventListener('click', loadIndex);
     }
 

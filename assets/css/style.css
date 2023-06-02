@@ -64,7 +64,9 @@ nav h1,
 #new-game-button,
 #new-game-button-404,
 #error-message,
-#audio-button {
+#audio-button,
+#feedback-title,
+#feedback-form label {
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
 }
 
@@ -110,6 +112,10 @@ nav h1,
     font-size: 1.3rem;
 }
 
+#feedback-title {
+    line-height: 1.5rem;
+}
+
 /* 
 Animation to make text flash. Code from ChatGPT
 by https://openai.com
@@ -149,7 +155,8 @@ by https://openai.com
     font-weight: normal;
 }
 
-#start-game-form label {
+#start-game-form label,
+#feedback-form label {
     line-height: 1.8rem;
 }
 
@@ -357,6 +364,11 @@ footer {
     background: navy url('../images/backgrounds/ocean.gif') repeat left top;
 }
 
+#page-404 #game-body,
+#feedback-page #game-body {
+    min-height: 800px;
+}
+
 /* Game Intro, Rules & Win Modals - Code adpated from 
  * https://www.w3schools.com/howto/howto_css_modals.asp
    ========================================================================== */
@@ -446,7 +458,8 @@ footer {
     width: 70%;
 }
 
-#intro-modal-contents form {
+#intro-modal-contents form,
+#feedback-form form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -457,9 +470,15 @@ footer {
     max-width: 90%;
 }
 
-#start-game-form label {
+#start-game-form label,
+#feedback-form label {
     text-align: center;
     margin-bottom: 50px;
+}
+
+#feedback-form label {
+    text-align: center;
+    margin-bottom: 5px;
 }
 
 #error-message {
@@ -621,7 +640,10 @@ footer {
 
 #player-message,
 #placement-controls,
-#player-name {
+#player-name,
+#feedback-form input[type=text],
+#feedback-form input[type=email],
+#feedback-form textarea {
     border-radius: 10px;
     background-color: #000;
     line-height: 1.75em;
@@ -636,17 +658,31 @@ footer {
     min-height: 3rem;
 }
 
-#placement-controls li {
-    display: inline;
+#feedback-form input,
+#feedback-form textarea {
+    width: 95%;
+    min-height: 3rem;
+}
+
+#feedback-form textarea {
+    height: 6rem;
+}
+
+#feedback-form label {
+    margin-top: 1rem;
 }
 
 /* Placement Buttons - Adapted from https: //codepen.io/Brandon-Stoyles/pen/RajYmd */
 
+#placement-controls li {
+    display: inline;
+}
 
 .game-button,
 #start-game-button,
 #new-game-button,
-#new-game-button-404 {
+#new-game-button-404,
+#submit-feedback-button {
     background-color: #333332;
 }
 
@@ -654,7 +690,8 @@ footer {
 #start-game-button,
 #new-game-button,
 #new-game-button-404,
-#audio-button {
+#audio-button,
+#submit-feedback-button {
     border-bottom: 6px inset rgba(0, 0, 0, .5);
     border-left: 6px inset rgba(0, 0, 0, .5);
     border-right: 6px inset rgba(255, 255, 255, .5);
@@ -673,7 +710,8 @@ footer {
 
 #start-game-button,
 #new-game-button,
-#new-game-button-404 {
+#new-game-button-404,
+#submit-feedback-button {
     padding: 1.2rem;
 }
 
@@ -714,7 +752,8 @@ footer {
 }
 
 #rotate-control,
-#start-game-button {
+#start-game-button,
+#submit-feedback-button {
     background-color: #005800;
 }
 
@@ -725,7 +764,9 @@ footer {
 #new-game-button:hover,
 #new-game-button:focus,
 #new-game-button-404:hover,
-#new-game-button-404:focus {
+#new-game-button-404:focus,
+#submit-feedback-button:hover,
+#submit-feedback-button:focus {
     background-color: #006800;
 }
 
@@ -1128,7 +1169,8 @@ footer {
 
     #intro-modal-contents #start-game-button,
     #win-modal-contents #new-game-button,
-    #audio-button {
+    #audio-button,
+    #submit-feedback {
         margin-top: 30px;
     }
 
@@ -1248,6 +1290,12 @@ footer {
     #win-modal-contents {
         width: 70%;
         height: 55%;
+        margin-top: 7.5%;
+    }
+
+    #intro-modal-404 #intro-modal-contents {
+        width: 70%;
+        height: 70%;
         margin-top: 7.5%;
     }
 
