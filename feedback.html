@@ -197,15 +197,16 @@
             <div id="intro-modal-404">
                 <div id="intro-modal-contents">
                     <h2>BATTLESHIP FEEDBACK</h2>
-                    <div id=" intro-contents-404">
+                    <div id="intro-contents-404">
                         <form id="feedback-form">
                             <h4 id="feedback-title">HAVE FEEDBACK? LET ME KNOW!</h4>
                             <label for="name">NAME</label>
-                            <input type="text" id="name" name="name" aria-label="Please enter your name">
+                            <input type="text" id="name" name="name" aria-label="Please enter your name" required>
                             <label for="email">EMAIL</label>
-                            <input type="email" id="email" name="email" aria-label="Please enter your email">
+                            <input type="email" id="email" name="email" aria-label="Please enter your email" required>
                             <label for="feedback">YOUR FEEDBACK</label>
-                            <textarea id="feedback" name="feedback" aria-label="Please provide feedback"></textarea>
+                            <textarea id="feedback" name="feedback" aria-label="Please provide feedback"
+                                required></textarea>
                             <div id="error-message">
                                 <noscript>
                                     <p>This form requires JavaScript to work. Your browser does not support
@@ -220,6 +221,7 @@
                                 <input type="submit" id="submit-feedback-button" aria-label="Submit feedback">
                             </div>
                         </form>
+                        <div id="thank-you-message"></div>
                     </div>
                 </div>
             </div>

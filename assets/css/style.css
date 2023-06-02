@@ -444,6 +444,11 @@ footer {
     margin-top: 10%;
 }
 
+#feedback-page #intro-modal-contents,
+#feedback-page #intro-contents-404 {
+    width: 100%;
+}
+
 /* Code to center modal adapted from 
    https: //stackoverflow.com/a/32086720/21643967 */
 
@@ -517,6 +522,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    align-items: center;
 }
 
 /* Rules Modal Close Button */
@@ -663,6 +669,10 @@ footer {
 #player-name {
     max-width: 90%;
     min-height: 3rem;
+}
+
+#feedback-form {
+    width: 100%;
 }
 
 #feedback-form input,
@@ -1122,6 +1132,14 @@ footer {
         max-width: 75%;
     }
 
+    #feedback-form {
+        width: 70%;
+    }
+
+    #feedback-page #intro-modal-contents {
+        width: 60%;
+    }
+
     /* Game Sidebar
        ====================================================================== */
 
@@ -1307,8 +1325,12 @@ footer {
 
     #intro-modal-404 #intro-modal-contents {
         width: 70%;
-        height: 70%;
+        height: 80%;
         margin-top: 7.5%;
+    }
+
+    #feedback-page #intro-modal-contents {
+        width: 60%;
     }
 
     /* Player Message, Modal Player Name & Placement Controls

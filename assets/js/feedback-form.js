@@ -18,17 +18,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 feedbackSubmit.value = 'Send Email';
                 showThankYou();
             }, function (error) {
-                feedbackSubmit.value = 'Send Email';
                 console.log(JSON.stringify(err));
             });
     });
 });
 
+/**
+ * Shows a thank you message in the form area once the form
+ * has been sent
+ * @function showThankYou
+ */
 function showThankYou() {
-    let messageArea = document.getElementById('feedback-form');
-    let thankMessage = `
-    <h3>YOUR MESSAGE HAS BEEN SENT</h3>
+    let messageArea = document.getElementById('intro-modal-contents');
+    let thankyouMessage = `
+    <h2>YOUR MESSAGE HAS BEEN SENT</h2>
     <br>
     <p>THANKS FOR YOUR FEEDBACK. I REALLY APPRECIATE IT!</p>`;
-    messageArea.innerHTML = thankMessage;
+
+    messageArea.style.backgroundColor = '#fff';
+    messageArea.style.padding = '2rem';
+    messageArea.innerHTML = thankyouMessage;
+
 }
