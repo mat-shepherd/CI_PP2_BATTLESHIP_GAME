@@ -14,7 +14,7 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
   - [Table of Contents](#table-of-contents)
   - [Project Goals](#project-goals)
     - [Site Owner Goals](#site-owner-goals)
-    - [User Goals](#user-goals)
+    - [Site Owner Goals](#site-owner-goals-1)
   - [User Experience](#user-experience)
     - [Target Audience](#target-audience)
     - [User Requirements and Expectations](#user-requirements-and-expectations)
@@ -24,8 +24,13 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
   - [Design](#design)
     - [Design Choices](#design-choices)
     - [Colours](#colours)
+      - [USER INTERFACE](#user-interface)
+      - [PLAYER MESSAGES](#player-messages)
     - [Fonts](#fonts)
     - [Structure](#structure)
+      - [INDEX PAGE, FEEDBACK PAGE, 404 PAGE](#index-page-feedback-page-404-page)
+      - [FEEDBACK PAGE](#feedback-page)
+      - [404 PAGE](#404-page)
     - [Wireframes](#wireframes)
     - [Index](#index)
     - [404](#404)
@@ -38,8 +43,8 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
       - [Desktop \& Larger Screens](#desktop--larger-screens)
       - [Tablet, Mobile and Smaller Screens](#tablet-mobile-and-smaller-screens)
     - [Footer](#footer)
-    - [Feedback Page](#feedback-page)
-    - [404 Page](#404-page)
+    - [Feedback Page](#feedback-page-1)
+    - [404 Page](#404-page-1)
     - [Features Left to Implement](#features-left-to-implement)
   - [Testing](#testing)
     - [HTML Validation](#html-validation)
@@ -48,21 +53,22 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [Accessibility](#accessibility)
     - [Performance](#performance)
     - [Index](#index-1)
-    - [Feedback Page](#feedback-page-1)
+    - [Feedback Page](#feedback-page-2)
     - [404](#404-1)
     - [Device testing](#device-testing)
     - [Browser compatibility](#browser-compatibility)
     - [Testing user stories](#testing-user-stories)
-      - [Prospective Customers](#prospective-customers)
-      - [Existing Customers](#existing-customers)
-      - [Site Owner](#site-owner)
+      - [Players](#players-1)
+      - [Site Owner](#site-owner-1)
   - [Bugs](#bugs)
   - [Deployment](#deployment)
   - [Credits](#credits)
     - [Media](#media)
     - [Wireframes](#wireframes-1)
-    - [Index Page, Thank You Page \& 404 Page](#index-page-thank-you-page--404-page)
-    - [404 Page](#404-page-1)
+    - [Index Page, Feedback Page \& 404 Page](#index-page-feedback-page--404-page)
+    - [Images](#images)
+    - [Sounds](#sounds)
+    - [404 Page](#404-page-2)
     - [Code](#code)
   - [Acknowledgements](#acknowledgements)
 
@@ -618,7 +624,7 @@ You can clone the repository by following these steps:
 
 ## Credits
 
-Images and logos not referenced below are owned or created by the developer.
+Images not referenced below are owned or created by the developer.
 
 ### Media
 
@@ -651,48 +657,27 @@ In order of appearance:
     <img src="docs/credits/social-media-6261537_1920.webp">
     </details>
 
-### Index Page, Thank You Page & 404 Page
+### Index Page, Feedback Page & 404 Page
 
-- [HubSpot Brand Kit Generator](https://www.hubspot.com/brand-kit-generator/) by [HubSpot](https://www.hubspot.com/)
-    <details><summary>Logo</summary>
-    <img src="docs/credits/logo-variations.webp">
-    </details>
-- Purchased under subscription from [iStock Photos](https://www.istockphoto.com/) by [Mykyta Dolmatov](https://www.istockphoto.com/portfolio/VectorKnight?mediatype=illustration)
-    <details><summary>Hero Image</summary>
-    <img src="docs/credits/istock-1053519140.webp">
-    </details>
-- Roadtrips Logo used with permission of former client [Roadtrips](https://www.roadtrips.com/)
-    <details><summary>Client Logo: Roadtrips</summary>
-    <img src="docs/credits/roadtrips-logo.webp">
-    </details>
-- iQmetrix Logo used with permission of former client [iQmterix](https://www.iqmetrix.com/)
-    <details><summary>Client Logo: iQmetrix</summary>
-    <img src="docs/credits/iqmetrix-black-logo.webp">
-    </details>
-- Scootaround Logo used with permission of former client [Scootaround](https://scootaround.com/en)
-    <details><summary>Client Logo: Scootaround</summary>
-    <img src="docs/credits/scootaround-logo.webp">
-    </details>
-- IP Telecom Logo used with permission of former client [IP Telecom](https://www.iptelecom.ie/)
-    <details><summary>Client Logo: IP Telecom</summary>
-    <img src="docs/credits/ip-telecom-logo536x97.webp">
-    </details>
-- Purchased under subscription from [iStock Photos](https://www.istockphoto.com/) by [amenic181](https://www.istockphoto.com/portfolio/amenic181?mediatype=photography)
-    <details><summary>First Parallax Image: Young plant stock photo</summary>
-    <img src="docs/credits/istock-533007815.webp">
-    </details>
-- Font Awesome Icons by [Font Awesome](https://fontawesome.com/)
-    <details><summary>Service Section [Font Awesome Icons](https://fontawesome.com/icons)</summary>
-    <img src="docs/credits/service-fontawesome-icons.webp">
-    </details>
-- Purchased under subscription from [iStock Photos](https://www.istockphoto.com/) by [Photodjo](https://www.istockphoto.com/portfolio/Photodjo?mediatype=photography)
-    <details><summary>Second Parallax Image: Agriculture stock photo</summary>
-    <img src="docs/credits/istock-1453737875.webp">
-    </details>
-- [goddessSue13](https://pixabay.com/users/goddesssue13-615343/)
-    <details><summary>[Social icons](https://pixabay.com/vectors/social-media-icon-set-facebook-6261537/)</summary>
-    <img src="docs/credits/social-media-6261537_1920.webp">
-    </details>
+### Images
+- Battleship Icons - [Sea Warfare Set: Ships and More](https://opengameart.org/content/sea-warfare-set-ships-and-more) by Lowder2 ([Lowder2's profile](https://opengameart.org/users/lowder2))
+- Ocean tile - [The Battle for Wesnoth: Water Animation](https://opengameart.org/content/the-battle-for-wesnoth-water-animation) by Zookeeper and Zabin ([Zabin's profile](https://opengameart.org/users/zabin))
+- Explosion Animation - [WGStudio: Explosion Animation](https://opengameart.org/content/wgstudio-explosion-animation) by Retimer ([Retimer's profile](https://opengameart.org/users/retimer))
+- Fire Animation - [9-frame Fire Animation](https://opengameart.org/content/9-frame-fire-animation-16x-32x-64x)
+- Splash Effect - [Splash Effect 32x32](https://opengameart.org/content/splash-effect-32x32) by Jesse McCarthy ([Jesse McCarthy's profile](https://opengameart.org/users/jesse-mccarthy))
+- Crosshair icon - [Crosshair icons](https://www.flaticon.com/free-icons/crosshair) created by Muhammad_Usman - Flaticon ([Muhammad_Usman's profile](https://www.flaticon.com/authors/muhammad-usman))
+- Move Icon - [Move icons](https://www.flaticon.com/free-icons/move) created by Freepik - Flaticon ([Freepik's profile](https://www.flaticon.com/authors/freepik))
+- Not Allowed Icon - [Block icons](https://www.flaticon.com/free-icons/block) created by Freepik - Flaticon ([Freepik's profile](https://www.flaticon.com/authors/freepik))
+- Red X Icon - [Forbidden icons](https://www.flaticon.com/free-icons/forbidden) created by Freepik - Flaticon
+
+### Sounds
+- [Ocean Splash](https://opengameart.org/content/ocean-splash) by Thimras ([Thimras's profile](https://opengameart.org/users/thimras))
+- [Victory 2](https://opengameart.org/content/victory-2) by Jon K. Fite ([Jon K. Fite's profile](https://opengameart.org/users/jkfite01))
+- [Total Fail](https://opengameart.org/content/total-fail) by congusbongus ([congusbongus's profile](https://opengameart.org/users/congusbongus))
+- [Tiny Naval Battle Sounds Set](https://opengameart.org/content/tiny-naval-battle-sounds-set) by Iwan Gabovitch (qubodup@gmail.com)
+- [Ship Sinking](https://opengameart.org/content/ship-sinking) by Thimras ([Thimras's profile](https://opengameart.org/users/thimras))
+- [Sounds of Cannonballs in the Wall in the Morning](https://opengameart.org/content/sounds-of-cannonballs-in-the-wall-in-the-morning) by İlker Yalçıner ([İlker Yalçıner's website](http://ilkeryalciner.com))
+- [Lava Splash](https://opengameart.org/content/lava-splash) by Michel Baradari ([Michel Baradari's website](http://...
 
 ### 404 Page
 
@@ -730,8 +715,8 @@ In order of appearance:
 I would like to thank the following people for their contributions to creating this project:
 
 - My mentor Mo Shami for your support, guidance, and encouragement
-- Alan Bushelland the February 2023 Student Cohort for their knowledge sharing, advice, and camaraderie during our weekly standup calls and in Slack
-- Benjamin Riordan for reviewing my project and providing great constructive feedback
+- Alan Bushell and the February 2023 Student Cohort for their knowledge sharing, advice, and camaraderie during our weekly standup calls and in Slack
+- Benjamin Riordan and for reviewing my project and providing great constructive feedback
 - The Code Institute team for an excellent experience and great support leading up to this first project
 - My wife for her patience and support while I sit in front of the computer for hours on end
 - My boys William and Oliver for helping me test the site and spot bugs!
