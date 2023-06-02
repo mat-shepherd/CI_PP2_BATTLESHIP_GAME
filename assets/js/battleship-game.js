@@ -957,7 +957,7 @@ class Gameboard {
         let playerGameboard = document.getElementById('player-gameboard');
         let computerGameboard = document.getElementById('computer-gameboard');
         let gridLetters = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-        let playGrid = `<div id="gameboard-label">${this.label}'s SHIPS</div>`;
+        let playGrid = `<div id="${this.owner}-gameboard-label">${this.label}'s SHIPS</div>`;
         for (let i = 0; i <= 10; i++) {
             // first iteration creates first cell in index row
             if (i == 0) {
