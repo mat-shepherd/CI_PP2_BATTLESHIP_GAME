@@ -660,24 +660,24 @@ In order of appearance:
 ### Index Page, Feedback Page & 404 Page
 
 ### Images
-- Battleship Icons - [Sea Warfare Set: Ships and More](https://opengameart.org/content/sea-warfare-set-ships-and-more) by Lowder2 ([Lowder2's profile](https://opengameart.org/users/lowder2))
-- Ocean tile - [The Battle for Wesnoth: Water Animation](https://opengameart.org/content/the-battle-for-wesnoth-water-animation) by Zookeeper and Zabin ([Zabin's profile](https://opengameart.org/users/zabin))
-- Explosion Animation - [WGStudio: Explosion Animation](https://opengameart.org/content/wgstudio-explosion-animation) by Retimer ([Retimer's profile](https://opengameart.org/users/retimer))
-- Fire Animation - [9-frame Fire Animation](https://opengameart.org/content/9-frame-fire-animation-16x-32x-64x)
-- Splash Effect - [Splash Effect 32x32](https://opengameart.org/content/splash-effect-32x32) by Jesse McCarthy ([Jesse McCarthy's profile](https://opengameart.org/users/jesse-mccarthy))
-- Crosshair icon - [Crosshair icons](https://www.flaticon.com/free-icons/crosshair) created by Muhammad_Usman - Flaticon ([Muhammad_Usman's profile](https://www.flaticon.com/authors/muhammad-usman))
-- Move Icon - [Move icons](https://www.flaticon.com/free-icons/move) created by Freepik - Flaticon ([Freepik's profile](https://www.flaticon.com/authors/freepik))
-- Not Allowed Icon - [Block icons](https://www.flaticon.com/free-icons/block) created by Freepik - Flaticon ([Freepik's profile](https://www.flaticon.com/authors/freepik))
-- Red X Icon - [Forbidden icons](https://www.flaticon.com/free-icons/forbidden) created by Freepik - Flaticon
+- Battleship Icons - [Sea Warfare Set: Ships and More](https://opengameart.org/content/sea-warfare-set-ships-and-more) by ([Lowder2](https://opengameart.org/users/lowder2))
+- Ocean tile - [The Battle for Wesnoth: Water Animation](https://opengameart.org/content/the-battle-for-wesnoth-water-animation) by ([Zookeeper and Zabin](https://opengameart.org/users/zabin))
+- Explosion Animation - [WGStudio: Explosion Animation](https://opengameart.org/content/wgstudio-explosion-animation) by ([Retimer](https://opengameart.org/users/retimer))
+- Fire Animation - [9-frame Fire Animation](https://opengameart.org/content/9-frame-fire-animation-16x-32x-64x) by ([FoshyTakashi](https://opengameart.org/users/foshytakashi))
+- Splash Effect - [Splash Effect 32x32](https://opengameart.org/content/splash-effect-32x32) by ([Jesse McCarthy](https://opengameart.org/users/jesse-mccarthy))
+- Crosshair icon - [Crosshair icons](https://www.flaticon.com/free-icons/crosshair) created by ([Muhammad_Usman - Flaticon](https://www.flaticon.com/authors/muhammad-usman))
+- Move Icon - [Move icons](https://www.flaticon.com/free-icons/move) created by ([Freepik - Flaticon](https://www.flaticon.com/authors/freepik))
+- Not Allowed Icon - [Block icons](https://www.flaticon.com/free-icons/block) created by ([Freepik - Flaticon](https://www.flaticon.com/authors/freepik))
+- Red X Icon - [Forbidden icons](https://www.flaticon.com/free-icons/forbidden) created by [Freepik - Flaticon](https://www.flaticon.com/)
 
 ### Sounds
-- [Ocean Splash](https://opengameart.org/content/ocean-splash) by Thimras ([Thimras's profile](https://opengameart.org/users/thimras))
-- [Victory 2](https://opengameart.org/content/victory-2) by Jon K. Fite ([Jon K. Fite's profile](https://opengameart.org/users/jkfite01))
-- [Total Fail](https://opengameart.org/content/total-fail) by congusbongus ([congusbongus's profile](https://opengameart.org/users/congusbongus))
+- [Ocean Splash](https://opengameart.org/content/ocean-splash) by ([Thimras](https://opengameart.org/users/thimras))
+- [Victory 2](https://opengameart.org/content/victory-2) by ([Jon K. Fite](https://opengameart.org/users/jkfite01))
+- [Total Fail](https://opengameart.org/content/total-fail) by ([congusbongus](https://opengameart.org/users/congusbongus))
 - [Tiny Naval Battle Sounds Set](https://opengameart.org/content/tiny-naval-battle-sounds-set) by Iwan Gabovitch (qubodup@gmail.com)
-- [Ship Sinking](https://opengameart.org/content/ship-sinking) by Thimras ([Thimras's profile](https://opengameart.org/users/thimras))
-- [Sounds of Cannonballs in the Wall in the Morning](https://opengameart.org/content/sounds-of-cannonballs-in-the-wall-in-the-morning) by İlker Yalçıner ([İlker Yalçıner's website](http://ilkeryalciner.com))
-- [Lava Splash](https://opengameart.org/content/lava-splash) by Michel Baradari ([Michel Baradari's website](http://apollo-music.de/)) and ([Qubodup's profile](https://opengameart.org/users/qubodup))
+- [Ship Sinking](https://opengameart.org/content/ship-sinking) by ([Thimras](https://opengameart.org/users/thimras))
+- [Sounds of Cannonballs in the Wall in the Morning](https://opengameart.org/content/sounds-of-cannonballs-in-the-wall-in-the-morning) by ([İlker Yalçıner](http://ilkeryalciner.com))
+- [Lava Splash](https://opengameart.org/content/lava-splash) by ([Michel Baradari](http://apollo-music.de/)) and ([Qubodup](https://opengameart.org/users/qubodup))
   
 ### 404 Page
 
