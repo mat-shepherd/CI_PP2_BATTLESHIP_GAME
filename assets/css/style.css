@@ -301,7 +301,11 @@ footer {
 #links ul li {
     list-style-type: none;
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 2rem;
+}
+
+#links ul li:nth-child(3) {
+    margin-right: 0;
 }
 
 #links a {
@@ -1153,6 +1157,10 @@ footer {
         flex-direction: row;
         justify-content: center;
         align-items: center;
+    }
+
+    #links ul li:nth-child(3) {
+        margin-right: 2rem;
     }
 
     /* Navigation
