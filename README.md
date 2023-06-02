@@ -146,7 +146,7 @@ Secondary Colours - Red / Green / Blue
 The player message text used a supplementary colour scheme of green on black to compliment the Retro Aracde theme.
 <br>
 
-![Colour scheme](docs/features/player-message-colour-palette.PNg)
+![Colour scheme](docs/features/player-message-colour-palette.PNG)
 
 To remain WCAG AAA compliant, I chose dark colour variants for background colours behind white text to maintain maximum contrast. Colour contrast compliance was tested using [WebAIM's Contrast Checker tool](https://webaim.org/resources/contrastchecker/).
 
