@@ -1499,11 +1499,13 @@ function audioToggle() {
 
     if (audioLinkIcon.classList.contains('fa-volume-mute')) {
         audioLink.innerHTML = `<i class="fa-solid fa-volume-low"></i>`;
-        audioButton.innerHTML = `<i class="fa-solid fa-volume-low"></i> AUDIO ON`;
+        audioButton.innerHTML = `<i class="fa-solid fa-volume-low"></i> 
+        AUDIO IS ON`;
         audioButton.className = 'audio-on';
     } else {
         audioLink.innerHTML = `<i class="fa-solid fa-volume-mute"></i>`;
-        audioButton.innerHTML = `<i class="fa-solid fa-volume-mute"></i> AUDIO OFF`;
+        audioButton.innerHTML = `<i class="fa-solid fa-volume-mute"></i> 
+        AUDIO IS OFF`;
         audioButton.className = 'audio-off';
     }
 
