@@ -164,13 +164,33 @@ Fonts are imported using the Google Fonts library.
 
 ### Structure
 
-The pages are structured in an easy-to-navigate z-shaped pattern allowing visitors to quickly consume key information while scanning the page from left to right. Starting at the  top left of the page the visitor will notice the site logo followed by the navigation menu and a Get a Quote call to action button. This allows the user to quickly understand the name of the business, how to navigate the site, and how to get in touch with the site owner to get a quote.
+The pages are structured in an easy-to-navigate z-shaped pattern allowing visitors to quickly consume key information while scanning the page from left to right. Starting at the top left of the page the visitor will notice the game logo followed by the navigation menu including New Game and How to Play links and an audio toggle icon. This allows the user to quickly understand the name of the game, how to start a new game, how to play, and how to toggle audio on or off.
 
-For simplicity, the site consists of one primary page and one helper page, a 404 page. There are ... distinct sections used across the site's pages:
+For simplicity, the site consists of one primary page and two helper pages, a feedback page and a 404 page. There are seven distinct sections used across the site's pages:
 
-- A header section containing the business logo, a responsive navigation menu and a call to action button
+#### INDEX PAGE, FEEDBACK PAGE, 404 PAGE
+
+- A header navigation bar containing the game logo followed by the navigation menu including New Game and How to Play links, and an audio toggle icon
+  
+- A score sidebar (which moves to the footer area on smaller screens) which contains the scores and schips remaining for both players.
+
+- A start game screen, that covers the main game body area, and contains a form to collect the player's name, a start game button and an audio toggle button.
+  
+- The main game body area which contains the player message container, the player and computer game boards, and the ship placmement controls (whic are hidden once the player has palced thier ships)
+
+- A How to Play modal which conveys the rules of the game and how to play
+  
+- A win game screen, which is shown when all ships have been sunk, communicating whether the player has won or lost and providing an option to start a new game
 
 - A footer section which displays the business logo, business tagline, navigation menu, call to action button, navigation links, contact information, social media links, the site owner's name and copyright notice, and a link to the site owner's GitHub page.
+
+#### FEEDBACK PAGE
+
+- A feedback screen, that covers the main game body area, and contains a form to collect player feedback, validate form values, show a thank you message on submission, and email the form data to the site owner.
+
+#### 404 PAGE
+
+- A 404 page not found message screen, that covers the main game body area, to let the user know they have entered an incorrect URL and provide them with a New Game button to navigate back to the game index page.
 
 ### Wireframes
 
@@ -216,18 +236,16 @@ For simplicity, the site consists of one primary page and one helper page, a 404
 
 - [Git](https://git-scm.com/)
 - [GitHub](https://github.com/)
-- [Gitpod - Cloud IDE](https://www.gitpod.io/)
+- [Windows Visual Studio Code](https://www.gitpod.io/)
 - [CodeAnywhere - Cloud IDE](https://codeanywhere.com/)
 - [GIMP - image editor](https://www.gimp.org/)
 - [Figma - wireframing tool](https://www.figma.com/files/recent?fuid=1219987136949485526)
 - [Google Fonts](https://fonts.google.com/)
 - [Font Awesome](https://fontawesome.com/)
-- [Favicon.io - favicon generator](https://favicon.io/)
-- [Google Maps](https://www.google.com/maps)
-- [Placehold - placeholder image generator](https://placehold.co/)
-- [Responsive Image Breakpoints Generator v2.0](https://www.responsivebreakpoints.com/) tool by [Cloudinary](https://cloudinary.com/)
-- [Venngage's Accessible color palette generator](https://venngage.com/tools/accessible-color-palette-generator)
-- CSS Gradient tool at [cssgradient.io](https://cssgradient.io/)
+- [ChatGPT by OpenAI - for code validation & suggestions](https://chat.openai.com/)
+- [Favicon.io - Favicon generator](https://favicon.io/)
+- [Coolors.co - Colour Palette Display Tool ](https://coolors.co/)
+- [JSHint JavaScript Validation Tool](https://jshint.com/)
 - [W3C Markup Validation Service](https://validator.w3.org/)
 - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
 - [WAVE web accessibility evaluation tool](https://wave.webaim.org/)
