@@ -677,8 +677,8 @@ In order of appearance:
 - [Tiny Naval Battle Sounds Set](https://opengameart.org/content/tiny-naval-battle-sounds-set) by Iwan Gabovitch (qubodup@gmail.com)
 - [Ship Sinking](https://opengameart.org/content/ship-sinking) by Thimras ([Thimras's profile](https://opengameart.org/users/thimras))
 - [Sounds of Cannonballs in the Wall in the Morning](https://opengameart.org/content/sounds-of-cannonballs-in-the-wall-in-the-morning) by İlker Yalçıner ([İlker Yalçıner's website](http://ilkeryalciner.com))
-- [Lava Splash](https://opengameart.org/content/lava-splash) by Michel Baradari ([Michel Baradari's website](http://...
-
+- [Lava Splash](https://opengameart.org/content/lava-splash) by Michel Baradari ([Michel Baradari's website](http://apollo-music.de/)) and [Qubodup's profile] (https://opengameart.org/users/qubodup)
+  
 ### 404 Page
 
 - Purchased under subscription from [iStock Photos](https://www.istockphoto.com/) by [ilyakalinin](https://www.istockphoto.com/portfolio/ilyakalinin?mediatype=illustration)
