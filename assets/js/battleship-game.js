@@ -2230,6 +2230,10 @@ function playerMessage(message, effect) {
  * @param {boolean} newGame - optional flag to indicate this is a new game
  */
 function initPlacement(playerName, existPlayerName, playerScore, playerHighScore, computerScore, newGame) {
+
+    /* Call lazyLoadBackground to load reapeating ocean tile image */
+    lazyLoadBackground();
+
     /**
     * Define game object variables
     */
@@ -2606,6 +2610,24 @@ function loadIndex() {
     window.location.href = 'index.html';
 }
 
+/**
+ * Function to lazy load the ocean tile gifs in the game body.
+ * To improve initial page load speed.
+ * Code adapted from answer provided by ChatGPT 
+ * by https://openai.com/
+ * @function lazyLoadBackground
+ */
+function lazyLoadBackground() {
+    console.log('Lazy load');
+    var gameBody = document.getElementById('game-body');
+    var bgSrc = gameBody.getAttribute('data-bg-src');
+
+    // Set the actual background image URL
+    gameBody.style.backgroundImage = 'url(' + bgSrc + ')';
+
+    // Remove the data attribute to prevent reloading the image
+    gameBody.removeAttribute('data-bg-src');
+}
 
 // DOCUMENT LOAD EVENT LISTENER
 

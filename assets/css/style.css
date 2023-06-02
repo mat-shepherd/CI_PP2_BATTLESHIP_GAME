@@ -368,7 +368,10 @@ footer {
     flex: 1;
     width: 100%;
     min-height: 100%;
-    background: navy url('../images/backgrounds/ocean.gif') repeat left top;
+    /* background: navy url('../images/backgrounds/ocean.gif') repeat left top; */
+    background-color: navy;
+    background-position: left top;
+    background-repeat: repeat;
 }
 
 #page-404 #game-body,
