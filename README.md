@@ -316,7 +316,7 @@ The following features could be implemented in the future to provide users with 
 The W3C Markup Validation Service was used to validate the HTML of the website. All pages pass with no errors and no warnings shown.
 
 - index.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmat-shepherd.github.io%2FCI_PP2_BATTLESHIP_GAME%2F)
-- feedback.html [results]()
+- feedback.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmat-shepherd.github.io%2FCI_PP2_BATTLESHIP_GAME%2Ffeedback.html)
 - 404.html results [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmat-shepherd.github.io%2FCI_PP2_BATTLESHIP_GAME%2F404.html)
 
 ### CSS Validation
@@ -346,12 +346,12 @@ The most complex function has a cyclomatic complexity value of 25 while the medi
 The WAVE WebAIM web accessibility evaluation tool was used to ensure the website met high accessibility standards. All pages pass with 0 errors.
 
 - index.html [results](https://wave.webaim.org/report#/https://mat-shepherd.github.io/CI_PP2_BATTLESHIP_GAME/index.html)
-- feedback.html [results]()
+- feedback.html [results](https://wave.webaim.org/report#/https://mat-shepherd.github.io/CI_PP2_BATTLESHIP_GAME/feedback.html)
 - 404.html results [results](https://wave.webaim.org/report#/https://mat-shepherd.github.io/CI_PP2_BATTLESHIP_GAME/404.html)
 
 ### Performance
 
-Google Lighthouse in Google's Chrome Developer Tools was used to test the performance of the website. All elements performed well.
+Google Lighthouse in Google's Chrome Developer Tools was used to test the performance of the website. All elements performed well with scores above 90 for performance.
 
 ### Index
 
@@ -365,10 +365,10 @@ Google Lighthouse in Google's Chrome Developer Tools was used to test the perfor
 ### Feedback Page
 
 <details><summary>Mobile</summary>
-<img src="docs/lighthouse/thank-you-lighthouse-mobile.webp">
+<img src="docs/lighthouse/feedback-lighthouse-desktop-report.PNG">
 </details>
 <details><summary>Desktop</summary>
-<img src="docs/lighthouse/feedback-lighthouse-desktop-report.PNG">
+<img src="docs/lighthouse/feedback-lighthouse-mobile-report.PNG">
 </details>
 
 ### 404
@@ -377,7 +377,7 @@ Google Lighthouse in Google's Chrome Developer Tools was used to test the perfor
 <img src="docs/lighthouse/404-lighthouse-mobile.webp">
 </details>
 <details><summary>Desktop</summary>
-<img src="docs/lighthouse/404-lighthouse-desktop-report.PNG">
+<img src="docs/lighthouse/404-lighthouse-mobile-report.PNG">
 </details>
 
 ### Device testing
