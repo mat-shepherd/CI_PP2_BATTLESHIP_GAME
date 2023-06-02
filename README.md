@@ -20,6 +20,7 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [User Requirements and Expectations](#user-requirements-and-expectations)
     - [User Stories](#user-stories)
       - [Players](#players)
+      - [Site Owner](#site-owner)
   - [Design](#design)
     - [Design Choices](#design-choices)
     - [Colours](#colours)
@@ -102,7 +103,7 @@ The goals of this website include:
 
 ### User Stories
 
-The players of the game are the primary users of this website:
+The players of the game are the primary users of this website with site owner being a secondary user:
 
 #### Players
 
@@ -121,6 +122,10 @@ The players of the game are the primary users of this website:
 13. As a player, I want to see notifications and visual cues indicating when all of a player's ships have been sunk and which player has won the game
 14. As a player, when a game has ended, I want to be given the option to start a new game
 15. As a player, when a game has ended, I want my high score to be retained until I end my browser session
+
+#### Site Owner
+
+16. As the site owner, I want to receive feedback from players so I can understand if they are enjoying the game, identify any bugs, and continually improve the game.
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -351,7 +356,7 @@ The WAVE WebAIM web accessibility evaluation tool was used to ensure the website
 
 ### Performance
 
-Google Lighthouse in Google's Chrome Developer Tools was used to test the performance of the website. All elements performed well with scores above 90 for performance.
+Google Lighthouse in Google's Chrome Developer Tools was used to test the performance of the website. All elements performed well with peformance scores above 90, accessiblity and SEO scores of 100, and best rpactice scores in the 90 to 100 range. The 404 page had a 92 best practice score for some lower clarity images but these are ship and fire icons which are samll by design.
 
 ### Index
 
@@ -400,9 +405,9 @@ The website was tested on the following browsers:
 
 ### Testing user stories
 
-#### Prospective Customers
+#### Players
 
-1. As a prospective customer, I want to see a list of the services offered by the consultant so that I can understand if the consultant can provide the solution my business is seeking.
+1. As a player, I want to play an accessible, easy to understand, fun, and visually attractive game that is responsive on any device.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -413,7 +418,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-1-2-12.gif">
 </details><br>
 
-2. As a prospective customer, I want to see a description of each service so I can understand the services provided.
+2. As a player, I want to see a list of game rules and instructions so I can understand how to play the game
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -424,7 +429,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-1-2-12.gif">
 </details><br>
 
-3. As a prospective customer, I want to see details of the consultant's customers so I can feel confident that the consultant can deliver results for a business like mine.
+3. As a player, I want to enter my name so I can understand which player represents me on the game board and to keep track of my current score and high score
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -435,7 +440,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-3-13.gif">
 </details><br>
 
-4. As a prospective customer, I want to see details of the consultant's work experience and expertise to understand if they have the expertise required to handle my project.
+4. As a player, I want my name to be validated and to be provided with feedback on any errors with name entry to ensure I can understand which player I am in the game.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -447,7 +452,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-4.gif">
 </details><br>
 
-5. As a prospective customer, I want to submit questions or details of my project through the website so I can connect with the consultant to discuss my project and receive answers, set up, a call or receive a project proposal.
+5. As a player, I want to start a new game and receive directions on how to setup the game board
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -458,7 +463,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-5-9-14.gif">
 </details><br>
 
-6. As a prospective customer, I want to locate the consultant's contact details so I can see where they are located and phone or email them about my project and any questions I may have.
+6. As a player, while setting up the game board, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the game board
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -469,7 +474,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-6.gif">
 </details><br>
 
-7. As a prospective customer, I want to see a confirmation that my contact form has been submitted and be able to navigate back to the main site.
+8. As a player, while setting up the game board, I want the ability to reset the game board to remove the game pieces (ships) and start placement over again
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -481,7 +486,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-7-10.gif">
 </details><br>
 
-8. As a prospective customer, I want to locate the consultant's social media details so I can see if they are thought leaders in the space, learn from their content and see what other social media users say about them.
+9. As a player, once the game board is set up I want to see notifications and visual cues to understand the game has started and which player's turn it is to take a shot
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -491,9 +496,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-8-11.gif">
 </details><br>
 
-#### Existing Customers
-
-9. As an existing customer, I want to locate the consultant's contact details or reach out to them directly through the website so I can request assistance or enquire about additional services.
+10. As a player, I want to see notifications and visual cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -504,7 +507,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-5-9-14.gif">
 </details><br>
 
-10. As an existing customer, I want to see a confirmation that my contact form has been submitted and be able to navigate back to the main site.
+11. As a player, once a turn has been taken, I want to see notifications and visual cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -516,7 +519,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-7-10.gif">
 </details><br>
 
-11. As an existing customer, I want to locate the consultant's social media details so I can follow them and learn about SEO industry trends and tips and tricks to improve my site's performance.
+12. As a player, I want to see notifications and visual cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -526,9 +529,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-8-11.gif">
 </details><br>
 
-#### Site Owner
-
-12. As a site owner, I want users to be able to see a list of my services and quickly contact me to request pricing.
+13. As a player, I want to see notifications and visual cues indicating when all of a player's ships have been sunk and which player has won the game
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -539,7 +540,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-1-2-12.gif">
 </details><br>
 
-13. As a site owner, I want users to see a list of my most recent clients and client testimonials to build trust and help convert more prospective customers.
+14. As a player, when a game has ended, I want to be given the option to start a new game
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -550,7 +551,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-3-13.gif">
 </details><br>
 
-14. As a site owner, I want users to be able to contact me directly through the website.
+15. As a player, when a game has ended, I want my high score to be retained until I end my browser session
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -561,7 +562,9 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-5-9-14.gif">
 </details><br>
 
-15. As the site owner, I want to make sure users are directed back to the index page of the website and do not use their browser's back button should they come across a 404 page not found error.
+#### Site Owner
+
+16. As the site owner, I want to receive feedback from players so I can understand if they are enjoying the game, identify any bugs, and continually improve the game.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
