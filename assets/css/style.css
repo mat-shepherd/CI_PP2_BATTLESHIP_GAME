@@ -25,6 +25,8 @@ nav h1,
     font-size: 2.2rem;
     text-transform: uppercase;
     margin-top: 10px;
+    line-height: 3rem;
+    margin-bottom: 1rem;
 }
 
 #rules-modal-text h2,
@@ -385,7 +387,7 @@ footer {
     width: 100%;
     height: 100%;
     background: #fff url('../images/backgrounds/battleship-bg-op.webp') no-repeat center left /cover;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 #intro-modal-contents,
@@ -412,6 +414,7 @@ footer {
     /* Fallback color */
     background-color: rgba(0, 0, 0, 0.3);
     width: 90%;
+    margin-top: 10%;
 }
 
 /* Code to center modal adapted from 
@@ -1030,10 +1033,16 @@ footer {
     /* Game Intro, Rules & Win Modal
        ====================================================================== */
 
+    #intro-modal,
+    #win-modal {
+        justify-content: center;
+    }
+
     #intro-modal-contents,
     #win-modal-contents {
         row-gap: 0;
         justify-content: flex-start;
+        margin-top: 0;
     }
 
     #player-name {
