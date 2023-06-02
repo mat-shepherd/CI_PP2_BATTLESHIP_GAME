@@ -768,7 +768,6 @@ footer {
     align-items: center;
     text-transform: uppercase;
     border: none;
-    padding-left: 25px;
 }
 
 #player-gameboard>div,
@@ -1081,6 +1080,10 @@ footer {
 
     #player-message {
         width: 80%;
+    }
+
+    #gameboard #gameboard-label {
+        padding-left: 25px;
     }
 }
 
