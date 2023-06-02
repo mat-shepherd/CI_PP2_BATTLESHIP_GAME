@@ -66,7 +66,9 @@ nav h1,
 #error-message,
 #audio-button,
 #feedback-title,
-#feedback-form label {
+#feedback-form label,
+#feedback-form input,
+#feedback-form textarea {
     font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
 }
 
@@ -138,7 +140,10 @@ by https://openai.com
     animation: flash-animation 2s infinite;
 }
 
-#player-name {
+#player-name,
+#feedback-form input[type=text],
+#feedback-form input[type=email],
+#feedback-form textarea {
     color: #6DFF33;
     padding: 0.5rem;
 }
@@ -160,7 +165,9 @@ by https://openai.com
     line-height: 1.8rem;
 }
 
-#player-name {
+#player-name,
+#feedback-form input,
+#feedback-form textarea {
     font-size: 1rem;
     text-transform: uppercase;
 }
@@ -665,7 +672,7 @@ footer {
 }
 
 #feedback-form textarea {
-    height: 6rem;
+    height: 8rem;
 }
 
 #feedback-form label {
@@ -1076,6 +1083,11 @@ footer {
 
     #player-name {
         font-size: 2rem;
+    }
+
+    #feedback-form input,
+    #feedback-form textarea {
+        font-size: 1rem;
     }
 
     /* Outer Body
