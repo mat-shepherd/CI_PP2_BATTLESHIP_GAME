@@ -37,6 +37,7 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
       - [Desktop \& Larger Screens](#desktop--larger-screens)
       - [Tablet, Mobile and Smaller Screens](#tablet-mobile-and-smaller-screens)
     - [Footer](#footer)
+    - [Feedback Page](#feedback-page)
     - [404 Page](#404-page)
     - [Features Left to Implement](#features-left-to-implement)
   - [Testing](#testing)
@@ -46,7 +47,7 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [Accessibility](#accessibility)
     - [Performance](#performance)
     - [Index](#index-1)
-    - [Thank You](#thank-you)
+    - [Feedback Page](#feedback-page-1)
     - [404](#404-1)
     - [Device testing](#device-testing)
     - [Browser compatibility](#browser-compatibility)
@@ -127,6 +128,8 @@ The players of the game are the primary users of this website:
 
 ### Design Choices
 
+The aim of this site is to provide the look and feel of the classic Battleship board game with its naval theme, while also conveying a Retro arcade game feel. All images, colours, and sounds were chosen with this aim in mind.
+
 ### Colours
 
 The colour scheme for the game was based around classic Battleship and Naval themed colours mixed with a Retro arcade feel:
@@ -143,12 +146,12 @@ Secondary Colours - Red / Green / Blue
 
 #### PLAYER MESSAGES
 
-The player message text used a supplementary colour scheme of green on black to compliment the Retro Aracde theme.
+The player message text used a supplementary colour scheme of green on black to compliment the Retro Arcade theme.
 <br>
 
 ![Colour scheme](docs/features/player-message-colour-palette.PNG)
 
-To remain WCAG AAA compliant, I chose dark colour variants for background colours behind white text to maintain maximum contrast. Colour contrast compliance was tested using [WebAIM's Contrast Checker tool](https://webaim.org/resources/contrastchecker/).
+To remain WCAG AAA compliant, I chose dark colour variants for background colours behind white, black, or bright green text to maintain maximum contrast. Colour contrast compliance was tested using [WebAIM's Contrast Checker tool](https://webaim.org/resources/contrastchecker/).
 
 ### Fonts
 
@@ -280,6 +283,13 @@ The website consists of three pages in total, an index page, afeedback page, and
 
 ![Footer Section](docs/features/footer-section.webp)
 
+### Feedback Page
+
+- which displays a feedback form to collect player feedback
+- the feedback form validates form values and then sends the data to the site owner
+- when the form is submitted a thank you message is shown
+- User stories covered:
+
 ### 404 Page
 
 - which displays a 404 page not found message, a ship image, and a text directing the user to click on a "New Game" button to navigate back to the index page.
@@ -294,7 +304,7 @@ The following features could be implemented in the future to provide users with 
 
 - A 'smarter' computer opponenent could be implemented which would take random shots within a close range of a previous hit shout if that shot didn't result in sinking a ship. Currently the computer takes completely random shots within the bounds of the game grid, avoiding coordiantes that ahve a lready been shot on.
 - With the ability to make the computer opponent 'smarter', a game difficulty feature could be added to let the user choose how difficult they want the game to be.
-- I added an attribute for direction to ship objects with the intention of adding a flying plane animation when shots are taken. Knowing if a ship is vertical or horizontal and it's coordinates would allow a plane image to be animated horizontally or vertically across the board to match the ships rotation. Otherwise the plane would randomlyfly horizontally or vertically across the board if the shot was a miss. 
+- I added an attribute for direction to ship objects with the intention of adding a flying plane animation when shots are taken. Knowing if a ship is vertical or horizontal and it's coordinates would allow a plane image to be animated horizontally or vertically across the board to match the ships rotation. Otherwise the plane would randomlyfly horizontally or vertically across the board if the shot was a miss.
 
 [Back to Table of Contents](#table-of-contents)
 
