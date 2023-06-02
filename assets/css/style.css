@@ -1118,14 +1118,14 @@ footer {
 
     #intro-modal,
     #win-modal {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     #intro-modal-contents,
     #win-modal-contents {
         row-gap: 0;
         justify-content: flex-start;
-        margin-top: 0;
+        margin-top: 10%;
     }
 
     #player-name {
@@ -1206,6 +1206,16 @@ footer {
 
     #player-name {
         max-width: 52%;
+    }
+
+    #intro-modal,
+    #win-modal {
+        justify-content: center;
+    }
+
+    #intro-modal-contents,
+    #win-modal-contents {
+        margin-top: 0;
     }
 
     /* Player Message, Modal Player Name & Placement Controls
@@ -1327,6 +1337,10 @@ footer {
         width: 70%;
         height: 80%;
         margin-top: 7.5%;
+    }
+
+    #page-404 #intro-modal-contents {
+        height: 55%;
     }
 
     #feedback-form {
