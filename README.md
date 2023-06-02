@@ -244,7 +244,7 @@ For simplicity, the site consists of one primary page and two helper pages, a fe
 - [Font Awesome](https://fontawesome.com/)
 - [ChatGPT by OpenAI - for code validation & suggestions](https://chat.openai.com/)
 - [Favicon.io - Favicon generator](https://favicon.io/)
-- [Coolors.co - Colour Palette Display Tool ](https://coolors.co/)
+- [Coolors.co - Colour Palette Display Tool](https://coolors.co/)
 - [JSHint JavaScript Validation Tool](https://jshint.com/)
 - [W3C Markup Validation Service](https://validator.w3.org/)
 - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
@@ -255,7 +255,7 @@ For simplicity, the site consists of one primary page and two helper pages, a fe
 
 ## Features
 
-The website consists of two pages in total, an index page and a 404 page. The site's pages contain ... distinct features:
+The website consists of three pages in total, an index page, afeedback page, and a 404 page. The site's pages contain ... distinct features:
 
 ### Existing Features
 
@@ -292,7 +292,9 @@ The website consists of two pages in total, an index page and a 404 page. The si
 
 The following features could be implemented in the future to provide users with more detailed information and further build prospective client trust through the website:
 
-- Smarter computer opponenent
+- A 'smarter' computer opponenent could be implemented which would take random shots within a close range of a previous hit shout if that shot didn't result in sinking a ship. Currently the computer takes completely random shots within the bounds of the game grid, avoiding coordiantes that ahve a lready been shot on.
+- With the ability to make the computer opponent 'smarter', a game difficulty feature could be added to let the user choose how difficult they want the game to be.
+- I added an attribute for direction to ship objects with the intention of adding a flying plane animation when shots are taken. Knowing if a ship is vertical or horizontal and it's coordinates would allow a plane image to be animated horizontally or vertically across the board to match the ships rotation. Otherwise the plane would randomlyfly horizontally or vertically across the board if the shot was a miss. 
 
 [Back to Table of Contents](#table-of-contents)
 
