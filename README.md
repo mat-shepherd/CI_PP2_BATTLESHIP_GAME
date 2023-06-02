@@ -135,14 +135,14 @@ The colour scheme for the game was based around classic Battleship and Naval the
 
 Primary Colours - Grey / Light Grey
 
-Secondary Colours - REd / Green / Blue
+Secondary Colours - Red / Green / Blue
 
 <br>
 
 ![Colour scheme](docs/features/colour-palette.PNG)
 
-
 #### PLAYER MESSAGES
+
 The player message text used a supplementary colour scheme of green on black to compliment the Retro Aracde theme.
 <br>
 
@@ -151,6 +151,16 @@ The player message text used a supplementary colour scheme of green on black to 
 To remain WCAG AAA compliant, I chose dark colour variants for background colours behind white text to maintain maximum contrast. Colour contrast compliance was tested using [WebAIM's Contrast Checker tool](https://webaim.org/resources/contrastchecker/).
 
 ### Fonts
+
+Black Ops One, Press Start 2P, and Roboto fonts were selected from Google fonts to match the naval and arcade themes of the game while maintaining readability and accessibility.
+
+Black Ops One font is used for the site logo and primary headings. Roboto font used is as the main body text including the navigation, sidebar score text, and footer.
+
+Black Ops One fallback fonts are Lucida Sans Typewriter, Helvetica, and sans-serif.
+
+The Roboto and Press Start 2P fallback fonts are Arial, Helvetica, and sans-serif.
+
+Fonts are imported using the Google Fonts library.
 
 ### Structure
 
