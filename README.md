@@ -356,7 +356,7 @@ Google Lighthouse in Google's Chrome Developer Tools was used to test the perfor
 ### Index
 
 <details><summary>Mobile</summary>
-<img src="docs/lighthouse/index-lighthouse-mobile.webp">
+<img src="docs/lighthouse/index-lighthouse-mobile-report.PNG">
 </details>
 <details><summary>Desktop</summary>
 <img src="docs/lighthouse/index-lighthouse-desktop-report.PNG">
@@ -374,7 +374,7 @@ Google Lighthouse in Google's Chrome Developer Tools was used to test the perfor
 ### 404
 
 <details><summary>Mobile</summary>
-<img src="docs/lighthouse/404-lighthouse-mobile.webp">
+<img src="docs/lighthouse/404-lighthouse-mobile-report.PNG">
 </details>
 <details><summary>Desktop</summary>
 <img src="docs/lighthouse/404-lighthouse-mobile-report.PNG">
