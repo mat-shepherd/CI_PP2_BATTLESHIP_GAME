@@ -603,7 +603,10 @@ footer {
     margin-top: 10px;
 }
 
-#player-message,
+#player-message {
+    min-height: 6rem;
+}
+
 #placement-controls {
     min-height: 75px;
 }
