@@ -131,15 +131,24 @@ The players of the game are the primary users of this website:
 
 The colour scheme for the game was based around classic Battleship and Naval themed colours mixed with a Retro arcade feel:
 
-Primary Colours - Light Grey / Grey
+#### USER INTERFACE
 
-Secondary Colours - RED / Green / Blue
+Primary Colours - Grey / Light Grey
 
-To remain WCAG AAA compliant, I chose dark colour variants for background colours behind white text to maintain maximum contrast. Colour contrast compliance was tested using [WebAIM's Contrast Checker tool](https://webaim.org/resources/contrastchecker/).
+Secondary Colours - REd / Green / Blue
 
 <br>
 
 ![Colour scheme](docs/features/colour-palette.PNG)
+
+
+#### PLAYER MESSAGES
+The player message text used a supplementary colour scheme of green on black to compliment the Retro Aracde theme.
+<br>
+
+![Colour scheme](docs/features/player-message-colour-palette.PNg)
+
+To remain WCAG AAA compliant, I chose dark colour variants for background colours behind white text to maintain maximum contrast. Colour contrast compliance was tested using [WebAIM's Contrast Checker tool](https://webaim.org/resources/contrastchecker/).
 
 ### Fonts
 
