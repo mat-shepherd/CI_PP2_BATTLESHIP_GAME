@@ -13,7 +13,7 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
 - [BattleShip Game](#battleship-game)
   - [Table of Contents](#table-of-contents)
   - [Project Goals](#project-goals)
-    - [Business Goals](#business-goals)
+    - [Site Owner Goals](#site-owner-goals)
     - [User Goals](#user-goals)
   - [User Experience](#user-experience)
     - [Target Audience](#target-audience)
@@ -68,19 +68,18 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
 
 The goals of this website include:
 
-### Business Goals
+### Site Owner Goals
 
-- Increase brand awareness
-- Convey the expertise, capabilities, and track record of the consultant to build trust in the brand
-- Increase qualified leads for the consultant's services
-- Build an SEO-optimised website with a great user experience to increase our search engine visibility and showcase the quality of the consultant's work
+- Create a fun interactive game that furthers my understanding of problem solving through code and the JavaScript language
+- Create an attractive and easy to use website and user interface
+- Create a fully responsive game website
 
-### User Goals
+### Site Owner Goals
 
-- Find a consultant that provides SEO services that align with their business goals and budget
-- Understand the services provided by the consultant
-- Find proof of work that the consultant can deliver the results desired
-- Contact the consultant to request more details on the services provided and request a proposal
+- Play a fun and interactive online game of logic and luck against a virtual opponent
+- Quickly understand the rules of the game and how to play
+- Be able to keep track of the game score and to try to beat their previous high score
+- Play the game as often as desired and have the game remember their name and details
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -88,23 +87,21 @@ The goals of this website include:
 
 ### Target Audience
 
-- Medium to large-sized business owners in the UK, Ireland and North America
-- Marketing managers of medium to large-sized businesses in the UK, Ireland and North America
-- Sales managers of medium to large-sized businesses in the UK, Ireland and North America
+- Battleship is typically played by anyone age 7 and up, that can follow the rules of Battleship, that likes to play online games, and has a JavaScript enabled web browser on their device.
 
 ### User Requirements and Expectations
 
-- An intuitive and easy-to-locate navigation system regardless of screen size
-- Ability to quickly find relevant information on the business and its services
-- Quick and easy ways to contact the business
-- A visually appealing and intuitively structured website that works well and is easy to read on all screen sizes
-- Informative and relevant content that is easy to locate and read
-- A website that loads quickly on all devices and connections
-- A website that is accessible to all users
+- An intuitive navigation system regardless of screen size
+- Easy to locate and understand game rules and instructions on how to play the game
+- An intuitive game interface with clear controls and notifications to aid game play
+- The ability to turn game sound effects on or off
+- An easy way to provide the developer with feedback on the game
+- An easy mechanism to start a new game and maintain session scores
+- An accessibile game website that can be viewed and played on any device
 
 ### User Stories
 
-I have divided my user stories into prospective customers, existing customers, and site owners, as each of these users will have a distinct set of needs and goals.
+The players of the game are the primary users of this website:
 
 #### Players
 
@@ -130,24 +127,21 @@ I have divided my user stories into prospective customers, existing customers, a
 
 ### Design Choices
 
-
-
 ### Colours
 
+The colour scheme for the game was based around classic Battleship and Naval themed colours mixed with a Retro arcade feel:
 
 Primary Colours - Light Grey / Grey
 
 Secondary Colours - RED / Green / Blue
 
-To remain WCAG AAA compliant, I chose dark colour variants for background colours behind white text to maintain maximum contrast. Colour contrast compliance was tested using [WebAIM's Contrast Checker tool](https://webaim.org/resources/contrastchecker/). 
+To remain WCAG AAA compliant, I chose dark colour variants for background colours behind white text to maintain maximum contrast. Colour contrast compliance was tested using [WebAIM's Contrast Checker tool](https://webaim.org/resources/contrastchecker/).
 
 <br>
 
-![Colour scheme]()
+![Colour scheme](docs/features/colour-palette.PNG)
 
 ### Fonts
-
-
 
 ### Structure
 
@@ -232,7 +226,7 @@ The website consists of two pages in total, an index page and a 404 page. The si
 
 - featured on all pages
 - containing the game logo, a responsive navigation menu and a audio toggle button
-- User stories covered: 
+- User stories covered:
 
 #### Desktop & Larger Screens
 
@@ -242,14 +236,12 @@ The website consists of two pages in total, an index page and a 404 page. The si
 
 ![Logo and navbar](docs/features/logo-nav-responsive.webp)
 
-
 ### Footer
 
 - which...
-- User stories covered: 
+- User stories covered:
 
 ![Footer Section](docs/features/footer-section.webp)
-
 
 ### 404 Page
 
@@ -274,6 +266,7 @@ The following features could be implemented in the future to provide users with 
 The W3C Markup Validation Service was used to validate the HTML of the website. All pages pass with no errors and no warnings shown.
 
 - index.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmat-shepherd.github.io%2FCI_PP2_BATTLESHIP_GAME%2F)
+- feedback.html [results]()
 - 404.html results [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmat-shepherd.github.io%2FCI_PP2_BATTLESHIP_GAME%2F404.html)
 
 ### CSS Validation
@@ -293,6 +286,7 @@ Largest function has 53 statements in it, while the median is 6.
 The most complex function has a cyclomatic complexity value of 25 while the median is 2.
 
 **Three warnings**
+
 - 1032	Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (currentShip, players, playerShips, computerShips, gameBoards, currentPlayer)
 - 1071	Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (players, playerShips, computerShips, gameBoards, currentPlayer, currentShip)
 - 1567	Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (currentShip, players, playerShips, computerShips, gameBoards, currentPlayer, randomShip, clearShips)
@@ -302,6 +296,7 @@ The most complex function has a cyclomatic complexity value of 25 while the medi
 The WAVE WebAIM web accessibility evaluation tool was used to ensure the website met high accessibility standards. All pages pass with 0 errors.
 
 - index.html [results](https://wave.webaim.org/report#/https://mat-shepherd.github.io/CI_PP2_BATTLESHIP_GAME/index.html)
+- feedback.html [results]()
 - 404.html results [results](https://wave.webaim.org/report#/https://mat-shepherd.github.io/CI_PP2_BATTLESHIP_GAME/404.html)
 
 ### Performance
