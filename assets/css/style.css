@@ -806,6 +806,12 @@ footer {
     width: 40%;
 }
 
+#player-gameboard>div img.explosion,
+#computer-gameboard>div img.explosion {
+    width: 100%;
+}
+
+
 #player-gameboard {
     order: 1;
 }
