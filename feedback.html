@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Battleship Game</title>
-    <meta name="description"
-        content="Battleship Game! The family favourite board game brought to life onlien with JavaScript!">
+    <title>Battleship Game Feedback!</title>
+    <meta name="description" content="Have feedback on my Battleship game? Let me know!">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
@@ -20,7 +19,7 @@
         </div>
         <div id="links">
             <ul>
-                <li><a href="#" id="new-game-link" aria-label="Start new game">NEW GAME</a></li>
+                <li><a href="#" id="new-game-link-404" aria-label="Start new game">NEW GAME</a></li>
                 <li><a href="#" id="rules-link" aria-label="How to play">HOW TO PLAY</a></li>
                 <li><a href="#" id="audio-link" aria-label="Toggle audio on or off"><i
                             class="fa-solid fa-volume-mute"></i></a></li>
@@ -127,8 +126,7 @@
                         </p>
                         <h4>AUDIO</h4>
                         <p>This game has some simple audio effects but they are disabled by default. If you want to turn
-                            audio on use the AUDIO IS OFF / IS ON button, below the start game BUTTON on the intro
-                            screen, or
+                            audio on use the AUDIO OFF / ON button, below the start game BUTTON on the intro screen, or
                             the <i class="fa-solid fa-volume-mute"></i> speaker icon in the top right of the navigation
                             menu at any point in the game.
                         </p>
@@ -196,13 +194,22 @@
                 </div>
             </div>
             <!-- Intro modal hidden once game starts -->
-            <div id="intro-modal">
+            <div id="intro-modal-404">
                 <div id="intro-modal-contents">
-                    <h2>BATTLESHIP GAME!</h2>
-                    <form id="start-game-form">
-                        <label for="player-name">PLEASE ENTER YOUR NAME <br>(MAX 10 CHARACTERS)</label>
-                        <input type="text" id="player-name" name="player-name" maxlength="10"
-                            aria-label="Please enter your name">
+                    <h2>PAGE NOT FOUND</h2>
+                    <h3>OH NO! YOU SUNK OUR BATTLESHIP!</h3>
+                    <div id="ship-404">
+                        <img src="./assets/images/ships/battleship-icon.png" alt="Battelship" id="battleship-404">
+                        <img src="./assets/images/effects/fire.gif" class="fire" alt="Animated Fire">
+                        <img src="./assets/images/effects/fire.gif" class="fire" alt="Animated Fire">
+                        <img src="./assets/images/effects/fire.gif" class="fire" alt="Animated Fire">
+                        <img src="./assets/images/effects/fire.gif" class="fire" alt="Animated Fire">
+                    </div>
+                    <div id="intro-contents-404">
+                        <p>You have found a page that doesn't exist. Our crew is scrambling to get you back on course
+                            captain!</p>
+                        <p>Please click the New Game button below to head back to the main game page and safe waters!
+                        </p>
                         <div id="error-message">
                             <noscript>
                                 <p>This game requires JavaScript to run. Your browser does not support
@@ -211,14 +218,9 @@
                                         Click here for more information on enabling JavaScript</a>.
                                 </p>
                             </noscript>
+                            <button type="submit" id="new-game-button-404" aria-label="New game">NEW GAME</button>
                         </div>
-                        <div id="intro-buttons">
-                            <button type="submit" id="start-game-button" aria-label="Start game">START GAME</button>
-                            <button type="button" id="audio-button" class="audio-off"
-                                aria-label="Toggle Audio On or Off"><i class="fa-solid fa-volume-mute"></i> AUDIO
-                                IS OFF</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             <!-- Winner modal hidden by default -->
@@ -237,22 +239,19 @@
             <div id="gameboard">
                 <div id="player-gameboard"></div>
                 <div id="computer-gameboard"></div>
-                <!-- Ship placement buttons  -->
-                <div id="placement-controls">
-                    <ul>
-                        <li><button id="place-control" class="game-button"
-                                aria-label="Confirm Ship Placement">PLACE</button></li>
-                        <li><button id="rotate-control" class="game-button" aria-label="Rotate Ship">ROTATE</button>
-                        </li>
-                        <li><button id="random-control" class="game-button"
-                                aria-label="Generate random ship locations">RANDOM</button>
-                        </li>
-                        <li><button id="reset-control" class="game-button"
-                                aria-label="Clear all ships from game board">CLEAR
-                                ALL</button></li>
-                    </ul>
-                    <h3>SHIP PLACEMENT CONTROLS</h3>
-                </div>
+            </div>
+            <!-- Ship placement buttons  -->
+            <div id="placement-controls">
+                <ul>
+                    <li><button id="place-control" class="game-button"
+                            aria-label="Confirm Ship Placement">PLACE</button></li>
+                    <li><button id="rotate-control" class="game-button" aria-label="Rotate Ship">ROTATE</button></li>
+                    <li><button id="random-control" class="game-button"
+                            aria-label="Generate random ship locations">RANDOM</button></li>
+                    <li><button id="reset-control" class="game-button"
+                            aria-label="Clear all ships from game board">CLEAR ALL</button></li>
+                </ul>
+                <h3>SHIP PLACEMENT CONTROLS</h3>
             </div>
         </section>
     </div>

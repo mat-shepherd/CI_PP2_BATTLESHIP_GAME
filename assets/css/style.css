@@ -308,7 +308,8 @@ footer {
     margin-right: 0;
 }
 
-#links a {
+#links a,
+#feedback-link {
     text-decoration: none;
     font-weight: bold;
     color: #fff;
@@ -316,7 +317,10 @@ footer {
 
 #links a:hover,
 #links a:active,
-#links a:focus {
+#links a:focus,
+#feedback-link:hover,
+#feedback-link:active,
+#feedback-link:focus {
     text-decoration: underline;
     font-weight: bolder;
 }
@@ -985,6 +989,10 @@ footer {
 
 #footer-social i {
     margin-top: 20px;
+}
+
+#feedback-link {
+    margin: 0 1rem 1rem 1rem;
 }
 
 /* ==========================================================================
