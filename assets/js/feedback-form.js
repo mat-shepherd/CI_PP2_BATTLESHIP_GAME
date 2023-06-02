@@ -33,10 +33,13 @@ function showThankYou() {
     let thankyouMessage = `
     <h2>YOUR MESSAGE HAS BEEN SENT</h2>
     <br>
-    <p>THANKS FOR YOUR FEEDBACK. I REALLY APPRECIATE IT!</p>`;
+    <p>THANKS FOR YOUR FEEDBACK. I REALLY APPRECIATE IT!</p>
+    <br>
+    <button type="button" id="new-game-button" aria-label="New game">NEW GAME</button>`;
 
     messageArea.style.backgroundColor = '#fff';
     messageArea.style.padding = '2rem';
     messageArea.innerHTML = thankyouMessage;
-
+    // Add click listener to new game button
+    document.getElementById('new-game-button').addEventListener('click', loadIndex);
 }
