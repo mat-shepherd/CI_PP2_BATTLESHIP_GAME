@@ -77,7 +77,7 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [Browser compatibility](#browser-compatibility)
     - [Testing user stories](#testing-user-stories)
       - [Players](#players-1)
-      - [Site Owner](#site-owner-1)
+      - [PlayeSite Owner](#playesite-owner)
   - [Bugs](#bugs)
   - [Deployment](#deployment)
   - [Credits](#credits)
@@ -142,19 +142,20 @@ The players of the game are the primary users of this website with site owner be
 6. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
 7. As a player, I want any controls or buttons to be colourful, apparent, and attractive.
 8. As a player, while setting up the gameboard, I want the ability to reset the gameboard to remove the game pieces (ships) and start placement over again
-9. As a player, once the gameboard is set up I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
-10. As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
-11. As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
-12. As a player, I want to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
-13. As a player, I want to be presented with notifications, visual, and audio cues indicating when all of a player's ships have been sunk and which player has won the game
-14. As a player, when a game has ended, I want to be given the option to start a new game
-15. As a player, when a game has ended, I want my high score to be retained until I end my browser session
-16. As a player, I want to be able to mute or unmute all game sounds
+9. As a player, once the game board is set up, I want to play against a computer opponent
+10. As a player, once the gameboard is set, up I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
+11. As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
+12. As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
+13. As a player, I want to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
+14. As a player, I want to be presented with notifications, visual, and audio cues indicating when all of a player's ships have been sunk and which player has won the game
+15. As a player, when a game has ended, I want to be given the option to start a new game
+16. As a player, when a game has ended, I want my high score to be retained until I end my browser session
+17. As a player, I want to be able to mute or unmute all game sounds
 
 #### Site Owner
 
-17. As the site owner, I want to receive feedback from players so I can understand if they are enjoying the game, identify any bugs, and continually improve the game.
-18. As the site owner, I want users to see a 404 page if they enter an incorrect URL so they can be navigated back to the main game page.
+18. As the site owner, I want to receive feedback from players so I can understand if they are enjoying the game, identify any bugs, and continually improve the game.
+19. As the site owner, I want users to see a 404 page if they enter an incorrect URL so they can be navigated back to the main game page.
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -303,7 +304,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 #### Navigation Bar
 
 - Display a navigation bar with links to start a new game, see details on how play, and audio toggle icon which indicates whether audio is on or off.
-- User stories covered: 1, 2, 5, 7, 8, 14, 16
+- User stories covered: 1, 2, 5, 7, 8, 15, 17
 
 #### New Game Link and Button
 
@@ -311,7 +312,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - If the player has entered their name already, the player's name, score, and high score values are passed via parameter to index.html to be preserved in the new game. 
 - If a player name has already been entered, the player skips the start game form and is prompted to place their ships.
 - If no player name has been entered, the start game form is presented so the user can enter their name and start a new game.
-- User stories covered: 1, 3, 7, 8, 14, 15 16
+- User stories covered: 1, 3, 7, 8, 15, 16 17
 
 #### How To Play Modal
 
@@ -323,7 +324,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - All game sounds are muted by default
 - An audio toggle icon is present in the navigation bar that allows game sounds to be completely unmuted or muted. When clicked the icon marker changes to indicate if game sounds are currently mure or unmuted.
 - An audio toggle button is presented in the start game form to allow the player to unmute or mute game sounds. When toggled the button changes colour and tells the player that audio is off or audio is on.
-- User stories covered: 1, 7, 16
+- User stories covered: 1, 7, 17
 
 #### Start Game Form
 
@@ -334,12 +335,12 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 #### Gameboard
 
-- The gameboard, which is the main gameplay area in the center of the screen, where players place their ships and take shots.
-- User stories covered: 6, 8, 9, 10, 11, 12, 13
+- The gameboard, which is the main gameplay area in the center of the screen, where players place their ships by clicking on their grid and using placememnt controls, and take shots by clicking on the computer grid, and receive notifications via the player message area as visual well as visual and audio cues.
+- User stories covered: 6, 7, 8, 9, 10, 11, 12, 13
 
 #### Ship Placement Controls Area
 
-- Provides buttons to allow players to place, rotate, randomly palce, or clear their ships on their gameboard grid.
+- Provides buttons to allow players to place, rotate, randomly place, or clear their ships on their gameboard grid.
 - This area is hiddeen once turn based gameplay begins
 - User stories covered: 6, 8
 
@@ -551,190 +552,195 @@ The website was tested on the following browsers:
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Services Section Services Cards| Click Services and/or Scroll to the Services Section | Locate three services and click a Request Pricing button | Works as expected |
-| Contact Section Contact Form | Click Request pricing on Sevice Card, CTA buttons on the page, or scroll to the contact section at bottom of the page | Locate the contact form and send a message to ask about services provided | Works as expected |
+| Start game screen | Player navigates around links and controls on screen  | Player finds game instructions and understand how to start a game by entering their name | Works as expected |
+| Gameplay screen| Player enters thier name and enters gamplay screen and navigates the gameboard grids and controls | Player understands how to continue gameplay | Works as expected |
 
-<details><summary>Find Services Section and Contact</summary>
-<img src="docs/user-story-testing/user-story-test-1-2-12.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
 2. As a player, I want to see a list of game rules and instructions so I can understand how to play the game
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Services Section Services Cards | Click Services and/or Scroll to the Services Section | Locate three services and click a Request Pricing button | Works as expected |
-| Contact Section Contact Form | Click Request pricing on Sevice Card, CTA buttons on the page, or scroll to the contact section at bottom of the page | Locate the contact form and send a message to ask about services provided | Works as expected |
+| Navigation Bar How to Play Link  | Click How To Play link in the navigation bar  | Works as expected |
+| How To Play Modal | Click How To Play link in the navigation bar             | How to play modal is displayed and user can scroll through rules and instructions on how to play the game | Works as expected |
+| Navigation Bar How to Play Link  | Click How To Play link in the navigation bar  | Works as expected |
 
-<details><summary>Find Service Descriptions and Contact</summary>
-<img src="docs/user-story-testing/user-story-test-1-2-12.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
 3. As a player, I want to enter my name so I can understand which player represents me on the gameboard and to keep track of my current score and high score
-
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Client Logos Section | Visible on page load even on most small screens otherwise can scroll to view | Client logos listed on page load | Works as expected |
-| Client Testimonials Section| Click Testimonials and/or Scroll to the Client Testimonials section| Scroll to the Client Testimonials section to see one client testimonial | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Find Details of Consultant's Customers</summary>
-<img src="docs/user-story-testing/user-story-test-3-13.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
-4. As a player, I want my name to be validated and to be provided with feedback on any errors with name entry to ensure I can understand which player I am in the game.
-
+4. As a player, I want my name to be validated and to be provided with feedback on any errors with name entry to ensure I can understand which player I am in the game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Hero Section | Read the hero section details to understand what the consultant provides | Read the hero section and click Ask Me How | Works as expected |
-| Client Logos | Review client logos to understand the kinds of clients the consultant works with | Review client logos | Works as expected |
-| About Matthew Section | Click About in the navigation menu or scroll to the About section | Scroll to the About Matthew section and read the details | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Find Details of the Consultant's Work Experience and Expertise</summary>
-<img src="docs/user-story-testing/user-story-test-4.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
 5. As a player, I want to start a new game and receive directions on how to setup the gameboard
-
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Contact Form | Click Contact or Get a Quote in the navigation menu, Ask Me How in Hero Section, or Requesting Pricing in the Service section | Scroll to the contact form and submit a message | Works as expected |
-| Contact Section | Click Contact to scroll to the contact form. If further contact information is required, click the link beneath the form submit button to scroll to the contact information in the footer | Scroll to the contact form and submit a message or use the email link in the footer | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Submit Message Through Contact Form</summary>
-<img src="docs/user-story-testing/user-story-test-5-9-14.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
 6. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
-
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Google Map Contact Section | Click Contact to scroll to the Contact section or scroll down the page | Scroll to the Contact section and view the address and location on Google Map | Works as expected |
-| Contact Section | Click Contact to scroll to the contact form. If further contact information is required, click the link beneath the form submit button to scroll to the contact information in the footer | Scroll to contact form and submit a message or use the email link or phone number in the footer | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Find Consultant's Contact Details and Location</summary>
-<img src="docs/user-story-testing/user-story-test-6.gif">
+<details><summary></summary>
+<img src="">
+</details><br>
+
+7. As a player, I want any controls or buttons to be colourful, apparent, and attractive
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
+
+<details><summary></summary>
+<img src="">
 </details><br>
 
 8. As a player, while setting up the gameboard, I want the ability to reset the gameboard to remove the game pieces (ships) and start placement over again
-
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Contact Form | Click Contact or Get a Quote in the navigation menu, Ask Me How in Hero Section, or Requesting Pricing in the Service section | Scroll to the contact form and submit a message | Works as expected |
-| Thank You Page | Submit a contact form, thank you page loads | Read the Thank You page to see confirmation of details submitted | Works as expected |
-| Thank You Page Navigation Links | Submit a contact form, thank you page loads, and then find a way to navigate back to the home page | Read the Thank You page to see confirmation of details submitted and then click on the Return Home link or any other internal link on the page to return to the index page | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Thank You Page</summary>
-<img src="docs/user-story-testing/user-story-test-7-10.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
-1. As a player, once the gameboard is set up I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
-
+9.  As a player, once the game board is set up, I want to play against a computer opponent
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Footer Contact Information Section | Click Contact to scroll to the Contact section. If within view, scroll to the social links in the footer (which is a typical location to find them), if not click the link beneath the form submit button to scroll to contact information in the footer | Scroll to contact information in the footer and locate the social media links and navigate to a social profile | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Find Consultant's Social Media Details</summary>
-<img src="docs/user-story-testing/user-story-test-8-11.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
-1.  As a player, I want to to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
-
+10. As a player, once the gameboard is set, up I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Contact Form | Click Contact or Get a Quote in the navigation menu, Ask Me How in Hero Section, or Request Pricing in the Service section. | Scroll to the contact form and submit a message | Works as expected |
-| Contact Section | Click Contact to scroll to the contact form. If further contact information is required, click the link beneath the form submit button to scroll to the contact information in the footer | Scroll to the contact form and submit a message or use the email link in the footer | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Submit Message Through Contact Form</summary>
-<img src="docs/user-story-testing/user-story-test-5-9-14.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
-1.  As a player, once a turn has been taken, I want to to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
-
+11. As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Contact Form | Click Contact or Get a Quote in the navigation menu, Ask Me How in Hero Section, or Requesting Pricing in the Service section | Scroll to the contact form and submit a message | Works as expected |
-| Thank You Page | Submit a contact form, thank you page loads | Read the Thank You page to see confirmation of details submitted | Works as expected |
-| Thank You Page Navigation Links | Submit a contact form, thank you page loads, and then find a way to navigate back to the home page | Read the Thank You page to see confirmation of details submitted and then click on the Return Home link or any other internal link on the page to return to the index page | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Thank You Page</summary>
-<img src="docs/user-story-testing/user-story-test-7-10.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
-1.  As a player, I want to to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
-
+12. As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Footer Contact Information Section | Click Contact to scroll to the Contact section. If within view, scroll to the social links in the footer (which is a typical location to find them), if not click the link beneath the form submit button to scroll to the contact information in the footer | Scroll to the contact information in the footer and locate the social media links and navigate to a social profile | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Find Consultant's Social Media Details</summary>
-<img src="docs/user-story-testing/user-story-test-8-11.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
-1.  As a player, I want to to be presented with notifications, visual, and audio cues indicating when all of a player's ships have been sunk and which player has won the game
-
+13.  As a player, I want to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Services Section Services Cards | Click Services and/or Scroll to the Services Section | Locate three services and click the Request Pricing button | Works as expected |
-| Contact Section Contact Form | Click Request pricing on Sevice Card, CTA buttons on the page, or scroll to the Contact section at the bottom of the page | Locate the contact form and send a message to ask about services provided | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Find Service Descriptions and Contact</summary>
-<img src="docs/user-story-testing/user-story-test-1-2-12.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
-14. As a player, when a game has ended, I want to be given the option to start a new game
-
+14.  As a player, I want to be presented with notifications, visual, and audio cues indicating when all of a player's ships have been sunk and which player has won the game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Client Logos Section | Visible on page load even on most small screens, otherwise the user will scroll down the page to view | Client logos listed on page load | Works as expected |
-| Client Testimonials Section| Click Testimonials and/or scroll to the Client Testimonials Section| Scroll to the Client Testimonials section to see one client testimonial | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Find Details of Consultant's Customers</summary>
-<img src="docs/user-story-testing/user-story-test-3-13.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
-15. As a player, when a game has ended, I want my high score to be retained until I end my browser session
-
+15. As a player, when a game has ended, I want to be given the option to start a new game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Contact Form | Click Contact or Get a Quote in the navigation menu, Ask Me How in the Hero Section, or Requesting Pricing in the Service section. | Scroll to the contact form and submit a message | Works as expected |
-| Contact Section | Click Contact to scroll to the contact form. If further contact information is required, click the link beneath the form submit button to scroll to the contact information in the footer | Scroll to the contact form and submit a message or use the email link in the footer | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Submit Message Through Contact Form</summary>
-<img src="docs/user-story-testing/user-story-test-5-9-14.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
-16. As a player, I want to be able to mute or unmute all game sounds
-
+16. As a player, when a game has ended, I want my high score to be retained until I end my browser session
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Contact Form | Click Contact or Get a Quote in the navigation menu, Ask Me How in the Hero Section, or Requesting Pricing in the Service section. | Scroll to the contact form and submit a message | Works as expected |
-| Contact Section | Click Contact to scroll to the contact form. If further contact information is required, click the link beneath the form submit button to scroll to the contact information in the footer | Scroll to the contact form and submit a message or use the email link in the footer | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>Submit Message Through Contact Form</summary>
-<img src="docs/user-story-testing/user-story-test-5-9-14.gif">
+<details><summary></summary>
+<img src="">
 </details><br>
 
-#### Site Owner
-
-17. As the site owner, I want to receive feedback from players so I can understand if they are enjoying the game, identify any bugs, and continually improve the game.
-
+17. As a player, I want to be able to mute or unmute all game sounds
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| 404 Page | Navigate to a URL that doesn't exist within the sites file structure | Serve a 404 page telling the user the page doesn't exist and present options to navigate back to the index page | Works as expected |
-| 404 Page Navigation Links | Navigate to a URL that doesn't exist within the sites file structure and find a way to navigate back to the home page | Read the 404 page and click on the Return Home link or any other internal link on the page to return to the index page | Works as expected |
-
-<details><summary>Feedback Page</summary>
-<img src="docs/user-story-testing/user-story-test-15.gif">
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
+<details><summary></summary>
+<img src="">
 </details><br>
 
-18. As the site owner, I want users to see a 404 page if they enter an incorrect URL so they can be navigated back to the main game page.
 
+#### PlayeSite Owner
+
+18. As the site owner, I want to receive feedback from players so I can understand if they are enjoying the game, identify any bugs, and continually improve the game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| 404 Page | Navigate to a URL that doesn't exist within the sites file structure | Serve a 404 page telling the user the page doesn't exist and present options to navigate back to the index page | Works as expected |
-| 404 Page Navigation Links | Navigate to a URL that doesn't exist within the sites file structure and find a way to navigate back to the home page | Read the 404 page and click on the Return Home link or any other internal link on the page to return to the index page | Works as expected |
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
 
-<details><summary>404 Page</summary>
-<img src="docs/user-story-testing/user-story-test-15.gif">
+<details><summary></summary>
+<img src="">
+</details><br>
+
+19. As the site owner, I want users to see a 404 page if they enter an incorrect URL so they can be navigated back to the main game page
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|   |   |   | Works as expected |
+|   |   |   | Works as expected |
+
+<details><summary></summary>
+<img src="">
 </details><br>
 
 [Back to Table of Contents](#table-of-contents)
@@ -743,12 +749,10 @@ The website was tested on the following browsers:
 
 | **Bug** | **Fix** |
 | ----------- | ----------- |
-| The mobile hamburger menu icon had a small tap target and was difficult to select to open the menu. | The height of the menu button div was set to 100% which was leading to a height of 0px. Setting this to a fixed height of 30px corrected the issue. |
-| The original code for the Mobile hamburger menu included a div inside of a label element, which was failing accessibility testing. | I changed the div to a span which passed accessibility tests with no impact on menu functionality. |
-| Service containers were different heights which were determined by the amount of content they contained and the width of their parent elements as they flexed across different viewport sizes. | This was corrected by setting the align-self property to stretch for the service-containers class. Credit to the [Same Columns Height](https://flexbox.ninja/demos/same-height-columns/) article by [Geoffrey Crofte at Flexbox Ninja](https://flexbox.ninja/about/) and the [CSS equal height columns](https://daily-dev-tips.com/posts/css-equal-height-columns/) article by [Chris Bongers at Daily Dev Tips](https://daily-dev-tips.com/about/). |
-| The mobile hamburger menu which is driven by pure HTML and CSS uses a checkbox and label element. The label element was empty which was producing an "A form label is present, but does not contain any content" error in the WAVE accessibility test. | This was corrected by adding text inside of a span element within the label element and then using a visually-hidden class and CSS to hide the text from rendering in the browser. Credit to [this Stack Overflow answer](https://stackoverflow.com/a/71369523/21643967) by [GrahamTheDev](https://stackoverflow.com/users/2702894/grahamthedev). |
-| The parallax sections caused an accessibility warning as they didn't contain a heading tag. | The parallax sections were switch to div instead of section elements. |
-| Google Lighthouse flags that several images are not using explicit width and height values which is causing Cumulative Layout Shift which is leading to a slightly reduced performance score. | As I chose to use img srcset to serve different image sizes across various screen size breakpoints along with image lazy loading to improve performance and user experience it wasn't practical to set explicit img widths and heights. A performance score of 98 is a good result and will provide mobile users with a great user experience even on slow mobile connections. Potential workarounds to consider for the future are in [this article](https://dev.to/grahamthedev/quick-tips-how-to-fix-image-elements-do-not-have-explicit-width-and-height-in-page-speed-insights-lighthouse-3776) by [GrahamTheDev](https://stackoverflow.com/users/2702894/grahamthedev) and [this article](https://jakearchibald.com/2022/img-aspect-ratio/) by Jake Archibald(<https://jakearchibald.com/>). |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -759,7 +763,7 @@ The website was deployed using GitHub Pages by following these steps:
 1. In the GitHub repository navigate to the Settings tab
 2. On the left-hand menu select Pages
 3. For the source select Branch: master
-4. After the webpage refreshes automatically you will see a ribbon on the top saying: Your site is live at <https://mat-shepherd.github.io/ci-pp1-nurture-seo/>
+4. After the webpage refreshes automatically you will see a ribbon on the top saying: Your site is live at <https://mat-shepherd.github.io/CI_PP2_BATTLESHIP_GAME/>
 
 You can for fork the repository by following these steps:
 
