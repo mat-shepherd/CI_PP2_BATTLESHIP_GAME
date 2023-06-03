@@ -83,6 +83,7 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [Media](#media)
     - [Wireframes](#wireframes-1)
     - [Index Page, Feedback Page \& 404 Page](#index-page-feedback-page--404-page)
+    - [Inspiration](#inspiration)
     - [Images](#images)
     - [Sounds](#sounds)
     - [Code](#code)
@@ -856,6 +857,11 @@ In order of appearance:
 
 ### Index Page, Feedback Page & 404 Page
 
+### Inspiration
+No code or assets were copied from the following sites:
+- I referenced [Battleship Game online](https://www.battleshiponline.org/) door inspiration on the look and feel of a Battleship game.
+- I referenced [Head First JavaScript Programming (2014)](https://apprize.best/javascript/head/9.html) for general inspiration and concepts on how to tackle a Battleship game with JavaScript
+  
 ### Images
 - Battleship Start Game Background Image - [Generated with DALL·E 2 byOpenAI](https://openai.com/dall-e-2)
 - Battleship Game Piece Ship Icons - [Sea Warfare Set: Ships and More](https://opengameart.org/content/sea-warfare-set-ships-and-more) by ([Lowder2](https://opengameart.org/users/lowder2))
