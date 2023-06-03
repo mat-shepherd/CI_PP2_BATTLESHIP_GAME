@@ -839,10 +839,20 @@ In order of appearance:
 
 #### Battleship-game.js
 - The loop to add event listeners to buttons adapted from the [Code Institute's Love Maths Projects](https://github.com/Code-Institute-Org/love-maths)
-- The method to disable click events on gameboard grids was learned from [this Codingdeft article](https://www.codingdeft.com/posts/disable-click-on-div-javascript-css/) by [GrahamTheDev](https://stackoverflow.com/users/2702894/grahamthedev)
-- The accessibility bug where the label element used in the mobile menu required text was overcome using the code from [this Stack Overflow answer](https://stackoverflow.com/a/71369523/21643967) by Abhishek EH
+- The method to disable click events on gameboard grids was learned from [this Codingdeft article](https://www.codingdeft.com/posts/disable-click-on-div-javascript-css/) by [by Abhishek EH](https://twitter.com/abhieh9)
 
-- The JavaScript function to output URL parameters from the above script was generated using [ChatGPT by OpenAI](https://openai.com/) and then adapted.
+- The placeShip function that populates all of a ship's coordinates by increasing row letter and column number based on the size of the ship was largely based on code adapted from answers provided by [ChatGPT by OpenAI](https://openai.com/).
+- The audioToggle function to mute and unmute all audio elements on a page and have each audio element check mute status when created was largely based on code adapted from answers provided by [ChatGPT by OpenAI](https://openai.com/).
+- The code in the rotateShip function that transforms a ships coordinates was pieced together and adapted from code provided by [ChatGPT by OpenAI](https://openai.com/).
+- The method to rotate images was learned from [this 'How to Rotate an Image with JavaScript' article](https://codingbeauty.medium.com/javascript-rotate-image-ad2f05eafeb2) by[Coding Beauty](https://codingbeauty.medium.com/?source=post_page-----ad2f05eafeb2--------------------------------)
+- The method to clone elements to remove events listeners was learned from [ChatGPT by OpenAI](https://openai.com/).
+- The code in the confirmPlaceship function to get next ship in the playerShips object was largely copied from an answer by [ChatGPT by OpenAI](https://openai.com/).
+- The code in sinkShip and the delay function that adds delay between the ship sunk message and the next player message from CheckTurn was copied from an answer Snippet provided by [ChatGPT by OpenAI](https://openai.com/).
+- The method to store event handlers for later reference and a fix for an issue relating to "Functions declared within loops referencing an outer scoped variable may lead to confusing semantics" were adapted from answers by [ChatGPT by OpenAI](https://openai.com/).
+- The code in the playerMessage function to make Player Message text flash on error was adapted from answers provided by [ChatGPT](https://chat.openai.com/) by [OpenAI](https://openai.com).
+- The lazyLoadBackground function created to solve page load speed issues was adapted but alrgely copied from answers provided by [ChatGPT](https://chat.openai.com/) by [OpenAI](https://openai.com).
+- The checkURL and NewGame JavaScript functions that store and retrieve URL parameters to pass player name and scores to a new game was adapted from [this 'How to Get URL Parameters with JavaScript' Sitepoint article ](https://www.sitepoint.com/get-url-parameters-with-javascript/) by [Yaphi Berhanu](https://www.sitepoint.com/author/yberhanu/) and James [Hibbard](https://www.sitepoint.com/author/jhibbard/)
+- was generated using [ChatGPT by OpenAI](https://openai.com/) and then adapted.
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -852,9 +862,9 @@ I would like to thank the following people for their contributions to creating t
 
 - My mentor Mo Shami for your support, guidance, and encouragement
 - Alan Bushell and the February 2023 Student Cohort for their knowledge sharing, advice, and camaraderie during our weekly standup calls and in Slack
-- Benjamin Riordan and for reviewing my project and providing great constructive feedback
-- The Code Institute team for an excellent experience and great support leading up to this first project
-- My wife for her patience and support while I sit in front of the computer for hours on end
-- My boys William and Oliver for helping me test the site and spot bugs!
+- Benjamin Riordan, Deborah Galasso, and Daisy Mc Girr for reviewing my project and providing great constructive feedback
+- The Code Institute and their tutor support team for an excellent experience and great support leading up to this second project
+- My wife for her exceptional patience and support while I sat in front of the computer for days on end and for listenin to my constant updates on ramblings about this second project
+- My boys William and Oliver for helping me test the game, providing feedback and ideas, and for spotting bugs!
 
 [Back to Table of Contents](#table-of-contents)
