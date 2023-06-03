@@ -320,7 +320,10 @@ The website consists of three pages in total, an index page, a feedback page, an
 - Display a navigation bar with links to start a new game, see details on how to play, and audio toggle icon which indicates whether audio is on or off.
 - User stories covered: 1, 2, 5, 7, 8, 15, 17
   
-![See feature](docs/features/features-navigation-bar.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-navigation-bar.PNG">
+</details>
+
 
 #### New Game Link and Button
 
@@ -330,15 +333,19 @@ The website consists of three pages in total, an index page, a feedback page, an
 - If no player name has been entered, the start game form is presented so the user can enter their name and start a new game.
 - User stories covered: 1, 3, 7, 8, 15, 16 17
 
-![See feature 1](docs/features/features-new-game-button.PNG)
-![See feature 2](docs/features/features-new-game-link.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-new-game-button.PNG">
+<img src="docs/features/features-new-game-link.PNG">
+</details>
 
 #### How To Play Modal
 
 - When clicked, the How to Play link in the navigation bar displays a modal that provides game rules, instructions on how to play, and details of available controls.
 - User stories covered: 1, 2, 5
 
-![See feature](/workspaces/CI_PP2_BATTLESHIP_GAME/docs/features/features-how-to-play-modal.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-how-to-play-modal.PNG">
+</details>
 
 #### Audio Toggle to Mute and Unmute Sounds
 
@@ -347,8 +354,10 @@ The website consists of three pages in total, an index page, a feedback page, an
 - An audio toggle button is presented in the start game form to allow the player to unmute or mute game sounds. When toggled the button changes colour and tells the player that audio is off or audio is on.
 - User stories covered: 1, 7, 17
 
-![See feature 1](docs/features/features-audio-button.PNG)
-![See feature 2](docs/features/features-audio-link.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-audio-button.PNG">
+<img src="docs/features/features-audio-link.PNG">
+</details>
 
 #### Start Game Form
 
@@ -358,14 +367,18 @@ The website consists of three pages in total, an index page, a feedback page, an
 - The form also contain a button to toggle audio on or off. Audio is muted by default.
 - User stories covered: 1, 3, 5, 10, 11, 12, 13, 14, 15, 16, 17
 
-![See feature](docs/features/features-start-game-form.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-start-game-form.PNG">
+</details>
 
 #### Gameboard
 
 - The gameboard, which is the main gameplay area in the center of the screen, where players place their ships by clicking on their grid and by using placememnt controls, and take shots by clicking on the computer grid, and receive notifications via the player message area, as visual well as visual and audio cues, and eventually then lose game modal.
 - User stories covered: 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 
-![See feature](docs/features/features-game-board.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-game-board.PNG">
+</details>
 
 #### Ship Placement Controls Area
 
@@ -373,36 +386,47 @@ The website consists of three pages in total, an index page, a feedback page, an
 - This area is hiddeen once turn based gameplay begins
 - User stories covered: 1, 5, 6, 7, 8
 
-![See feature](/workspaces/CI_PP2_BATTLESHIP_GAME/docs/features/features-placement-controls.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-placement-controls.PNG">
+</details>
 
 #### Place Ships Button
 
 - Receive validation and feedback during ship placement to ensure it is within the limits of the gameboard grid.
 - User stories covered: 1, 6, 7, 8
 
-![See feature](docs/features/features-placement-button.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-placement-button.PNG">
+</details>
   
 #### Rotate Ships Button
 
 - Rotate ships to change their orientation on the gameboard grid.
 - User stories covered: 1, 6, 7
 
-![See feature](docs/features/features-rotate-button.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-rotate-button.PNG">
+</details>
+  
 
 #### Random Ship Placement Button
 
 - Randomly places player ships on the player's gameboard grid and starts turn based gameplay.
 - Game buttons have a pulse animation to highlight when the user needs to use these controls.
 - User stories covered: 1, 6, 7
-  
-![See feature](docs/features/features-random-button.PNG)
+
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-random-button.PNG">
+</details>
 
 #### Clear All Ships Button
 
 - Clears all of the player's manual ship placements during the ship placement stage of the game.
 - User stories covered: 1, 7, 8
 
-![See feature](docs/features/features-clear-button.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-clear-button.PNG">
+</details>
 
 #### Ship Placement Feedback
 - During this ship placement phase of the game, the player is provided with visual cues and feedback on which grid cells they can place ships on.
@@ -414,16 +438,20 @@ The website consists of three pages in total, an index page, a feedback page, an
 - If a player tries to place a ship by pressing the place button while the ship overlaps an existing ship or extends outside the bounds of their grid a red background is shown in the relevant cell and a ship placement error in red text is shown in the player message area.
 - User stories covered: 1, 2, 5, 5, 7, 8
 
-![See feature 1](docs/features/features-ship-placement-feedback.PNG)
-![See feature 2](docs/features/features-ship-placement-feedback-2.PNG)
-![See feature 3](docs/features/features-ship-placement-feedback-3.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-ship-placement-feedback.PNG">
+<img src="docs/features/features-ship-placement-feedback-2.PNG">
+<img src="docs/features/features-ship-placement-feedback-3.PNG">
+</details>
 
 #### Player Message Area
 
 - Receive messages and notifications to provide important information during the game. Including notifications of how to play the game, how to place ships, which players turn it is, what action needs to be taken next to continue gameplay, the coordinates a shot was taken at, and whether a shot results in a ship being hit, missed, or sunk.
 - User stories covered: 1, 2, 3, 5, 10, 11, 12, 13, 14
 
-![See feature](docs/features/features-player-message-area.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-player-message-area.PNG">
+</details>
 
 #### Sidebar Scoreboard
 
@@ -431,7 +459,9 @@ The website consists of three pages in total, an index page, a feedback page, an
 - When the user starts a new game their name, score and high score is preserved in the sidebar
 - User stories covered: 1, 3, 9, 1, 12, 13, 14, 15, 16
 
-![See feature](docs/features/features-sidebar-scoreboard.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-sidebar-scoreboard.PNG">
+</details>
 
 #### Computer Opponent
 
@@ -440,7 +470,9 @@ The website consists of three pages in total, an index page, a feedback page, an
 - The computer takes random shots on the player's gameboard grid.
 - User stories covered: 1, 9
 
-![See feature](docs/features/features-computer-opponent.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-computer-opponent.PNG">
+</details>
 
 #### Player / Computer Shot Feedback
 - During the turn-based shot gameplay, the player is provided with visual cues and feedback on which grid cells they can take a shot on.
@@ -450,8 +482,10 @@ The website consists of three pages in total, an index page, a feedback page, an
 - Once a player has shot on a cell a stop symbol / no placement icon is shown when hovering over cells which have already been shot on and are no longer available for shooting on.
 - User stories covered: 1, 2, 5, 5, 7, 10, 11, 12, 13, 14
 
-![See feature 1](docs/features/features-shot-feedback.png)
-![See feature 2](docs/features/features-shot-feedback-2.png)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-shot-feedback.png">
+<img src="docs/features/features-shot-feedback-2.png">
+</details>
 
 #### Ship Hit, Miss and Sunk Feedback
 
@@ -462,8 +496,10 @@ The website consists of three pages in total, an index page, a feedback page, an
 - If a computer's hip is sunk the ship which was previously not visibile is made visible.
 - User stories covered: 1, 10, 11, 12, 13, 14
 
-![See feature 1](docs/features/features-hit-miss-sunk-feedback.PNG)
-![See feature 2](docs/features/features-hit-miss-sunk-feedback-2.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-hit-miss-sunk-feedback.PNG">
+<img src="docs/features/features-hit-miss-sunk-feedback-2.PNG">
+</details>
 
 #### Win and Loss Notification
 
@@ -472,22 +508,29 @@ The website consists of three pages in total, an index page, a feedback page, an
 - A New Game button is presented to allow the player to start a new game while maintining their name and score values.
 - User stories covered: 1, 13, 14, 15, 16
 
-![See feature 1](docs/features/features-win-loss-notification.PNG)
-![See feature 2](docs/features/features-win-loss-notification-2.png)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-win-loss-notification.PNG">
+<img src="docs/features/features-win-loss-notification-2.png">
+</details>
 
 #### Alternating Player Gameboard grids on Small Screens
 
 - On small screens and mobile devices, the active gameboard grid is moved to the top of the gameboard column to allow the player to see and interact with the active gaeeboard grid without having to scroll.
 - User stories covered: 1, 10, 12
 
-![See feature](docs/features/features-alternating-grids.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-alternating-grids.PNG">
+</details>
 
 ### Footer
 
 - Contains a link to the Feedback page and and the developer's GitHub page
 - User stories covered: 18
 
-![See feature](docs/features/features-footer.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-footer.PNG">
+</details>
+
 
 #### Feedback Form
 
@@ -495,15 +538,19 @@ The website consists of three pages in total, an index page, a feedback page, an
 - The feedback form connects to the EmailJS service to validate the form fields and email the form data to the developer
 - A thank you message is shown on the same page when the form has been submitted a New Game button is presented to the player so they can navigate back to the game.
 - User stories covered: 18
-
-![See feature](docs/features/features-feedback-form.PNG)
+- 
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-feedback-form.PNG">
+</details>
 
 #### 404 Page
 
 - Display a customized 404 page with a link to start a new game.
 - User stories covered: 19
 
-![See feature](docs/features/features-404-page.PNG)
+<details><summary>Screenshots</summary>
+<img src="docs/features/features-404-page.PNG">
+</details>
 
 
 ### Features Left to Implement
