@@ -50,13 +50,15 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
       - [Rotate Ships Button](#rotate-ships-button)
       - [Random Ship Placement Button](#random-ship-placement-button)
       - [Clear All Ships Button](#clear-all-ships-button)
+      - [Ship Placement Feedback](#ship-placement-feedback)
       - [Player Message Area](#player-message-area)
       - [Sidebar Scoreboard](#sidebar-scoreboard)
-      - [Ship Hit, Miss and Sunk Feedback](#ship-hit-miss-and-sunk-feedback)
       - [Computer Opponent](#computer-opponent)
+      - [Player / Computer Shot Feedback](#player--computer-shot-feedback)
+      - [Ship Hit, Miss and Sunk Feedback](#ship-hit-miss-and-sunk-feedback)
       - [Win and Loss Notification](#win-and-loss-notification)
-    - [Footer](#footer)
     - [Alternating Player Gameboard grids on Small Screens](#alternating-player-gameboard-grids-on-small-screens)
+    - [Footer](#footer)
       - [Feedback Form](#feedback-form)
       - [404 Page](#404-page-1)
       - [Desktop \& Larger Screens](#desktop--larger-screens)
@@ -328,52 +330,79 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 #### Start Game Form
 
-- When the index page loads, a form is presented the player so they can enter theirs name and start a new game.
+- When the index page loads, a form is presented the player so they can enter their name and start a new game.
 - The name entered is validated as it can only be up to charcters long and a name must be entered before the form can be submitted
-- The player name provided is used in the score sidebar and and above the player's gameboard grid to let them know which scores and gameboard grid belongs to them.
-- User stories covered: 3, 5
+- The player name provided is used in the score sidebar, above the player's gameboard grid, in player messages, and in the win lose game modal, to let them know which scores and gameboard grid belongs to them, and which messages relate to their turn.
+- The form also contain a button to toggle audio on or off. Audio is muted by default.
+- User stories covered: 1, 3, 5, 10, 11, 12, 13, 14, 15, 16, 17
 
 #### Gameboard
 
-- The gameboard, which is the main gameplay area in the center of the screen, where players place their ships by clicking on their grid and using placememnt controls, and take shots by clicking on the computer grid, and receive notifications via the player message area as visual well as visual and audio cues.
-- User stories covered: 6, 7, 8, 9, 10, 11, 12, 13
+- The gameboard, which is the main gameplay area in the center of the screen, where players place their ships by clicking on their grid and by using placememnt controls, and take shots by clicking on the computer grid, and receive notifications via the player message area, as visual well as visual and audio cues, and eventually then lose game modal.
+- User stories covered: 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 
 #### Ship Placement Controls Area
 
 - Provides buttons to allow players to place, rotate, randomly place, or clear their ships on their gameboard grid.
 - This area is hiddeen once turn based gameplay begins
-- User stories covered: 6, 8
+- User stories covered: 1, 5, 6, 7, 8
 
 #### Place Ships Button
 
 - Receive validation and feedback during ship placement to ensure it is within the limits of the gameboard grid.
-- User stories covered: 6, 8
+- User stories covered: 1, 6, 7, 8
   
 #### Rotate Ships Button
 
 - Rotate ships to change their orientation on the gameboard grid.
-- User stories covered: 6
+- User stories covered: 1, 6, 7
 
 #### Random Ship Placement Button
 
 - Randomly places player ships on the player's gameboard grid and starts turn based gameplay.
 - Game buttons have a pulse animation to highlight when the user needs to use these controls.
-- User stories covered: 6
+- User stories covered: 1, 6, 7
 
 #### Clear All Ships Button
 
 - Clears all of the player's manual ship placements during the ship placement stage of the game.
-- User stories covered: 8
+- User stories covered: 1, 7, 8
+
+#### Ship Placement Feedback
+- During this ship placement phase of the game, the player is provided with visual cues and feedback on which grid cells they can place ships on.
+- Once a player clicks on their grid to place the ship the placement control buttons display a pulse effect to let the user know clicking one of these buttons is the next required action.
+- Player messages are updated to let the player know which placement options are availalbe and how to proceed.
+- A 4 headed arrow placement icon and white cell background colour is shown on hover over the player's available grid spaces, but not shown out of grid bounds.
+- A stop symbol / no placement icon is shown over the computer's grid where the player can not place ships.
+- Once a ship is placed the player is shown a stop symbol / no placement icon in the cells the ship occupies to tell them they can't place a ship.
+- If a player tries to place a ship by pressing the place button while the ship overlaps an existing ship or extends outside the bounds of their grid a a red bakkground is shown in the relevant cell and a red ehip placement error is shown in the player message area.
+- User stories covered: 1, 2, 5, 5, 7, 8
 
 #### Player Message Area
 
-- Receive messages and notifications to provide important information during the game.
-- User stories covered: 9, 10, 11, 12, 13
+- Receive messages and notifications to provide important information during the game. Including notifications of how to play the game, how to place ships, which players turn it is, what action needs to be taken next to continue gameplay, the coordinates a shot was taken at, and whether a shot results in a ship being hit, missed, or sunk.
+- User stories covered: 1, 2, 3, 5, 10, 11, 12, 13, 14
 
 #### Sidebar Scoreboard
 
-- Show a scoreboard in the sidebar that keeps track of player scores and high scores.
-- User stories covered: 3, 15
+- Show a scoreboard in the sidebar that keeps track of the player's high score, and each player's score, hits, misses, and ships remaining.
+- When the user starts a new ame their name, score and high score is preserved in the sidebar
+- User stories covered: 1, 3, 9, 1, 12, 13, 14, 15, 16
+
+#### Computer Opponent
+
+- The player plays against a computer opponent that randomly place's hidden ships on the computer's gameboard grid for the player to take shots on.
+- Computer ships become visibile to the player once sunk.
+- The computer takes random shots on the player's gameboard grid.
+- User stories covered: 1, 9
+
+#### Player / Computer Shot Feedback
+- During the turn-based shot gameplay, the player is provided with visual cues and feedback on which grid cells they can take a shot on.
+- Player messages are updated to let the player know which player is taking a shot and how to proceed.
+- A red target / crosshair shooting icon and white cell background colour is shown on hover over the computer's grid spaces that are available to take a shot on. The icon is not shown out of grid bounds.
+- If a player hits or misses a ship icons are added to the relevant cells to let the player know the result of the shot.
+- Once a player has shot on a cell a stop symbol / no placement icon is shown when hovering over cells which have already been shot on and are no longer available for shooting on.
+- User stories covered: 1, 2, 5, 5, 7, 10, 11, 12, 13, 14
 
 #### Ship Hit, Miss and Sunk Feedback
 
@@ -381,43 +410,37 @@ The website consists of three pages in total, an index page, a feedback page, an
 - A ship hit results in an explosion animation at the hit location on the gameboard grid, followed by a fire marker at the location, an explosion sound, a notification of the hit location in the player message area, and an update to the relevant player's hit score in the sidebar.
 - A ship miss results in an splash animation at the hit location on the gameboard grid, followed by a splash marker at the location, a splash sound, a notification of the miss location in the player message area, and an update to the relevant player's miss score in the sidebar.
 - A ship being hit across all of its grid locations means the ship is sunk. Sinking a ship results in a explosion and sinking sound, a notification of the ship that was sunk in the player message area, an update to the relevant player's Ship count in the sidebar, and a red X icon being placed over the relevant player's sunk ship.
-- User stories covered: 10, 11, 12
-
-#### Computer Opponent
-
-- The player plays against a computer opponent that randomly place's hidden ships on the computer's gameboard grid for the player to take shots on.
-- Compouter ships become visibile to the palyer once sunk.
-- The computer takes random shots on the player's gameboard grid.
-- User stories covered: 
+- If a computer's hip is sunk the ship which was previously not visibile is made visible.
+- User stories covered: 1, 10, 11, 12, 13, 14
 
 #### Win and Loss Notification
 
 - When a the player or computer's ships are all sunk a win game modal is show and a sound played to let the player know if they ahve won or lost.
 - The player's score and high score are presented.
 - A New Game button is presented to allow the player to start a new game while maintining their name and score values.
-- User stories covered: 13
-
-### Footer
-
-- Which contains a link to the Feedback apge and and the developer's GitHub page
-- User stories covered:
+- User stories covered: 1, 13, 14, 15, 16
 
 ### Alternating Player Gameboard grids on Small Screens
 
-- On small screens and mobile devices, the  gameboard grids in an alternating arrangement on small screens for better visibility.
-- User stories covered: 
+- On small screens and mobile devices, the active gameboard grid is moved to the top of the gameboard column to allow the player to see and interact with the active gaeeboard grid without having to scroll.
+- User stories covered: 1, 10, 12
+
+### Footer
+
+- Contains a link to the Feedback page and and the developer's GitHub page
+- User stories covered: 18
 
 #### Feedback Form
 
-- A feedback page which include a feedback form to collect a player's name, email address, and feedback message.
+- A feedback page which includes a feedback form to collect a player's name, email address, and feedback message.
 - The feedback form connects to the EmailJS service to validate the form fields and email the form data to the developer
 - A thank you message is shown on the same page when the form has beens ubmitted a New Game button is rpesented to the player so they can navigate back to the game.
-- User stories covered: 
+- User stories covered: 18
 
 #### 404 Page
 
 - Display a customized 404 page with a link to start a new game.
-- User stories covered: 14
+- User stories covered: 19
 
 #### Desktop & Larger Screens
 
