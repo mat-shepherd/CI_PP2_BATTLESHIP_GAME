@@ -141,7 +141,7 @@ The players of the game are the primary users of this website with site owner be
 5. As a player, I want to start a new game and receive directions on how to setup the gameboard
 6. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
 7. As a player, I want any controls or buttons to be colourful, apparent, and attractive.
-8. As a player, while setting up the gameboard, I want the ability to reset the gameboard to remove the game pieces (ships) and start placement over again
+8. As a player, while setting up the gameboard, I want the ability to randomly place my ships and reset the gameboard to remove the game pieces (ships) and start placement over again
 9. As a player, once the game board is set up, I want to play against a computer opponent
 10. As a player, once the gameboard is set, up I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
 11. As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
@@ -317,15 +317,15 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 #### Navigation Bar
 
-- Display a navigation bar with links to start a new game, see details on how play, and audio toggle icon which indicates whether audio is on or off.
+- Display a navigation bar with links to start a new game, see details on how to play, and audio toggle icon which indicates whether audio is on or off.
 - User stories covered: 1, 2, 5, 7, 8, 15, 17
   
 ![See feature]()
 
 #### New Game Link and Button
 
-- A link in the navigation bar and buttons presented in win game modal, feedback form, and 404 page, that loads the index.html page clearing all game objects. 
-- If the player has entered their name already, the player's name, score, and high score values are passed via parameter to index.html to be preserved in the new game. 
+- A link in the navigation bar and buttons presented in the win game modal, feedback form, and 404 page, that loads the index.html page clearing all game objects.
+- If the player has entered their name already, the player's name, score, and high score values are passed via parameter to index.html to be preserved in the new game.
 - If a player name has already been entered, the player skips the start game form and is prompted to place their ships.
 - If no player name has been entered, the start game form is presented so the user can enter their name and start a new game.
 - User stories covered: 1, 3, 7, 8, 15, 16 17
@@ -351,7 +351,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 #### Start Game Form
 
 - When the index page loads, a form is presented the player so they can enter their name and start a new game.
-- The name entered is validated as it can only be up to charcters long and a name must be entered before the form can be submitted
+- The name entered is validated as it can only be up to characters long and a name must be entered before the form can be submitted
 - The player name provided is used in the score sidebar, above the player's gameboard grid, in player messages, and in the win lose game modal, to let them know which scores and gameboard grid belongs to them, and which messages relate to their turn.
 - The form also contain a button to toggle audio on or off. Audio is muted by default.
 - User stories covered: 1, 3, 5, 10, 11, 12, 13, 14, 15, 16, 17
@@ -405,11 +405,11 @@ The website consists of three pages in total, an index page, a feedback page, an
 #### Ship Placement Feedback
 - During this ship placement phase of the game, the player is provided with visual cues and feedback on which grid cells they can place ships on.
 - Once a player clicks on their grid to place the ship the placement control buttons display a pulse effect to let the user know clicking one of these buttons is the next required action.
-- Player messages are updated to let the player know which placement options are availalbe and how to proceed.
+- Player messages are updated to let the player know which placement options are available and how to proceed.
 - A 4 headed arrow placement icon and white cell background colour is shown on hover over the player's available grid spaces, but not shown out of grid bounds.
 - A stop symbol / no placement icon is shown over the computer's grid where the player can not place ships.
 - Once a ship is placed the player is shown a stop symbol / no placement icon in the cells the ship occupies to tell them they can't place a ship.
-- If a player tries to place a ship by pressing the place button while the ship overlaps an existing ship or extends outside the bounds of their grid a a red bakkground is shown in the relevant cell and a red ehip placement error is shown in the player message area.
+- If a player tries to place a ship by pressing the place button while the ship overlaps an existing ship or extends outside the bounds of their grid a red background is shown in the relevant cell and a ship placement error in red text is shown in the player message area.
 - User stories covered: 1, 2, 5, 5, 7, 8
 
 ![See feature]()
@@ -424,7 +424,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 #### Sidebar Scoreboard
 
 - Show a scoreboard in the sidebar that keeps track of the player's high score, and each player's score, hits, misses, and ships remaining.
-- When the user starts a new ame their name, score and high score is preserved in the sidebar
+- When the user starts a new game their name, score and high score is preserved in the sidebar
 - User stories covered: 1, 3, 9, 1, 12, 13, 14, 15, 16
 
 ![See feature]()
@@ -450,7 +450,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 #### Ship Hit, Miss and Sunk Feedback
 
-- When ships are hit, missed, or sunk the player is notified via visual markers, sounds, scorebaord updates, and notifications in the player message area.
+- When ships are hit, missed, or sunk the player is notified via visual markers, sounds, scoreboard updates, and notifications in the player message area.
 - A ship hit results in an explosion animation at the hit location on the gameboard grid, followed by a fire marker at the location, an explosion sound, a notification of the hit location in the player message area, and an update to the relevant player's hit score in the sidebar.
 - A ship miss results in an splash animation at the hit location on the gameboard grid, followed by a splash marker at the location, a splash sound, a notification of the miss location in the player message area, and an update to the relevant player's miss score in the sidebar.
 - A ship being hit across all of its grid locations means the ship is sunk. Sinking a ship results in a explosion and sinking sound, a notification of the ship that was sunk in the player message area, an update to the relevant player's Ship count in the sidebar, and a red X icon being placed over the relevant player's sunk ship.
@@ -461,7 +461,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 #### Win and Loss Notification
 
-- When a the player or computer's ships are all sunk a win game modal is show and a sound played to let the player know if they ahve won or lost.
+- When a the player or computer's ships are all sunk a win game modal is show and a sound played to let the player know if they have won or lost.
 - The player's score and high score are presented.
 - A New Game button is presented to allow the player to start a new game while maintining their name and score values.
 - User stories covered: 1, 13, 14, 15, 16
@@ -486,7 +486,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 - A feedback page which includes a feedback form to collect a player's name, email address, and feedback message.
 - The feedback form connects to the EmailJS service to validate the form fields and email the form data to the developer
-- A thank you message is shown on the same page when the form has beens ubmitted a New Game button is rpesented to the player so they can navigate back to the game.
+- A thank you message is shown on the same page when the form has been submitted a New Game button is presented to the player so they can navigate back to the game.
 - User stories covered: 18
 
 ![See feature]()
@@ -504,9 +504,9 @@ The website consists of three pages in total, an index page, a feedback page, an
 The following features could be implemented in the future to provide users with more detailed information and further build prospective client trust through the website:
 
 - I purposefully didn't hyperlink the logo to the index page to avoid a user clicking on it and losing their game progress. A click listener could be added to the logo and function added to warn the user before abandoning a game in progress.
-- A 'smarter' computer opponenent could be implemented which would take random shots within a close range of a previous hit shout if that shot didn't result in sinking a ship. Currently the computer takes completely random shots within the bounds of the game grid, avoiding coordiantes that ahve a lready been shot on.
+- A 'smarter' computer opponenent could be implemented which would take random shots within a close range of a previous hit shout if that shot didn't result in sinking a ship. Currently the computer takes completely random shots within the bounds of the game grid, avoiding coordiantes that have a lready been shot on.
 - With the ability to make the computer opponent 'smarter', a game difficulty feature could be added to let the user choose how difficult they want the game to be.
-- I added an attribute for direction to ship objects with the intention of adding a flying plane animation when shots are taken. Knowing if a ship is vertical or horizontal and it's coordinates would allow a plane image to be animated horizontally or vertically across the board to match the ships rotation. Otherwise the plane would randomlyfly horizontally or vertically across the board if the shot was a miss.
+- I added an attribute for direction to ship objects with the intention of adding a flying plane animation when shots are taken. Knowing if a ship is vertical or horizontal and it's coordinates would allow a plane image to be animated horizontally or vertically across the board to match the ships rotation. Otherwise the plane would randomly fly horizontally or vertically across the board if the shot was a miss.
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -676,7 +676,7 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-8. As a player, while setting up the gameboard, I want the ability to reset the gameboard to remove the game pieces (ships) and start placement over again
+8. As a player, while setting up the gameboard, I want the ability to randomly place my ships and reset the gameboard to remove the game pieces (ships) and start placement over again
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 |   |   |   | Works as expected |
@@ -805,7 +805,7 @@ The website was tested on the following browsers:
 
 | **Bug** | **Fix** |
 | ----------- | ----------- |
-| Composition of objects | Not so much a bug as a lesson learned. As I progressed through coding the game I realised, too late, that I thins may ahve been easier if I had nested the Ship and Gameboard objects inside of the Player object. As my codebase grew I found myself forwarding a lot of parameters through functions to avoid global variables, but then I realised that many of these variables represent objects, which could have been avoided if I had nested all of my player related objects under the Player objects! |
+| Composition of objects | Not so much a bug as a lesson learned. As I progressed through coding the game I realised, too late, that I thins may have been easier if I had nested the Ship and Gameboard objects inside of the Player object. As my codebase grew I found myself forwarding a lot of parameters through functions to avoid global variables, but then I realised that many of these variables represent objects, which could have been avoided if I had nested all of my player related objects under the Player objects! |
 | Gameboard layout on mobile devices | Due to the square nature and required size of the grids to be able to interact with indivudal cells, responsive layout was tricky and led to horizontal overflow on small screens, poor spacing of elements on mobile devices, and a poor responsive user experience. To correct this I set the gameboard area to column layout below 1600px breakpoint and reduced the size of the ships grids cells to half the size of those on desktop. I then set the ship and icon images to a % based width to make them respond to the gaemboard grid cell size. |
 | Scrolling on mobile devices | Due to column layout on small screens the player would have to scroll and up and down the screen when taking turns to understand what the computer player did during their turn and to take their shot. As Player message pulls focus to the top of the screen when it updates this was creating a very poor user experience. To crrect this I added a gameboard-reverse class to the gaemboard div in the checkTurn function. Adding this class changes the order of the flex positioned gameboard grids, which allows the active grid to always show at the top of the gameboard. This also keeps the player viewing the top of the viewport and minimises jumping back to the top of the screen when the player message updates. |
 |  Rotating grid cells would rotate hit and miss icons | The functions which rotate ship images on the gameboard actually rotate the containing div by multipls of 90 degrees to ensure the image pivots around the center of the cell the ship was placed in. This worked well but created an issue where ship hit or miss icons when added to the original ship placement cell were also rotated, which looked odd and inconsistent with icons show elsewhere on the board. To fix this I introduced a check into functions which add ship hit or miss icons to see if the parent div class contained transform. If it did the icon image would then be rotated -90 degrees. |

@@ -819,6 +819,7 @@ footer {
     grid-template-columns: repeat(11, 1fr);
     grid-template-rows: repeat(12, 1fr);
     gap: 0px 0px;
+    caret-color: transparent; /*stop visible blinking cursor*/
 }
 
 #computer-gameboard {
