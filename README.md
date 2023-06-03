@@ -538,7 +538,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - The feedback form connects to the EmailJS service to validate the form fields and email the form data to the developer
 - A thank you message is shown on the same page when the form has been submitted a New Game button is presented to the player so they can navigate back to the game.
 - User stories covered: 18
-- 
+  
 <details><summary>Screenshots</summary>
 <img src="docs/features/features-feedback-form.PNG">
 </details>
@@ -673,18 +673,17 @@ The website was tested on the following browsers:
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Navigation Bar How to Play Link  | Click How To Play link in the navigation bar  | Works as expected |
-| How To Play Modal | Click How To Play link in the navigation bar             | How to play modal is displayed and user can scroll through rules and instructions on how to play the game | Works as expected |
-| Navigation Bar How to Play Link  | Click How To Play link in the navigation bar  | Works as expected |
+| How To Play Modal | Click How To Play link in the navigation bar | How to play modal is displayed and user can scroll through rules and instructions on how to play the game | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-3. As a player, I want to enter my name so I can understand which player represents me on the gameboard and to keep track of my current score and high score
+1. As a player, I want to enter my name so I can understand which player represents me on the gameboard and to keep track of my current score and high score
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+|  Start game form | Player loads game and enters name in start game form and clicks start game | Name is accepted and game starts populating name into scoreboard, player grid, and player messages  | Works as expected |
+|  Start game form validation |  Player loads game and enters name in start game form but fails to enter a name and then click start game |  Game doe snot start and error message is displayed below name field | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
@@ -693,28 +692,33 @@ The website was tested on the following browsers:
 4. As a player, I want my name to be validated and to be provided with feedback on any errors with name entry to ensure I can understand which player I am in the game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+|  Start game form max characters| Player loads game and enters name in start game and tries to type more than 10 characters  |  Name field does not let the user type past 10 charaters | Works as expected |
+|  Start game form validation |  Player loads game and enters name in start game form but fails to enter a name and then click start game |  Game doe snot start and error message is displayed below name field | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-5. As a player, I want to start a new game and receive directions on how to setup the gameboard
+1. As a player, I want to start a new game and receive directions on how to setup the gameboard
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+|  Start game form | Player loads game and enters name in start game form and clicks start game | Name is accepted and game starts populating name into scoreboard, player grid, and player messages  | Works as expected |
+|  Start Game Player message | Player clicks start game and sees gameboard  | Player is shown message telling them how to place ships and how to use placement controls | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-6. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
+1. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+|  Ship Placment Grid Hover | Player hovers over the grid with their name and sees a ship placement icon and click a grid cell |  The player clicks a grid cell in their gameboard and the ship is temporarily placed. If they click another grid cell the ship is temporarily placed again in the new location | Works as expected |
+|  Ship Placement Player Message |   |   | Works as expected |
+|  Ship Placement Player Controls |   |   | Works as expected |
+|  Ship Placement Button |   |   | Works as expected |
+|  Ship Rotate Button |   |   | Works as expected |
+|  Ship Random Button |   |   | Works as expected |
+|  Ship Clear Button |   |   | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
@@ -723,28 +727,28 @@ The website was tested on the following browsers:
 7. As a player, I want any controls or buttons to be colourful, apparent, and attractive
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
-
-<details><summary>Video</summary>
-<img src="">
-</details><br>
-
-8. As a player, while setting up the gameboard, I want the ability to randomly place my ships and reset the gameboard to remove the game pieces (ships) and start placement over again
-| **Feature** | **Action** | **Expected Result** | **Actual Result** |
-|-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
+|  Ship Placement Player Controls |   |   | Works as expected |
 |   |   |   | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-9.  As a player, once the game board is set up, I want to play against a computer opponent
+1. As a player, while setting up the gameboard, I want the ability to randomly place my ships and reset the gameboard to remove the game pieces (ships) and start placement over again
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+|  Ship Clear Button |   |   | Works as expected |
+|  Ship Random Button |   |   | Works as expected |
+
+<details><summary>Video</summary>
+<img src="">
+</details><br>
+
+1.  As a player, once the game board is set up, I want to play against a computer opponent
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|  Computer opponenet random ship placement |   |   | Works as expected |
+|  Computer opponenet random shot taking  |   |   | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
