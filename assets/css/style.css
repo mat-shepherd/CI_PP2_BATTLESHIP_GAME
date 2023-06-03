@@ -810,6 +810,7 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     row-gap: 70px;
+    margin-bottom: 20px;
 }
 
 #player-gameboard,
