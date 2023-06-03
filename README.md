@@ -13,8 +13,8 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
 - [BattleShip Game](#battleship-game)
   - [Table of Contents](#table-of-contents)
   - [Project Goals](#project-goals)
+    - [Player Goals](#player-goals)
     - [Site Owner Goals](#site-owner-goals)
-    - [Site Owner Goals](#site-owner-goals-1)
   - [User Experience](#user-experience)
     - [Target Audience](#target-audience)
     - [User Requirements and Expectations](#user-requirements-and-expectations)
@@ -97,18 +97,18 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
 
 The goals of this website include:
 
-### Site Owner Goals
-
-- Create a fun interactive game that furthers my understanding of problem solving through code and the JavaScript language
-- Create an attractive and easy to use website and user interface
-- Create a fully responsive game website
-
-### Site Owner Goals
+### Player Goals
 
 - Play a fun and interactive online game of logic and luck against a virtual opponent
 - Quickly understand the rules of the game and how to play
 - Be able to keep track of the game score and to try to beat their previous high score
 - Play the game as often as desired and have the game remember their name and details
+
+### Site Owner Goals
+
+- Create a fun interactive game that furthers my understanding of problem solving through code and the JavaScript language
+- Create an attractive and easy to use website and user interface
+- Create a fully responsive game website
 
 [Back to Table of Contents](#table-of-contents)
 
