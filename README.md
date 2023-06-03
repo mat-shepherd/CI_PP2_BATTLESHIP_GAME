@@ -88,8 +88,9 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [Sounds](#sounds)
     - [Code](#code)
       - [Readme.md](#readmemd)
-      - [Index.html \& Style.css](#indexhtml--stylecss)
-      - [Battleship-game.js](#battleship-gamejs)
+      - [index.html \& style.css](#indexhtml--stylecss)
+      - [battleship-game.js](#battleship-gamejs)
+      - [feedback-form.js](#feedback-formjs)
   - [Acknowledgements](#acknowledgements)
 
 ## Project Goals
@@ -830,14 +831,14 @@ In order of appearance:
   - <https://github.com/jamie2210/CI_MS1_TBC>
   - <https://github.com/aleksandracodes/CI_PP2_SunshineGuessing>
 
-#### Index.html & Style.css
+#### index.html & style.css
 - Game Intro, Rules & Win Modals - Code adpated from [this 'How TO - CSS/JS Modal' article](https://www.w3schools.com/howto/howto_css_modals.asp) by W3Schools(https://www.w3schools.com/)
 - CSS code to center the how to play modal adpated from [this Stackoverflow answer](https://stackoverflow.com/a/32086720/21643967) by [Bill Alexy](https://stackoverflow.com/users/2913352/bill-alexy)
 - Placement Button Retro Styles adapted from [this Retro Buttons CodePen](https: //codepen.io/Brandon-Stoyles/pen/RajYmd) by[Brandon-Stoyles](https://codepen.io/Brandon-Stoyles)
 - Placement Button Pulse Effect adapted from the code in [this 'CSS ANIMATION - THE PULSE EFFECT' article](https://www.florin-pop.com/blog/2019/03/css-pulse-effect/) by [Florin Pop](https://www.florin-pop.com/)
 - Animation to make Player Message text flash on error. Code adapted from answer provided by [ChatGPT](https://chat.openai.com/) by [OpenAI](https://openai.com)
 
-#### Battleship-game.js
+#### battleship-game.js
 - The loop to add event listeners to buttons adapted from the [Code Institute's Love Maths Projects](https://github.com/Code-Institute-Org/love-maths)
 - The method to disable click events on gameboard grids was learned from [this Codingdeft article](https://www.codingdeft.com/posts/disable-click-on-div-javascript-css/) by [by Abhishek EH](https://twitter.com/abhieh9)
 
@@ -853,6 +854,9 @@ In order of appearance:
 - The lazyLoadBackground function created to solve page load speed issues was adapted but alrgely copied from answers provided by [ChatGPT](https://chat.openai.com/) by [OpenAI](https://openai.com).
 - The checkURL and NewGame JavaScript functions that store and retrieve URL parameters to pass player name and scores to a new game was adapted from [this 'How to Get URL Parameters with JavaScript' Sitepoint article ](https://www.sitepoint.com/get-url-parameters-with-javascript/) by [Yaphi Berhanu](https://www.sitepoint.com/author/yberhanu/) and James [Hibbard](https://www.sitepoint.com/author/jhibbard/)
 - was generated using [ChatGPT by OpenAI](https://openai.com/) and then adapted.
+
+#### feedback-form.js
+- Code to connect to the EmailJS service and handle feedback form validation and submission was adapted [from this EmailJS tutorial](https://www.emailjs.com/docs/tutorial/creating-contact-form/) and by referencing the approach used by [Aleksandra Haniok](https://github.com/aleksandracodes) in her [Code Institute PP2 project](https://github.com/aleksandracodes/CI_PP2_SunshineGuessing/blob/main/assets/js/contact-form.js)
 
 [Back to Table of Contents](#table-of-contents)
 
