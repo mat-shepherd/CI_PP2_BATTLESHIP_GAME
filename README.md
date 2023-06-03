@@ -61,10 +61,6 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [Footer](#footer)
       - [Feedback Form](#feedback-form)
       - [404 Page](#404-page-1)
-      - [Desktop \& Larger Screens](#desktop--larger-screens)
-      - [Tablet, Mobile and Smaller Screens](#tablet-mobile-and-smaller-screens)
-    - [Feedback Page](#feedback-page-1)
-    - [404 Page](#404-page-2)
     - [Features Left to Implement](#features-left-to-implement)
   - [Testing](#testing)
     - [HTML Validation](#html-validation)
@@ -73,7 +69,7 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [Accessibility](#accessibility)
     - [Performance](#performance)
     - [Index](#index-1)
-    - [Feedback Page](#feedback-page-2)
+    - [Feedback Page](#feedback-page-1)
     - [404](#404-1)
     - [Device testing](#device-testing)
     - [Browser compatibility](#browser-compatibility)
@@ -307,6 +303,8 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 - Display a navigation bar with links to start a new game, see details on how play, and audio toggle icon which indicates whether audio is on or off.
 - User stories covered: 1, 2, 5, 7, 8, 15, 17
+  
+![See feature]()
 
 #### New Game Link and Button
 
@@ -316,10 +314,14 @@ The website consists of three pages in total, an index page, a feedback page, an
 - If no player name has been entered, the start game form is presented so the user can enter their name and start a new game.
 - User stories covered: 1, 3, 7, 8, 15, 16 17
 
+![See feature]()
+
 #### How To Play Modal
 
 - When clicked, the How to Play link in the navigation bar displays a modal that provides game rules, instructions on how to play, and details of available controls.
 - User stories covered: 1, 2, 5
+
+![See feature]()
 
 #### Audio Toggle to Mute and Unmute Sounds
 
@@ -327,6 +329,8 @@ The website consists of three pages in total, an index page, a feedback page, an
 - An audio toggle icon is present in the navigation bar that allows game sounds to be completely unmuted or muted. When clicked the icon marker changes to indicate if game sounds are currently mure or unmuted.
 - An audio toggle button is presented in the start game form to allow the player to unmute or mute game sounds. When toggled the button changes colour and tells the player that audio is off or audio is on.
 - User stories covered: 1, 7, 17
+
+![See feature]()
 
 #### Start Game Form
 
@@ -336,10 +340,14 @@ The website consists of three pages in total, an index page, a feedback page, an
 - The form also contain a button to toggle audio on or off. Audio is muted by default.
 - User stories covered: 1, 3, 5, 10, 11, 12, 13, 14, 15, 16, 17
 
+![See feature]()
+
 #### Gameboard
 
 - The gameboard, which is the main gameplay area in the center of the screen, where players place their ships by clicking on their grid and by using placememnt controls, and take shots by clicking on the computer grid, and receive notifications via the player message area, as visual well as visual and audio cues, and eventually then lose game modal.
 - User stories covered: 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+
+![See feature]()
 
 #### Ship Placement Controls Area
 
@@ -347,26 +355,36 @@ The website consists of three pages in total, an index page, a feedback page, an
 - This area is hiddeen once turn based gameplay begins
 - User stories covered: 1, 5, 6, 7, 8
 
+![See feature]()
+
 #### Place Ships Button
 
 - Receive validation and feedback during ship placement to ensure it is within the limits of the gameboard grid.
 - User stories covered: 1, 6, 7, 8
+
+![See feature]()
   
 #### Rotate Ships Button
 
 - Rotate ships to change their orientation on the gameboard grid.
 - User stories covered: 1, 6, 7
 
+![See feature]()
+
 #### Random Ship Placement Button
 
 - Randomly places player ships on the player's gameboard grid and starts turn based gameplay.
 - Game buttons have a pulse animation to highlight when the user needs to use these controls.
 - User stories covered: 1, 6, 7
+  
+![See feature]()
 
 #### Clear All Ships Button
 
 - Clears all of the player's manual ship placements during the ship placement stage of the game.
 - User stories covered: 1, 7, 8
+
+![See feature]()
 
 #### Ship Placement Feedback
 - During this ship placement phase of the game, the player is provided with visual cues and feedback on which grid cells they can place ships on.
@@ -378,16 +396,22 @@ The website consists of three pages in total, an index page, a feedback page, an
 - If a player tries to place a ship by pressing the place button while the ship overlaps an existing ship or extends outside the bounds of their grid a a red bakkground is shown in the relevant cell and a red ehip placement error is shown in the player message area.
 - User stories covered: 1, 2, 5, 5, 7, 8
 
+![See feature]()
+
 #### Player Message Area
 
 - Receive messages and notifications to provide important information during the game. Including notifications of how to play the game, how to place ships, which players turn it is, what action needs to be taken next to continue gameplay, the coordinates a shot was taken at, and whether a shot results in a ship being hit, missed, or sunk.
 - User stories covered: 1, 2, 3, 5, 10, 11, 12, 13, 14
+
+![See feature]()
 
 #### Sidebar Scoreboard
 
 - Show a scoreboard in the sidebar that keeps track of the player's high score, and each player's score, hits, misses, and ships remaining.
 - When the user starts a new ame their name, score and high score is preserved in the sidebar
 - User stories covered: 1, 3, 9, 1, 12, 13, 14, 15, 16
+
+![See feature]()
 
 #### Computer Opponent
 
@@ -396,6 +420,8 @@ The website consists of three pages in total, an index page, a feedback page, an
 - The computer takes random shots on the player's gameboard grid.
 - User stories covered: 1, 9
 
+![See feature]()
+
 #### Player / Computer Shot Feedback
 - During the turn-based shot gameplay, the player is provided with visual cues and feedback on which grid cells they can take a shot on.
 - Player messages are updated to let the player know which player is taking a shot and how to proceed.
@@ -403,6 +429,8 @@ The website consists of three pages in total, an index page, a feedback page, an
 - If a player hits or misses a ship icons are added to the relevant cells to let the player know the result of the shot.
 - Once a player has shot on a cell a stop symbol / no placement icon is shown when hovering over cells which have already been shot on and are no longer available for shooting on.
 - User stories covered: 1, 2, 5, 5, 7, 10, 11, 12, 13, 14
+
+![See feature]()
 
 #### Ship Hit, Miss and Sunk Feedback
 
@@ -413,6 +441,8 @@ The website consists of three pages in total, an index page, a feedback page, an
 - If a computer's hip is sunk the ship which was previously not visibile is made visible.
 - User stories covered: 1, 10, 11, 12, 13, 14
 
+![See feature]()
+
 #### Win and Loss Notification
 
 - When a the player or computer's ships are all sunk a win game modal is show and a sound played to let the player know if they ahve won or lost.
@@ -420,15 +450,21 @@ The website consists of three pages in total, an index page, a feedback page, an
 - A New Game button is presented to allow the player to start a new game while maintining their name and score values.
 - User stories covered: 1, 13, 14, 15, 16
 
+![See feature]()
+
 ### Alternating Player Gameboard grids on Small Screens
 
 - On small screens and mobile devices, the active gameboard grid is moved to the top of the gameboard column to allow the player to see and interact with the active gaeeboard grid without having to scroll.
 - User stories covered: 1, 10, 12
 
+![See feature]()
+
 ### Footer
 
 - Contains a link to the Feedback page and and the developer's GitHub page
 - User stories covered: 18
+
+![See feature]()
 
 #### Feedback Form
 
@@ -437,35 +473,15 @@ The website consists of three pages in total, an index page, a feedback page, an
 - A thank you message is shown on the same page when the form has beens ubmitted a New Game button is rpesented to the player so they can navigate back to the game.
 - User stories covered: 18
 
+![See feature]()
+
 #### 404 Page
 
 - Display a customized 404 page with a link to start a new game.
 - User stories covered: 19
 
-#### Desktop & Larger Screens
+![Video]()
 
-![Logo and navbar](docs/features/logo-nav.webp)
-
-#### Tablet, Mobile and Smaller Screens
-
-![Logo and navbar](docs/features/logo-nav-responsive.webp)
-
-![Footer Section](docs/features/footer-section.webp)
-
-### Feedback Page
-
-- which displays a feedback form to collect player feedback
-- the feedback form validates form values and then sends the data to the site owner
-- when the form is submitted a thank you message is shown
-- User stories covered:
-
-### 404 Page
-
-- which displays a 404 page not found message, a ship image, and a text directing the user to click on a "New Game" button to navigate back to the index page.
-- the header and footer navigation remains consistent with the index page design and all internal navigation links on this page will direct the user back to the index page.
-- User stories covered:
-
-![Footer Section](docs/features/404-page.webp)
 
 ### Features Left to Implement
 
@@ -578,7 +594,7 @@ The website was tested on the following browsers:
 | Start game screen | Player navigates around links and controls on screen  | Player finds game instructions and understand how to start a game by entering their name | Works as expected |
 | Gameplay screen| Player enters thier name and enters gamplay screen and navigates the gameboard grids and controls | Player understands how to continue gameplay | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -590,7 +606,7 @@ The website was tested on the following browsers:
 | How To Play Modal | Click How To Play link in the navigation bar             | How to play modal is displayed and user can scroll through rules and instructions on how to play the game | Works as expected |
 | Navigation Bar How to Play Link  | Click How To Play link in the navigation bar  | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -600,7 +616,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -610,7 +626,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -620,7 +636,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -630,7 +646,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -640,7 +656,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -650,7 +666,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -660,7 +676,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -670,7 +686,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -680,7 +696,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -690,7 +706,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -700,7 +716,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -710,7 +726,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -720,7 +736,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -730,7 +746,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -739,7 +755,8 @@ The website was tested on the following browsers:
 |-------------|------------|---------------------|-------------------|
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
-<details><summary></summary>
+
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -752,7 +769,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -762,7 +779,7 @@ The website was tested on the following browsers:
 |   |   |   | Works as expected |
 |   |   |   | Works as expected |
 
-<details><summary></summary>
+<details><summary>Video</summary>
 <img src="">
 </details><br>
 
@@ -772,10 +789,13 @@ The website was tested on the following browsers:
 
 | **Bug** | **Fix** |
 | ----------- | ----------- |
-|  |  |
-|  |  |
-|  |  |
-|  |  |
+| Gameboard layout on mobile devices | Due to the square nature and required size of the grids to be able to interact with indivudal cells, responsive layout was tricky and led to horizontal overflow on small screens, poor spacing of elements on mobile devices, and a poor responsive user experience. To correct this I set the gameboard area to column layout below 1600px breakpoint and reduced the size of the ships grids cells to half the size of those on desktop. I then set the ship and icon images to a % based width to make them respond to the gaemboard grid cell size. |
+| Scrolling on mobile devices | Due to column layout on small screens the player would have to scroll and up and down the screen when taking turns to understand what the computer player did during their turn and to take their shot. As Player message pulls focus to the top of the screen when it updates this was creating a very poor user experience. To crrect this I added a gameboard-reverse class to the gaemboard div in the checkTurn function. Adding this class changes the order of the flex positioned gameboard grids, which allows the active grid to always show at the top of the gameboard. This also keeps the player viewing the top of the viewport and minimises jumping back to the top of the screen when the player message updates. |
+|  Rotating grid cells would rotate hit and miss icons | The functions which rotate ship images on the gameboard actually rotate the containing div by multipls of 90 degrees to ensure the image pivots around the center of the cell the ship was placed in. This worked well but created an issue where ship hit or miss icons when added to the original ship placement cell were also rotated, which looked odd and inconsistent with icons show elsewhere on the board. To fix this I ntroduced a check into functions which add ship hit or miss icons to see if the parent div class contained transform. If it did the icon image would then be rotated -90 degrees. |
+|  Player message timing |  As the game progresses through each player's turn it proveed tricky to slow down gameplay and ensure that player messages were visible long enough to read before they were replaced by the next player message. While this is not fully resolved to my liking I introduced setTimeoutet functions aroun player messages to add delays before they are shown to give the previous message time to display. When ships are sunk it provde very difficult to give the message time to display. With help from an approach provided by ChatGPT I introduced a delay function and a promise object to delay gameplay to give this ship sunk message time to display before gamplay resumes. |
+| Deleting grid click listeners | Each player grid allows the user to inidcate the cells they will place ships in or take shots on by adding click listeners when grids are created and disabling click listeners when it is the computer's turn or a grid location is occupied by a ship or a shot. Removing click listeners was a difficult issue to solve as each cell's click listener was specific to it and a reference to the specific listenenr had to be stored somewhere for later retrieval to remove the correct listener for the correct grid and cell. With guodance from ChatGPT I decided to store the place and shoot event listeners in attributes of the Gameboard object so I could loop through the relevant gameboard's placeEventHandlers or shootEventHandlers to find the click listener for relevant grid cell. This worked well but I still had an issue where I need to disable all grid listeners on the opposing player's grids to ensure the player couldn't randomly trigger unexpected functions. The quick fix for this was found in an article by Coding Deft, which led to the addition of a style to gameboard grid elements that set pointer-events: none on the on-active gameboard grid during checkTurn. |
+| Poor page load on mobile devices  | On testing the game index page with Lighthouse I was receving a perfomance score in the 70s, largely due to the loading and rendering of the repeating ocean tile gif in the background of the gameboard. I exploed multiple options including replacing this with a video of the effect but in the end settled on using a lazy loading approach. A lazyLoadBackground function was provided by chatGPT and dapted to make the ocean tile background load only when initPlacement was called to start rendering the gameboards. This greatly improved page load performance on mobiles with scores in the 90s.|
+
 
 [Back to Table of Contents](#table-of-contents)
 
