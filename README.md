@@ -40,8 +40,8 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
   - [Features](#features)
     - [Existing Features](#existing-features)
       - [Navigation Bar](#navigation-bar)
-    - [New Game Link and Button](#new-game-link-and-button)
-    - [How To Play Modal](#how-to-play-modal)
+      - [New Game Link and Button](#new-game-link-and-button)
+      - [How To Play Modal](#how-to-play-modal)
       - [Audio Toggle to Mute and Unmute Sounds](#audio-toggle-to-mute-and-unmute-sounds)
       - [Start Game Form](#start-game-form)
       - [Gameboard](#gameboard)
@@ -55,12 +55,12 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
       - [Ship Hit, Miss and Sunk Feedback](#ship-hit-miss-and-sunk-feedback)
       - [Computer Opponent](#computer-opponent)
       - [Win and Loss Notification](#win-and-loss-notification)
+    - [Footer](#footer)
     - [Alternating Player Gameboard grids on Small Screens](#alternating-player-gameboard-grids-on-small-screens)
       - [Feedback Form](#feedback-form)
       - [404 Page](#404-page-1)
       - [Desktop \& Larger Screens](#desktop--larger-screens)
       - [Tablet, Mobile and Smaller Screens](#tablet-mobile-and-smaller-screens)
-    - [Footer](#footer)
     - [Feedback Page](#feedback-page-1)
     - [404 Page](#404-page-2)
     - [Features Left to Implement](#features-left-to-implement)
@@ -279,11 +279,13 @@ For simplicity, the site consists of one primary page and two helper pages, a fe
 - [Figma - wireframing tool](https://www.figma.com/files/recent?fuid=1219987136949485526)
 - [Google Fonts](https://fonts.google.com/)
 - [Font Awesome](https://fontawesome.com/)
-- [ChatGPT by OpenAI - for code validation & suggestions](https://chat.openai.com/)
+- [ChatGPT by OpenAI - for code validation formatting, & suggestions](https://chat.openai.com/)
+- [EZGIF.COM - Create GIFs from Image Frames](https://ezgif.com/maker)
 - [Favicon.io - Favicon generator](https://favicon.io/)
 - [Coolors.co - Colour Palette Display Tool](https://coolors.co/)
 - [Unscreen - Image Background Removal](https://www.unscreen.com/)
 - [Cloudconvert - Convert Audio Files to MP3](https://cloudconvert.com/)
+- [Audacity - Audio Editing Tool](https://www.audacityteam.org)
 - [JSHint JavaScript Validation Tool](https://jshint.com/)
 - [W3C Markup Validation Service](https://validator.w3.org/)
 - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
@@ -301,20 +303,20 @@ The website consists of three pages in total, an index page, a feedback page, an
 #### Navigation Bar
 
 - Display a navigation bar with links to start a new game, see details on how play, and audio toggle icon which indicates whether audio is on or off.
-- User stories covered: 14
+- User stories covered: 1, 2, 5, 7, 8, 14, 16
 
-### New Game Link and Button
+#### New Game Link and Button
 
 - A link in the navigation bar and buttons presented in win game modal, feedback form, and 404 page, that loads the index.html page clearing all game objects. 
 - If the player has entered their name already, the player's name, score, and high score values are passed via parameter to index.html to be preserved in the new game. 
 - If a player name has already been entered, the player skips the start game form and is prompted to place their ships.
 - If no player name has been entered, the start game form is presented so the user can enter their name and start a new game.
-- User stories covered: 1, 3, 5, 7 8, 9, 14, 15
+- User stories covered: 1, 3, 7, 8, 14, 15 16
 
-### How To Play Modal
+#### How To Play Modal
 
 - When clicked, the How to Play link in the navigation bar displays a modal that provides game rules, instructions on how to play, and details of available controls.
-- User stories covered: 2
+- User stories covered: 1, 2, 5
 
 #### Audio Toggle to Mute and Unmute Sounds
 
@@ -394,6 +396,11 @@ The website consists of three pages in total, an index page, a feedback page, an
 - A New Game button is presented to allow the player to start a new game while maintining their name and score values.
 - User stories covered: 13
 
+### Footer
+
+- Which contains a link to the Feedback apge and and the developer's GitHub page
+- User stories covered:
+
 ### Alternating Player Gameboard grids on Small Screens
 
 - On small screens and mobile devices, the  gameboard grids in an alternating arrangement on small screens for better visibility.
@@ -401,7 +408,9 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 #### Feedback Form
 
-- Include a feedback form to gather player feedback.
+- A feedback page which include a feedback form to collect a player's name, email address, and feedback message.
+- The feedback form connects to the EmailJS service to validate the form fields and email the form data to the developer
+- A thank you message is shown on the same page when the form has beens ubmitted a New Game button is rpesented to the player so they can navigate back to the game.
 - User stories covered: 
 
 #### 404 Page
@@ -416,11 +425,6 @@ The website consists of three pages in total, an index page, a feedback page, an
 #### Tablet, Mobile and Smaller Screens
 
 ![Logo and navbar](docs/features/logo-nav-responsive.webp)
-
-### Footer
-
-- which...
-- User stories covered:
 
 ![Footer Section](docs/features/footer-section.webp)
 
