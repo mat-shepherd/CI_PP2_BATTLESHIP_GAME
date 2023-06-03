@@ -178,7 +178,7 @@ by https://openai.com
     color: #FFF;
 }
 
-/* Button Pulse Effect - Adapted from https: //www.florin-pop.com/blog/2019/03/css-pulse-effect/ */
+/* Button Pulse Effect - Adapted from https://www.florin-pop.com/blog/2019/03/css-pulse-effect/ */
 
 .pulse {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
@@ -454,7 +454,7 @@ footer {
 }
 
 /* Code to center modal adapted from 
-   https: //stackoverflow.com/a/32086720/21643967 */
+   https://stackoverflow.com/a/32086720/21643967 */
 
 #rules-modal-contents {
     justify-content: flex-start;

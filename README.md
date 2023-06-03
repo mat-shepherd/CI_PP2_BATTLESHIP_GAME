@@ -86,8 +86,10 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [Index Page, Feedback Page \& 404 Page](#index-page-feedback-page--404-page)
     - [Images](#images)
     - [Sounds](#sounds)
-    - [404 Page](#404-page-3)
     - [Code](#code)
+      - [Readme.md](#readmemd)
+      - [Index.html \& Style.css](#indexhtml--stylecss)
+      - [Battleship-game.js](#battleship-gamejs)
   - [Acknowledgements](#acknowledgements)
 
 ## Project Goals
@@ -279,6 +281,8 @@ For simplicity, the site consists of one primary page and two helper pages, a fe
 - [ChatGPT by OpenAI - for code validation & suggestions](https://chat.openai.com/)
 - [Favicon.io - Favicon generator](https://favicon.io/)
 - [Coolors.co - Colour Palette Display Tool](https://coolors.co/)
+- [Unscreen - Image Background Removal](https://www.unscreen.com/)
+- [Cloudconvert - Convert Audio Files to MP3](https://cloudconvert.com/)
 - [JSHint JavaScript Validation Tool](https://jshint.com/)
 - [W3C Markup Validation Service](https://validator.w3.org/)
 - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
@@ -349,6 +353,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 #### Random Ship Placement Button
 
 - Randomly places player ships on the player's gameboard grid and starts turn based gameplay.
+- Game buttons have a pulse animation to highlight when the user needs to use these controls.
 - User stories covered: 6
 
 #### Clear All Ships Button
@@ -390,7 +395,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 ### Alternating Player Gameboard grids on Small Screens
 
-- On small screens and mobile devices, the gameboard grids in an alternating arrangement on small screens for better visibility.
+- On small screens and mobile devices, the  gameboard grids in an alternating arrangement on small screens for better visibility.
 - User stories covered: 
 
 #### Feedback Form
@@ -786,72 +791,57 @@ In order of appearance:
     <details><summary>Button, Menu and Form Elements</summary>
     <img src="docs/wireframes/desktop-wireframe.webp">
     </details>
-- [placehold.co](https://placehold.co/)
-    <details><summary>Placeholder Images</summary>
-    <img src="https://placehold.co/600x400">
-    </details>
-- [HubSpot Brand Kit Generator](https://www.hubspot.com/brand-kit-generator/) by [HubSpot](https://www.hubspot.com/)
-    <details><summary>Logo</summary>
-    <img src="docs/credits/logo-variations.webp">
-    </details>
 - Font Awesome Icons by [Font Awesome](https://fontawesome.com/)
-    <details><summary>Service Section [Font Awesome Icons](https://fontawesome.com/icons)</summary>
+    <details><summary>Audio, Music, and GitHub Icons [Font Awesome Icons](https://fontawesome.com/icons)</summary>
     <img src="docs/credits/service-fontawesome-icons.webp">
-    </details>
-- [Social icons](https://pixabay.com/vectors/social-media-icon-set-facebook-6261537/) by [goddessSue13](https://pixabay.com/users/goddesssue13-615343/)
-    <details><summary>Social icons</summary>
-    <img src="docs/credits/social-media-6261537_1920.webp">
     </details>
 
 ### Index Page, Feedback Page & 404 Page
 
 ### Images
-- Battleship Icons - [Sea Warfare Set: Ships and More](https://opengameart.org/content/sea-warfare-set-ships-and-more) by ([Lowder2](https://opengameart.org/users/lowder2))
-- Ocean tile - [The Battle for Wesnoth: Water Animation](https://opengameart.org/content/the-battle-for-wesnoth-water-animation) by ([Zookeeper and Zabin](https://opengameart.org/users/zabin))
-- Explosion Animation - [WGStudio: Explosion Animation](https://opengameart.org/content/wgstudio-explosion-animation) by ([Retimer](https://opengameart.org/users/retimer))
-- Fire Animation - [9-frame Fire Animation](https://opengameart.org/content/9-frame-fire-animation-16x-32x-64x) by ([FoshyTakashi](https://opengameart.org/users/foshytakashi))
-- Splash Effect - [Splash Effect 32x32](https://opengameart.org/content/splash-effect-32x32) by ([Jesse McCarthy](https://opengameart.org/users/jesse-mccarthy))
-- Crosshair icon - [Crosshair icons](https://www.flaticon.com/free-icons/crosshair) created by ([Muhammad_Usman - Flaticon](https://www.flaticon.com/authors/muhammad-usman))
-- Move Icon - [Move icons](https://www.flaticon.com/free-icons/move) created by ([Freepik - Flaticon](https://www.flaticon.com/authors/freepik))
-- Not Allowed Icon - [Block icons](https://www.flaticon.com/free-icons/block) created by ([Freepik - Flaticon](https://www.flaticon.com/authors/freepik))
-- Red X Icon - [Forbidden icons](https://www.flaticon.com/free-icons/forbidden) created by [Freepik - Flaticon](https://www.flaticon.com/)
+- Battleship Start Game Background Image - [Generated with DALL·E 2 byOpenAI](https://openai.com/dall-e-2)
+- Battleship Game Piece Ship Icons - [Sea Warfare Set: Ships and More](https://opengameart.org/content/sea-warfare-set-ships-and-more) by ([Lowder2](https://opengameart.org/users/lowder2))
+- Gameboard Background Ocean tile - [The Battle for Wesnoth: Water Animation](https://opengameart.org/content/the-battle-for-wesnoth-water-animation) by ([Zookeeper and Zabin](https://opengameart.org/users/zabin))
+- Sidebar Background Metal Plate Tile - [Metal Tiles collection](https://opengameart.org/content/metal-tiles-collection) by [wovado](https://opengameart.org/users/wovado)
+- Grid Explosion Animation - [WGStudio: Explosion Animation](https://opengameart.org/content/wgstudio-explosion-animation) by ([Retimer](https://opengameart.org/users/retimer))
+- Grid Fire Animation - [9-frame Fire Animation](https://opengameart.org/content/9-frame-fire-animation-16x-32x-64x) by ([FoshyTakashi](https://opengameart.org/users/foshytakashi))
+- Grid Splash Effect - [Splash Effect 32x32](https://opengameart.org/content/splash-effect-32x32) by ([Jesse McCarthy](https://opengameart.org/users/jesse-mccarthy))
+- Grid Crosshair icon - [Crosshair icons](https://www.flaticon.com/free-icons/crosshair) created by ([Muhammad_Usman - Flaticon](https://www.flaticon.com/authors/muhammad-usman))
+- Grid Move Icon - [Move icons](https://www.flaticon.com/free-icons/move) created by ([Freepik - Flaticon](https://www.flaticon.com/authors/freepik))
+- Grid Not Allowed Icon - [Block icons](https://www.flaticon.com/free-icons/block) created by ([Freepik - Flaticon](https://www.flaticon.com/authors/freepik))
+- Scoreboard Red X Icon - [Forbidden icons](https://www.flaticon.com/free-icons/forbidden) created by [Freepik - Flaticon](https://www.flaticon.com/)
 
 ### Sounds
-- [Ocean Splash](https://opengameart.org/content/ocean-splash) by ([Thimras](https://opengameart.org/users/thimras))
-- [Victory 2](https://opengameart.org/content/victory-2) by ([Jon K. Fite](https://opengameart.org/users/jkfite01))
-- [Total Fail](https://opengameart.org/content/total-fail) by ([congusbongus](https://opengameart.org/users/congusbongus))
-- [Tiny Naval Battle Sounds Set](https://opengameart.org/content/tiny-naval-battle-sounds-set) by Iwan Gabovitch (qubodup@gmail.com)
-- [Ship Sinking](https://opengameart.org/content/ship-sinking) by ([Thimras](https://opengameart.org/users/thimras))
-- [Sounds of Cannonballs in the Wall in the Morning](https://opengameart.org/content/sounds-of-cannonballs-in-the-wall-in-the-morning) by ([İlker Yalçıner](http://ilkeryalciner.com))
-- [Lava Splash](https://opengameart.org/content/lava-splash) by ([Michel Baradari](http://apollo-music.de/)) and ([Qubodup](https://opengameart.org/users/qubodup))
+- Game Start Intro Sound - [Sounds of Cannonballs in the Wall in the Morning](https://opengameart.org/content/sounds-of-cannonballs-in-the-wall-in-the-morning) by ([İlker Yalçıner](http://ilkeryalciner.com))
+- Ship Placed Splash Sound - [Lava Splash](https://opengameart.org/content/lava-splash) by ([Michel Baradari](http://apollo-music.de/)) and ([Qubodup](https://opengameart.org/users/qubodup))
+- Ship Hit Explosion Sound - [Tiny Naval Battle Sounds Set](https://opengameart.org/content/tiny-naval-battle-sounds-set) by Iwan Gabovitch (qubodup@gmail.com)
+- Shot Miss Splash Sound - [Ocean Splash](https://opengameart.org/content/ocean-splash) by ([Thimras](https://opengameart.org/users/thimras))
+- Ship Sunk Explosion Sinking Sound - [Ship Sinking](https://opengameart.org/content/ship-sinking) by ([Thimras](https://opengameart.org/users/thimras))
+- Game Win Sound - [Victory 2](https://opengameart.org/content/victory-2) by ([Jon K. Fite](https://opengameart.org/users/jkfite01))
+- Game Lose Sound - [Total Fail](https://opengameart.org/content/total-fail) by ([congusbongus](https://opengameart.org/users/congusbongus))
   
-### 404 Page
-
-- Purchased under subscription from [iStock Photos](https://www.istockphoto.com/) by [ilyakalinin](https://www.istockphoto.com/portfolio/ilyakalinin?mediatype=illustration)
-    <details><summary>Missile crashed Page not found error 404</summary>
-    <img src="docs/credits/istock-1324403502.webp">
-    </details>  
-
 ### Code
 
 In order of appearance:
 
-- The layout of the site was inspired by (but no code was copied from) [Workhu's website](https://workhu.com/)
-- Font selections were inspired by the [21 Google Fonts Combinations For Websites & Brands](https://www.garett.co/21-google-fonts-combinations-for-websites-brands) article by [Garett Southerton](https://www.garett.co/about)
+#### Readme.md
 - The markdown structure of this readme and the deployment steps were based on the structure and content of the following readme.md files from other Code Institute student projects:
   - <https://github.com/4n4ru/CI_MS1_BodelschwingherHof>
   - <https://github.com/jamie2210/CI_MS1_TBC>
-- The HTML and CSS code for the mobile hamburger menu was copied and modified from the [Pure CSS responsive menu](https://codepen.io/alvarotrigo/pen/MWEJEWG) example by [Álvaro](https://codepen.io/alvarotrigo)
-- The accessibility bug where the label element used in the mobile menu required text was overcome using the code from [this Stack Overflow answer](https://stackoverflow.com/a/71369523/21643967) by [GrahamTheDev](https://stackoverflow.com/users/2702894/grahamthedev)
-- Flexbox methods used throughout the site were learned from [W3C Schools](https://www.w3schools.com/css/css3_flexbox_container.asp) and the amazing [Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) by [Chris Coyier at CSS Tricks](https://css-tricks.com/author/chriscoyier/)
-- The method for providing alternate text for background images was adapted from the [Alternate text for background images](http://www.davidmacd.com/blog/alternate-text-for-css-background-images.html) by [David MacDonald](https://www.davidmacd.com/david_macdonald_bio.html)
-- img srcset methods used to display different images at various breakpoints were learned from the [Responsive images with srcset and sizes](https://medium.com/@woutervanderzee/responsive-images-with-srcset-and-sizes-fc434845e948) by [Wouter van der Zee](Wouter van der Zee) and breakpoints were chosen with the help of the [Responsive Image Breakpoints Generator v2.0](https://www.responsivebreakpoints.com/) tool by [Cloudinary](https://cloudinary.com/)
-- The flexbox method to achieve equal height columns for the index page's service containers was learned from the [Same Columns Height](https://flexbox.ninja/demos/same-height-columns/) article by [Geoffrey Crofte at Flexbox Ninja](https://flexbox.ninja/about/) and the [CSS equal height columns](https://daily-dev-tips.com/posts/css-equal-height-columns/) article by [Chris Bongers at Daily Dev Tips](https://daily-dev-tips.com/about/)
-- CSS Gradients in the service containers of the index page were achieved using the code output from the CSS Gradient tool at [cssgradient.io](https://cssgradient.io/)
-- The method to achieve a circular frame around the index page's headshot image was adapted from the [Code Institute's Love Running Project](https://github.com/Code-Institute-Org/love-running-2.0).
-- CSS commenting styles were based on the [Principles of writing consistent, idiomatic CSS readme](https://github.com/necolas/idiomatic-css) by [Nicolas Gallagher](https://github.com/necolas)
-- The JavaScript used to parse form values from URL parameters on the thank-you.html page was adapted from the code written by [Yaphi Berhanu and James Hibbard of SitePoint](
-<https://www.sitepoint.com/get-url-parameters-with-javascript/>)
+  - <https://github.com/aleksandracodes/CI_PP2_SunshineGuessing>
+
+#### Index.html & Style.css
+- Game Intro, Rules & Win Modals - Code adpated from [this 'How TO - CSS/JS Modal' article](https://www.w3schools.com/howto/howto_css_modals.asp) by W3Schools(https://www.w3schools.com/)
+- CSS code to center the how to play modal adpated from [this Stackoverflow answer](https://stackoverflow.com/a/32086720/21643967) by [Bill Alexy](https://stackoverflow.com/users/2913352/bill-alexy)
+- Placement Button Retro Styles adapted from [this Retro Buttons CodePen](https: //codepen.io/Brandon-Stoyles/pen/RajYmd) by[Brandon-Stoyles](https://codepen.io/Brandon-Stoyles)
+- Placement Button Pulse Effect adapted from the code in [this 'CSS ANIMATION - THE PULSE EFFECT' article](https://www.florin-pop.com/blog/2019/03/css-pulse-effect/) by [Florin Pop](https://www.florin-pop.com/)
+- Animation to make Player Message text flash on error. Code adapted from answer provided by [ChatGPT](https://chat.openai.com/) by [OpenAI](https://openai.com)
+
+#### Battleship-game.js
+- The loop to add event listeners to buttons adapted from the [Code Institute's Love Maths Projects](https://github.com/Code-Institute-Org/love-maths)
+- The method to disable click events on gameboard grids was learned from [this Codingdeft article](https://www.codingdeft.com/posts/disable-click-on-div-javascript-css/) by [GrahamTheDev](https://stackoverflow.com/users/2702894/grahamthedev)
+- The accessibility bug where the label element used in the mobile menu required text was overcome using the code from [this Stack Overflow answer](https://stackoverflow.com/a/71369523/21643967) by Abhishek EH
+
 - The JavaScript function to output URL parameters from the above script was generated using [ChatGPT by OpenAI](https://openai.com/) and then adapted.
 
 [Back to Table of Contents](#table-of-contents)
