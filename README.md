@@ -311,7 +311,7 @@ For simplicity, the site consists of one primary page and two helper pages, a fe
 
 ## Features
 
-The website consists of three pages in total, an index page, a feedback page, and a 404 page. The site's pages contain ... distinct features:
+The website consists of three pages in total, an index page, a feedback page, and a 404 page. The site's pages contain 22 distinct feature sets:
 
 ### Existing Features
 
