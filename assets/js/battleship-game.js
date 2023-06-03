@@ -2020,20 +2020,24 @@ function addButtonPulse() {
 
 /**
  * Disable click listeners when state of play is shooting
- * and we need to lock the opposite gameboard
+ * and we need to lock the opposite gameboard. Set caret color 
+ * transparent to hide blinking cursor.
  * @function disableClickListeners
  */
 function disableClickListeners(parentElement) {
     parentElement.style.pointerEvents = "none";
+    parentElement.style.caretColor = "transparent";
 }
 
 /**
  * Enable click listeners when state of play is shooting
- * and we need to unlock a gameboard
+ * and we need to unlock a gameboard. Set caret color 
+ * transparent to hide blinking cursor.
  * @function enableClickListeners
  */
 function enableClickListeners(parentElement) {
     parentElement.style.pointerEvents = "auto";
+    parentElement.style.caretColor = "transparent";
 }
 
 /**
