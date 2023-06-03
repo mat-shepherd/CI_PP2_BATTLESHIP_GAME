@@ -39,12 +39,30 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [Frameworks \& Tools](#frameworks--tools)
   - [Features](#features)
     - [Existing Features](#existing-features)
-    - [Logo and Navigation Bar](#logo-and-navigation-bar)
+      - [Navigation Bar](#navigation-bar)
+    - [New Game Link and Button](#new-game-link-and-button)
+    - [How To Play Modal](#how-to-play-modal)
+      - [Audio Toggle to Mute and Unmute Sounds](#audio-toggle-to-mute-and-unmute-sounds)
+      - [Start Game Form](#start-game-form)
+      - [Gameboard](#gameboard)
+      - [Ship Placement Controls Area](#ship-placement-controls-area)
+      - [Place Ships Button](#place-ships-button)
+      - [Rotate Ships Button](#rotate-ships-button)
+      - [Random Ship Placement Button](#random-ship-placement-button)
+      - [Clear All Ships Button](#clear-all-ships-button)
+      - [Player Message Area](#player-message-area)
+      - [Sidebar Scoreboard](#sidebar-scoreboard)
+      - [Ship Hit, Miss and Sunk Feedback](#ship-hit-miss-and-sunk-feedback)
+      - [Computer Opponent](#computer-opponent)
+      - [Win and Loss Notification](#win-and-loss-notification)
+    - [Alternating Player Gameboard grids on Small Screens](#alternating-player-gameboard-grids-on-small-screens)
+      - [Feedback Form](#feedback-form)
+      - [404 Page](#404-page-1)
       - [Desktop \& Larger Screens](#desktop--larger-screens)
       - [Tablet, Mobile and Smaller Screens](#tablet-mobile-and-smaller-screens)
     - [Footer](#footer)
     - [Feedback Page](#feedback-page-1)
-    - [404 Page](#404-page-1)
+    - [404 Page](#404-page-2)
     - [Features Left to Implement](#features-left-to-implement)
   - [Testing](#testing)
     - [HTML Validation](#html-validation)
@@ -68,7 +86,7 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [Index Page, Feedback Page \& 404 Page](#index-page-feedback-page--404-page)
     - [Images](#images)
     - [Sounds](#sounds)
-    - [404 Page](#404-page-2)
+    - [404 Page](#404-page-3)
     - [Code](#code)
   - [Acknowledgements](#acknowledgements)
 
@@ -115,23 +133,25 @@ The players of the game are the primary users of this website with site owner be
 
 1. As a player, I want to play an accessible, easy to understand, fun, and visually attractive game that is responsive on any device.
 2. As a player, I want to see a list of game rules and instructions so I can understand how to play the game
-3. As a player, I want to enter my name so I can understand which player represents me on the game board and to keep track of my current score and high score
+3. As a player, I want to enter my name so I can understand which player represents me on the gameboard and to keep track of my current score and high score
 4. As a player, I want my name to be validated and to be provided with feedback on any errors with name entry to ensure I can understand which player I am in the game.
-5. As a player, I want to start a new game and receive directions on how to setup the game board
-6. As a player, while setting up the game board, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the game board
+5. As a player, I want to start a new game and receive directions on how to setup the gameboard
+6. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
 7. As a player, I want any controls or buttons to be colourful, apparent, and attractive.
-8. As a player, while setting up the game board, I want the ability to reset the game board to remove the game pieces (ships) and start placement over again
-9. As a player, once the game board is set up I want to see notifications and visual cues to understand the game has started and which player's turn it is to take a shot
-10. As a player, I want to see notifications and visual cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
-11. As a player, once a turn has been taken, I want to see notifications and visual cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
-12. As a player, I want to see notifications and visual cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
-13. As a player, I want to see notifications and visual cues indicating when all of a player's ships have been sunk and which player has won the game
+8. As a player, while setting up the gameboard, I want the ability to reset the gameboard to remove the game pieces (ships) and start placement over again
+9. As a player, once the gameboard is set up I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
+10. As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
+11. As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
+12. As a player, I want to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
+13. As a player, I want to be presented with notifications, visual, and audio cues indicating when all of a player's ships have been sunk and which player has won the game
 14. As a player, when a game has ended, I want to be given the option to start a new game
 15. As a player, when a game has ended, I want my high score to be retained until I end my browser session
+16. As a player, I want to be able to mute or unmute all game sounds
 
 #### Site Owner
 
-16. As the site owner, I want to receive feedback from players so I can understand if they are enjoying the game, identify any bugs, and continually improve the game.
+17. As the site owner, I want to receive feedback from players so I can understand if they are enjoying the game, identify any bugs, and continually improve the game.
+18. As the site owner, I want users to see a 404 page if they enter an incorrect URL so they can be navigated back to the main game page.
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -190,7 +210,7 @@ For simplicity, the site consists of one primary page and two helper pages, a fe
 
 - A start game screen, that covers the main game body area, and contains a form to collect the player's name, a start game button and an audio toggle button.
   
-- The main game body area which contains the player message container, the player and computer game boards, and the ship placmement controls (whic are hidden once the player has palced thier ships)
+- The main game body area which contains the player message container, the player and computer gameboard grids, and the ship placmement controls (which are hidden once the player has placed thier ships)
 
 - A How to Play modal which conveys the rules of the game and how to play
   
@@ -269,15 +289,119 @@ For simplicity, the site consists of one primary page and two helper pages, a fe
 
 ## Features
 
-The website consists of three pages in total, an index page, afeedback page, and a 404 page. The site's pages contain ... distinct features:
+The website consists of three pages in total, an index page, a feedback page, and a 404 page. The site's pages contain ... distinct features:
 
 ### Existing Features
 
-### Logo and Navigation Bar
+#### Navigation Bar
 
-- featured on all pages
-- containing the game logo, a responsive navigation menu and a audio toggle button
-- User stories covered:
+- Display a navigation bar with links to start a new game, see details on how play, and audio toggle icon which indicates whether audio is on or off.
+- User stories covered: 14
+
+### New Game Link and Button
+
+- A link in the navigation bar and buttons presented in win game modal, feedback form, and 404 page, that loads the index.html page clearing all game objects. 
+- If the player has entered their name already, the player's name, score, and high score values are passed via parameter to index.html to be preserved in the new game. 
+- If a player name has already been entered, the player skips the start game form and is prompted to place their ships.
+- If no player name has been entered, the start game form is presented so the user can enter their name and start a new game.
+- User stories covered: 1, 3, 5, 7 8, 9, 14, 15
+
+### How To Play Modal
+
+- When clicked, the How to Play link in the navigation bar displays a modal that provides game rules, instructions on how to play, and details of available controls.
+- User stories covered: 2
+
+#### Audio Toggle to Mute and Unmute Sounds
+
+- All game sounds are muted by default
+- An audio toggle icon is present in the navigation bar that allows game sounds to be completely unmuted or muted. When clicked the icon marker changes to indicate if game sounds are currently mure or unmuted.
+- An audio toggle button is presented in the start game form to allow the player to unmute or mute game sounds. When toggled the button changes colour and tells the player that audio is off or audio is on.
+- User stories covered: 1, 7, 16
+
+#### Start Game Form
+
+- When the index page loads, a form is presented the player so they can enter theirs name and start a new game.
+- The name entered is validated as it can only be up to charcters long and a name must be entered before the form can be submitted
+- The player name provided is used in the score sidebar and and above the player's gameboard grid to let them know which scores and gameboard grid belongs to them.
+- User stories covered: 3, 5
+
+#### Gameboard
+
+- The gameboard, which is the main gameplay area in the center of the screen, where players place their ships and take shots.
+- User stories covered: 6, 8, 9, 10, 11, 12, 13
+
+#### Ship Placement Controls Area
+
+- Provides buttons to allow players to place, rotate, randomly palce, or clear their ships on their gameboard grid.
+- This area is hiddeen once turn based gameplay begins
+- User stories covered: 6, 8
+
+#### Place Ships Button
+
+- Receive validation and feedback during ship placement to ensure it is within the limits of the gameboard grid.
+- User stories covered: 6, 8
+  
+#### Rotate Ships Button
+
+- Rotate ships to change their orientation on the gameboard grid.
+- User stories covered: 6
+
+#### Random Ship Placement Button
+
+- Randomly places player ships on the player's gameboard grid and starts turn based gameplay.
+- User stories covered: 6
+
+#### Clear All Ships Button
+
+- Clears all of the player's manual ship placements during the ship placement stage of the game.
+- User stories covered: 8
+
+#### Player Message Area
+
+- Receive messages and notifications to provide important information during the game.
+- User stories covered: 9, 10, 11, 12, 13
+
+#### Sidebar Scoreboard
+
+- Show a scoreboard in the sidebar that keeps track of player scores and high scores.
+- User stories covered: 3, 15
+
+#### Ship Hit, Miss and Sunk Feedback
+
+- When ships are hit, missed, or sunk the player is notified via visual markers, sounds, scorebaord updates, and notifications in the player message area.
+- A ship hit results in an explosion animation at the hit location on the gameboard grid, followed by a fire marker at the location, an explosion sound, a notification of the hit location in the player message area, and an update to the relevant player's hit score in the sidebar.
+- A ship miss results in an splash animation at the hit location on the gameboard grid, followed by a splash marker at the location, a splash sound, a notification of the miss location in the player message area, and an update to the relevant player's miss score in the sidebar.
+- A ship being hit across all of its grid locations means the ship is sunk. Sinking a ship results in a explosion and sinking sound, a notification of the ship that was sunk in the player message area, an update to the relevant player's Ship count in the sidebar, and a red X icon being placed over the relevant player's sunk ship.
+- User stories covered: 10, 11, 12
+
+#### Computer Opponent
+
+- The player plays against a computer opponent that randomly place's hidden ships on the computer's gameboard grid for the player to take shots on.
+- Compouter ships become visibile to the palyer once sunk.
+- The computer takes random shots on the player's gameboard grid.
+- User stories covered: 
+
+#### Win and Loss Notification
+
+- When a the player or computer's ships are all sunk a win game modal is show and a sound played to let the player know if they ahve won or lost.
+- The player's score and high score are presented.
+- A New Game button is presented to allow the player to start a new game while maintining their name and score values.
+- User stories covered: 13
+
+### Alternating Player Gameboard grids on Small Screens
+
+- On small screens and mobile devices, the gameboard grids in an alternating arrangement on small screens for better visibility.
+- User stories covered: 
+
+#### Feedback Form
+
+- Include a feedback form to gather player feedback.
+- User stories covered: 
+
+#### 404 Page
+
+- Display a customized 404 page with a link to start a new game.
+- User stories covered: 14
 
 #### Desktop & Larger Screens
 
@@ -435,7 +559,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-1-2-12.gif">
 </details><br>
 
-3. As a player, I want to enter my name so I can understand which player represents me on the game board and to keep track of my current score and high score
+3. As a player, I want to enter my name so I can understand which player represents me on the gameboard and to keep track of my current score and high score
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -458,7 +582,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-4.gif">
 </details><br>
 
-5. As a player, I want to start a new game and receive directions on how to setup the game board
+5. As a player, I want to start a new game and receive directions on how to setup the gameboard
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -469,7 +593,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-5-9-14.gif">
 </details><br>
 
-6. As a player, while setting up the game board, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the game board
+6. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -480,7 +604,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-6.gif">
 </details><br>
 
-8. As a player, while setting up the game board, I want the ability to reset the game board to remove the game pieces (ships) and start placement over again
+8. As a player, while setting up the gameboard, I want the ability to reset the gameboard to remove the game pieces (ships) and start placement over again
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -492,7 +616,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-7-10.gif">
 </details><br>
 
-9. As a player, once the game board is set up I want to see notifications and visual cues to understand the game has started and which player's turn it is to take a shot
+1. As a player, once the gameboard is set up I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -502,7 +626,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-8-11.gif">
 </details><br>
 
-10. As a player, I want to see notifications and visual cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
+1.  As a player, I want to to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -513,7 +637,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-5-9-14.gif">
 </details><br>
 
-11. As a player, once a turn has been taken, I want to see notifications and visual cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
+1.  As a player, once a turn has been taken, I want to to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -525,7 +649,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-7-10.gif">
 </details><br>
 
-12. As a player, I want to see notifications and visual cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
+1.  As a player, I want to to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -535,7 +659,7 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-8-11.gif">
 </details><br>
 
-13. As a player, I want to see notifications and visual cues indicating when all of a player's ships have been sunk and which player has won the game
+1.  As a player, I want to to be presented with notifications, visual, and audio cues indicating when all of a player's ships have been sunk and which player has won the game
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
@@ -568,9 +692,31 @@ The website was tested on the following browsers:
 <img src="docs/user-story-testing/user-story-test-5-9-14.gif">
 </details><br>
 
+16. As a player, I want to be able to mute or unmute all game sounds
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Contact Form | Click Contact or Get a Quote in the navigation menu, Ask Me How in the Hero Section, or Requesting Pricing in the Service section. | Scroll to the contact form and submit a message | Works as expected |
+| Contact Section | Click Contact to scroll to the contact form. If further contact information is required, click the link beneath the form submit button to scroll to the contact information in the footer | Scroll to the contact form and submit a message or use the email link in the footer | Works as expected |
+
+<details><summary>Submit Message Through Contact Form</summary>
+<img src="docs/user-story-testing/user-story-test-5-9-14.gif">
+</details><br>
+
 #### Site Owner
 
-16. As the site owner, I want to receive feedback from players so I can understand if they are enjoying the game, identify any bugs, and continually improve the game.
+17. As the site owner, I want to receive feedback from players so I can understand if they are enjoying the game, identify any bugs, and continually improve the game.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| 404 Page | Navigate to a URL that doesn't exist within the sites file structure | Serve a 404 page telling the user the page doesn't exist and present options to navigate back to the index page | Works as expected |
+| 404 Page Navigation Links | Navigate to a URL that doesn't exist within the sites file structure and find a way to navigate back to the home page | Read the 404 page and click on the Return Home link or any other internal link on the page to return to the index page | Works as expected |
+
+<details><summary>Feedback Page</summary>
+<img src="docs/user-story-testing/user-story-test-15.gif">
+</details><br>
+
+18. As the site owner, I want users to see a 404 page if they enter an incorrect URL so they can be navigated back to the main game page.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
