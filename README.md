@@ -257,8 +257,7 @@ For simplicity, the site consists of one primary page and two helper pages, a fe
 
 <details><summary>Desktop</summary>
 <img src="docs/wireframes/feedback-desktop-wireframe.png">
-</detais>
-
+</details>
 
 ### 404
 
