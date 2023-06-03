@@ -33,6 +33,7 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
       - [404 PAGE](#404-page)
     - [Wireframes](#wireframes)
     - [Index](#index)
+    - [Feedback](#feedback)
     - [404](#404)
   - [Technologies Used](#technologies-used)
     - [Languages](#languages)
@@ -57,7 +58,7 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
       - [Player / Computer Shot Feedback](#player--computer-shot-feedback)
       - [Ship Hit, Miss and Sunk Feedback](#ship-hit-miss-and-sunk-feedback)
       - [Win and Loss Notification](#win-and-loss-notification)
-    - [Alternating Player Gameboard grids on Small Screens](#alternating-player-gameboard-grids-on-small-screens)
+      - [Alternating Player Gameboard grids on Small Screens](#alternating-player-gameboard-grids-on-small-screens)
     - [Footer](#footer)
       - [Feedback Form](#feedback-form)
       - [404 Page](#404-page-1)
@@ -233,29 +234,44 @@ For simplicity, the site consists of one primary page and two helper pages, a fe
 ### Index
 
 <details><summary>iPhone SE</summary>
-<img src="">
+<img src="docs/wireframes/index-iphone-se-wireframe.png">
 </details>
 
 <details><summary>iPad Mini</summary>
-<img src="">
+<img src="docs/wireframes/index-ipad-mini-wireframe.png">
 </details>
 
 <details><summary>Desktop</summary>
-<img src="">
+<img src="docs/wireframes/index-desktop-wireframe.png">
 </details>
+
+### Feedback
+
+<details><summary>iPhone SE</summary>
+<img src="docs/wireframes/feedback-iphone-se-wireframe.png">
+</details>
+
+<details><summary>iPad Mini</summary>
+<img src="docs/wireframes/index-ipad-mini-wireframe.png">
+</details>
+
+<details><summary>Desktop</summary>
+<img src="docs/wireframes/feedback-desktop-wireframe.png">
+</detais>
+
 
 ### 404
 
 <details><summary>iPhone SE</summary>
-<img src="">
+<img src="docs/wireframes/iphone-404-se-wireframe.png">
 </details>
 
 <details><summary>iPad Mini</summary>
-<img src="">
+<img src="docs/wireframes/ipad-mini-404-wireframe.png">
 </details>
 
 <details><summary>Desktop</summary>
-<img src="">
+<img src="docs/wireframes/desktop-404-wireframe.png">
 </details>
 
 [Back to Table of Contents](#table-of-contents)
@@ -452,7 +468,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 ![See feature]()
 
-### Alternating Player Gameboard grids on Small Screens
+#### Alternating Player Gameboard grids on Small Screens
 
 - On small screens and mobile devices, the active gameboard grid is moved to the top of the gameboard column to allow the player to see and interact with the active gaeeboard grid without having to scroll.
 - User stories covered: 1, 10, 12
@@ -791,7 +807,7 @@ The website was tested on the following browsers:
 | ----------- | ----------- |
 | Gameboard layout on mobile devices | Due to the square nature and required size of the grids to be able to interact with indivudal cells, responsive layout was tricky and led to horizontal overflow on small screens, poor spacing of elements on mobile devices, and a poor responsive user experience. To correct this I set the gameboard area to column layout below 1600px breakpoint and reduced the size of the ships grids cells to half the size of those on desktop. I then set the ship and icon images to a % based width to make them respond to the gaemboard grid cell size. |
 | Scrolling on mobile devices | Due to column layout on small screens the player would have to scroll and up and down the screen when taking turns to understand what the computer player did during their turn and to take their shot. As Player message pulls focus to the top of the screen when it updates this was creating a very poor user experience. To crrect this I added a gameboard-reverse class to the gaemboard div in the checkTurn function. Adding this class changes the order of the flex positioned gameboard grids, which allows the active grid to always show at the top of the gameboard. This also keeps the player viewing the top of the viewport and minimises jumping back to the top of the screen when the player message updates. |
-|  Rotating grid cells would rotate hit and miss icons | The functions which rotate ship images on the gameboard actually rotate the containing div by multipls of 90 degrees to ensure the image pivots around the center of the cell the ship was placed in. This worked well but created an issue where ship hit or miss icons when added to the original ship placement cell were also rotated, which looked odd and inconsistent with icons show elsewhere on the board. To fix this I ntroduced a check into functions which add ship hit or miss icons to see if the parent div class contained transform. If it did the icon image would then be rotated -90 degrees. |
+|  Rotating grid cells would rotate hit and miss icons | The functions which rotate ship images on the gameboard actually rotate the containing div by multipls of 90 degrees to ensure the image pivots around the center of the cell the ship was placed in. This worked well but created an issue where ship hit or miss icons when added to the original ship placement cell were also rotated, which looked odd and inconsistent with icons show elsewhere on the board. To fix this I introduced a check into functions which add ship hit or miss icons to see if the parent div class contained transform. If it did the icon image would then be rotated -90 degrees. |
 |  Player message timing |  As the game progresses through each player's turn it proveed tricky to slow down gameplay and ensure that player messages were visible long enough to read before they were replaced by the next player message. While this is not fully resolved to my liking I introduced setTimeoutet functions aroun player messages to add delays before they are shown to give the previous message time to display. When ships are sunk it provde very difficult to give the message time to display. With help from an approach provided by ChatGPT I introduced a delay function and a promise object to delay gameplay to give this ship sunk message time to display before gamplay resumes. |
 | Deleting grid click listeners | Each player grid allows the user to inidcate the cells they will place ships in or take shots on by adding click listeners when grids are created and disabling click listeners when it is the computer's turn or a grid location is occupied by a ship or a shot. Removing click listeners was a difficult issue to solve as each cell's click listener was specific to it and a reference to the specific listenenr had to be stored somewhere for later retrieval to remove the correct listener for the correct grid and cell. With guodance from ChatGPT I decided to store the place and shoot event listeners in attributes of the Gameboard object so I could loop through the relevant gameboard's placeEventHandlers or shootEventHandlers to find the click listener for relevant grid cell. This worked well but I still had an issue where I need to disable all grid listeners on the opposing player's grids to ensure the player couldn't randomly trigger unexpected functions. The quick fix for this was found in an article by Coding Deft, which led to the addition of a style to gameboard grid elements that set pointer-events: none on the on-active gameboard grid during checkTurn. |
 | Poor page load on mobile devices  | On testing the game index page with Lighthouse I was receving a perfomance score in the 70s, largely due to the loading and rendering of the repeating ocean tile gif in the background of the gameboard. I exploed multiple options including replacing this with a video of the effect but in the end settled on using a lazy loading approach. A lazyLoadBackground function was provided by chatGPT and dapted to make the ocean tile background load only when initPlacement was called to start rendering the gameboards. This greatly improved page load performance on mobiles with scores in the 90s.|
@@ -836,17 +852,8 @@ In order of appearance:
 ### Wireframes
 
 - [Figma Wireframing Kit](https://www.figma.com/community/file/1088059168988686975) by [Tiago Gonçalves](https://www.figma.com/community/file/1088059168988686975)
-    <details><summary>Image Placeholders</summary>
-    <img src="docs/wireframes/desktop-wireframe.webp">
-    </details>
 - [Website Wireframes UI Kit](https://www.figma.com/community/file/1212997233512196965) by [UI-UX Expert](https://www.figma.com/@uiux_expert)
-    <details><summary>Button, Menu and Form Elements</summary>
-    <img src="docs/wireframes/desktop-wireframe.webp">
-    </details>
 - Font Awesome Icons by [Font Awesome](https://fontawesome.com/)
-    <details><summary>Audio, Music, and GitHub Icons [Font Awesome Icons](https://fontawesome.com/icons)</summary>
-    <img src="docs/credits/service-fontawesome-icons.webp">
-    </details>
 
 ### Index Page, Feedback Page & 404 Page
 
