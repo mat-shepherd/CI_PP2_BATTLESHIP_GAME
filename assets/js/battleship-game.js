@@ -2255,6 +2255,10 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
     for (let i = 0; i < playerTypesKeys.length; i++) {
         let keys = playerTypesKeys[i];
         let owner = keys;
+        // If playerName known from previous game use that
+        if (existPlayerName) {
+            playerName = existPlayerName;
+        }
         // If playerName known use that for player one label
         let label = owner === 'player' && playerName ? playerName : playerTypes[keys];
         gameBoards[keys] = new Gameboard(owner, label);
