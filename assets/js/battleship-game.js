@@ -834,7 +834,7 @@ class Ship {
             sinkSound.play();
         }
 
-        // Find opposing player's ship elelemnt and mark sunk
+        // Find opposing player's ship elelment in scoreboardand mark sunk
         let sunkShip = document.getElementById(oppShipElem);
         sunkShip.innerHTML += `<img src='./assets/images/effects/sunk.png' class='ship-sunk'>`;
 

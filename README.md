@@ -143,7 +143,7 @@ The players of the game are the primary users of this website with site owner be
 7. As a player, I want any controls or buttons to be colourful, apparent, and attractive.
 8. As a player, while setting up the gameboard, I want the ability to randomly place my ships and reset the gameboard to remove the game pieces (ships) and start placement over again
 9. As a player, once the game board is set up, I want to play against a computer opponent
-10. As a player, once the gameboard is set, up I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
+10. As a player, once the gameboard is set up, I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
 11. As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
 12. As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
 13. As a player, I want to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
@@ -328,6 +328,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 #### New Game Link and Button
 
 - A link in the navigation bar and buttons presented in the win game modal, feedback form, and 404 page, that loads the index.html page clearing all game objects.
+- When the user clicks a new game button or the logo link a confirmation alert is shown to stop the user from accidentally losing game progress.
 - If the player has entered their name already, the player's name, score, and high score values are passed via parameter to index.html to be preserved in the new game.
 - If a player name has already been entered, the player skips the start game form and is prompted to place their ships.
 - If no player name has been entered, the start game form is presented so the user can enter their name and start a new game.
@@ -672,17 +673,18 @@ The website was tested on the following browsers:
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Navigation Bar How to Play Link  | Click How To Play link in the navigation bar  | Works as expected |
-| How To Play Modal | Click How To Play link in the navigation bar | How to play modal is displayed and user can scroll through rules and instructions on how to play the game | Works as expected |
+| How To Play Modal Contents | Click How To Play link in the navigation bar | How to play modal is displayed and user can scroll through rules and instructions on how to play the game | Works as expected |
+| How To Play Modal Close | User clicks X button in the How to Play Modal | How to play modal is closed and the user sees the main game interface | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-1. As a player, I want to enter my name so I can understand which player represents me on the gameboard and to keep track of my current score and high score
+3. As a player, I want to enter my name so I can understand which player represents me on the gameboard and to keep track of my current score and high score
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|  Start game form | Player loads game and enters name in start game form and clicks start game | Name is accepted and game starts populating name into scoreboard, player grid, and player messages  | Works as expected |
-|  Start game form validation |  Player loads game and enters name in start game form but fails to enter a name and then click start game |  Game doe snot start and error message is displayed below name field | Works as expected |
+| Start game form | Player loads game and enters name in start game form and clicks start game | Name is accepted and game starts populating name into scoreboard, player grid, and player messages  | Works as expected |
+| Start game form validation |  Player loads game and enters name in start game form but fails to enter a name and then click start game |  Game does not start and error message is displayed below name field | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
@@ -691,33 +693,33 @@ The website was tested on the following browsers:
 4. As a player, I want my name to be validated and to be provided with feedback on any errors with name entry to ensure I can understand which player I am in the game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|  Start game form max characters| Player loads game and enters name in start game and tries to type more than 10 characters  |  Name field does not let the user type past 10 charaters | Works as expected |
-|  Start game form validation |  Player loads game and enters name in start game form but fails to enter a name and then click start game |  Game doe snot start and error message is displayed below name field | Works as expected |
+| Start game form max characters | Player loads game and enters name in start game and tries to type more than 10 characters  |  Name field does not let the user type past 10 characters | Works as expected |
+| Start game form validation |  Player loads game and enters name in start game form but fails to enter a name and then click start game |  Game does not start and error message is displayed below name field | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-1. As a player, I want to start a new game and receive directions on how to setup the gameboard
+5. As a player, I want to start a new game and receive directions on how to setup the gameboard
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|  Start game form | Player loads game and enters name in start game form and clicks start game | Name is accepted and game starts populating name into scoreboard, player grid, and player messages  | Works as expected |
-|  Start Game Player message | Player clicks start game and sees gameboard  | Player is shown message telling them how to place ships and how to use placement controls | Works as expected |
+| Start game form | Player loads game and enters name in start game form and clicks start game | Name is accepted and game starts populating name into scoreboard, player grid, and player messages  | Works as expected |
+| Start Game Player message | Player clicks start game and sees gameboard  | Player is shown message telling them how to place ships and how to use placement controls | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-1. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
+6. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|  Ship Placment Grid Hover | Player hovers over the grid with their name and sees a ship placement icon and click a grid cell |  The player clicks a grid cell in their gameboard and the ship is temporarily placed. If they click another grid cell the ship is temporarily placed again in the new location | Works as expected |
-|  Ship Placement Player Message |   |   | Works as expected |
-|  Ship Placement Player Controls |   |   | Works as expected |
-|  Ship Placement Button |   |   | Works as expected |
-|  Ship Rotate Button |   |   | Works as expected |
-|  Ship Random Button |   |   | Works as expected |
-|  Ship Clear Button |   |   | Works as expected |
+| Ship Placment Grid Hover | Player hovers over the grid with their name and sees a ship placement icon and click a grid cell |  The player clicks a grid cell in their gameboard and the ship is temporarily placed. If they click another grid cell the ship is temporarily placed again in the new location | Works as expected |
+| Ship Placement Player Message |  Player starts game and is shown a message in the player area instructing them on how to place ships |  Player follows instructions and place ships by clicking on the player grid and using the placement controls | Works as expected |
+|  Ship Placement Player Controls | Player is instucted to use placement controls and placement control buttons are highlighted after clicking on the player grid |  Player clicks on the player grid to place their ship and then uses the placement controls to confirm or change ship placement  | Works as expected |
+| Ship Placement Button |  Player clicks on the Place button to confirm ship placement | Ship is placed and player moves onto placing their next ship. If they have palced thier final ship the game starts. The player is provided with a message in the player area if there are no ships to place  | Works as expected |
+| Ship Rotate Button | Player clicks on the Rotate button to rotate ship placement | The current ship on the players grid is rotated each time the button is clicked. The player is provided with a message in the player area if there are no ships to rotate  | Works as expected |
+| Ship Random Button | Player clicks on the Random button to randomly place ships  | Ships are randomly placed on the player's grid at random locations and rotations within the grid bounds and the game starts | Works as expected |
+| Ship Clear Button | Player clicks on the Clear All button to clear placed ships  | All ships manually placed by the player and their coordinates are cleared from the player grid and they can start placing ships again  | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
@@ -726,84 +728,90 @@ The website was tested on the following browsers:
 7. As a player, I want any controls or buttons to be colourful, apparent, and attractive
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|  Ship Placement Player Controls |   |   | Works as expected |
-|   |   |   | Works as expected |
+| Ship Placement Player Controls | Player is instucted to use placement controls and placement control buttons are highlighted after clicking on the player grid |  Player clicks on the player grid to place their ship and then uses the placement controls to confirm or change ship placement  | Works as expected |
+| Ship Placement Player Pulse  |  Player clicks on their grid to place a ship and the placement control buttons start pulsing to draw the player's attention |  Player is drawn to the buttons as their next step and engages with buttons to control ship placement | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-1. As a player, while setting up the gameboard, I want the ability to randomly place my ships and reset the gameboard to remove the game pieces (ships) and start placement over again
+8. As a player, while setting up the gameboard, I want the ability to randomly place my ships and reset the gameboard to remove the game pieces (ships) and start placement over again
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|  Ship Clear Button |   |   | Works as expected |
-|  Ship Random Button |   |   | Works as expected |
+| Ship Random Button | Player clicks on the Random button to randomly place ships  | Ships are randomly placed on the player's grid at random locations and rotations within the grid bounds and the game starts | Works as expected |
+| Ship Clear Button | Player clicks on the Clear All button to clear placed ships  | All ships manually placed by the player and their coordinates are cleared from the player grid and they can start placing ships again  | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-1.  As a player, once the game board is set up, I want to play against a computer opponent
+9.  As a player, once the game board is set up, I want to play against a computer opponent
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|  Computer opponenet random ship placement |   |   | Works as expected |
-|  Computer opponenet random shot taking  |   |   | Works as expected |
+| Computer opponent random ship placement | Player completes placing ships and computer opponent ships are generated| Once the player has completed placing ships the computer opponent's ship coordinates are generated but ships are not shown | Works as expected |
+| Computer opponent random shot taking  | Player takes their first shot which triggers computer opponent's turn | The player message area indicates the computer is taking their shot. The computer takes a shot on the player board and a hit, miss or sunk notification is shown on the player grid. The player is then notified it is their turn again | Works as expected |
+| Computer opponent win | Computer opponent sink all of the player's ships | All players ships are sunk as indicated byt hit markers on the grid and sunk markers on player's ships in the scoreboard. Computer's score is increased and the win/lose game screen is shown telling the player they lost, their score and offering a New Game button | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-10. As a player, once the gameboard is set, up I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
+10.  As a player, once the gameboard is set up, I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+| Gameplay starts |  User finishes placing all ships and turn based gameplay starts | Player is shown a message telling them to take a shot on the computer's grid by clicking anywhere on Player Two's grid | Works as expected |
+| Player hovers over computer grid | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot with hit, miss, or sunk visual and audio cues on the grid | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-11. As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
+11.   As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+| Gameplay starts |  User finishes placing all ships and turn based gameplay starts | Player is shown a message telling them to take a shot on the computer's grid | Works as expected |
+| Player grid-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot with hit, miss, or sunk visual and audio cues on the grid | Works as expected |
+| Player score-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot through updates to the hit, misses numbers under their name in the scoreboard. If one of the computer's ships is sunk a Red X marker is shown over Player Two's relevant ship | Works as expected |
+| Player message-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot through updates to the Player Message area. This tells them the coordinates of the ship hit or miss and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-12. As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
+12.  As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+| Player grid-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot with hit, miss, or sunk visual and audio cues on the grid | Works as expected |
+| Player score-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot through updates to the hit, misses numbers under their name in the scoreboard. If one of the computer's ships is sunk a Red X marker is shown over Player Two's relevant ship | Works as expected |
+| Player message-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot through updates to the Player Message area. This tells them the coordinates of the ship hit or miss and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-13.  As a player, I want to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
+13.   As a player, I want to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+| Grid-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of who took the shot, the result of the shot with hit, miss, or sunk visual and audio cues on the relevant player's grid | Works as expected |
+| Score-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of the result of the shot through updates to the hit, misses numbers under the relevant player's name in the scoreboard. If a ship is sunk a Red X marker is shown over the relvant player's sunk ship | Works as expected |
+| Player message-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of who took the shot and the result of the shot through updates to the Player Message area. This tells them who took the shot, the coordinates of the ship hit or miss, and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-14.  As a player, I want to be presented with notifications, visual, and audio cues indicating when all of a player's ships have been sunk and which player has won the game
+14.   As a player, I want to be presented with notifications, visual, and audio cues indicating when all of a player's ships have been sunk and which player has won the game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+| Grid-based shot feedback | All of a player's ship have been hit at all placed coordinates and sunk | When a ship is sunk explosion and fire markers are shown across each grid cell the ship occupies, a sunk ship sound is played | Works as expected |
+| Score-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of the result of the shot through updates to the hit, misses numbers under the relevant player's name in the scoreboard. If a ship is sunk a Red X marker is shown over the relvant player's sunk ship | Works as expected |
+| Player message-based shot feedback | All of a player's ship have been hit at all placed coordinates and sunk | When a shot is taken the player is notified of who took the shot and the result of the shot through updates to the Player Message area. This tells them who took the shot, the coordinates of the ship hit or miss, and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-15. As a player, when a game has ended, I want to be given the option to start a new game
+1.  As a player, when a game has ended, I want to be given the option to start a new game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 |   |   |   | Works as expected |
