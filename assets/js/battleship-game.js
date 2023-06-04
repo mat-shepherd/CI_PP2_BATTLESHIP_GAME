@@ -28,7 +28,7 @@ class Ship {
      * and pass back to runGame loop. Otherwise, if the player is not computer 
      * place ship image. Then return.
      * @method placeShip
-     * @param {object} players - the object containg player objects
+     * @param {object} players - the object containing player objects
      * @param {object} playerShips - object containing the player's ship objects
      * @param {object} computerShips - object containing the computer's ship objects
      * @param {object} gameBoards - object containing game board objects
@@ -204,7 +204,7 @@ class Ship {
      * for help here. After much trial and error the following code was 
      * pieced together and adapted from code provided by chatGPT by https://openai.com
      * @method rotateShip
-     * @param {object} players - the object containg player objects
+     * @param {object} players - the object containing player objects
      * @param {object} playerShips - object containing the player's ship objects
      * @param {object} computerShips - object containing the computer's ship objects
      * @param {object} gameBoards - object containing game board objects
@@ -790,7 +790,7 @@ class Ship {
      * If ship has been hit maximum amount of times sink ship
      * Update ship objects sunk attribute to true
      * @method sinkShip
-     * @param {object} players - the object containg player objects
+     * @param {object} players - the object containing player objects
      * @param {object} playerShips - object containing the player's ship objects
      * @param {object} computerShips - object containing the computer's ship objects
      * @param {object} currentPlayer - the current player object in play
@@ -834,7 +834,7 @@ class Ship {
             sinkSound.play();
         }
 
-        // Find opposing player's ship elelment in scoreboardand mark sunk
+        // Find opposing player's ship element in scoreboard and mark sunk
         let sunkShip = document.getElementById(oppShipElem);
         sunkShip.innerHTML += `<img src='./assets/images/effects/sunk.png' class='ship-sunk'>`;
 
@@ -992,7 +992,7 @@ class Gameboard {
      * existing and then adding new click event listeners to call methods of 
      * the currentShip object.
      * @method updateGridListener
-     * @param {object} players - the object containg player objects
+     * @param {object} players - the object containing player objects
      * @param {object} playerShips - object containing the player's ship objects
      * @param {object} computerShips - object containing the computer's ship objects
      * @param {object} gameBoards - object containing game board objects
@@ -1127,7 +1127,7 @@ class Player {
     /**
      * Update the sidebar with player's name
      * @method updateName
-     * @param {string} playername - name entered by player 
+     * @param {string} playerName - name entered by player 
      */
     updateName(playerName) {
         document.getElementById('p1-score-title').innerText = playerName;
@@ -1137,7 +1137,7 @@ class Player {
     /**
      * Updates the current player hits score
      * @method updateHits
-     * @param {object} players - the object containg player objects		
+     * @param {object} players - the object containing player objects		
      * @param {object} playerShips - object containing the player's ship objects
      * @param {object} computerShips - object containing the computer's ship objects
      */
@@ -1157,7 +1157,7 @@ class Player {
     /**
      * Updates the current player misses score
      * @method updateMisses
-     * @param {object} players - the object containg player objects		
+     * @param {object} players - the object containing player objects		
      * @param {object} playerShips - object containing the player's ship objects
      * @param {object} computerShips - object containing the computer's ship objects	
      */
@@ -1220,7 +1220,7 @@ class Player {
      * Check if all of players ships have been sunk by looping the ship
      * objects sunk attribute values. Return win true or false
      * @method checkWinLose
-     * @param {object} players - the object containg player objects
+     * @param {object} players - the object containing player objects
      * @param {object} playerShips - object containing the player's ship objects
      * @param {object} computerShips - object containing the computer's ship objects
      * @param {object} currentPlayer - the current player object in play
@@ -1246,7 +1246,7 @@ class Player {
             }
         }
 
-        // If opposing player's shipsremaining is 0 this player wins
+        // If opposing player's shipsRemaining is 0 this player wins
         if (shipsRemaining === 0) {
             win = true;
         } else {
@@ -1259,7 +1259,7 @@ class Player {
     /**
      * Loops through each of this player's ships and calls checkShipHit
      * @method takeShot
-     * @param {object} players - the object containg player objects
+     * @param {object} players - the object containing player objects
      * @param {object} playerShips - object containing the player's ship objects
      * @param {object} computerShips - object containing the computer's ship objects
      * @param {object} gameBoards - object containing game board objects
@@ -1278,7 +1278,7 @@ class Player {
         targetCell,
         randomShotCoord
     ) {
-        // Random hit and miss mesages
+        // Random hit and miss messages
         let hitMessage = ["AMAZING SHOT!", "MUST HAVE X-RAY VISION!", "MAKING IT LOOK EASY!", "BEGINNER'S LUCK?", "HEADING FOR THE WIN?"];
         let missMessage = ["BETTER LUCK NEXT TIME!", "SO CLOSE!?", "IT'S A GAME OF LUCK...OR IS IT?", "KEEP TRYING!", "MAYBE THEY SHOULDN'T PLAY THE LOTTO TODAY!"];
         let rMsg = Math.floor(Math.random() * 5);
@@ -1357,7 +1357,7 @@ class Player {
         }
 
         /*
-        * We need to set currentPlayer to the nextplayer
+        * We need to set currentPlayer to the nextPlayer
         * before passing back to checkTurn
         */
         let nextPlayer = this.name !== 'PLAYER TWO' ? players.computer : players.player;
@@ -1381,7 +1381,7 @@ class Player {
      * Check's if a player's guess results in a ship being hit and provide
      * feedback to player if hit
      * @method checkShipHit
-     * @param {object} players - the object containg player objects
+     * @param {object} players - the object containing player objects
      * @param {object} playerShips - object containing the player's ship objects
      * @param {object} computerShips - object containing the computer's ship objects
      * @param {object} gameBoards - object containing game board objects
@@ -1444,7 +1444,7 @@ class Player {
 // HELPER FUNCTIONS
 
 /**
- * Helps delay code execution where playermessages
+ * Helps delay code execution where playerMessages
  * need time to display.
  * Code adapted from answer by ChatGPT by https://openai.com
  * @function delay
@@ -1526,7 +1526,7 @@ function audioToggle() {
  * before passing flow on to initPlacement(). If no name entered
  * this displays an error message in the form.
  * @function checkName
- * @param {string} playername - name entered by player 
+ * @param {string} playerName - name entered by player 
  */
 function checkName(playerName) {
     let errorMsg = document.getElementById('error-message');
@@ -1541,7 +1541,7 @@ function checkName(playerName) {
  * Update placement buttons with click event listeners to call methods of 
  * current ship object. 
  * @function updatePlacementListener
- * @param {object} players - the object containg player objects
+ * @param {object} players - the object containing player objects
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
  * @param {object} gameBoards - object containing game board objects
@@ -1650,7 +1650,7 @@ function randomCoord() {
 /**
  * Generate random coordinates to place ships randomly.
  * @function randomShip
- * @param {object} players - the object containg player objects
+ * @param {object} players - the object containing player objects
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
  * @param {object} gameBoards - object containing game board objects
@@ -1797,7 +1797,7 @@ function randomShip(
  * reset ship coordinates for all player ships
  * and allow the player to start placing ships again.
  * @function clearShips
- * @param {object} players - the object containg player objects
+ * @param {object} players - the object containing player objects
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
  * @param {object} gameBoards - object containing game board objects
@@ -2043,7 +2043,7 @@ function enableClickListeners(parentElement) {
  * If all ships sunk notify player of win or loss.
  * Give the player option to start new game.
  * @function playerWinLose
- * @param {object} players - the object containg player objects
+ * @param {object} players - the object containing player objects
  * @param {object} currentPlayer - the current player object in play
  * @param {object} oppPlayer - the opposing player object
  */
@@ -2138,7 +2138,7 @@ function playerWinLose(players, currentPlayer, oppPlayer) {
 
 /**
  * Start a new game by reloading the page and using URL 
- * paramaters to retain player name and scores. 
+ * parameters to retain player name and scores. 
  * Includes flag to call initPlacement().
  * @function newGame
  */
@@ -2235,7 +2235,7 @@ function playerMessage(message, effect) {
  */
 function initPlacement(playerName, existPlayerName, playerScore, playerHighScore, computerScore, newGame) {
 
-    /* Call lazyLoadBackground to load reapeating ocean tile image */
+    /* Call lazyLoadBackground to load repeating ocean tile image */
     lazyLoadBackground();
 
     /**
@@ -2278,7 +2278,7 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
         let score = 0;
         let highScore = 0;
         if (owner === 'player') {
-            // set inital turn attribute to True so player gets first turn
+            // set initial turn attribute to True so player gets first turn
             let turn = true;
             // Check for existing scores and name if new game
             playerName = existPlayerName ? existPlayerName : playerName;
@@ -2289,7 +2289,7 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
             // Replace player one's name in sidebar with name provided 
             players[keys].updateName(playerName.toUpperCase());
         } else {
-            // set inital turn attribute to False so player gets second turn
+            // set initial turn attribute to False so player gets second turn
             let turn = false;
             // Check for existing score if new game
             score = computerScore ? computerScore : score;
@@ -2386,7 +2386,7 @@ function initPlacement(playerName, existPlayerName, playerScore, playerHighScore
  * Hide placement controls, generates computer random ships, updates computer
  * game board shoot listeners and calls checkTurn().
  * @function initShooting
- * @param {object} players - the object containg player objects
+ * @param {object} players - the object containing player objects
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
  * @param {object} gameBoards - object containing game board objects
@@ -2477,14 +2477,14 @@ function initShooting(
     );
 }
 
-// RUNGAME - need to look at parameters to pass from initPlacement to rungame
+// RUNGAME
 
 /**
  * The checkTurn function is called by confirmPlaceShip when final ship
  * has been placed. This handles changing game board event listeners to
  * start taking shots and passes back and forth to takeShot.
  * @function checkTurn
- * @param {object} players - the object containg player objects
+ * @param {object} players - the object containing player objects
  * @param {object} playerShips - object containing the player's ship objects
  * @param {object} computerShips - object containing the computer's ship objects
  * @param {object} gameBoards - object containing game board objects
@@ -2650,7 +2650,7 @@ function lazyLoadBackground() {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    console.log('Welcome to my second project with the Code Institute a JavaScript-based Battelship game! The coordinates of player ships are output below for testing purposes. If you dont want to cheat, look away now!');
+    console.log('Welcome to my second project with the Code Institute a JavaScript-based Battleship game! The coordinates of player ships are output below for testing purposes. If you dont want to cheat, look away now!');
     // Focus on player name field if present
     let nameField = document.getElementById('player-name');
     if (nameField) {
