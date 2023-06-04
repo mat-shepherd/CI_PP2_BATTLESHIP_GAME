@@ -40,28 +40,6 @@ This project is a JavaScript-based Battleship game based on the classic board ga
     - [Frameworks \& Tools](#frameworks--tools)
   - [Features](#features)
     - [Existing Features](#existing-features)
-      - [Navigation Bar](#navigation-bar)
-      - [New Game Link and Button](#new-game-link-and-button)
-      - [How To Play Modal](#how-to-play-modal)
-      - [Audio Toggle to Mute and Unmute Sounds](#audio-toggle-to-mute-and-unmute-sounds)
-      - [Start Game Form](#start-game-form)
-      - [Gameboard](#gameboard)
-      - [Ship Placement Controls Area](#ship-placement-controls-area)
-      - [Place Ships Button](#place-ships-button)
-      - [Rotate Ships Button](#rotate-ships-button)
-      - [Random Ship Placement Button](#random-ship-placement-button)
-      - [Clear All Ships Button](#clear-all-ships-button)
-      - [Ship Placement Feedback](#ship-placement-feedback)
-      - [Player Message Area](#player-message-area)
-      - [Sidebar Scoreboard](#sidebar-scoreboard)
-      - [Computer Opponent](#computer-opponent)
-      - [Player / Computer Shot Feedback](#player--computer-shot-feedback)
-      - [Ship Hit, Miss and Sunk Feedback](#ship-hit-miss-and-sunk-feedback)
-      - [Win and Loss Notification](#win-and-loss-notification)
-      - [Alternating Player Gameboard grids on Small Screens](#alternating-player-gameboard-grids-on-small-screens)
-    - [Footer](#footer)
-      - [Feedback Form](#feedback-form)
-      - [404 Page](#404-page-1)
     - [Features Left to Implement](#features-left-to-implement)
   - [Testing](#testing)
     - [HTML Validation](#html-validation)
@@ -708,7 +686,7 @@ The website was tested on the following browsers:
 | Start game form validation |  Player loads game and enters name in start game form but fails to enter a name and then click start game |  Game does not start and error message is displayed below name field | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-3-4-5.gif">
 </details><br>
 
 4. As a player, I want my name to be validated and to be provided with feedback on any errors with name entry to ensure I can understand which player I am in the game
@@ -719,7 +697,7 @@ The website was tested on the following browsers:
 | Start game form validation |  Player loads game and enters name in start game form but fails to enter a name and then click start game |  Game does not start and error message is displayed below name field | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-3-4-5.gif">
 </details><br>
 
 5. As a player, I want to start a new game and receive directions on how to setup the gameboard
@@ -730,7 +708,7 @@ The website was tested on the following browsers:
 | Start Game Player message | Player clicks start game and sees gameboard  | Player is shown message telling them how to place ships and how to use placement controls | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-3-4-5.gif">
 </details><br>
 
 6. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
@@ -746,7 +724,7 @@ The website was tested on the following browsers:
 | Ship Clear Button | Player clicks on the Clear All button to clear placed ships  | All ships manually placed by the player and their coordinates are cleared from the player grid and they can start placing ships again  | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-6.gif">
 </details><br>
 
 7. As a player, I want any controls or buttons to be colourful, apparent, and attractive
@@ -757,7 +735,9 @@ The website was tested on the following browsers:
 | Ship Placement Player Pulse |  Player clicks on their grid to place a ship and the placement control buttons start pulsing to draw the player's attention |  Player is drawn to the buttons as their next step and engages with buttons to control ship placement | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-7.gif"><br>
+<img src="docs/user-story-testing/user-story-test-7a.gif"><br>
+<img src="docs/user-story-testing/user-story-test-7-8-9-10.gif">
 </details><br>
 
 8. As a player, while setting up the gameboard, I want the ability to randomly place my ships and reset the gameboard to remove the game pieces (ships) and start placement over again
@@ -768,7 +748,7 @@ The website was tested on the following browsers:
 | Ship Clear Button | Player clicks on the Clear All button to clear placed ships  | All ships manually placed by the player and their coordinates are cleared from the player grid and they can start placing ships again  | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-7-8-9-10.gif">
 </details><br>
 
 9. As a player, once the game board is set up, I want to play against a computer opponent
@@ -780,7 +760,7 @@ The website was tested on the following browsers:
 | Computer opponent win | Computer opponent sink all of the player's ships | All players ships are sunk as indicated byt hit markers on the grid and sunk markers on player's ships in the scoreboard. Computer's score is increased and the win/lose game screen is shown telling the player they lost, their score and offering a New Game button | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-7-8-9-10.gif">
 </details><br>
 
 10.  As a player, once the gameboard is set up, I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
@@ -791,7 +771,7 @@ The website was tested on the following browsers:
 | Player hovers over computer grid | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot with hit, miss, or sunk visual and audio cues on the grid | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-7-8-9-10.gif">
 </details><br>
 
 11.  As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
@@ -804,7 +784,7 @@ The website was tested on the following browsers:
 | Player message-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot through updates to the Player Message area. This tells them the coordinates of the ship hit or miss and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-11-12-13.gif">
 </details><br>
 
 12.  As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
@@ -816,7 +796,7 @@ The website was tested on the following browsers:
 | Player message-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot through updates to the Player Message area. This tells them the coordinates of the ship hit or miss and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-11-12-13.gif">
 </details><br>
 
 13. As a player, I want to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
@@ -828,7 +808,8 @@ The website was tested on the following browsers:
 | Player message-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of who took the shot and the result of the shot through updates to the Player Message area. This tells them who took the shot, the coordinates of the ship hit or miss, and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-11-12-13.gif"><br>
+<img src="docs/user-story-testing/user-story-test-13-16.gif">
 </details><br>
 
 14. As a player, I want to be presented with notifications, visual, and audio cues indicating when all of a player's ships have been sunk and which player has won the game
@@ -840,7 +821,7 @@ The website was tested on the following browsers:
 | Player message-based shot feedback | All of a player's ship have been hit at all placed coordinates and sunk | When a shot is taken the player is notified of who took the shot and the result of the shot through updates to the Player Message area. This tells them who took the shot, the coordinates of the ship hit or miss, and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-14-15-16.gif">
 </details><br>
 
 15. As a player, when a game has ended, I want to be given the option to start a new game
@@ -851,7 +832,7 @@ The website was tested on the following browsers:
 | Navigation New Game Link | Player clicks navigation New Game button  | When the player clicks on the New Game link at any point in the game they wil be asked if they are sure they want to start a new game, and if they click continue the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-14-15-16.gif">
 </details><br>
 
 16. As a player, when a game has ended, I want my high score to be retained until I end my browser session
@@ -862,7 +843,8 @@ The website was tested on the following browsers:
 | Navigation New Game Link | Player clicks navigation New Game button  | When the player clicks on the New Game link at any point in the game they wil be asked if they are sure they want to start a new game, and if they click continue the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-13-16.gif"><br>
+<img src="docs/user-story-testing/user-story-test-14-15-16.gif">
 </details><br>
 
 17. As a player, I want to be able to mute or unmute all game sounds
@@ -873,7 +855,7 @@ The website was tested on the following browsers:
 | Navigation Bar Audio Icon  | Player clicks audio icon in navigation bar which shows an x to indicate sounds are muted by default | Player hovers over audio link icon and it enlarges on hover. When player clicks the icon, it changes to a speaker icon without the x and all sounds are turned on. Player clicks the icon and again and all sounds are muted and the icon shows an x again. The audio button in the start game screen is also changed to audio is on or off depending on the state of the audio link icon | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-17.gif">
 </details><br>
 
 #### Site Owner
@@ -889,7 +871,7 @@ The website was tested on the following browsers:
 | Feedback Page Links | The player visits the feedback page and wants to navigate back to the main game | The player clicks on any link on the feedback page and is taken back to the index page to start a new game | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-18.gif">
 </details><br>
 
 19.  As the site owner, I want users to see a 404 page if they enter an incorrect URL so they can be navigated back to the main game page
@@ -901,7 +883,7 @@ The website was tested on the following browsers:
 | 404 Page Links | The player enters an invalid game URL in their browser  | The player clicks on any link on the 404 page and is taken back to the index page to start a new game | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-19.gif">
 </details><br>
 
 [Back to Table of Contents](#table-of-contents)
