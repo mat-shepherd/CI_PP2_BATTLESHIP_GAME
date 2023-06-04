@@ -684,7 +684,7 @@ The website was tested on the following browsers:
 | Gameplay screen| Player enters their name and enters gameplay screen and navigates the gameboard grids and controls | Player understands how to continue gameplay | Works as expected |
 
 <details><summary>Video</summary>
-<video src='docs/user-story-testing/user-story-1.mp4' width=800>
+<img src="docs/user-story-testing/user-story-test-1.gif">
 </details><br>
 
 2. As a player, I want to see a list of game rules and instructions so I can understand how to play the game
@@ -697,7 +697,7 @@ The website was tested on the following browsers:
 | How To Play Modal Close | Player clicks anywhere outside of the How to Play Modal | How to play modal is closed when the player clicks anywhere outside of the modal window and the player sees the main game interface | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<img src="docs/user-story-testing/user-story-test-2.gif">
 </details><br>
 
 3. As a player, I want to enter my name so I can understand which player represents me on the gameboard and to keep track of my current score and high score
