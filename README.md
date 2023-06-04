@@ -24,8 +24,8 @@ This project is a JavaScript-based Battleship game based on the classic board ga
   - [Design](#design)
     - [Design Choices](#design-choices)
     - [Colours](#colours)
-      - [USER INTERFACE](#user-interface)
-      - [PLAYER MESSAGES](#player-messages)
+      - [User Interface](#user-interface)
+      - [Player Messages](#player-messages)
     - [Fonts](#fonts)
     - [Structure](#structure)
       - [INDEX PAGE, FEEDBACK PAGE, 404 PAGE](#index-page-feedback-page-404-page)
@@ -149,7 +149,7 @@ The aim of this site is to provide the look and feel of the classic Battleship b
 
 The colour scheme for the game was based around classic Battleship and Naval themed colours mixed with a Retro arcade feel:
 
-#### USER INTERFACE
+#### User Interface
 
 Primary Colours - Grey / Light Grey
 
@@ -159,7 +159,7 @@ Secondary Colours - Red / Green / Blue
 
 ![Colour scheme](docs/features/colour-palette.png)
 
-#### PLAYER MESSAGES
+#### Player Messages
 
 The player message text used a supplementary colour scheme of green on black to compliment the Retro Arcade theme.
 <br>
