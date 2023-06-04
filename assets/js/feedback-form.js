@@ -2,7 +2,7 @@
 
 /* 
  * Wait for the DOM to finish loading, and add form submit event listener
- * Code adapated from EmailJS tutoiral at
+ * Code adapted from EmailJS tutorial at
  * https://www.emailjs.com/docs/tutorial/creating-contact-form/
  */
 document.addEventListener('DOMContentLoaded', function () {

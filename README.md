@@ -596,9 +596,9 @@ The most complex function has a cyclomatic complexity value of 25 while the medi
 **Three warnings**
 These are discussed in bugs
 
-- 1032	Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (currentShip, players, playerShips, computerShips, gameBoards, currentPlayer)
-- 1071	Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (players, playerShips, computerShips, gameBoards, currentPlayer, currentShip)
-- 1567	Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (currentShip, players, playerShips, computerShips, gameBoards, currentPlayer, randomShip, clearShips)
+- 1032 Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (currentShip, players, playerShips, computerShips, gameBoards, currentPlayer)
+- 1071 Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (players, playerShips, computerShips, gameBoards, currentPlayer, currentShip)
+- 1567 Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (currentShip, players, playerShips, computerShips, gameBoards, currentPlayer, randomShip, clearShips)
 
 #### feedback-form.js
 
@@ -610,10 +610,10 @@ The most complex function has a cyclomatic complexity value of 1 while the media
 
 **Three undefined variables**
 These variables are actually defined in separate script files loaded in to the page
-- 13	emailjs
-- 16	emailjs
-- 21	err
-- 44	confirmNewGame
+- 13 emailjs
+- 16 emailjs
+- 21 err
+- 44 confirmNewGame
 
 ### Accessibility
 
@@ -701,6 +701,7 @@ The website was tested on the following browsers:
 </details><br>
 
 3. As a player, I want to enter my name so I can understand which player represents me on the gameboard and to keep track of my current score and high score
+   
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Start game form | Player loads game and enters name in start game form and clicks start game | Name is accepted and game starts populating name into scoreboard, player grid, and player messages  | Works as expected |
@@ -711,6 +712,7 @@ The website was tested on the following browsers:
 </details><br>
 
 4. As a player, I want my name to be validated and to be provided with feedback on any errors with name entry to ensure I can understand which player I am in the game
+   
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Start game form max characters | Player loads game and enters name in start game and tries to type more than 10 characters  |  Name field does not let the player type past 10 characters | Works as expected |
@@ -721,6 +723,7 @@ The website was tested on the following browsers:
 </details><br>
 
 5. As a player, I want to start a new game and receive directions on how to setup the gameboard
+   
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Start game form | Player loads game and enters name in start game form and clicks start game | Name is accepted and game starts populating name into scoreboard, player grid, and player messages  | Works as expected |
@@ -731,6 +734,7 @@ The website was tested on the following browsers:
 </details><br>
 
 6. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
+   
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Ship Placement Grid Hover | Player hovers over the grid with their name and sees a ship placement icon and click a grid cell |  The player clicks a grid cell in their gameboard and the ship is temporarily placed. If they click another grid cell the ship is temporarily placed again in the new location | Works as expected |
@@ -746,6 +750,7 @@ The website was tested on the following browsers:
 </details><br>
 
 7. As a player, I want any controls or buttons to be colourful, apparent, and attractive
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Ship Placement Player Controls | Player is instructed to use placement controls and placement control buttons are highlighted after clicking on the player grid |  Player clicks on the player grid to place their ship and then uses the placement controls to confirm or change ship placement  | Works as expected |
@@ -756,6 +761,7 @@ The website was tested on the following browsers:
 </details><br>
 
 8. As a player, while setting up the gameboard, I want the ability to randomly place my ships and reset the gameboard to remove the game pieces (ships) and start placement over again
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Ship Random Button | Player clicks on the Random button to randomly place ships  | Ships are randomly placed on the player's grid at random locations and rotations within the grid bounds and the game starts | Works as expected |
@@ -766,6 +772,7 @@ The website was tested on the following browsers:
 </details><br>
 
 9. As a player, once the game board is set up, I want to play against a computer opponent
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Computer opponent random ship placement | Player completes placing ships and computer opponent ships are generated| Once the player has completed placing ships the computer opponent's ship coordinates are generated but ships are not shown | Works as expected |
@@ -776,7 +783,8 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-10. As a player, once the gameboard is set up, I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
+10.  As a player, once the gameboard is set up, I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Gameplay starts |  Player finishes placing all ships and turn based gameplay starts | Player is shown a message telling them to take a shot on the computer's grid by clicking anywhere on Player Two's grid | Works as expected |
@@ -786,7 +794,8 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-11. As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
+11.  As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Gameplay starts |  Player finishes placing all ships and turn based gameplay starts | Player is shown a message telling them to take a shot on the computer's grid | Works as expected |
@@ -798,7 +807,8 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-12. As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
+12.  As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Player grid-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot with hit, miss, or sunk visual and audio cues on the grid | Works as expected |
@@ -810,6 +820,7 @@ The website was tested on the following browsers:
 </details><br>
 
 13. As a player, I want to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Grid-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of who took the shot, the result of the shot with hit, miss, or sunk visual and audio cues on the relevant player's grid | Works as expected |
@@ -821,6 +832,7 @@ The website was tested on the following browsers:
 </details><br>
 
 14. As a player, I want to be presented with notifications, visual, and audio cues indicating when all of a player's ships have been sunk and which player has won the game
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Grid-based shot feedback | All of a player's ship have been hit at all placed coordinates and sunk | When a ship is sunk explosion and fire markers are shown across each grid cell the ship occupies, a sunk ship sound is played | Works as expected |
@@ -832,6 +844,7 @@ The website was tested on the following browsers:
 </details><br>
 
 15. As a player, when a game has ended, I want to be given the option to start a new game
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Win modal New Game Button | Player wins or loses game | The win/ lose screen is shown with the the win loss message and scores followed by a New Game Button. When the player clicks on the button they wil be asked if they are sure they want to start a new game,and if they click continue the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
@@ -842,6 +855,7 @@ The website was tested on the following browsers:
 </details><br>
 
 16. As a player, when a game has ended, I want my high score to be retained until I end my browser session
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Win modal New Game Button | Player wins or loses game | The win/ lose screen is shown with the the win loss message and scores followed by a New Game Button. When the player clicks on the button they wil be asked if they are sure they want to start a new game,and if they click continue the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
@@ -851,7 +865,7 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-17.  As a player, I want to be able to mute or unmute all game sounds
+17. As a player, I want to be able to mute or unmute all game sounds
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Start Game Audio Button | Player starts a brand New Game and sees the start game screen and clicks the Audio Button to toggle audio on or off  | Player hovers over and clicks the audio button which says 'Audio is Off' and contains a speaker icon with an x is shown. All sounds are muted in this default state. The navigation bar speaker icon also shows an x in this state. Hovering over the button turns it blue, when the player clicks the button text changes to 'Audio is On' the colour changes to blue, and the mute icon changes to a speaker icon with the x. All sounds are now turned on. The navigation bar speaker icon now also shows no x in this state | Works as expected |
@@ -861,10 +875,10 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-
 #### Site Owner
 
 18. As the site owner, I want to receive feedback from players so I can understand if they are enjoying the game, identify any bugs, and continually improve the game
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 |   |   |   | Works as expected |
@@ -875,6 +889,7 @@ The website was tested on the following browsers:
 </details><br>
 
 19. As the site owner, I want users to see a 404 page if they enter an incorrect URL so they can be navigated back to the main game page
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 |   |   |   | Works as expected |
