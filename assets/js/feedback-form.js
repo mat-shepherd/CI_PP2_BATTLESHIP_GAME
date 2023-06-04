@@ -41,5 +41,5 @@ function showThankYou() {
     messageArea.style.padding = '2rem';
     messageArea.innerHTML = thankyouMessage;
     // Add click listener to new game button
-    document.getElementById('new-game-button').addEventListener('click', loadIndex);
+    document.getElementById('new-game-button').addEventListener('click', confirmNewGame);
 }
