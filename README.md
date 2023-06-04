@@ -684,7 +684,7 @@ The website was tested on the following browsers:
 | Gameplay screen| Player enters their name and enters gameplay screen and navigates the gameboard grids and controls | Player understands how to continue gameplay | Works as expected |
 
 <details><summary>Video</summary>
-<img src="">
+<video src='your URL here' width=180/>
 </details><br>
 
 2. As a player, I want to see a list of game rules and instructions so I can understand how to play the game
