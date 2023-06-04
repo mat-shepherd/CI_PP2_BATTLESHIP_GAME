@@ -585,7 +585,6 @@ class Ship {
                 }
             } else {
                 playerMessage(`NO SHIPS TO PLACE! YOU NEED TO CLICK ON YOUR GRID TO ADD A SHIP FIRST AND THEN CLICK PLACE.`, 'error');
-                throw `No Ships Placed to Confirm!`;
             }
         }
     }
