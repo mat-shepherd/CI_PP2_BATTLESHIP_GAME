@@ -6,7 +6,7 @@
 
 [Live webpage](https://mat-shepherd.github.io/CI_PP2_BATTLESHIP_GAME/)
 
-This project is a JavaScript-based Battleship game based on the classic board game of Battleship. This is a responsive two-page game site which aims to provide casual online gamers with a simple, fun, and and interactive gaming experience.
+This project is a JavaScript-based Battleship game based on the classic board game of Battleship. This is a responsive three-page game site which aims to provide casual online gamers with a simple, fun, and and interactive gaming experience.
 
 ## Table of Contents
 
