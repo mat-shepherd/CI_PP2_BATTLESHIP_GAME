@@ -367,7 +367,6 @@ class Ship {
 
         } else {
             playerMessage(`NO SHIPS TO ROTATE! YOU NEED TO CLICK ON YOUR GRID TO ADD A SHIP FIRST AND THEN CLICK ROTATE.`, 'error');
-            throw `No Ships Placed to Rotate!`;
         }
     }
 
@@ -2626,7 +2625,6 @@ function loadIndex() {
  * @function lazyLoadBackground
  */
 function lazyLoadBackground() {
-    console.log('Lazy load');
     var gameBody = document.getElementById('game-body');
     var bgSrc = gameBody.getAttribute('data-bg-src');
 
@@ -2647,6 +2645,7 @@ function lazyLoadBackground() {
 
 document.addEventListener('DOMContentLoaded', function () {
 
+    console.log('Welcome to my second project with the Code Institute a JavaScript-based Battelship game! The coordinates of player ships are output below for testing purposes. If you dont want to cheat, look away now!');
     // Focus on player name field if present
     let nameField = document.getElementById('player-name');
     if (nameField) {
