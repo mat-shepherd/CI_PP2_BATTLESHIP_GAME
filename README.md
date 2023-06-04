@@ -866,6 +866,7 @@ The website was tested on the following browsers:
 </details><br>
 
 17. As a player, I want to be able to mute or unmute all game sounds
+
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Start Game Audio Button | Player starts a brand New Game and sees the start game screen and clicks the Audio Button to toggle audio on or off  | Player hovers over and clicks the audio button which says 'Audio is Off' and contains a speaker icon with an x is shown. All sounds are muted in this default state. The navigation bar speaker icon also shows an x in this state. Hovering over the button turns it blue, when the player clicks the button text changes to 'Audio is On' the colour changes to blue, and the mute icon changes to a speaker icon with the x. All sounds are now turned on. The navigation bar speaker icon now also shows no x in this state | Works as expected |
