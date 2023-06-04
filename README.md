@@ -67,6 +67,8 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [HTML Validation](#html-validation)
     - [CSS Validation](#css-validation)
     - [JavaScript Validation](#javascript-validation)
+      - [battleship-game.js](#battleship-gamejs)
+      - [feedback-form.js](#feedback-formjs)
     - [Accessibility](#accessibility)
     - [Performance](#performance)
     - [Index](#index-1)
@@ -89,8 +91,8 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [Code](#code)
       - [Readme.md](#readmemd)
       - [index.html \& style.css](#indexhtml--stylecss)
-      - [battleship-game.js](#battleship-gamejs)
-      - [feedback-form.js](#feedback-formjs)
+      - [battleship-game.js](#battleship-gamejs-1)
+      - [feedback-form.js](#feedback-formjs-1)
   - [Acknowledgements](#acknowledgements)
 
 ## Project Goals
@@ -598,7 +600,6 @@ These are discussed in bugs
 - 1071	Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (players, playerShips, computerShips, gameBoards, currentPlayer, currentShip)
 - 1567	Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (currentShip, players, playerShips, computerShips, gameBoards, currentPlayer, randomShip, clearShips)
 
-
 #### feedback-form.js
 
 **Metrics**
@@ -691,8 +692,9 @@ The website was tested on the following browsers:
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Navigation Bar How to Play Link  | Click How To Play link in the navigation bar  | Works as expected |
-| How To Play Modal Contents | Click How To Play link in the navigation bar | How to play modal is displayed and user can scroll through rules and instructions on how to play the game | Works as expected |
-| How To Play Modal Close | User clicks X button in the How to Play Modal | How to play modal is closed and the user sees the main game interface | Works as expected |
+| How To Play Modal Contents | Click How To Play link in the navigation bar | How to play modal is displayed and the player can scroll through rules and instructions on how to play the game | Works as expected |
+| How To Play Modal Close Icon | Player clicks X icon in the How to Play Modal | How to play modal is closed and the the player sees the main game interface | Works as expected |
+| How To Play Modal Close | Player clicks anywhere outside of the How to Play Modal | How to play modal is closed when the player clicks anywhere outside of the modal window and the player sees the main game interface | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
@@ -711,7 +713,7 @@ The website was tested on the following browsers:
 4. As a player, I want my name to be validated and to be provided with feedback on any errors with name entry to ensure I can understand which player I am in the game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Start game form max characters | Player loads game and enters name in start game and tries to type more than 10 characters  |  Name field does not let the user type past 10 characters | Works as expected |
+| Start game form max characters | Player loads game and enters name in start game and tries to type more than 10 characters  |  Name field does not let the player type past 10 characters | Works as expected |
 | Start game form validation |  Player loads game and enters name in start game form but fails to enter a name and then click start game |  Game does not start and error message is displayed below name field | Works as expected |
 
 <details><summary>Video</summary>
@@ -763,7 +765,7 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-9.  As a player, once the game board is set up, I want to play against a computer opponent
+9. As a player, once the game board is set up, I want to play against a computer opponent
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Computer opponent random ship placement | Player completes placing ships and computer opponent ships are generated| Once the player has completed placing ships the computer opponent's ship coordinates are generated but ships are not shown | Works as expected |
@@ -774,20 +776,20 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-10.  As a player, once the gameboard is set up, I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
+10. As a player, once the gameboard is set up, I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Gameplay starts |  User finishes placing all ships and turn based gameplay starts | Player is shown a message telling them to take a shot on the computer's grid by clicking anywhere on Player Two's grid | Works as expected |
+| Gameplay starts |  Player finishes placing all ships and turn based gameplay starts | Player is shown a message telling them to take a shot on the computer's grid by clicking anywhere on Player Two's grid | Works as expected |
 | Player hovers over computer grid | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot with hit, miss, or sunk visual and audio cues on the grid | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-11.   As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
+11. As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Gameplay starts |  User finishes placing all ships and turn based gameplay starts | Player is shown a message telling them to take a shot on the computer's grid | Works as expected |
+| Gameplay starts |  Player finishes placing all ships and turn based gameplay starts | Player is shown a message telling them to take a shot on the computer's grid | Works as expected |
 | Player grid-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot with hit, miss, or sunk visual and audio cues on the grid | Works as expected |
 | Player score-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot through updates to the hit, misses numbers under their name in the scoreboard. If one of the computer's ships is sunk a Red X marker is shown over Player Two's relevant ship | Works as expected |
 | Player message-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot through updates to the Player Message area. This tells them the coordinates of the ship hit or miss and whether a ship was sunk | Works as expected |
@@ -796,7 +798,7 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-12.  As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
+12. As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Player grid-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot with hit, miss, or sunk visual and audio cues on the grid | Works as expected |
@@ -807,7 +809,7 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-13.   As a player, I want to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
+13. As a player, I want to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Grid-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of who took the shot, the result of the shot with hit, miss, or sunk visual and audio cues on the relevant player's grid | Works as expected |
@@ -818,7 +820,7 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-14.   As a player, I want to be presented with notifications, visual, and audio cues indicating when all of a player's ships have been sunk and which player has won the game
+14. As a player, I want to be presented with notifications, visual, and audio cues indicating when all of a player's ships have been sunk and which player has won the game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Grid-based shot feedback | All of a player's ship have been hit at all placed coordinates and sunk | When a ship is sunk explosion and fire markers are shown across each grid cell the ship occupies, a sunk ship sound is played | Works as expected |
@@ -829,7 +831,7 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-15.  As a player, when a game has ended, I want to be given the option to start a new game
+15. As a player, when a game has ended, I want to be given the option to start a new game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Win modal New Game Button | Player wins or loses game | The win/ lose screen is shown with the the win loss messgae and scores followed by a New Game Button. When the player clicks on the button they wil be asked if they are sure they want to start a new game,and if they click contune the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
@@ -839,21 +841,21 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-16.  As a player, when a game has ended, I want my high score to be retained until I end my browser session
+16. As a player, when a game has ended, I want my high score to be retained until I end my browser session
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+| Win modal New Game Button | Player wins or loses game | The win/ lose screen is shown with the the win loss messgae and scores followed by a New Game Button. When the player clicks on the button they wil be asked if they are sure they want to start a new game,and if they click contune the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
+| Navigation New Game Link | Player clicks navigation New Game button  | When the player clicks on the New Game link at any point in the game they wil be asked if they are sure they want to start a new game, and if they click contune the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-17. As a player, I want to be able to mute or unmute all game sounds
+17.  As a player, I want to be able to mute or unmute all game sounds
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+| Start Game Audio Button | Player starts a brand New Game and sees the start game screen and clicks the Audio Button to toggle audio on or off  | Player hovers over and clicks the audio button which says 'Audio is Off' and contains a speaker icon with an x is shown. All sounds are muted in this default state. The navigation bar speaker icon also shows an x in this state. Hovering over the button turns it blue, when the player clicks the button text changes to 'Audio is On' the colour changes to blue, and the mute icon changes to a speaker icon with the x. All sounds are now turned on. The navigation bar speaker icon now also shows no x in this state | Works as expected |
+| Navigation Bar Audio Icon  | Player clicks audio icon in navigation bar which shows an x to indicate sounds are muted by default | Player hovers over audio link icon and it enlarges on hover. When player clicks the iconit changes to a speaker icon without the x and all sounds are turned on. Player clicks the icon and again and all sounds are muted and the icon shows an x again. The audio button in the start game screen is also changed to audio is on or off depednign on the state of the audio link icon | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
@@ -893,7 +895,7 @@ The website was tested on the following browsers:
 | Scrolling on mobile devices | Due to column layout on small screens the player would have to scroll and up and down the screen when taking turns to understand what the computer player did during their turn and to take their shot. As Player message pulls focus to the top of the screen when it updates this was creating a very poor user experience. To crrect this I added a gameboard-reverse class to the gaemboard div in the checkTurn function. Adding this class changes the order of the flex positioned gameboard grids, which allows the active grid to always show at the top of the gameboard. This also keeps the player viewing the top of the viewport and minimises jumping back to the top of the screen when the player message updates. |
 |  Rotating grid cells would rotate hit and miss icons | The functions which rotate ship images on the gameboard actually rotate the containing div by multipls of 90 degrees to ensure the image pivots around the center of the cell the ship was placed in. This worked well but created an issue where ship hit or miss icons when added to the original ship placement cell were also rotated, which looked odd and inconsistent with icons show elsewhere on the board. To fix this I introduced a check into functions which add ship hit or miss icons to see if the parent div class contained transform. If it did the icon image would then be rotated -90 degrees. |
 |  Player message timing |  As the game progresses through each player's turn it proveed tricky to slow down gameplay and ensure that player messages were visible long enough to read before they were replaced by the next player message. While this is not fully resolved to my liking I introduced setTimeoutet functions aroun player messages to add delays before they are shown to give the previous message time to display. When ships are sunk it provde very difficult to give the message time to display. With help from an approach provided by ChatGPT I introduced a delay function and a promise object to delay gameplay to give this ship sunk message time to display before gamplay resumes. |
-| Deleting grid click listeners | Each player grid allows the user to inidcate the cells they will place ships in or take shots on by adding click listeners when grids are created and disabling click listeners when it is the computer's turn or a grid location is occupied by a ship or a shot. Removing click listeners was a difficult issue to solve as each cell's click listener was specific to it and a reference to the specific listenenr had to be stored somewhere for later retrieval to remove the correct listener for the correct grid and cell. With guodance from ChatGPT I decided to store the place and shoot event listeners in attributes of the Gameboard object so I could loop through the relevant gameboard's placeEventHandlers or shootEventHandlers to find the click listener for relevant grid cell. This worked well but I still had an issue where I need to disable all grid listeners on the opposing player's grids to ensure the player couldn't randomly trigger unexpected functions. The quick fix for this was found in an article by Coding Deft, which led to the addition of a style to gameboard grid elements that set pointer-events: none on the on-active gameboard grid during checkTurn. |
+| Deleting grid click listeners | Each player grid allows the player to inidcate the cells they will place ships in or take shots on by adding click listeners when grids are created and disabling click listeners when it is the computer's turn or a grid location is occupied by a ship or a shot. Removing click listeners was a difficult issue to solve as each cell's click listener was specific to it and a reference to the specific listenenr had to be stored somewhere for later retrieval to remove the correct listener for the correct grid and cell. With guodance from ChatGPT I decided to store the place and shoot event listeners in attributes of the Gameboard object so I could loop through the relevant gameboard's placeEventHandlers or shootEventHandlers to find the click listener for relevant grid cell. This worked well but I still had an issue where I need to disable all grid listeners on the opposing player's grids to ensure the player couldn't randomly trigger unexpected functions. The quick fix for this was found in an article by Coding Deft, which led to the addition of a style to gameboard grid elements that set pointer-events: none on the on-active gameboard grid during checkTurn. |
 | Poor page load on mobile devices  | On testing the game index page with Lighthouse I was receving a perfomance score in the 70s, largely due to the loading and rendering of the repeating ocean tile gif in the background of the gameboard. I exploed multiple options including replacing this with a video of the effect but in the end settled on using a lazy loading approach. A lazyLoadBackground function was provided by chatGPT and dapted to make the ocean tile background load only when initPlacement was called to start rendering the gameboards. This greatly improved page load performance on mobiles with scores in the 90s.|
 | Persistent grid cell backround colours | Sometimes if a grid cell is highlighted or showing an error while the game moves on to the next player's turn the background colour remains in the cell. This is something to investigate further in future iterations. |
 

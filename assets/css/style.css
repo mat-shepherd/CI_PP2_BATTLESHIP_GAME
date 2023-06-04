@@ -115,6 +115,10 @@ nav h1,
     font-size: 1.3rem;
 }
 
+#audio-link:hover {
+    font-size: 1.4rem;
+}
+
 #feedback-title {
     line-height: 1.5rem;
 }
