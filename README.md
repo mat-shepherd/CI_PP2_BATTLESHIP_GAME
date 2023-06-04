@@ -892,7 +892,7 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-1.  As the site owner, I want users to see a 404 page if they enter an incorrect URL so they can be navigated back to the main game page
+19.  As the site owner, I want users to see a 404 page if they enter an incorrect URL so they can be navigated back to the main game page
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
