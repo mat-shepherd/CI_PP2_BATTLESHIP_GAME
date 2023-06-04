@@ -2143,6 +2143,7 @@ function playerWinLose(players, currentPlayer, oppPlayer) {
  * @function newGame
  */
 function newGame() {
+
     // Retain scores and player name
     let playerName = document.getElementById('p1-stats-heading').innerText;
     let playerScore = document.getElementById('p1-score').innerText;
@@ -2610,14 +2611,6 @@ function checkTurn(
 }
 
 /**
- * Function to load index page. Used for 404 page click listeners.
- * @function loadIndex
- */
-function loadIndex() {
-    window.location.href = 'index.html';
-}
-
-/**
  * Function to lazy load the ocean tile gifs in the game body.
  * To improve initial page load speed.
  * Code adapted from answer provided by ChatGPT 
@@ -2633,6 +2626,18 @@ function lazyLoadBackground() {
 
     // Remove the data attribute to prevent reloading the image
     gameBody.removeAttribute('data-bg-src');
+}
+
+/**
+ * Function to check that user wants to start a new game
+ * @function confirmNewGame
+ */
+    function confirmNewGame(event) {
+    if (!confirm('This will start a new game. Are you sure you want to continue?')) {
+        event.preventDefault();
+    } else {
+        newGame();
+    }
 }
 
 // DOCUMENT LOAD EVENT LISTENER
@@ -2653,6 +2658,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Add click event listeners to nav links, form and audio toggle
+    let logoLink = document.getElementById('logo-link');
     let newGameLink = document.getElementById('new-game-link');
     let newGameLinkNF = document.getElementById('new-game-link-404');
     let newGameButton = document.getElementById('new-game-button');
@@ -2661,16 +2667,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Check if elements are present on index, 404, or feedback page
     if (newGameLink) {
-        newGameLink.addEventListener('click', newGame);
-        newGameButton.addEventListener('click', newGame);
+        newGameLink.addEventListener('click', confirmNewGame);
+        newGameButton.addEventListener('click', confirmNewGame);
         audioIcon.addEventListener('click', audioToggle);
     }
     if (newGameLinkNF) {
-        newGameLinkNF.addEventListener('click', loadIndex);
+        newGameLinkNF.addEventListener('click', confirmNewGame);
     }
     if (newGameButtonNF) {
-        newGameButtonNF.addEventListener('click', loadIndex);
+        newGameButtonNF.addEventListener('click', confirmNewGame);
     }
+
+    logoLink.addEventListener('click', confirmNewGame);
 
     document.getElementById('rules-link').addEventListener('click', openRulesModal);
     document.getElementById('audio-link').addEventListener('click', audioToggle);

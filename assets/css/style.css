@@ -14,7 +14,8 @@ nav h1,
 #intro-modal-contents h2,
 #intro-modal-contents h3,
 #rules-modal-contents h2,
-#win-modal-contents h2 {
+#win-modal-contents h2,
+#logo-link {
     font-family: 'Black Ops One', 'Lucida Sans Typewriter', Helvetica, sans-serif;
     letter-spacing: 0.1rem;
 }
@@ -116,6 +117,11 @@ nav h1,
 
 #feedback-title {
     line-height: 1.5rem;
+}
+
+#logo-link {
+    text-decoration: none;
+    color: #fff;
 }
 
 /* 
