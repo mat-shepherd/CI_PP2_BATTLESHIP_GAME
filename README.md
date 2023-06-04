@@ -2,7 +2,7 @@
 
 (Developer: Matthew Shepherd)
 
-![Mockup image](docs/responsive-device-screenshots.PNG)
+![Mockup image](docs/responsive-device-screenshots.png)
 
 [Live webpage](https://mat-shepherd.github.io/CI_PP2_BATTLESHIP_GAME/)
 
@@ -179,14 +179,14 @@ Secondary Colours - Red / Green / Blue
 
 <br>
 
-![Colour scheme](docs/features/colour-palette.PNG)
+![Colour scheme](docs/features/colour-palette.png)
 
 #### PLAYER MESSAGES
 
 The player message text used a supplementary colour scheme of green on black to compliment the Retro Arcade theme.
 <br>
 
-![Colour scheme](docs/features/player-message-colour-palette.PNG)
+![Colour scheme](docs/features/player-message-colour-palette.png)
 
 To remain WCAG AAA compliant, I chose dark colour variants for background colours behind white, black, or bright green text to maintain maximum contrast. Colour contrast compliance was tested using [WebAIM's Contrast Checker tool](https://webaim.org/resources/contrastchecker/).
 
@@ -323,7 +323,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 2, 5, 7, 8, 15, 17
   
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-navigation-bar.PNG">
+<img src="docs/features/features-navigation-bar.png">
 </details>
 
 
@@ -337,8 +337,8 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 3, 7, 8, 15, 16 17
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-new-game-button.PNG">
-<img src="docs/features/features-new-game-link.PNG">
+<img src="docs/features/features-new-game-button.png">
+<img src="docs/features/features-new-game-link.png">
 </details>
 
 #### How To Play Modal
@@ -347,7 +347,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 2, 5
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-how-to-play-modal.PNG">
+<img src="docs/features/features-how-to-play-modal.png">
 </details>
 
 #### Audio Toggle to Mute and Unmute Sounds
@@ -358,8 +358,8 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 7, 17
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-audio-button.PNG">
-<img src="docs/features/features-audio-link.PNG">
+<img src="docs/features/features-audio-button.png">
+<img src="docs/features/features-audio-link.png">
 </details>
 
 #### Start Game Form
@@ -371,7 +371,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 3, 5, 10, 11, 12, 13, 14, 15, 16, 17
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-start-game-form.PNG">
+<img src="docs/features/features-start-game-form.png">
 </details>
 
 #### Gameboard
@@ -380,7 +380,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-game-board.PNG">
+<img src="docs/features/features-game-board.png">
 </details>
 
 #### Ship Placement Controls Area
@@ -390,7 +390,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 5, 6, 7, 8
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-placement-controls.PNG">
+<img src="docs/features/features-placement-controls.png">
 </details>
 
 #### Place Ships Button
@@ -399,7 +399,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 6, 7, 8
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-placement-button.PNG">
+<img src="docs/features/features-placement-button.png">
 </details>
   
 #### Rotate Ships Button
@@ -408,7 +408,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 6, 7
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-rotate-button.PNG">
+<img src="docs/features/features-rotate-button.png">
 </details>
   
 
@@ -419,7 +419,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 6, 7
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-random-button.PNG">
+<img src="docs/features/features-random-button.png">
 </details>
 
 #### Clear All Ships Button
@@ -428,7 +428,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 7, 8
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-clear-button.PNG">
+<img src="docs/features/features-clear-button.png">
 </details>
 
 #### Ship Placement Feedback
@@ -442,9 +442,9 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 2, 5, 5, 7, 8
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-ship-placement-feedback.PNG">
-<img src="docs/features/features-ship-placement-feedback-2.PNG">
-<img src="docs/features/features-ship-placement-feedback-3.PNG">
+<img src="docs/features/features-ship-placement-feedback.png">
+<img src="docs/features/features-ship-placement-feedback-2.png">
+<img src="docs/features/features-ship-placement-feedback-3.png">
 </details>
 
 #### Player Message Area
@@ -453,7 +453,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 2, 3, 5, 10, 11, 12, 13, 14
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-player-message-area.PNG">
+<img src="docs/features/features-player-message-area.png">
 </details>
 
 #### Sidebar Scoreboard
@@ -463,7 +463,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 3, 9, 1, 12, 13, 14, 15, 16
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-sidebar-scoreboard.PNG">
+<img src="docs/features/features-sidebar-scoreboard.png">
 </details>
 
 #### Computer Opponent
@@ -474,7 +474,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 9
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-computer-opponent.PNG">
+<img src="docs/features/features-computer-opponent.png">
 </details>
 
 #### Player / Computer Shot Feedback
@@ -500,8 +500,8 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 10, 11, 12, 13, 14
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-hit-miss-sunk-feedback.PNG">
-<img src="docs/features/features-hit-miss-sunk-feedback-2.PNG">
+<img src="docs/features/features-hit-miss-sunk-feedback.png">
+<img src="docs/features/features-hit-miss-sunk-feedback-2.png">
 </details>
 
 #### Win and Loss Notification
@@ -512,7 +512,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 13, 14, 15, 16
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-win-loss-notification.PNG">
+<img src="docs/features/features-win-loss-notification.png">
 <img src="docs/features/features-win-loss-notification-2.png">
 </details>
 
@@ -522,7 +522,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 1, 10, 12
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-alternating-grids.PNG">
+<img src="docs/features/features-alternating-grids.png">
 </details>
 
 ### Footer
@@ -531,7 +531,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 18
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-footer.PNG">
+<img src="docs/features/features-footer.png">
 </details>
 
 
@@ -543,7 +543,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 18
   
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-feedback-form.PNG">
+<img src="docs/features/features-feedback-form.png">
 </details>
 
 #### 404 Page
@@ -552,7 +552,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - User stories covered: 19
 
 <details><summary>Screenshots</summary>
-<img src="docs/features/features-404-page.PNG">
+<img src="docs/features/features-404-page.png">
 </details>
 
 
@@ -630,28 +630,28 @@ Google Lighthouse in Google's Chrome Developer Tools was used to test the perfor
 ### Index
 
 <details><summary>Mobile</summary>
-<img src="docs/lighthouse/index-lighthouse-mobile-report.PNG">
+<img src="docs/lighthouse/index-lighthouse-mobile-report.png">
 </details>
 <details><summary>Desktop</summary>
-<img src="docs/lighthouse/index-lighthouse-desktop-report.PNG">
+<img src="docs/lighthouse/index-lighthouse-desktop-report.png">
 </details>
 
 ### Feedback Page
 
 <details><summary>Mobile</summary>
-<img src="docs/lighthouse/feedback-lighthouse-desktop-report.PNG">
+<img src="docs/lighthouse/feedback-lighthouse-desktop-report.png">
 </details>
 <details><summary>Desktop</summary>
-<img src="docs/lighthouse/feedback-lighthouse-mobile-report.PNG">
+<img src="docs/lighthouse/feedback-lighthouse-mobile-report.png">
 </details>
 
 ### 404
 
 <details><summary>Mobile</summary>
-<img src="docs/lighthouse/404-lighthouse-mobile-report.PNG">
+<img src="docs/lighthouse/404-lighthouse-mobile-report.png">
 </details>
 <details><summary>Desktop</summary>
-<img src="docs/lighthouse/404-lighthouse-mobile-report.PNG">
+<img src="docs/lighthouse/404-lighthouse-mobile-report.png">
 </details>
 
 ### Device testing
