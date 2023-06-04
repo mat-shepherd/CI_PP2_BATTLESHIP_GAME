@@ -686,7 +686,7 @@ The website was tested on the following browsers:
 | Start game form validation |  Player loads game and enters name in start game form but fails to enter a name and then click start game |  Game does not start and error message is displayed below name field | Works as expected |
 
 <details><summary>Video</summary>
-<img src="docs/user-story-testing/user-story-test-3-4-5.gif">
+<img src="docs/user-story-testing/user-story-test-3-5.gif">
 </details><br>
 
 4. As a player, I want my name to be validated and to be provided with feedback on any errors with name entry to ensure I can understand which player I am in the game
@@ -697,7 +697,7 @@ The website was tested on the following browsers:
 | Start game form validation |  Player loads game and enters name in start game form but fails to enter a name and then click start game |  Game does not start and error message is displayed below name field | Works as expected |
 
 <details><summary>Video</summary>
-<img src="docs/user-story-testing/user-story-test-3-4-5.gif">
+<img src="docs/user-story-testing/user-story-test-4.gif">
 </details><br>
 
 5. As a player, I want to start a new game and receive directions on how to setup the gameboard
@@ -708,7 +708,7 @@ The website was tested on the following browsers:
 | Start Game Player message | Player clicks start game and sees gameboard  | Player is shown message telling them how to place ships and how to use placement controls | Works as expected |
 
 <details><summary>Video</summary>
-<img src="docs/user-story-testing/user-story-test-3-4-5.gif">
+<img src="docs/user-story-testing/user-story-test-3-5.gif">
 </details><br>
 
 6. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
