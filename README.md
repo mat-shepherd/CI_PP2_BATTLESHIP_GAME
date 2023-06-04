@@ -28,9 +28,9 @@ This project is a JavaScript-based Battleship game based on the classic board ga
       - [Player Messages](#player-messages)
     - [Fonts](#fonts)
     - [Structure](#structure)
-      - [INDEX PAGE, FEEDBACK PAGE, 404 PAGE](#index-page-feedback-page-404-page)
-      - [FEEDBACK PAGE](#feedback-page)
-      - [404 PAGE](#404-page)
+      - [Index Page, Feedback Page, 404 Page](#index-page-feedback-page-404-page)
+      - [Feedback Page](#feedback-page)
+      - [404 Page](#404-page)
     - [Wireframes](#wireframes)
     - [Index](#index)
     - [Feedback](#feedback)
@@ -186,7 +186,7 @@ The pages are structured in an easy-to-navigate z-shaped pattern allowing visito
 
 For simplicity, the site consists of one primary page and two helper pages, a feedback page and a 404 page. There are seven distinct sections used across the site's pages:
 
-#### INDEX PAGE, FEEDBACK PAGE, 404 PAGE
+#### Index Page, Feedback Page, 404 Page
 
 - A header navigation bar containing the game logo followed by the navigation menu including New Game and How to Play links, and an audio toggle icon
   
@@ -202,11 +202,11 @@ For simplicity, the site consists of one primary page and two helper pages, a fe
 
 - A footer section which displays the business logo, business tagline, navigation menu, call to action button, navigation links, contact information, social media links, the site owner's name and copyright notice, and a link to the site owner's GitHub page.
 
-#### FEEDBACK PAGE
+#### Feedback Page
 
 - A feedback screen, that covers the main game body area, and contains a form to collect player feedback, validate form values, show a thank you message on submission, and email the form data to the site owner.
 
-#### 404 PAGE
+#### 404 Page
 
 - A 404 page not found message screen, that covers the main game body area, to let the user know they have entered an incorrect URL and provide them with a New Game button to navigate back to the game index page.
 
