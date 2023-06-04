@@ -116,7 +116,7 @@ nav h1,
 }
 
 #audio-link:hover {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 
 #feedback-title {
@@ -348,6 +348,7 @@ footer {
 #feedback-link:focus {
     text-decoration: underline;
     font-weight: bolder;
+    font-size: 1.2rem;
 }
 
 /* Game Container
