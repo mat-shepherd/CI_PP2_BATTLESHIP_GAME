@@ -584,6 +584,7 @@ The W3C Jigsaw CSS Validation Service was used to validate the CSS of the websit
 
 The JS Hint JavaScript Validation Service was used to validate the JavaScript code on the website. The results below show three code warnings related to "Functions declared within loops referencing an outer scoped variable may lead to confusing semantics". This was related to code I used to store and retrie click handlers and proved to be a difficult issue to overcome. I'm flaggining hhis for future improvement:
 
+#### battleship-game.js
 **Metrics**
 There are 66 functions in this file.
 Function with the largest signature take 8 arguments, while the median is 1.
@@ -591,10 +592,27 @@ Largest function has 53 statements in it, while the median is 6.
 The most complex function has a cyclomatic complexity value of 25 while the median is 2.
 
 **Three warnings**
+These are discussed in bugs
 
 - 1032	Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (currentShip, players, playerShips, computerShips, gameBoards, currentPlayer)
 - 1071	Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (players, playerShips, computerShips, gameBoards, currentPlayer, currentShip)
 - 1567	Functions declared within loops referencing an outer scoped variable may lead to confusing semantics. (currentShip, players, playerShips, computerShips, gameBoards, currentPlayer, randomShip, clearShips)
+
+
+#### feedback-form.js
+
+**Metrics**
+There are 5 functions in this file.
+Function with the largest signature take 1 arguments, while the median is 0.
+Largest function has 6 statements in it, while the median is 2.
+The most complex function has a cyclomatic complexity value of 1 while the median is 1.
+
+**Three undefined variables**
+These variables are cutally definined in separate script files loaded in to the page
+- 13	emailjs
+- 16	emailjs
+- 21	err
+- 44	confirmNewGame
 
 ### Accessibility
 
@@ -821,7 +839,7 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-1.  As a player, when a game has ended, I want my high score to be retained until I end my browser session
+16.  As a player, when a game has ended, I want my high score to be retained until I end my browser session
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 |   |   |   | Works as expected |
