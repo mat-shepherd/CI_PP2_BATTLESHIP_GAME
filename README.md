@@ -882,19 +882,23 @@ The website was tested on the following browsers:
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+| Footer Feedback Link | The user scrolls to the footer of any page and clicks the feedback link | The feedback page loads and the feedback form is visible | Works as expected |
+| Feedback Page Form | The feedback page loads and the player fills out and then submitted the feedback form  | The player fills out the form and submits the form | Works as expected |
+| Feedback Form Validation  | The player fills out the form but doesn't fill in all fields or enters an incorrect email format | If required fields are empty or the email address is invalid an error message is shown below the form fields and the form can't be submitted | Works as expected |
+| Feedback Page Form Submitted Screen | The player successfully fills out the feedback form and submits the form | The form submits and a thank you screen is shown confirming submission and providing the player with a New Game button. Form submissions are then emailed via EmailJS to the site owner | Works as expected |
+| Feedback Page Links | The player visits the feedback page and wants to navigate back to the main game | The player clicks on any link on the feedback page and is taken back to the index page to start a new game | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-19. As the site owner, I want users to see a 404 page if they enter an incorrect URL so they can be navigated back to the main game page
+1.  As the site owner, I want users to see a 404 page if they enter an incorrect URL so they can be navigated back to the main game page
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+| 404 Page | The player enters an invalid game URL in their browser | A 404 Not Found page with details on how to navigate back to the game is shown | Works as expected |
+| 404 Page New Game Button  | The player enters an invalid game URL in their browser  | The New Game button is shown on the 404 page allowing the user to start a new game | Works as expected |
+| 404 Page Links | The player enters an invalid game URL in their browser  | The player clicks on any link on the 404 page and is taken back to the index page to start a new game | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
