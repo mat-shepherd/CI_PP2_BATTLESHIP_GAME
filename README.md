@@ -1009,7 +1009,7 @@ In order of appearance:
 - Animation to make Player Message text flash on error. Code adapted from answer provided by [ChatGPT](https://chat.openai.com/) by [OpenAI](https://openai.com)
 
 #### battleship-game.js
-- The loop to add event listeners to buttons adapted from the [Code Institute's Love Maths Projects](https://github.com/Code-Institute-Org/love-maths)
+- The loop to add event listeners to buttons was adapted from the [Code Institute's Love Maths Projects](https://github.com/Code-Institute-Org/love-maths)
 - The method to disable click events on gameboard grids was learned from [this Codingdeft article](https://www.codingdeft.com/posts/disable-click-on-div-javascript-css/) by [by Abhishek EH](https://twitter.com/abhieh9)
 
 - The placeShip function that populates all of a ship's coordinates by increasing row letter and column number based on the size of the ship was largely based on code adapted from answers provided by [ChatGPT by OpenAI](https://openai.com/).
@@ -1034,11 +1034,11 @@ In order of appearance:
 
 I would like to thank the following people for their contributions to creating this project:
 
-- My mentor Mo Shami for your support, guidance, and encouragement
+- My mentor Mo Shami for your support, guidance, and encouragement as always!
 - Alan Bushell and the February 2023 Student Cohort for their knowledge sharing, advice, and camaraderie during our weekly standup calls and in Slack
 - Benjamin Riordan, Deborah Galasso, and Daisy Mc Girr for reviewing my project and providing great constructive feedback
 - The Code Institute and their tutor support team for an excellent experience and great support leading up to this second project
-- My wife for her exceptional patience and support while I sat in front of the computer for days on end and for listening to my constant updates on ramblings about this second project
+- My wife for her exceptional patience and support while I sat in front of the computer for days on end and for listening to my constant updates and ramblings about this second project
 - My boys William and Oliver for helping me test the game, providing feedback and ideas, and for spotting bugs! An extra special thank you to William for helping record my user test videos! Superstar!
 
 [Back to Table of Contents](#table-of-contents)
