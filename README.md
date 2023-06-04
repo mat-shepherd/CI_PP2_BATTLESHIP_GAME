@@ -76,7 +76,7 @@ This project is a JavaScript-based Battleship game based on the classic baord ga
     - [Browser compatibility](#browser-compatibility)
     - [Testing user stories](#testing-user-stories)
       - [Players](#players-1)
-      - [PlayeSite Owner](#playesite-owner)
+      - [Site Owner](#site-owner-1)
   - [Bugs](#bugs)
   - [Deployment](#deployment)
   - [Credits](#credits)
@@ -811,17 +811,17 @@ The website was tested on the following browsers:
 <img src="">
 </details><br>
 
-1.  As a player, when a game has ended, I want to be given the option to start a new game
+15.  As a player, when a game has ended, I want to be given the option to start a new game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|   |   |   | Works as expected |
-|   |   |   | Works as expected |
+| Win modal New Game Button | Player wins or loses game | The win/ lose screen is shown with the the win loss messgae and scores followed by a New Game Button. When the player clicks on the button they wil be asked if they are sure they want to start a new game,and if they click contune the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
+| Navigation New Game Link | Player clicks navigation New Game button  | When the player clicks on the New Game link at any point in the game they wil be asked if they are sure they want to start a new game, and if they click contune the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
 </details><br>
 
-16. As a player, when a game has ended, I want my high score to be retained until I end my browser session
+1.  As a player, when a game has ended, I want my high score to be retained until I end my browser session
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 |   |   |   | Works as expected |
@@ -842,7 +842,7 @@ The website was tested on the following browsers:
 </details><br>
 
 
-#### PlayeSite Owner
+#### Site Owner
 
 18. As the site owner, I want to receive feedback from players so I can understand if they are enjoying the game, identify any bugs, and continually improve the game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
@@ -999,6 +999,6 @@ I would like to thank the following people for their contributions to creating t
 - Benjamin Riordan, Deborah Galasso, and Daisy Mc Girr for reviewing my project and providing great constructive feedback
 - The Code Institute and their tutor support team for an excellent experience and great support leading up to this second project
 - My wife for her exceptional patience and support while I sat in front of the computer for days on end and for listenin to my constant updates on ramblings about this second project
-- My boys William and Oliver for helping me test the game, providing feedback and ideas, and for spotting bugs!
+- My boys William and Oliver for helping me test the game, providing feedback and ideas, and for spotting bugs! An extra special thank you to William for helping record my user test videos! Superstar!
 
 [Back to Table of Contents](#table-of-contents)
