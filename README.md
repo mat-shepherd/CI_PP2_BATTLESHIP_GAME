@@ -6,7 +6,7 @@
 
 [Live webpage](https://mat-shepherd.github.io/CI_PP2_BATTLESHIP_GAME/)
 
-This project is a JavaScript-based Battleship game based on the classic baord game of Battleship. This is a responsive two-page game site which aims to provide casual online gamers with a simple, fun, and and interactive gaming experienc.
+This project is a JavaScript-based Battleship game based on the classic board game of Battleship. This is a responsive two-page game site which aims to provide casual online gamers with a simple, fun, and and interactive gaming experience.
 
 ## Table of Contents
 
@@ -128,7 +128,7 @@ The goals of this website include:
 - The ability to turn game sound effects on or off
 - An easy way to provide the developer with feedback on the game
 - An easy mechanism to start a new game and maintain session scores
-- An accessibile game website that can be viewed and played on any device
+- An accessible game website that can be viewed and played on any device
 
 ### User Stories
 
@@ -212,11 +212,11 @@ For simplicity, the site consists of one primary page and two helper pages, a fe
 
 - A header navigation bar containing the game logo followed by the navigation menu including New Game and How to Play links, and an audio toggle icon
   
-- A score sidebar (which moves to the footer area on smaller screens) which contains the scores and schips remaining for both players.
+- A score sidebar (which moves to the footer area on smaller screens) which contains the scores and ships remaining for both players.
 
 - A start game screen, that covers the main game body area, and contains a form to collect the player's name, a start game button and an audio toggle button.
   
-- The main game body area which contains the player message container, the player and computer gameboard grids, and the ship placmement controls (which are hidden once the player has placed thier ships)
+- The main game body area which contains the player message container, the player and computer gameboard grids, and the ship placement controls (which are hidden once the player has placed their ships)
 
 - A How to Play modal which conveys the rules of the game and how to play
   
@@ -386,7 +386,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 #### Ship Placement Controls Area
 
 - Provides buttons to allow players to place, rotate, randomly place, or clear their ships on their gameboard grid.
-- This area is hiddeen once turn based gameplay begins
+- This area is hidden once turn based gameplay begins
 - User stories covered: 1, 5, 6, 7, 8
 
 <details><summary>Screenshots</summary>
@@ -469,7 +469,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 #### Computer Opponent
 
 - The player plays against a computer opponent that randomly place's hidden ships on the computer's gameboard grid for the player to take shots on.
-- Computer ships become visibile to the player once sunk.
+- Computer ships become visible to the player once sunk.
 - The computer takes random shots on the player's gameboard grid.
 - User stories covered: 1, 9
 
@@ -496,7 +496,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 - A ship hit results in an explosion animation at the hit location on the gameboard grid, followed by a fire marker at the location, an explosion sound, a notification of the hit location in the player message area, and an update to the relevant player's hit score in the sidebar.
 - A ship miss results in an splash animation at the hit location on the gameboard grid, followed by a splash marker at the location, a splash sound, a notification of the miss location in the player message area, and an update to the relevant player's miss score in the sidebar.
 - A ship being hit across all of its grid locations means the ship is sunk. Sinking a ship results in a explosion and sinking sound, a notification of the ship that was sunk in the player message area, an update to the relevant player's Ship count in the sidebar, and a red X icon being placed over the relevant player's sunk ship.
-- If a computer's hip is sunk the ship which was previously not visibile is made visible.
+- If a computer's hip is sunk the ship which was previously not visible is made visible.
 - User stories covered: 1, 10, 11, 12, 13, 14
 
 <details><summary>Screenshots</summary>
@@ -508,7 +508,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 - When a the player or computer's ships are all sunk a win game modal is show and a sound played to let the player know if they have won or lost.
 - The player's score and high score are presented.
-- A New Game button is presented to allow the player to start a new game while maintining their name and score values.
+- A New Game button is presented to allow the player to start a new game while maintaining their name and score values.
 - User stories covered: 1, 13, 14, 15, 16
 
 <details><summary>Screenshots</summary>
@@ -518,7 +518,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 #### Alternating Player Gameboard grids on Small Screens
 
-- On small screens and mobile devices, the active gameboard grid is moved to the top of the gameboard column to allow the player to see and interact with the active gaeeboard grid without having to scroll.
+- On small screens and mobile devices, the active gameboard grid is moved to the top of the gameboard column to allow the player to see and interact with the active gameboard grid without having to scroll.
 - User stories covered: 1, 10, 12
 
 <details><summary>Screenshots</summary>
@@ -560,7 +560,7 @@ The website consists of three pages in total, an index page, a feedback page, an
 
 The following features could be implemented in the future to provide users with more detailed information and further build prospective client trust through the website:
 
-- A 'smarter' computer opponenent could be implemented which would take random shots within a close range of a previous hit shout if that shot didn't result in sinking a ship. Currently the computer takes completely random shots within the bounds of the game grid, avoiding coordiantes that have a lready been shot on.
+- A 'smarter' computer opponent could be implemented which would take random shots within a close range of a previous hit shout if that shot didn't result in sinking a ship. Currently the computer takes completely random shots within the bounds of the game grid, avoiding coordinates that have already been shot on.
 - With the ability to make the computer opponent 'smarter', a game difficulty feature could be added to let the user choose how difficult they want the game to be.
 - I added an attribute for direction to ship objects with the intention of adding a flying plane animation when shots are taken. Knowing if a ship is vertical or horizontal and it's coordinates would allow a plane image to be animated horizontally or vertically across the board to match the ships rotation. Otherwise the plane would randomly fly horizontally or vertically across the board if the shot was a miss.
 
@@ -584,7 +584,7 @@ The W3C Jigsaw CSS Validation Service was used to validate the CSS of the websit
 
 ### JavaScript Validation
 
-The JS Hint JavaScript Validation Service was used to validate the JavaScript code on the website. The results below show three code warnings related to "Functions declared within loops referencing an outer scoped variable may lead to confusing semantics". This was related to code I used to store and retrie click handlers and proved to be a difficult issue to overcome. I'm flaggining hhis for future improvement:
+The JS Hint JavaScript Validation Service was used to validate the JavaScript code on the website. The results below show three code warnings related to "Functions declared within loops referencing an outer scoped variable may lead to confusing semantics". This was related to code I used to store and retrieve click handlers and proved to be a difficult issue to overcome. I'm flagging this for future improvement:
 
 #### battleship-game.js
 **Metrics**
@@ -609,7 +609,7 @@ Largest function has 6 statements in it, while the median is 2.
 The most complex function has a cyclomatic complexity value of 1 while the median is 1.
 
 **Three undefined variables**
-These variables are cutally definined in separate script files loaded in to the page
+These variables are actually defined in separate script files loaded in to the page
 - 13	emailjs
 - 16	emailjs
 - 21	err
@@ -625,7 +625,7 @@ The WAVE WebAIM web accessibility evaluation tool was used to ensure the website
 
 ### Performance
 
-Google Lighthouse in Google's Chrome Developer Tools was used to test the performance of the website. All elements performed well with peformance scores above 90, accessiblity and SEO scores of 100, and best rpactice scores in the 90 to 100 range. The 404 page had a 92 best practice score for some lower clarity images but these are ship and fire icons which are samll by design.
+Google Lighthouse in Google's Chrome Developer Tools was used to test the performance of the website. All elements performed well with performance scores above 90, accessibility and SEO scores of 100, and best practice scores in the 90 to 100 range. The 404 page had a 92 best practice score for some lower clarity images but these are ship and fire icons which are small by design.
 
 ### Index
 
@@ -681,7 +681,7 @@ The website was tested on the following browsers:
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Start game screen | Player navigates around links and controls on screen  | Player finds game instructions and understand how to start a game by entering their name | Works as expected |
-| Gameplay screen| Player enters thier name and enters gamplay screen and navigates the gameboard grids and controls | Player understands how to continue gameplay | Works as expected |
+| Gameplay screen| Player enters their name and enters gameplay screen and navigates the gameboard grids and controls | Player understands how to continue gameplay | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
@@ -733,10 +733,10 @@ The website was tested on the following browsers:
 6. As a player, while setting up the gameboard, I want the ability to place and rotate my game pieces vertically or horizontally within the limits of the gameboard grid
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Ship Placment Grid Hover | Player hovers over the grid with their name and sees a ship placement icon and click a grid cell |  The player clicks a grid cell in their gameboard and the ship is temporarily placed. If they click another grid cell the ship is temporarily placed again in the new location | Works as expected |
+| Ship Placement Grid Hover | Player hovers over the grid with their name and sees a ship placement icon and click a grid cell |  The player clicks a grid cell in their gameboard and the ship is temporarily placed. If they click another grid cell the ship is temporarily placed again in the new location | Works as expected |
 | Ship Placement Player Message |  Player starts game and is shown a message in the player area instructing them on how to place ships |  Player follows instructions and place ships by clicking on the player grid and using the placement controls | Works as expected |
-|  Ship Placement Player Controls | Player is instucted to use placement controls and placement control buttons are highlighted after clicking on the player grid |  Player clicks on the player grid to place their ship and then uses the placement controls to confirm or change ship placement  | Works as expected |
-| Ship Placement Button |  Player clicks on the Place button to confirm ship placement | Ship is placed and player moves onto placing their next ship. If they have palced thier final ship the game starts. The player is provided with a message in the player area if there are no ships to place  | Works as expected |
+|  Ship Placement Player Controls | Player is instructed to use placement controls and placement control buttons are highlighted after clicking on the player grid |  Player clicks on the player grid to place their ship and then uses the placement controls to confirm or change ship placement  | Works as expected |
+| Ship Placement Button |  Player clicks on the Place button to confirm ship placement | Ship is placed and player moves onto placing their next ship. If they have placed their final ship the game starts. The player is provided with a message in the player area if there are no ships to place  | Works as expected |
 | Ship Rotate Button | Player clicks on the Rotate button to rotate ship placement | The current ship on the players grid is rotated each time the button is clicked. The player is provided with a message in the player area if there are no ships to rotate  | Works as expected |
 | Ship Random Button | Player clicks on the Random button to randomly place ships  | Ships are randomly placed on the player's grid at random locations and rotations within the grid bounds and the game starts | Works as expected |
 | Ship Clear Button | Player clicks on the Clear All button to clear placed ships  | All ships manually placed by the player and their coordinates are cleared from the player grid and they can start placing ships again  | Works as expected |
@@ -748,8 +748,8 @@ The website was tested on the following browsers:
 7. As a player, I want any controls or buttons to be colourful, apparent, and attractive
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Ship Placement Player Controls | Player is instucted to use placement controls and placement control buttons are highlighted after clicking on the player grid |  Player clicks on the player grid to place their ship and then uses the placement controls to confirm or change ship placement  | Works as expected |
-| Ship Placement Player Pulse  |  Player clicks on their grid to place a ship and the placement control buttons start pulsing to draw the player's attention |  Player is drawn to the buttons as their next step and engages with buttons to control ship placement | Works as expected |
+| Ship Placement Player Controls | Player is instructed to use placement controls and placement control buttons are highlighted after clicking on the player grid |  Player clicks on the player grid to place their ship and then uses the placement controls to confirm or change ship placement  | Works as expected |
+| Ship Placement Player Pulse |  Player clicks on their grid to place a ship and the placement control buttons start pulsing to draw the player's attention |  Player is drawn to the buttons as their next step and engages with buttons to control ship placement | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
@@ -813,7 +813,7 @@ The website was tested on the following browsers:
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Grid-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of who took the shot, the result of the shot with hit, miss, or sunk visual and audio cues on the relevant player's grid | Works as expected |
-| Score-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of the result of the shot through updates to the hit, misses numbers under the relevant player's name in the scoreboard. If a ship is sunk a Red X marker is shown over the relvant player's sunk ship | Works as expected |
+| Score-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of the result of the shot through updates to the hit, misses numbers under the relevant player's name in the scoreboard. If a ship is sunk a Red X marker is shown over the relevant player's sunk ship | Works as expected |
 | Player message-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of who took the shot and the result of the shot through updates to the Player Message area. This tells them who took the shot, the coordinates of the ship hit or miss, and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
@@ -824,7 +824,7 @@ The website was tested on the following browsers:
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Grid-based shot feedback | All of a player's ship have been hit at all placed coordinates and sunk | When a ship is sunk explosion and fire markers are shown across each grid cell the ship occupies, a sunk ship sound is played | Works as expected |
-| Score-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of the result of the shot through updates to the hit, misses numbers under the relevant player's name in the scoreboard. If a ship is sunk a Red X marker is shown over the relvant player's sunk ship | Works as expected |
+| Score-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of the result of the shot through updates to the hit, misses numbers under the relevant player's name in the scoreboard. If a ship is sunk a Red X marker is shown over the relevant player's sunk ship | Works as expected |
 | Player message-based shot feedback | All of a player's ship have been hit at all placed coordinates and sunk | When a shot is taken the player is notified of who took the shot and the result of the shot through updates to the Player Message area. This tells them who took the shot, the coordinates of the ship hit or miss, and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
@@ -834,8 +834,8 @@ The website was tested on the following browsers:
 15. As a player, when a game has ended, I want to be given the option to start a new game
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Win modal New Game Button | Player wins or loses game | The win/ lose screen is shown with the the win loss messgae and scores followed by a New Game Button. When the player clicks on the button they wil be asked if they are sure they want to start a new game,and if they click contune the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
-| Navigation New Game Link | Player clicks navigation New Game button  | When the player clicks on the New Game link at any point in the game they wil be asked if they are sure they want to start a new game, and if they click contune the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
+| Win modal New Game Button | Player wins or loses game | The win/ lose screen is shown with the the win loss message and scores followed by a New Game Button. When the player clicks on the button they wil be asked if they are sure they want to start a new game,and if they click continue the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
+| Navigation New Game Link | Player clicks navigation New Game button  | When the player clicks on the New Game link at any point in the game they wil be asked if they are sure they want to start a new game, and if they click continue the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
@@ -844,8 +844,8 @@ The website was tested on the following browsers:
 16. As a player, when a game has ended, I want my high score to be retained until I end my browser session
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Win modal New Game Button | Player wins or loses game | The win/ lose screen is shown with the the win loss messgae and scores followed by a New Game Button. When the player clicks on the button they wil be asked if they are sure they want to start a new game,and if they click contune the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
-| Navigation New Game Link | Player clicks navigation New Game button  | When the player clicks on the New Game link at any point in the game they wil be asked if they are sure they want to start a new game, and if they click contune the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
+| Win modal New Game Button | Player wins or loses game | The win/ lose screen is shown with the the win loss message and scores followed by a New Game Button. When the player clicks on the button they wil be asked if they are sure they want to start a new game,and if they click continue the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
+| Navigation New Game Link | Player clicks navigation New Game button  | When the player clicks on the New Game link at any point in the game they wil be asked if they are sure they want to start a new game, and if they click continue the page reloads. The player's name, score, and high score are carried over to the new game, the start game form that collects the player's name is skipped, and ship placement begins | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
@@ -855,7 +855,7 @@ The website was tested on the following browsers:
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 | Start Game Audio Button | Player starts a brand New Game and sees the start game screen and clicks the Audio Button to toggle audio on or off  | Player hovers over and clicks the audio button which says 'Audio is Off' and contains a speaker icon with an x is shown. All sounds are muted in this default state. The navigation bar speaker icon also shows an x in this state. Hovering over the button turns it blue, when the player clicks the button text changes to 'Audio is On' the colour changes to blue, and the mute icon changes to a speaker icon with the x. All sounds are now turned on. The navigation bar speaker icon now also shows no x in this state | Works as expected |
-| Navigation Bar Audio Icon  | Player clicks audio icon in navigation bar which shows an x to indicate sounds are muted by default | Player hovers over audio link icon and it enlarges on hover. When player clicks the iconit changes to a speaker icon without the x and all sounds are turned on. Player clicks the icon and again and all sounds are muted and the icon shows an x again. The audio button in the start game screen is also changed to audio is on or off depednign on the state of the audio link icon | Works as expected |
+| Navigation Bar Audio Icon  | Player clicks audio icon in navigation bar which shows an x to indicate sounds are muted by default | Player hovers over audio link icon and it enlarges on hover. When player clicks the icon, it changes to a speaker icon without the x and all sounds are turned on. Player clicks the icon and again and all sounds are muted and the icon shows an x again. The audio button in the start game screen is also changed to audio is on or off depending on the state of the audio link icon | Works as expected |
 
 <details><summary>Video</summary>
 <img src="">
@@ -891,13 +891,13 @@ The website was tested on the following browsers:
 | **Bug** | **Fix** |
 | ----------- | ----------- |
 | Composition of objects | Not so much a bug as a lesson learned. As I progressed through coding the game I realised, too late, that I thins may have been easier if I had nested the Ship and Gameboard objects inside of the Player object. As my codebase grew I found myself forwarding a lot of parameters through functions to avoid global variables, but then I realised that many of these variables represent objects, which could have been avoided if I had nested all of my player related objects under the Player objects! |
-| Gameboard layout on mobile devices | Due to the square nature and required size of the grids to be able to interact with indivudal cells, responsive layout was tricky and led to horizontal overflow on small screens, poor spacing of elements on mobile devices, and a poor responsive user experience. To correct this I set the gameboard area to column layout below 1600px breakpoint and reduced the size of the ships grids cells to half the size of those on desktop. I then set the ship and icon images to a % based width to make them respond to the gaemboard grid cell size. |
-| Scrolling on mobile devices | Due to column layout on small screens the player would have to scroll and up and down the screen when taking turns to understand what the computer player did during their turn and to take their shot. As Player message pulls focus to the top of the screen when it updates this was creating a very poor user experience. To crrect this I added a gameboard-reverse class to the gaemboard div in the checkTurn function. Adding this class changes the order of the flex positioned gameboard grids, which allows the active grid to always show at the top of the gameboard. This also keeps the player viewing the top of the viewport and minimises jumping back to the top of the screen when the player message updates. |
-|  Rotating grid cells would rotate hit and miss icons | The functions which rotate ship images on the gameboard actually rotate the containing div by multipls of 90 degrees to ensure the image pivots around the center of the cell the ship was placed in. This worked well but created an issue where ship hit or miss icons when added to the original ship placement cell were also rotated, which looked odd and inconsistent with icons show elsewhere on the board. To fix this I introduced a check into functions which add ship hit or miss icons to see if the parent div class contained transform. If it did the icon image would then be rotated -90 degrees. |
-|  Player message timing |  As the game progresses through each player's turn it proveed tricky to slow down gameplay and ensure that player messages were visible long enough to read before they were replaced by the next player message. While this is not fully resolved to my liking I introduced setTimeoutet functions aroun player messages to add delays before they are shown to give the previous message time to display. When ships are sunk it provde very difficult to give the message time to display. With help from an approach provided by ChatGPT I introduced a delay function and a promise object to delay gameplay to give this ship sunk message time to display before gamplay resumes. |
-| Deleting grid click listeners | Each player grid allows the player to inidcate the cells they will place ships in or take shots on by adding click listeners when grids are created and disabling click listeners when it is the computer's turn or a grid location is occupied by a ship or a shot. Removing click listeners was a difficult issue to solve as each cell's click listener was specific to it and a reference to the specific listenenr had to be stored somewhere for later retrieval to remove the correct listener for the correct grid and cell. With guodance from ChatGPT I decided to store the place and shoot event listeners in attributes of the Gameboard object so I could loop through the relevant gameboard's placeEventHandlers or shootEventHandlers to find the click listener for relevant grid cell. This worked well but I still had an issue where I need to disable all grid listeners on the opposing player's grids to ensure the player couldn't randomly trigger unexpected functions. The quick fix for this was found in an article by Coding Deft, which led to the addition of a style to gameboard grid elements that set pointer-events: none on the on-active gameboard grid during checkTurn. |
-| Poor page load on mobile devices  | On testing the game index page with Lighthouse I was receving a perfomance score in the 70s, largely due to the loading and rendering of the repeating ocean tile gif in the background of the gameboard. I exploed multiple options including replacing this with a video of the effect but in the end settled on using a lazy loading approach. A lazyLoadBackground function was provided by chatGPT and dapted to make the ocean tile background load only when initPlacement was called to start rendering the gameboards. This greatly improved page load performance on mobiles with scores in the 90s.|
-| Persistent grid cell backround colours | Sometimes if a grid cell is highlighted or showing an error while the game moves on to the next player's turn the background colour remains in the cell. This is something to investigate further in future iterations. |
+| Gameboard layout on mobile devices | Due to the square nature and required size of the grids to be able to interact with individual cells, responsive layout was tricky and led to horizontal overflow on small screens, poor spacing of elements on mobile devices, and a poor responsive user experience. To correct this I set the gameboard area to column layout below 1600px breakpoint and reduced the size of the ships grids cells to half the size of those on desktop. I then set the ship and icon images to a % based width to make them respond to the gameboard grid cell size. |
+| Scrolling on mobile devices | Due to column layout on small screens the player would have to scroll and up and down the screen when taking turns to understand what the computer player did during their turn and to take their shot. As Player message pulls focus to the top of the screen when it updates this was creating a very poor user experience. To correct this I added a gameboard-reverse class to the gameboard div in the checkTurn function. Adding this class changes the order of the flex positioned gameboard grids, which allows the active grid to always show at the top of the gameboard. This also keeps the player viewing the top of the viewport and minimises jumping back to the top of the screen when the player message updates. |
+|  Rotating grid cells would rotate hit and miss icons | The functions which rotate ship images on the gameboard actually rotate the containing div by multiples of 90 degrees to ensure the image pivots around the center of the cell the ship was placed in. This worked well but created an issue where ship hit or miss icons when added to the original ship placement cell were also rotated, which looked odd and inconsistent with icons show elsewhere on the board. To fix this I introduced a check into functions which add ship hit or miss icons to see if the parent div class contained transform. If it did the icon image would then be rotated -90 degrees. |
+|  Player message timing |  As the game progresses through each player's turn it proved tricky to slow down gameplay and ensure that player messages were visible long enough to read before they were replaced by the next player message. While this is not fully resolved to my liking I introduced setTimeout functions around player messages to add delays before they are shown to give the previous message time to display. When ships are sunk it provide very difficult to give the message time to display. With help from an approach provided by ChatGPT I introduced a delay function and a promise object to delay gameplay to give this ship sunk message time to display before gameplay resumes. |
+| Deleting grid click listeners | Each player grid allows the player to indicate the cells they will place ships in or take shots on by adding click listeners when grids are created and disabling click listeners when it is the computer's turn or a grid location is occupied by a ship or a shot. Removing click listeners was a difficult issue to solve as each cell's click listener was specific to it and a reference to the specific listener had to be stored somewhere for later retrieval to remove the correct listener for the correct grid and cell. With guidance from ChatGPT I decided to store the place and shoot event listeners in attributes of the Gameboard object so I could loop through the relevant gameboard's placeEventHandlers or shootEventHandlers to find the click listener for relevant grid cell. This worked well but I still had an issue where I need to disable all grid listeners on the opposing player's grids to ensure the player couldn't randomly trigger unexpected functions. The quick fix for this was found in an article by Coding Deft, which led to the addition of a style to gameboard grid elements that set pointer-events: none on the on-active gameboard grid during checkTurn. |
+| Poor page load on mobile devices  | On testing the game index page with Lighthouse I was receiving a performance score in the 70s, largely due to the loading and rendering of the repeating ocean tile gif in the background of the gameboard. I explored multiple options including replacing this with a video of the effect but in the end settled on using a lazy loading approach. A lazyLoadBackground function was provided by chatGPT and adapted to make the ocean tile background load only when initPlacement was called to start rendering the gameboards. This greatly improved page load performance on mobiles with scores in the 90s.|
+| Persistent grid cell background colours | Sometimes if a grid cell is highlighted or showing an error while the game moves on to the next player's turn the background colour remains in the cell. This is something to investigate further in future iterations. |
 
 
 [Back to Table of Contents](#table-of-contents)
@@ -982,8 +982,8 @@ In order of appearance:
   - <https://github.com/aleksandracodes/CI_PP2_SunshineGuessing>
 
 #### index.html & style.css
-- Game Intro, Rules & Win Modals - Code adpated from [this 'How TO - CSS/JS Modal' article](https://www.w3schools.com/howto/howto_css_modals.asp) by W3Schools(https://www.w3schools.com/)
-- CSS code to center the how to play modal adpated from [this Stackoverflow answer](https://stackoverflow.com/a/32086720/21643967) by [Bill Alexy](https://stackoverflow.com/users/2913352/bill-alexy)
+- Game Intro, Rules & Win Modals - Code adapted from [this 'How TO - CSS/JS Modal' article](https://www.w3schools.com/howto/howto_css_modals.asp) by W3Schools(https://www.w3schools.com/)
+- CSS code to center the how to play modal adapted from [this Stackoverflow answer](https://stackoverflow.com/a/32086720/21643967) by [Bill Alexy](https://stackoverflow.com/users/2913352/bill-alexy)
 - Placement Button Retro Styles adapted from [this Retro Buttons CodePen](https: //codepen.io/Brandon-Stoyles/pen/RajYmd) by[Brandon-Stoyles](https://codepen.io/Brandon-Stoyles)
 - Placement Button Pulse Effect adapted from the code in [this 'CSS ANIMATION - THE PULSE EFFECT' article](https://www.florin-pop.com/blog/2019/03/css-pulse-effect/) by [Florin Pop](https://www.florin-pop.com/)
 - Animation to make Player Message text flash on error. Code adapted from answer provided by [ChatGPT](https://chat.openai.com/) by [OpenAI](https://openai.com)
@@ -1001,7 +1001,7 @@ In order of appearance:
 - The code in sinkShip and the delay function that adds delay between the ship sunk message and the next player message from CheckTurn was copied from an answer Snippet provided by [ChatGPT by OpenAI](https://openai.com/).
 - The method to store event handlers for later reference and a fix for an issue relating to "Functions declared within loops referencing an outer scoped variable may lead to confusing semantics" were adapted from answers by [ChatGPT by OpenAI](https://openai.com/).
 - The code in the playerMessage function to make Player Message text flash on error was adapted from answers provided by [ChatGPT](https://chat.openai.com/) by [OpenAI](https://openai.com).
-- The lazyLoadBackground function created to solve page load speed issues was adapted but alrgely copied from answers provided by [ChatGPT](https://chat.openai.com/) by [OpenAI](https://openai.com).
+- The lazyLoadBackground function created to solve page load speed issues was adapted but largely copied from answers provided by [ChatGPT](https://chat.openai.com/) by [OpenAI](https://openai.com).
 - The checkURL and NewGame JavaScript functions that store and retrieve URL parameters to pass player name and scores to a new game was adapted from [this 'How to Get URL Parameters with JavaScript' Sitepoint article ](https://www.sitepoint.com/get-url-parameters-with-javascript/) by [Yaphi Berhanu](https://www.sitepoint.com/author/yberhanu/) and James [Hibbard](https://www.sitepoint.com/author/jhibbard/)
 - was generated using [ChatGPT by OpenAI](https://openai.com/) and then adapted.
 
@@ -1018,7 +1018,7 @@ I would like to thank the following people for their contributions to creating t
 - Alan Bushell and the February 2023 Student Cohort for their knowledge sharing, advice, and camaraderie during our weekly standup calls and in Slack
 - Benjamin Riordan, Deborah Galasso, and Daisy Mc Girr for reviewing my project and providing great constructive feedback
 - The Code Institute and their tutor support team for an excellent experience and great support leading up to this second project
-- My wife for her exceptional patience and support while I sat in front of the computer for days on end and for listenin to my constant updates on ramblings about this second project
+- My wife for her exceptional patience and support while I sat in front of the computer for days on end and for listening to my constant updates on ramblings about this second project
 - My boys William and Oliver for helping me test the game, providing feedback and ideas, and for spotting bugs! An extra special thank you to William for helping record my user test videos! Superstar!
 
 [Back to Table of Contents](#table-of-contents)
