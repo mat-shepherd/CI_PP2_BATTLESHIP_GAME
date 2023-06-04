@@ -736,8 +736,7 @@ The website was tested on the following browsers:
 
 <details><summary>Video</summary>
 <img src="docs/user-story-testing/user-story-test-7.gif"><br>
-<img src="docs/user-story-testing/user-story-test-7a.gif"><br>
-<img src="docs/user-story-testing/user-story-test-7-8-9-10.gif">
+<img src="docs/user-story-testing/user-story-test-7a.gif">
 </details><br>
 
 8. As a player, while setting up the gameboard, I want the ability to randomly place my ships and reset the gameboard to remove the game pieces (ships) and start placement over again
@@ -748,7 +747,8 @@ The website was tested on the following browsers:
 | Ship Clear Button | Player clicks on the Clear All button to clear placed ships  | All ships manually placed by the player and their coordinates are cleared from the player grid and they can start placing ships again  | Works as expected |
 
 <details><summary>Video</summary>
-<img src="docs/user-story-testing/user-story-test-7-8-9-10.gif">
+<img src="docs/user-story-testing/user-story-test-8.gif"><br>
+<img src="docs/user-story-testing/user-story-test-8a.gif"><br>
 </details><br>
 
 9. As a player, once the game board is set up, I want to play against a computer opponent
@@ -760,7 +760,7 @@ The website was tested on the following browsers:
 | Computer opponent win | Computer opponent sink all of the player's ships | All players ships are sunk as indicated byt hit markers on the grid and sunk markers on player's ships in the scoreboard. Computer's score is increased and the win/lose game screen is shown telling the player they lost, their score and offering a New Game button | Works as expected |
 
 <details><summary>Video</summary>
-<img src="docs/user-story-testing/user-story-test-7-8-9-10.gif">
+<img src="docs/user-story-testing/user-story-test-9.gif">
 </details><br>
 
 10.  As a player, once the gameboard is set up, I want to be presented with notifications, visual, and audio cues to understand the game has started and which player's turn it is to take a shot
@@ -771,7 +771,7 @@ The website was tested on the following browsers:
 | Player hovers over computer grid | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot with hit, miss, or sunk visual and audio cues on the grid | Works as expected |
 
 <details><summary>Video</summary>
-<img src="docs/user-story-testing/user-story-test-7-8-9-10.gif">
+<img src="docs/user-story-testing/user-story-test-10-11-12-13.gif">
 </details><br>
 
 11.  As a player, I want to be presented with notifications, visual, and audio cues to understand how to take a shot, where my shot is going to be placed, and confirmation that my shot was registered
@@ -784,7 +784,7 @@ The website was tested on the following browsers:
 | Player message-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot through updates to the Player Message area. This tells them the coordinates of the ship hit or miss and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
-<img src="docs/user-story-testing/user-story-test-11-12-13.gif">
+<img src="docs/user-story-testing/user-story-test-10-11-12-13.gif">
 </details><br>
 
 12.  As a player, once a turn has been taken, I want to be presented with notifications, visual, and audio cues to understand whose turn was taken and if the turn resulted in hitting or missing a ship
@@ -796,7 +796,7 @@ The website was tested on the following browsers:
 | Player message-based shot feedback | During turn based gameplay the player hovers over the computer grid | The player is shown a target / crosshairs icon when hovering over the computer grid. When the player clicks on the computer's grid a shot is taken and the player is notified of the result of their shot through updates to the Player Message area. This tells them the coordinates of the ship hit or miss and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
-<img src="docs/user-story-testing/user-story-test-11-12-13.gif">
+<img src="docs/user-story-testing/user-story-test-10-11-12-13.gif">
 </details><br>
 
 13. As a player, I want to be presented with notifications, visual, and audio cues at all times during the game to keep track of how many hits, how many misses, and how many ships remain for each player
@@ -808,7 +808,7 @@ The website was tested on the following browsers:
 | Player message-based shot feedback | During turn based gameplay the player and computer alternate taking shots | When a shot is taken the player is notified of who took the shot and the result of the shot through updates to the Player Message area. This tells them who took the shot, the coordinates of the ship hit or miss, and whether a ship was sunk | Works as expected |
 
 <details><summary>Video</summary>
-<img src="docs/user-story-testing/user-story-test-11-12-13.gif"><br>
+<img src="docs/user-story-testing/user-story-test-10-11-12-13.gif"><br>
 <img src="docs/user-story-testing/user-story-test-13-16.gif">
 </details><br>
 
